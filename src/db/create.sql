@@ -320,3 +320,17 @@ CREATE TRIGGER Auction_search_update
 
 
 CREATE INDEX search_idx ON Auction USING GIN (tsvectors);
+
+
+--------------------------------------
+--          INDEX CREATION          --
+--------------------------------------
+
+-- 1) 
+CREATE INDEX id_notification ON Notification USING hash(idNotification) where isRead = false 
+
+-- 2)
+CREATE INDEX auction_category ON Auction USING hash (idCategory)
+
+-- 3)
+CREATE INDEX curr_bid ON Auction(currentPrice)
