@@ -327,7 +327,7 @@ CREATE INDEX search_idx ON Auction USING GIN (tsvectors);
 --------------------------------------
 
 -- 1) 
-CREATE INDEX id_notification ON Notification USING hash(idNotification) where isRead = false 
+CREATE INDEX id_client ON Notification USING hash(idClient) where isRead = false 
 
 -- 2)
 CREATE INDEX auction_category ON Auction USING hash (idCategory)
