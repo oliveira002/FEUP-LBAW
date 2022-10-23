@@ -181,7 +181,7 @@ CREATE FUNCTION check_bid() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF 
-        (NEW.idClient = (SELECT idOwner from Auction,Bid WHERE(Auction.idAuction = Bid.IdAuction)))
+        (NEW.idClient = (SELECT idOwner from Auction WHERE(Auction.idAuction = New.IdAuction)))
     THEN
         RAISE EXCEPTION 'Cannot bid on your own auction';
 END IF;
