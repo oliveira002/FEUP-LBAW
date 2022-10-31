@@ -94,7 +94,7 @@ For the WeBid app, consider the following user stories presented, bundled and or
 | US29 | View Bidding History | Medium | As an Authenticated User, I want to view my bidding history, so that I can keep track of the money I'm possibly spending. |
 | US210 | Add Credit to Account | Medium | As an Authenticated User, I want to add credit to my account, so that I have to balance to bid on the auctions. |
 | US211 | Delete Account | Medium | As an Authenticated User, I want to delete my account, so that I no longer have my personal info stored on the servers. |
-| US212 | Put a New Bid on Auction | Medium | As an Authenticated User, I want to put a new bid on an auction, so that I have a change at winning a product I desire. |
+| US212 | Put a New Bid on Auction | Medium | As an Authenticated User, I want to put a new bid on an auction, so that I have a chance at winning a product I desire. |
 | US213 | Confirm Bid Popup | Medium | As an Authenticated User, I want to see a confirmation popup when I try to place a bid, so that I don't make any mistakes. |
 | US214 | Report Auction | Low | As an Authenticated User, I want to report an auction, so that it can get removed from the application. |
 | US215 | Appeal for Unblock | Low | As an Authenticated User, I want to appeal for an account unblock, so that I can regain access to my account. |
@@ -239,6 +239,7 @@ The following wireframes are an attempt at demonstrating what two of the main pa
 
 Changes made to the first submission:
 1. Added editor tag
+2. Minor spelling fix
 
 ***
 GROUP2225, 02/10/2022
