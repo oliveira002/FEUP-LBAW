@@ -183,7 +183,7 @@ CREATE INDEX id_client ON Notification(idClient);
 CREATE INDEX auction_category ON Auction(idCategory);
 
 -- 3)
-CREATE INDEX user_username ON User USING hash(username);
+CREATE INDEX client_username ON Client USING hash(username);
 
 
 --------------------------------------
@@ -197,7 +197,7 @@ CREATE FUNCTION check_bid() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF 
-        (NEW.idClient = (SELECT idOwner from Auction,Bid WHERE(Auction.idAuction = Bid.IdAuction)))
+        (NEW.idClient = (SELECT idOwner from Auction WHERE(Auction.idAuction = New.IdAuction)))
     THEN
         RAISE EXCEPTION 'Cannot bid on your own auction';
 END IF;
@@ -278,8 +278,8 @@ LANGUAGE plpgsql;
 CREATE TRIGGER client_delete
 AFTER DELETE ON Client
 FOR EACH ROW
-EXECUTE PROCEDURE client_delete(); 
-
+EXECUTE PROCEDURE client_delete();
+ 
 -- 5) Updates an Auction Owner's review score after he receives a new review.
 DROP FUNCTION IF EXISTS change_rating() CASCADE;
 
