@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS Auction(
     isOver         BOOLEAN NOT NULL,
     idCategory     INTEGER NOT NULL,
     idOwner        INTEGER NOT NULL,
+    CONSTRAINT validEndDate CHECK (endDate > startDate),
     CONSTRAINT validStartingPrice CHECK (startingPrice > 0),
     FOREIGN KEY (idCategory) REFERENCES Category ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (idOwner) REFERENCES AuctionOwner ON UPDATE CASCADE ON DELETE CASCADE
@@ -170,6 +171,21 @@ CREATE TABLE IF NOT EXISTS DeletedUser(
     username VARCHAR(30) UNIQUE NOT NULL
 );
 
+
+--------------------------------------
+--          INDEX CREATION          --
+--------------------------------------
+
+-- 1) 
+CREATE INDEX id_client ON Notification(idClient); 
+
+-- 2)
+CREATE INDEX auction_category ON Auction(idCategory);
+
+-- 3)
+CREATE INDEX user_username ON User USING hash(username);
+
+
 --------------------------------------
 --         TRIGGER CREATION         --
 --------------------------------------
@@ -181,7 +197,7 @@ CREATE FUNCTION check_bid() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF 
-        (NEW.idClient = (SELECT idOwner from Auction WHERE(Auction.idAuction = New.IdAuction)))
+        (NEW.idClient = (SELECT idOwner from Auction,Bid WHERE(Auction.idAuction = Bid.IdAuction)))
     THEN
         RAISE EXCEPTION 'Cannot bid on your own auction';
 END IF;
@@ -264,28 +280,23 @@ AFTER DELETE ON Client
 FOR EACH ROW
 EXECUTE PROCEDURE client_delete(); 
 
--- 5) Prevents invalid auction start date
-DROP FUNCTION IF EXISTS check_auction() CASCADE;
+-- 5) Updates an Auction Owner's review score after he receives a new review.
+DROP FUNCTION IF EXISTS change_rating() CASCADE;
 
-CREATE FUNCTION check_auction() RETURNS TRIGGER AS 
+CREATE FUNCTION change_rating() RETURNS TRIGGER AS 
 $BODY$
+
 BEGIN
-    IF 
-        (NEW.endDate < NEW.startDate)
-    THEN
-        RAISE EXCEPTION 'Cant create an auction with invalid date';
-END IF;
+    UPDATE AuctionOwner SET rating = (Select round(sum(rating * 1.0)/count(*),2) from Review where Review.idUserReviewed = New.idUserReviewed) WHERE (AuctionOwner.IdClient = New.IdUserReviewed);
 RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-
-
-CREATE TRIGGER check_auction
-BEFORE INSERT ON Auction
+CREATE TRIGGER change_rating
+AFTER INSERT ON Review
 FOR EACH ROW
-EXECUTE PROCEDURE check_auction(); 
+EXECUTE PROCEDURE change_rating();
 
 -- Full Text Search
 ALTER TABLE Auction
@@ -297,15 +308,15 @@ CREATE FUNCTION Auction_search_update() RETURNS TRIGGER AS $$
 BEGIN
  IF TG_OP = 'INSERT' THEN
         NEW.tsvectors = (
-         setweight(to_tsvector('portuguese', NEW.name), 'A') ||
-         setweight(to_tsvector('portuguese', NEW.description), 'B')
+         setweight(to_tsvector('english', NEW.name), 'A') ||
+         setweight(to_tsvector('english', NEW.description), 'B')
         );
  END IF;
  IF TG_OP = 'UPDATE' THEN
          IF (NEW.name <> OLD.name OR NEW.description <> OLD.description) THEN
            NEW.tsvectors = (
-             setweight(to_tsvector('portuguese', NEW.name), 'A') ||
-             setweight(to_tsvector('portuguese', NEW.description), 'B')
+             setweight(to_tsvector('english', NEW.name), 'A') ||
+             setweight(to_tsvector('english', NEW.description), 'B')
            );
          END IF;
  END IF;
@@ -314,23 +325,13 @@ END $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER Auction_search_update
- BEFORE INSERT OR UPDATE ON Auction
- FOR EACH ROW
- EXECUTE PROCEDURE Auction_search_update();
-
+BEFORE INSERT OR UPDATE ON Auction
+FOR EACH ROW
+EXECUTE PROCEDURE Auction_search_update();
 
 CREATE INDEX search_idx ON Auction USING GIN (tsvectors);
 
 
 --------------------------------------
---          INDEX CREATION          --
+--       TRANSACTION CREATION       --
 --------------------------------------
-
--- 1) 
-CREATE INDEX id_client ON Notification USING hash(idClient) where isRead = false;
-
--- 2)
-CREATE INDEX auction_category ON Auction USING hash (idCategory);
-
--- 3)
-CREATE INDEX curr_bid ON Auction(currentPrice);
