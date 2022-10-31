@@ -206,7 +206,6 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
-
 CREATE TRIGGER check_bid
 BEFORE INSERT ON Bid
 FOR EACH ROW
@@ -228,7 +227,6 @@ RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
-
 
 CREATE TRIGGER create_review
 BEFORE INSERT ON Review
@@ -255,7 +253,6 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
-
 CREATE TRIGGER create_bid
 BEFORE INSERT ON Bid
 FOR EACH ROW
@@ -272,8 +269,6 @@ RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
-
-
 
 CREATE TRIGGER client_delete
 AFTER DELETE ON Client
@@ -297,6 +292,90 @@ CREATE TRIGGER change_rating
 AFTER INSERT ON Review
 FOR EACH ROW
 EXECUTE PROCEDURE change_rating();
+
+-- 6) After an user is outbid, send him a notification
+DROP FUNCTION IF EXISTS high_notif() CASCADE;
+
+CREATE FUNCTION high_notif() RETURNS TRIGGER AS 
+$BODY$
+
+BEGIN
+    INSERT INTO Notification(content,isRead,notifDate,idClient)
+    (SELECT CONCAT('Outbid on Auction "', Auction.name, '"'), False, NOW(), idClient from bid, Auction where bid.idauction = NEW.IdAuction and Auction.idAuction = NEW.idAuction group by Bid.idClient,Bid.Price,Auction.name ORDER by Price DESC LIMIT 1 OFFSET 1);
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER high_notif
+AFTER INSERT ON Bid
+FOR EACH ROW
+EXECUTE PROCEDURE high_notif();
+
+-- 7) After a new deposit is made, increase that client's balance.
+DROP FUNCTION IF EXISTS balance_update() CASCADE;
+
+CREATE FUNCTION balance_update() RETURNS TRIGGER AS 
+$BODY$
+BEGIN
+    UPDATE Client SET balance = (Select balance from Client where idClient = New.idClient) + New.amount WHERE Client.idClient = New.idClient;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER balance_update
+AFTER INSERT ON Deposit
+FOR EACH ROW
+EXECUTE PROCEDURE balance_update();
+
+-- 8) Checks if an user has any active bids or auctions before deleting his account, not allowing the deletion if he does.
+DROP FUNCTION IF EXISTS check_del() CASCADE;
+
+CREATE FUNCTION check_del() RETURNS TRIGGER AS 
+$BODY$
+BEGIN
+    IF EXISTS
+        (select * from auction where auction.idOwner = OLD.idClient AND auction.endDate > NOW())
+    THEN
+        RAISE EXCEPTION 'Cannot delete user, he currently has active auctions';
+    END IF;    
+    IF EXISTS
+        (select from Bid where Bid.idClient = OLD.idClient AND Bid.Price = (Select currentprice from Auction where auction.idAuction = Bid.idAuction))
+    THEN
+        RAISE EXCEPTION 'Cannot delete user, he currently has active bids';    
+    END IF;
+
+RETURN OLD;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER check_del
+BEFORE DELETE ON Client
+FOR EACH ROW
+EXECUTE PROCEDURE check_del();
+
+-- 9) Check if an Owner already exists before creating auction
+DROP FUNCTION IF EXISTS check_own() CASCADE;
+
+CREATE FUNCTION check_own() RETURNS TRIGGER AS 
+$BODY$
+BEGIN
+    IF NOT EXISTS
+        (select * from AuctionOwner where AuctionOwner.idClient = NEW.idOwner)
+    THEN
+        INSERT INTO AuctionOwner(idClient) values (New.idOwner);
+    END IF;    
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER check_own
+BEFORE INSERT ON Auction
+FOR EACH ROW
+EXECUTE PROCEDURE check_own();
 
 -- Full Text Search
 ALTER TABLE Auction
@@ -335,3 +414,34 @@ CREATE INDEX search_idx ON Auction USING GIN (tsvectors);
 --------------------------------------
 --       TRANSACTION CREATION       --
 --------------------------------------
+
+-- 1) Bidding
+BEGIN;
+
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY;
+
+select Bid.idBid, Bid.bidDate, Bid.isValid, Bid.price, Bid.idClient, Bid.idAuction 
+from Auction,Bid where bid.idAuction = Auction.idAuction order by Bid.price asc;
+                            
+COMMIT;
+
+-- 2) New auction
+BEGIN;
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY;
+
+-- Get number of current auctions
+SELECT COUNT(*)
+FROM Auction
+WHERE now() < endDate;
+
+-- Get ending auctions (limit 8)
+SELECT Auction.name, Auction.startDate, Auction.endDate, Auction.startingPrice, Auction.currentPrice, Auction.description, Category.name, Client.username 
+FROM Auction 
+INNER JOIN Category ON Category.idCategory = Auction.idCategory
+INNER JOIN AuctionOwner ON AuctionOwner.idClient = Auction.idOwner
+INNER JOIN Client ON Client.idClient = AuctionOwner.idClient
+WHERE now () < Auction.endDate
+ORDER BY Auction.endDate ASC
+LIMIT 8;
+
+COMMIT;
