@@ -5,7 +5,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Client
@@ -33,8 +34,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Client extends Model
+class Client extends Authenticatable
 {
+	use Notifiable;
 	protected $table = 'client';
 	public $timestamps = false;
 
