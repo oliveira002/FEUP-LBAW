@@ -34,10 +34,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  *
  * @package App\Models
  */
-class Client extends Authenticatable
+class User extends Authenticatable
 {
 	use Notifiable;
-	protected $table = 'client';
+	protected $table = "user";
 	public $timestamps = false;
 
 	protected $casts = [

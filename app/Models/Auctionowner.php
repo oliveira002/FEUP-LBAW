@@ -33,11 +33,11 @@ class Auctionowner extends Model
 		'rating'
 	];
 
-	public function client()
+	public function user()
 	{
-		return $this->belongsTo(Client::class, 'idclient')
-					->where('client.idclient', '=', 'auctionowner.idclient')
-					->where('client.idclient', '=', 'auctionowner.idclient');
+		return $this->belongsTo(User::class, 'idclient')
+					->where('User.idclient', '=', 'auctionowner.idclient')
+					->where('User.idclient', '=', 'auctionowner.idclient');
 	}
 
 	public function reviews()

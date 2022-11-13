@@ -27,11 +27,11 @@ class Favoriteauction extends Model
 		'idauction' => 'int'
 	];
 
-	public function client()
+	public function user()
 	{
-		return $this->belongsTo(Client::class, 'idclient')
-					->where('client.idclient', '=', 'favoriteauction.idclient')
-					->where('client.idclient', '=', 'favoriteauction.idclient');
+		return $this->belongsTo(User::class, 'idclient')
+					->where('User.idclient', '=', 'favoriteauction.idclient')
+					->where('User.idclient', '=', 'favoriteauction.idclient');
 	}
 
 	public function auction()

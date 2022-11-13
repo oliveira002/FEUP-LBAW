@@ -44,11 +44,11 @@ class Review extends Model
 		'iduserreviewed'
 	];
 
-	public function client()
+	public function user()
 	{
-		return $this->belongsTo(Client::class, 'iduserreviewer')
-					->where('client.idclient', '=', 'review.iduserreviewer')
-					->where('client.idclient', '=', 'review.iduserreviewer');
+		return $this->belongsTo(User::class, 'iduserreviewer')
+					->where('User.idclient', '=', 'review.iduserreviewer')
+					->where('User.idclient', '=', 'review.iduserreviewer');
 	}
 
 	public function auctionowner()

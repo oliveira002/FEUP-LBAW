@@ -52,10 +52,10 @@ class Sellerreport extends Model
 					->where('auctionowner.idclient', '=', 'sellerreport.idseller');
 	}
 
-	public function client()
+	public function user()
 	{
-		return $this->belongsTo(Client::class, 'idreporter')
-					->where('client.idclient', '=', 'sellerreport.idreporter')
-					->where('client.idclient', '=', 'sellerreport.idreporter');
+		return $this->belongsTo(User::class, 'idreporter')
+					->where('User.idclient', '=', 'sellerreport.idreporter')
+					->where('User.idclient', '=', 'sellerreport.idreporter');
 	}
 }

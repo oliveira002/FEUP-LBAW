@@ -36,7 +36,7 @@ class Userlog extends Model
 
 	public function client()
 	{
-		return $this->belongsTo(Client::class, 'idclient')
+		return $this->belongsTo(User::class, 'idclient')
 					->where('client.idclient', '=', 'userlog.idclient')
 					->where('client.idclient', '=', 'userlog.idclient');
 	}

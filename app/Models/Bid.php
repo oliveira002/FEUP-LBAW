@@ -46,11 +46,11 @@ class Bid extends Model
 		'idauction'
 	];
 
-	public function client()
+	public function user()
 	{
-		return $this->belongsTo(Client::class, 'idclient')
-					->where('client.idclient', '=', 'bid.idclient')
-					->where('client.idclient', '=', 'bid.idclient');
+		return $this->belongsTo(User::class, 'idclient')
+					->where('User.idclient', '=', 'bid.idclient')
+					->where('User.idclient', '=', 'bid.idclient');
 	}
 
 	public function auction()

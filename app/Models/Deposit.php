@@ -41,10 +41,10 @@ class Deposit extends Model
 		'idclient'
 	];
 
-	public function client()
+	public function user()
 	{
-		return $this->belongsTo(Client::class, 'idclient')
-					->where('client.idclient', '=', 'deposit.idclient')
-					->where('client.idclient', '=', 'deposit.idclient');
+		return $this->belongsTo(User::class, 'idclient')
+					->where('User.idclient', '=', 'deposit.idclient')
+					->where('User.idclient', '=', 'deposit.idclient');
 	}
 }

@@ -42,8 +42,8 @@ class Notification extends Model
 
 	public function client()
 	{
-		return $this->belongsTo(Client::class, 'idclient')
-					->where('client.idclient', '=', 'notification.idclient')
-					->where('client.idclient', '=', 'notification.idclient');
+		return $this->belongsTo(User::class, 'idclient')
+					->where('User.idclient', '=', 'notification.idclient')
+					->where('User.idclient', '=', 'notification.idclient');
 	}
 }
