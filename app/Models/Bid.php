@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bid extends Model
 {
     public $timestamps  = false;
-    protected $table = 'Bid';
+    protected $table = 'bid';
     protected $primaryKey = 'idBid';
 
     protected $fillable = [
@@ -26,8 +26,8 @@ class Bid extends Model
     /**
      * The person who bid
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client', 'idClient' , 'idClient');
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'idClient' , 'idClient');
     }
 
     /**

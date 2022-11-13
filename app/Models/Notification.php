@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
     public $timestamps  = false;
-    protected $table = 'Notification';
+    protected $table = 'notification';
     protected $primaryKey = 'idNotification';
 
      /**
@@ -29,7 +29,7 @@ class Notification extends Model
     /**
      * The person of the notification
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client','idClient','idClient');
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idClient');
     }
 }

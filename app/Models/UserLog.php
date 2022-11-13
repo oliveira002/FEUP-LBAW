@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserLog extends Model
 {
     public $timestamps  = false;
-    protected $table = 'UserLog';
+    protected $table = 'userLog';
     protected $primaryKey = 'idSysLog';
 
      /**
@@ -34,7 +34,7 @@ class UserLog extends Model
     /**
      * The sysLog of an auction
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client', 'idClient' , 'idClient');
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'idClient' , 'idClient');
     }
 }

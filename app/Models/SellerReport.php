@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SellerReport extends Model
 {
     public $timestamps  = false;
-    protected $table = 'SellerReport';
+    protected $table = 'sellerReport';
     protected $primaryKey = 'idReport';
 
      /**
@@ -30,8 +30,8 @@ class SellerReport extends Model
      /**
      * The person who made the report
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client','idClient','idReporter');
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idReporter');
     }
 
      /**

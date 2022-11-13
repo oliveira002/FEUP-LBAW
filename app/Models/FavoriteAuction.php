@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FavoriteAuction extends Model
 {
     public $timestamps  = false;
-    protected $table = 'FavoriteAuction';
+    protected $table = 'favoriteAuction';
     protected $primaryKey = 'idAuction';
 
      /**
@@ -27,8 +27,8 @@ class FavoriteAuction extends Model
     /**
      * The person 
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client','idClient','idClient');
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idClient');
     }
 
     /**

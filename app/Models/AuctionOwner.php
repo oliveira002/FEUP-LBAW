@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AuctionOwner extends Model
 {
     public $timestamps  = false;
-    protected $table = 'AuctionOwner';
+    protected $table = 'auctionOwner';
     protected $primaryKey = 'idClient';
 
     protected $fillable = [
@@ -43,8 +43,8 @@ class AuctionOwner extends Model
     /**
      * The client
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client', 'idClient' , 'idClient');
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'idClient' , 'idClient');
     }
 
 }

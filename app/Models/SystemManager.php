@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SystemManager extends Model
 {
     public $timestamps  = false;
-    protected $table = 'SystemManager';
+    protected $table = 'systemManager';
     protected $primaryKey = 'idSysMan';
 
      /**

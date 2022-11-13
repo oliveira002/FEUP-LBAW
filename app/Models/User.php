@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Authenticatable
+class User extends Authenticatable
 {
     use Notifiable;
 
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
-    protected $table = 'Client';
+    protected $table = 'user';
     protected $primaryKey = 'idClient';
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Deposit extends Model
 {
     public $timestamps  = false;
-    protected $table = 'Deposit';
+    protected $table = 'deposit';
     protected $primaryKey = 'idDeposit';
 
      /**
@@ -29,7 +29,7 @@ class Deposit extends Model
     /**
      * The person who made the deposit
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client','idClient','idClient');
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idClient');
     }
 }

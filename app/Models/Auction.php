@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Auction extends Model
 {
     public $timestamps  = false;
-    protected $table = 'Auction';
+    protected $table = 'auction';
     protected $primaryKey = 'idAuction';
 
      /**

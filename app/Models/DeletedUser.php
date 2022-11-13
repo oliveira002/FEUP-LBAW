@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DeletedUser extends Model
 {
     public $timestamps  = false;
-    protected $table = 'DeletedUser';
+    protected $table = 'deletedUser';
     protected $primaryKey = 'idClient';
 
      /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SystemManagerLog extends Model
 {
     public $timestamps  = false;
-    protected $table = 'SystemManagerLog';
+    protected $table = 'systemManagerLog';
     protected $primaryKey = 'idSysLog';
 
      /**

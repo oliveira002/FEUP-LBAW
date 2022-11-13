@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     public $timestamps  = false;
-    protected $table = 'Review';
+    protected $table = 'review';
     protected $primaryKey = 'idReview';
 
      /**
@@ -30,8 +30,8 @@ class Review extends Model
     /**
      * The person who made the review
      */
-    public function client() {
-        return $this->belongsTo('App\Models\Client','idClient','idUserReviewer');
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idUserReviewer');
     }
 
      /**
