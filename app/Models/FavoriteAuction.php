@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class FavoriteAuction extends Model
+{
+    public $timestamps  = false;
+    protected $table = 'FavoriteAuction';
+    protected $primaryKey = 'idAuction';
+
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'idClient',
+    ];
+
+    protected $casts = [
+        'idClient' => 'integer',
+    ];
+
+    /**
+     * The person 
+     */
+    public function client() {
+        return $this->belongsTo('App\Models\Client','idClient','idClient');
+    }
+
+    /**
+     * The auction
+     */
+    public function auction() {
+        return $this->belongsTo('App\Models\Auction','idAuction','idAuction');
+    }
+}
