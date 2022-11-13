@@ -1,60 +1,43 @@
 <?php
 
-
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Review
- * 
- * @property int $idreview
- * @property int $rating
- * @property string|null $comment
- * @property Carbon $reviewdate
- * @property int $iduserreviewer
- * @property int $iduserreviewed
- * 
- * @property Client $client
- * @property Auctionowner $auctionowner
- *
- * @package App\Models
- */
 class Review extends Model
 {
-	protected $table = 'review';
-	public $timestamps = false;
+    public $timestamps  = false;
+    protected $table = 'review';
+    protected $primaryKey = 'idReview';
 
-	protected $casts = [
-		'rating' => 'int',
-		'iduserreviewer' => 'int',
-		'iduserreviewed' => 'int'
-	];
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'rating', 'comment', 'reviewDate', 'idUserReviewer', 'idUserReviewed',
+    ];
 
-	protected $dates = [
-		'reviewdate'
-	];
+    protected $casts = [
+        'rating' => 'float',
+        'reviewDate' => 'timestamp',
+        'idUserReviewer' => 'integer',
+        'idUserReviewed' => 'integer',
+    ];
 
-	protected $fillable = [
-		'rating',
-		'comment',
-		'reviewdate',
-		'iduserreviewer',
-		'iduserreviewed'
-	];
+    /**
+     * The person who made the review
+     */
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idUserReviewer');
+    }
 
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'iduserreviewer')
-					->where('User.idclient', '=', 'review.iduserreviewer')
-					->where('User.idclient', '=', 'review.iduserreviewer');
-	}
-
-	public function auctionowner()
-	{
-		return $this->belongsTo(Auctionowner::class, 'iduserreviewed')
-					->where('auctionowner.idclient', '=', 'review.iduserreviewed')
-					->where('auctionowner.idclient', '=', 'review.iduserreviewed');
-	}
+     /**
+     * The person reviewed
+     */
+    public function auctionOwner() {
+        return $this->belongsTo('App\Models\AuctionOwner','idClient','idUserReviewed');
+    }
 }

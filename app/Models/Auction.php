@@ -1,99 +1,75 @@
 <?php
 
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Auction
- * 
- * @property int $idauction
- * @property string $name
- * @property Carbon $startdate
- * @property Carbon $enddate
- * @property float $startingprice
- * @property float $currentprice
- * @property string $description
- * @property bool $isover
- * @property int $idcategory
- * @property int $idowner
- * @property tsvector|null $tsvectors
- * 
- * @property Category $category
- * @property Auctionowner $auctionowner
- * @property Collection|Bid[] $bids
- * @property Collection|Favoriteauction[] $favoriteauctions
- * @property Collection|Auctionreport[] $auctionreports
- * @property Collection|Auctionlog[] $auctionlogs
- *
- * @package App\Models
- */
 class Auction extends Model
 {
-	protected $table = 'auction';
-	public $timestamps = false;
+    public $timestamps  = false;
+    protected $table = 'auction';
+    protected $primaryKey = 'idAuction';
 
-	protected $casts = [
-		'startingprice' => 'float',
-		'currentprice' => 'float',
-		'isover' => 'bool',
-		'idcategory' => 'int',
-		'idowner' => 'int',
-		'tsvectors' => 'tsvector'
-	];
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'startDate', 'endDate', 'startingPrice', 'currentPrice', 'description', 'isOver', 'idCategory', 'idOwner',
+    ];
 
-	protected $dates = [
-		'startdate',
-		'enddate'
-	];
+    protected $casts = [
+        'startDate' => 'timestamp',
+        'endDate' => 'timestamp',
+        'startPrice' => 'float',
+        'currentPrice' => 'float',
+        'isOver' => 'boolean', 
+        'idCategory' => 'integer',
+        'idOwner' => 'integer',
+    ];
 
-	protected $fillable = [
-		'name',
-		'startdate',
-		'enddate',
-		'startingprice',
-		'currentprice',
-		'description',
-		'isover',
-		'idcategory',
-		'idowner',
-		'tsvectors'
-	];
+    /**
+     * The bids of an auction
+     */
+    public function bids() {
+        return $this->hasMany('App\Models\Bid', 'idAuction' , 'idAuction');
+    }
 
-	public function category()
-	{
-		return $this->belongsTo(Category::class, 'idcategory')
-					->where('category.idcategory', '=', 'auction.idcategory')
-					->where('category.idcategory', '=', 'auction.idcategory');
-	}
+     /**
+     * The owner of the auction
+     */
+    public function auctionOwner() {
+        return $this->belongsTo('App\Models\AuctionOwner','idClient','idOwner');
+    }
 
-	public function auctionowner()
-	{
-		return $this->belongsTo(Auctionowner::class, 'idowner')
-					->where('auctionowner.idclient', '=', 'auction.idowner')
-					->where('auctionowner.idclient', '=', 'auction.idowner');
-	}
+    /**
+     * Reports of the auction
+     */
+    public function auctionReports() {
+        return $this->hasMany('App\Models\AuctionReport','idAuction','idAuction');
+    }
 
-	public function bids()
-	{
-		return $this->hasMany(Bid::class, 'idauction');
-	}
+    /**
+     * Logs related to the auction
+     */
+    public function auctionLogs() {
+        return $this->hasMany('App\Models\AuctionLog','idAuction','idAuction');
+    }
 
-	public function favoriteauctions()
-	{
-		return $this->hasMany(Favoriteauction::class, 'idauction');
-	}
+    /**
+     * The category of the auction
+     */
+    public function category() {
+        return $this->belongsTo('App\Models\Category','idCategory','idCategory');
+    }
 
-	public function auctionreports()
-	{
-		return $this->hasMany(Auctionreport::class, 'idauction');
-	}
+     /**
+     * Favorite auctions
+     */
+    public function favAuction() {
+        return $this->hasMany('App\Models\FavoriteAuction','idAuction','idAuction');
+    }
 
-	public function auctionlogs()
-	{
-		return $this->hasMany(Auctionlog::class, 'idauction');
-	}
 }

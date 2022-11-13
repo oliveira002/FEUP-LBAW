@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deposit extends Model
+class FavoriteAuction extends Model
 {
     public $timestamps  = false;
-    protected $table = 'deposit';
-    protected $primaryKey = 'idDeposit';
+    protected $table = 'favoriteAuction';
+    protected $primaryKey = 'idAuction';
 
      /**
      * The attributes that are mass assignable.
@@ -17,19 +17,24 @@ class Deposit extends Model
      * @var array
      */
     protected $fillable = [
-        'amount', 'method', 'depositDate', 'idClient',
+        'idClient',
     ];
 
     protected $casts = [
-        'amount' => 'float',
-        'depositDate' => 'timestamp',
         'idClient' => 'integer',
     ];
 
     /**
-     * The person who made the deposit
+     * The person 
      */
     public function user() {
         return $this->belongsTo('App\Models\User','idClient','idClient');
+    }
+
+    /**
+     * The auction
+     */
+    public function auction() {
+        return $this->belongsTo('App\Models\Auction','idAuction','idAuction');
     }
 }

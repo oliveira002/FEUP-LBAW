@@ -1,49 +1,35 @@
 <?php
 
-
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Notification
- * 
- * @property int $idnotification
- * @property string $content
- * @property bool $isread
- * @property Carbon $notifdate
- * @property int $idclient
- * 
- * @property Client $client
- *
- * @package App\Models
- */
 class Notification extends Model
 {
-	protected $table = 'notification';
-	public $timestamps = false;
+    public $timestamps  = false;
+    protected $table = 'notification';
+    protected $primaryKey = 'idNotification';
 
-	protected $casts = [
-		'isread' => 'bool',
-		'idclient' => 'int'
-	];
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'content', 'isRead', 'notifDate', 'idClient',
+    ];
 
-	protected $dates = [
-		'notifdate'
-	];
+    protected $casts = [
+        'isRead' => 'boolean',
+        'notifDate' => 'timestamp',
+        'idClient' => 'integer',
+    ];
 
-	protected $fillable = [
-		'content',
-		'isread',
-		'notifdate',
-		'idclient'
-	];
-
-	public function client()
-	{
-		return $this->belongsTo(User::class, 'idclient')
-					->where('User.idclient', '=', 'notification.idclient')
-					->where('User.idclient', '=', 'notification.idclient');
-	}
+    /**
+     * The person of the notification
+     */
+    public function user() {
+        return $this->belongsTo('App\Models\User','idClient','idClient');
+    }
 }

@@ -1,62 +1,40 @@
 <?php
 
-
-
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Bid
- * 
- * @property int $idbid
- * @property Carbon $biddate
- * @property bool $isvalid
- * @property float $price
- * @property int $idclient
- * @property int $idauction
- * 
- * @property Client $client
- * @property Auction $auction
- *
- * @package App\Models
- */
 class Bid extends Model
 {
-	protected $table = 'bid';
-	public $timestamps = false;
+    public $timestamps  = false;
+    protected $table = 'bid';
+    protected $primaryKey = 'idBid';
 
-	protected $casts = [
-		'isvalid' => 'bool',
-		'price' => 'float',
-		'idclient' => 'int',
-		'idauction' => 'int'
-	];
+    protected $fillable = [
+        'bidDate', 'isValid', 'price', 'idClient', 'idAuction',
+    ];
 
-	protected $dates = [
-		'biddate'
-	];
+    protected $casts = [
+        'bidDate' => 'timestamp',
+        'isValid' => 'boolean',
+        'price' => 'float',
+        'idClient' => 'integer',
+        'idAuction' => 'integer',
+    ];
 
-	protected $fillable = [
-		'biddate',
-		'isvalid',
-		'price',
-		'idclient',
-		'idauction'
-	];
+    /**
+     * The person who bid
+     */
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'idClient' , 'idClient');
+    }
 
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'idclient')
-					->where('User.idclient', '=', 'bid.idclient')
-					->where('User.idclient', '=', 'bid.idclient');
-	}
+    /**
+     * The auction where that was bid
+     */
+    public function auction() {
+        return $this->belongsTo('App\Models\Auction', 'idAuction' , 'idAuction');
+    }
 
-	public function auction()
-	{
-		return $this->belongsTo(Auction::class, 'idauction')
-					->where('auction.idauction', '=', 'bid.idauction')
-					->where('auction.idauction', '=', 'bid.idauction');
-	}
 }
