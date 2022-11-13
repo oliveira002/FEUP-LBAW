@@ -24,7 +24,7 @@ ul{
 }
 header {
     background-color: white;
-    color: black;
+    color: #0f0f0f;
     display: flex;
     padding: 1.2em 1.2em;
     text-align: center;
@@ -33,8 +33,11 @@ header {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 0.5px 4px;
 }
 
-.auth button {
-    background: black;
+.log {
+    padding-right: 1em;
+}
+.log button {
+    background: #0f0f0f;
     color: white;
     border-radius: 12px;
     padding: 0.4em 0.4em;
@@ -43,6 +46,17 @@ header {
     cursor: pointer;
 }
 
+.reg button {
+    background: #efefef;
+    color: #0f0f0f;
+    border-radius: 12px;
+    padding: 0.4em 0.4em;
+    width: 98px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
 .search form{
     box-shadow: none;
     border: none;
@@ -50,11 +64,18 @@ header {
 
 .auth {
     margin-left: auto;
+    padding-right: 1em;
 }
 
-.auth button i {
+.log button i {
     font-size: 14px;
     color: white;
+    padding-left: 0.2em;
+}
+
+.reg button i {
+    font-size: 14px;
+    color: #0f0f0f;
     padding-left: 0.2em;
 }
 
@@ -62,7 +83,7 @@ header {
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: #0f0f0f;
 }
 
 footer {
@@ -73,7 +94,7 @@ footer {
     display: flex;
     bottom: 0;
     padding: 2.2em 2.2em;
-    background-color: black;
+    background-color: #0f0f0f;
 }
 
 .option a {
@@ -103,3 +124,25 @@ footer {
 
 .option a {
     font-size: 22px;;
+}
+
+.search {
+    margin: auto;
+    vertical-align: middle;
+    border: none;
+    background-color: #efefef;
+    border-radius: 50px;
+    width: 250px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#searchbar {
+    border: none;
+    padding-right: 2em;
+    background-color: #efefef;
+}
+
+#searchbar:focus {
+    outline: none;
+}
