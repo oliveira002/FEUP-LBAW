@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Auction;
+use App\Models\Category;
+use App\Models\Bid;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -43,7 +45,10 @@ class LoginController extends Controller
     }
 
     public function home() {
-        return redirect('login');
+        //return redirect('login');
+        foreach (Bid::all() as $Client) {
+            echo $Client;
+        }
 
     }
 
