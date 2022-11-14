@@ -47,6 +47,10 @@ body {
     margin-right: 1em;
     text-decoration: none;
 }
+
+#logo {
+    margin-right: auto;
+}
 .log button {
     background: #0f0f0f;
     color: white;

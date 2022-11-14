@@ -13,6 +13,7 @@
       <!-- CSS only -->
       <link href="{{ asset('css/def.css') }}" rel="stylesheet">
       <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
       <script src="https://kit.fontawesome.com/221bee115b.js" crossorigin="anonymous"></script>
       <script type="text/javascript">
@@ -23,7 +24,13 @@
   </head>
   <body>
     <main>
-        @include('partials.header')
+    @if(Route::currentRouteName() === 'login')
+      @include('partials.loginheader')
+    @else
+      @include('partials.header')
+    @endif
+        
+        
       <section id="content">
         @yield('content')
       </section>
