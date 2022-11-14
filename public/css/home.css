@@ -19,3 +19,12 @@ a{
     color: inherit;
 }
 
+.cover img {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 0.5px 4px;
+    border-radius: 14px;
+}
+.item img {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 0.5px 4px;
+    border-radius: 14px;
+}
+
