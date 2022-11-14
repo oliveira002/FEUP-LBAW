@@ -31,7 +31,7 @@ class SystemManagerLog extends Model
     public function admin() {
         return $this->belongsTo('App\Models\SystemManager', 'idSysMan' , 'idSysMan');
     }
-    
+
     /**
      * The logs of an auction
      */
@@ -42,7 +42,7 @@ class SystemManagerLog extends Model
     /**
      * The logs of an user
      */
-    public function userrLog() {
+    public function userLog() {
         return $this->hasMany('App\Models\UserLog', 'idSysLog' , 'idSysLog');
     }
 

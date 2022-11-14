@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Auction;
 use App\Models\Category;
 use App\Models\Bid;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -46,7 +47,6 @@ class LoginController extends Controller
 
     public function home() {
         return redirect('login');
-
     }
 
 }

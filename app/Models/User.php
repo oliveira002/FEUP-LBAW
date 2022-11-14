@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Client
- * 
+ *
  * @property int $idclient
  * @property string $username
  * @property string $password
@@ -21,7 +21,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string|null $phonenumber
  * @property bool $isbanned
  * @property float $balance
- * 
+ *
  * @property Auctionowner $auctionowner
  * @property Collection|Review[] $reviews
  * @property Collection|Bid[] $bids
@@ -115,6 +115,13 @@ class User extends Authenticatable
      */
     public function favAuctions() {
         return $this->hasMany('App\Models\FavouriteAuction', 'idClient' , 'idClient');
+    }
+
+    /**
+     * The auction owner
+     */
+    public function auctionOwner() {
+        return $this->hasOne('App\Models\AuctionOwner', 'idClient' , 'idClient');
     }
 
 }
