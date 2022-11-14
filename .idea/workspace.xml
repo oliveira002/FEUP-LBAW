@@ -4,10 +4,26 @@
     <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/FEUP-LBAW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FEUP-LBAW.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Auction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Auction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AuctionLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AuctionOwner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionOwner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AuctionReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Bid.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DeletedUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DeletedUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Deposit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Deposit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/FavoriteAuction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FavoriteAuction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Notification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SellerReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SellerReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SystemManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SystemManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/SystemManagerLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SystemManagerLog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +111,16 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-ignition" />
       <path value="$PROJECT_DIR$/vendor/spatie/ignition" />
       <path value="$PROJECT_DIR$/vendor/spatie/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
     </include_path>
   </component>
   <component name="ProjectId" id="2HXXMFet6rX7OqjysQvAKnnUBZI" />
@@ -102,17 +128,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/oliveira/Desktop/FEUP-LBAW&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/oliveira/Desktop/FEUP-LBAW",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.general",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -122,7 +148,14 @@
       <option name="presentableId" value="Default" />
       <updated>1668432352965</updated>
       <workItem from="1668432355692" duration="764000" />
-      <workItem from="1668433129144" duration="356000" />
+      <workItem from="1668433129144" duration="1577000" />
+      <workItem from="1668434725935" duration="152000" />
+      <workItem from="1668434884209" duration="79000" />
+      <workItem from="1668434971031" duration="25000" />
+      <workItem from="1668435004373" duration="540000" />
+      <workItem from="1668435551122" duration="313000" />
+      <workItem from="1668435868855" duration="64000" />
+      <workItem from="1668435939203" duration="3143000" />
     </task>
     <servers />
   </component>

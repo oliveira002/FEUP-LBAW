@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+/**
+ * App\Models\Auction
+ *
+ * @mixin \Eloquent
+ */
 class Auction extends Model
 {
     public $timestamps  = false;
@@ -25,7 +31,7 @@ class Auction extends Model
         'endDate' => 'timestamp',
         'startPrice' => 'float',
         'currentPrice' => 'float',
-        'isOver' => 'boolean', 
+        'isOver' => 'boolean',
         'idCategory' => 'integer',
         'idOwner' => 'integer',
     ];

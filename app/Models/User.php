@@ -9,30 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class Client
- *
- * @property int $idclient
- * @property string $username
- * @property string $password
- * @property string $email
- * @property string $firstname
- * @property string $lastname
- * @property string|null $address
- * @property string|null $phonenumber
- * @property bool $isbanned
- * @property float $balance
- *
- * @property Auctionowner $auctionowner
- * @property Collection|Review[] $reviews
- * @property Collection|Bid[] $bids
- * @property Collection|Favoriteauction[] $favoriteauctions
- * @property Collection|Sellerreport[] $sellerreports
- * @property Collection|Auctionreport[] $auctionreports
- * @property Collection|Deposit[] $deposits
- * @property Collection|Notification[] $notifications
- * @property Collection|Userlog[] $userlogs
- *
- * @package App\Models
+ * @mixin \Eloquent
  */
 class User extends Authenticatable
 {

@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin \Eloquent
+ */
 class SystemManager extends Model
 {
     public $timestamps  = false;
@@ -19,7 +22,7 @@ class SystemManager extends Model
     protected $fillable = [
         'username','email','password'
     ];
-    
+
     protected $hidden = [
 		'password'
 	];
@@ -30,5 +33,5 @@ class SystemManager extends Model
     public function logs() {
         return $this->hasMany('App\Models\SystemManagerLog', 'idSysMan' , 'idSysMan');
     }
- 
+
 }
