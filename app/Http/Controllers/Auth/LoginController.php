@@ -45,10 +45,7 @@ class LoginController extends Controller
     }
 
     public function home() {
-        //return redirect('login');
-        foreach (Bid::all() as $Client) {
-            echo $Client;
-        }
+        return redirect('login');
 
     }
 
