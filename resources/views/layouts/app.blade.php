@@ -25,12 +25,12 @@
   <body>
     <main>
     @if(Route::currentRouteName() === 'login')
-      @include('partials.loginheader')
+      @include('partials.loginHeader')
     @else
       @include('partials.header')
     @endif
-        
-        
+
+
       <section id="content">
         @yield('content')
       </section>
