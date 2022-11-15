@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @mixin \Eloquent
  */
-class SystemManager extends Model
+class SystemManager extends Authenticatable
 {
     public $timestamps  = false;
     protected $table = 'systemManager';
