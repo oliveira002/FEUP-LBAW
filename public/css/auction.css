@@ -1,8 +1,9 @@
 .page {
-    max-width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
+
 .details {
     word-break: break-word;
     width: 290px;
@@ -31,7 +32,7 @@
 }
 
 .line {
-    width: 86%;
+    width: 82%;
     border-top: 2px solid #0f0f0f;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
     margin: auto;
@@ -49,6 +50,5 @@
 }
 
 .acts {
-    margin-right: 5em;
     margin-left: auto;
 }
