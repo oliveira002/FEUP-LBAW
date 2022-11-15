@@ -19,7 +19,7 @@ class Bid extends Model
     ];
 
     protected $casts = [
-        'biddate' => 'timestamp',
+        'biddate' => 'datetime',
         'isvalid' => 'boolean',
         'price' => 'float',
         'idclient' => 'integer',

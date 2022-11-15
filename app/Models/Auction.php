@@ -27,8 +27,8 @@ class Auction extends Model
     ];
 
     protected $casts = [
-        'startdate' => 'timestamp',
-        'enddate' => 'timestamp',
+        'startdate' => 'datetime',
+        'enddate' => 'datetime',
         'startprice' => 'float',
         'currentprice' => 'float',
         'isover' => 'boolean',

@@ -31,8 +31,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 Route::get('/','HomeController@homePage');
-Route::get('/auction/{id}','AuctionController@auctionPage');
 
 // Search
 Route::get('/search/api', 'SearchController@getSearchResults');
 Route::get('/search', 'SearchController@home')->name('search');
+Route::get('/auction/{id}','AuctionController@show');
