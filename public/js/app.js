@@ -22,6 +22,10 @@ function addEventListeners() {
   let cardCreator = document.querySelector('article.card form.new_card');
   if (cardCreator != null)
     cardCreator.addEventListener('submit', sendCreateCardRequest);
+
+  let search = document.querySelector('#searchbar')
+  if(search!=null)
+    search.addEventListener("input",updateAuction)
 }
 
 function encodeForAjax(data) {

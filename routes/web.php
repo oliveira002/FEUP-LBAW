@@ -35,4 +35,5 @@ Route::get('/','HomeController@homePage');
 // Search
 Route::get('/search/api', 'SearchController@getSearchResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
+Route::get('/search/{category}', 'SearchController@homeCatgorySearch')->name('catgorySearch');
 Route::get('/auction/{id}','AuctionController@show');

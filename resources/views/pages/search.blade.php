@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container-fluid">
         <div class="d-flex flex-row flex-wrap justify-content-center ">
