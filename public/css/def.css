@@ -41,10 +41,11 @@ header {
 }
 
 body{
-    overflow-y: scroll;
+
     overflow-x: hidden;
     min-height: 90vh;
     position: relative;
+
 }
 
 header {

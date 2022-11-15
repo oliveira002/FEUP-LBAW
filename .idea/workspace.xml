@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="login">
+    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="span messsage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Auction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Auction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AuctionLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AuctionOwner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionOwner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AuctionReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionReport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bid.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/DeletedUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DeletedUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Deposit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Deposit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/FavoriteAuction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FavoriteAuction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Notification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SellerReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SellerReport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SystemManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SystemManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SystemManagerLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SystemManagerLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/auth.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/def.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/def.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/card.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/cards.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +181,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="span messsage" />
+    <option name="LAST_COMMIT_MESSAGE" value="span messsage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
