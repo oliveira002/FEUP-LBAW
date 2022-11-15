@@ -29,7 +29,7 @@
                         <img src= "alo.jpg" width="287" height="190">
                         <div class = "prop" >
                             <p id = "price" class = "fw-bold mb-0 mt-1"> {{$auct->currentprice}}€ </p>
-                            <p id = "nome" class = "fw-bold mb-4"> {{$auct->name}} </p>
+                            <p id = "nome" class = "fw-bold mb-5"> {{$auct->name}} </p>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/def.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/def.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/auction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/auction.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +163,7 @@
       <workItem from="1668435868855" duration="64000" />
       <workItem from="1668435939203" duration="19019000" />
       <workItem from="1668463222214" duration="3504000" />
-      <workItem from="1668511370567" duration="9756000" />
+      <workItem from="1668511370567" duration="10403000" />
     </task>
     <task id="LOCAL-00001" summary="login">
       <created>1668519127144</created>
