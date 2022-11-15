@@ -11,7 +11,7 @@
             @foreach($categories->chunk(3) as $chunk)
                 <div class="row  justify-content-md-center mb-5">
                     @foreach($chunk as $add)
-                        <div class="col-md-2">
+                        <div class="col-md-2" style = "min-width: 300px; max-width: 300px">
                             <div class = "item">
                                 <img src= "alo.jpg" width="287" height="190">
                             </div>
