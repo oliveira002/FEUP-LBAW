@@ -80,7 +80,7 @@ class Auction extends Model
 
     public static function ftsSearch($search)
     {
-        return Auction::whereRaw('tsvectors @@ to_tsquery(\'english\', ?)', [$search])
-            ->orderByRaw('ts_rank(tsvectors, to_tsquery(\'english\', ?)) DESC', [$search]);
+        return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
+            ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
     }
 }
