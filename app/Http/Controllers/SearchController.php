@@ -7,7 +7,7 @@ use App\Models\Auction;
 
 class SearchController extends Controller
 {
-    public function getSearchResults() {
+    public function getSearchResultsJson() {
         if (!isset($_GET['category'])) {
             $category = 0;
         }
