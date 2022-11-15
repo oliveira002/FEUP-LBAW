@@ -48,5 +48,20 @@ class LoginController extends Controller
     public function home() {
         return redirect('login');
     }
-
+    public function authenticate(Request $request) {
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => 
+            $request->password])) {
+            echo "success";
+            //return redirect()->intended(route('home'));
+        }
+    //For Admin:
+    
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => 
+            $request->password])) {
+            echo "success admin";
+            //return redirect()->intended(route('admin.dashboard'));
+        }
+        echo "failed";
+    }
 }
