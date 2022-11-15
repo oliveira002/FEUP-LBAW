@@ -25,7 +25,7 @@ class Review extends Model
 
     protected $casts = [
         'rating' => 'float',
-        'reviewdate' => 'datetime',
+        'reviewdate' => 'timestamp',
         'iduserreviewer' => 'integer',
         'iduserreviewed' => 'integer',
     ];

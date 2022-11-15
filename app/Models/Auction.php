@@ -27,8 +27,8 @@ class Auction extends Model
     ];
 
     protected $casts = [
-        'startdate' => 'datetime',
-        'enddate' => 'datetime',
+        'startdate' => 'timestamp',
+        'enddate' => 'timestamp',
         'startprice' => 'float',
         'currentprice' => 'float',
         'isover' => 'boolean',
@@ -78,9 +78,4 @@ class Auction extends Model
         return $this->hasMany('App\Models\FavoriteAuction','idAuction','idAuction');
     }
 
-    public static function ftsSearch($search)
-    {
-        return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
-            ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
-    }
 }

@@ -14,26 +14,6 @@
 
 }
 
-.cont {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 0.5px 4px;
-}
-
-.auth {
-    margin-left: auto;
-}
-
-.cont2 {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #0f0f0f;
-    bottom: -10vh;
-    position: absolute;
-}
-
 button {
     background: none;
     border: none;
@@ -47,44 +27,43 @@ a {
 ul{
     list-style: none;
 }
-
-.pattern {
-    max-width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
 header {
-    max-width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
+    justify-content: space-between;
+    background-color: white;
+    color: #0f0f0f;
+    display: flex;
+    padding: 1.2em 1.2em;
     text-align: center;
     align-items: center;
-    display: flex;
     height: 4.5em;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 0.5px 4px;
     margin-bottom: 2em;
 }
 
 body{
+
     overflow-x: hidden;
     min-height: 90vh;
     position: relative;
+
 }
 
+header {
+    width: 100%;
+}
 
 
 footer{
-    display: flex;
-    margin-left: 15%;
-    margin-right: 15%;
-    max-width: 70%;
+    margin-top: 10em;
+    width: 100%;
+    position: absolute;
+    bottom: -10vh;
     background-color: #0f0f0f;
 }
 
-
 .log {
+    margin-right: 1em;
     text-decoration: none;
-    margin-right: 2em;
 }
 
 
@@ -114,17 +93,21 @@ footer{
     border: none;
 }
 
+.auth {
+    margin-left: auto;
+    padding-right: 1em;
+}
 
 .log button i {
     font-size: 14px;
     color: white;
-
+    padding-left: 0.2em;
 }
 
 .reg button i {
     font-size: 14px;
     color: #0f0f0f;
-
+    padding-left: 0.2em;
 }
 
 #logo {
@@ -140,23 +123,39 @@ footer{
     text-decoration: none;
 }
 
-.option  {
-    color: white;
-    margin-left: auto;
+.hamb {
+    padding-left: 0.7em;
+    padding-right: 1.5em;
 }
-
-
 .hamb button i{
     font-size: 1.8em;
 }
 
 .links {
+    margin-left: auto;
     display: flex;
 }
 
+.option {
+    font-size: 22px;
+    padding-right: 2.5em;
+    color: white;
+    font-weight: bold;
+}
+
+.option p {
+    font-size: 22px;
+    padding-right: 2.5em;
+    color: white;
+    font-weight: bold;
+}
+
+.option a {
+    font-size: 22px;;
+}
 
 .search {
-    margin-left: 9em;
+    margin-left: auto;
     vertical-align: middle;
     border: none;
     background-color: #efefef;
@@ -182,3 +181,6 @@ footer{
 #searchbar:focus {
     outline: none;
 }
+
+
+

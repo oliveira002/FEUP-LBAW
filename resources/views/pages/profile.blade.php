@@ -2,65 +2,80 @@
 
 @section('content')
     <link href="{{asset('css/profile.css')}}" rel="stylesheet">
-    <div id="profile">
-        <div id="aside">
-            <ul>
-                <li><a href="">My profile</a></li>
-                <li>Wallet</li>
-                <li>Bids</li>
-                <li>Auctions</li>
-                <li>Favourites</li>
-                <li>Support</li>
-            </ul>
-        </div>
-        <div id="info-wrapper">
-            <a id="edit-info" href="">Edit Information <i class="fa-solid fa-pencil"></i></a>
-            <div id="info">
-                <div class="card" id="info-card">
-                    <div class="card-name">Info</div>
-
-                    <img id="pfp" src="https://via.placeholder.com/50x50" alt="Your profile picture" >
-
-                    <div id="username">{{$user->username}}</div>
-
-                    <div id="name">{{$user->firstname}} {{$user->lastname}}</div><hr>
-
-                    <div id="email">{{$user->email}}</div><hr>
-
-                    <div id="phoneNO">{{$user->phonenumber}}</div><hr>
-
-                    <div id="change-pass"><a href="">Change password</a></div>
-                </div>
-                <div>
-                    <div class="card" id="address-card">
-                        <div class="card-name">Address</div>
-
-                        <div id="street-name-text">Street name</div>
-                        <div id="street-name-value">{{$user->address}}</div>
-
-                        <div id="additional-info-text">Apt, House no, etc</div>
-                        <div id="additional-info-value">{{$user->address}}</div>
-
-                        <div id="country-text">Country</div>
-                        <div id="country-value">{{$user->address}}</div>
-
-                        <div id="city-text">City</div>
-                        <div id="city-value">{{$user->address}}</div>
-
-                        <div id="zip-text">ZIP</div>
-                        <div id="zip-value">{{$user->address}}</div>
+    <div class = "pattern">
+        <div id="profile" class = "d-flex">
+            <div id="aside">
+                <ul class = "ps-0">
+                    <li><a href=""><button>  My profile </button> </a> </li>
+                    <hr class ="mt-1 linha">
+                    <li><a href=""><button>  Wallet </button> </a> </li>
+                    <hr class ="mt-0 linha">
+                    <li><a href=""><button>  Bids </button> </a> </li>
+                    <hr class ="mt-0 linha">
+                    <li><a href=""><button>  Auctions </button> </a> </li>
+                    <hr class ="mt-0 linha">
+                    <li><a href=""><button>  Favourites </button> </a> </li>
+                    <hr class ="mt-0 linha">
+                    <li><a href=""><button>  My profile </button> </a> </li>
+                    <hr class ="mt-0 linha">
+                    <li><a href=""><button>  Support </button> </a> </li>
+                </ul>
+            </div>
+            <div class = "outside d-flex">
+                <div class = "guy">
+                    <div class = "informations mt-2">
+                        <img src="../alo.jpg" width= "150" height= 150">
                     </div>
-                    <div class="card" id="recent-activity-card">
-                        <div class="card-name">Recent Activity</div>
-
-                        <div class="activity">
-                            <div class="text">Placed a bid of 1000€ on "GTX 1060"</div>
-                            <div class="date">15/11 21:05</div>
+                    <div class = "usern">
+                        <p> {{$user->username}}</p>
+                    </div>
+                    <div class = "datau ms-1">
+                        <label for="html" class = "fw-bold">FIRST NAME*:</label><br>
+                        <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}} {{$user->lastname}}">
+                    </div>
+                    <div class = "datau ms-1">
+                        <label for="html" class = "fw-bold">EMAIL ADRESS*:</label><br>
+                        <input type="text" class="formData ps-1" name = "email" value = "{{$user->email}}">
+                    </div>
+                    <div class = "datau ms-1">
+                        <label for="html" class = "fw-bold">Phone Number:</label><br>
+                        <input type="text" class="formData ps-1" name = "firstName" value = "{{$user->phonenumber}}">
+                    </div>
+                </div>
+                <div class = "right">
+                    <div class = "address d-flex">
+                        <div>
+                            <div class = "data ms-1">
+                                <label for="html" class = "fw-bold">Street Name</label><br>
+                                <input type="text" class="formData ps-1" name = "name" value = "Rua Dr. Roberto Frias">
+                            </div>
+                            <div class = "data ms-1">
+                                <label for="html" class = "fw-bold">Apt, House no, etc</label><br>
+                                <input type="text" class="formData ps-1" name = "name" value = "Rua Dr. Roberto Frias">
+                            </div>
                         </div>
-
-                        <div class="activity">
-                            <div class="text">Created auction "BMW 420d novo"</div>
-                            <div class="date">13/11 16:07</div>
+                        <div>
+                            <div class = "data ms-1">
+                                <label for="html" class = "fw-bold">Country</label><br>
+                                <input type="text" class="formData ps-1" name = "name" value = "Portugal">
+                            </div>
+                            <div class = "data ms-1">
+                                <label for="html" class = "fw-bold">City</label><br>
+                                <input type="text" class="formData ps-1" name = "name" value = "Porto">
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "activity">
+                        <div class = "ms-2 mt-4">
+                            <p class = "fw-bold"> Recent Activity </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
+                            <p> Auction of product X sold @ 2000$ </p>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ use App\Models\Auction;
 
 class HomeController extends Controller
 {
-    public function home() {
+    public function homePage() {
         $soonAuction = Auction::selectRaw('*')
             ->where('isover','=','False')
             ->orderBy('enddate','asc')

@@ -25,7 +25,7 @@ class SellerReport extends Model
 
     protected $casts = [
         'issolved' => 'boolean',
-        'reportdate' => 'datetime',
+        'reportdate' => 'timestamp',
         'idseller' => 'integer',
         'idreporter' => 'integer',
     ];

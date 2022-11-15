@@ -25,7 +25,7 @@ class Deposit extends Model
 
     protected $casts = [
         'amount' => 'float',
-        'depositdate' => 'datetime',
+        'depositdate' => 'timestamp',
         'idclient' => 'integer',
     ];
 
