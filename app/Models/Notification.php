@@ -25,7 +25,7 @@ class Notification extends Model
 
     protected $casts = [
         'isread' => 'boolean',
-        'notifdate' => 'timestamp',
+        'notifdate' => 'datetime',
         'idclient' => 'integer',
     ];
 

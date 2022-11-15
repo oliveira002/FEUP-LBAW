@@ -1,0 +1,54 @@
+.page {
+    max-width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.details {
+    word-break: break-word;
+    width: 290px;
+}
+
+.pers img{
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+.seller {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.info p {
+    margin-bottom: 0;
+}
+.info {
+    word-break: break-word;
+}
+.page p {
+    color: #0f0f0f;
+}
+
+.line {
+    width: 86%;
+    border-top: 2px solid #0f0f0f;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+.product img {
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+.desc p {
+    font-size: 25px;
+}
+
+.acts {
+    margin-right: 5em;
+    margin-left: auto;
+}
