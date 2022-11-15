@@ -1,8 +1,8 @@
-<footer>
-    <div class="option logo">&#169; WeBid</div>
-    <div class="links">
-        <div class="option"><a href="pages/FAQ.html">FAQ</a></div>
-        <div class="option"><a href="pages/AboutUs.html">About US</a></div>
-        <div class="option"><a href="pages/Contacts.html">Contacts</a></div>
+<footer class = "d-flex justify-content-between mt-5">
+    <p class = "m-5 option">WeBid</p>
+    <div class = "m-5 option">
+        <a class = "m-3" href = ""> FAQ </a>
+        <a class = "m-3" href = ""> About Us </a>
+        <a class = "m-3" href = ""> Contact Us </a>
     </div>
 </footer>
