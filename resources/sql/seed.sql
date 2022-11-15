@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS SystemManager(
     idSysMan    SERIAL PRIMARY KEY,
     username    VARCHAR(30) NOT NULL UNIQUE,
     email       VARCHAR(30) NOT NULL UNIQUE,
-    password    VARCHAR(30) NOT NULL
+    password    VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS SystemManagerLog(
@@ -573,5 +573,6 @@ insert into FavoriteAuction (idClient, idAuction) values (13, 9);
 insert into FavoriteAuction (idClient, idAuction) values (11, 10);
 insert into SystemManager (idSysMan, username , email, password) values (1, 'ljedrych0', 'ljedrych0@blogtalkradio.com', '4HmZdUZG6kV');
 insert into SystemManager (idSysMan, username , email, password) values (2, 'kcollihole1', 'kcollihole1@so-net.ne.jp', 'n5gLdwK');
+insert into SystemManager (idSysMan, username , email, password) values (3, 'admin', 'admin@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W');
 
 

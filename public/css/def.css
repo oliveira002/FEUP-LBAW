@@ -40,9 +40,26 @@ header {
     margin-bottom: 2em;
 }
 
-body {
+body{
+    overflow-y: scroll;
     overflow-x: hidden;
+    min-height: 90vh;
+    position: relative;
 }
+
+header {
+    width: 100%;
+}
+
+
+footer{
+    margin-top: 10em;
+    width: 100%;
+    position: absolute;
+    bottom: -10vh;
+    background-color: #0f0f0f;
+}
+
 .log {
     margin-right: 1em;
     text-decoration: none;
@@ -99,16 +116,6 @@ body {
     color: #0f0f0f;
 }
 
-footer {
-    position: sticky;
-    left: 0;
-    right: 0;
-    vertical-align: middle;
-    display: flex;
-    bottom: 0;
-    padding: 2.2em 2.2em;
-    background-color: #0f0f0f;
-}
 
 .option a {
     color: white;
@@ -129,6 +136,13 @@ footer {
 }
 
 .option {
+    font-size: 22px;
+    padding-right: 2.5em;
+    color: white;
+    font-weight: bold;
+}
+
+.option p {
     font-size: 22px;
     padding-right: 2.5em;
     color: white;
@@ -166,4 +180,6 @@ footer {
 #searchbar:focus {
     outline: none;
 }
+
+
 

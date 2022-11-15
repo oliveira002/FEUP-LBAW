@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="">
+    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Auction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Auction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AuctionLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AuctionOwner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionOwner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AuctionReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AuctionReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Bid.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DeletedUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DeletedUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Deposit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Deposit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/FavoriteAuction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FavoriteAuction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Notification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SellerReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SellerReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SystemManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SystemManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SystemManagerLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SystemManagerLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserLog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/def.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/def.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/card.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/cards.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +135,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ricar/Desktop/lbaw/lbaw2225&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/oliveira/Desktop/FEUP-LBAW/public/css&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -163,7 +180,6 @@
       <workItem from="1668435939203" duration="19019000" />
       <workItem from="1668463222214" duration="3504000" />
       <workItem from="1668511370567" duration="6022000" />
-      <workItem from="1668518960093" duration="2249000" />
     </task>
     <servers />
   </component>

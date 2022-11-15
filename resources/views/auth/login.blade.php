@@ -22,6 +22,7 @@
                     {{ csrf_field() }}
                     <!-- Email input -->
 
+
                     <div class="form-outline mb-4">
                         <input class="form-control form-control-lg" id="email" type="email" name="email"
                             value="{{ old('email') }}" required autofocus />

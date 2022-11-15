@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Auction;
+use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\Bid;
+use App\Models\SystemManager;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -50,18 +51,17 @@ class LoginController extends Controller
     }
     public function authenticate(Request $request) {
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => 
-            $request->password])) {
+
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
             echo "success";
             //return redirect()->intended(route('home'));
         }
-    //For Admin:
-    
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => 
-            $request->password])) {
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             echo "success admin";
             //return redirect()->intended(route('admin.dashboard'));
         }
         echo "failed";
+        exit();
     }
 }
