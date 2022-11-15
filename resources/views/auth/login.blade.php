@@ -13,6 +13,7 @@
                     class="img-fluid" alt="Phone image">
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <span>WeBid</span>
                 <form method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
                     <!-- Email input -->
