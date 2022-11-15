@@ -11,18 +11,15 @@
 |
 */
 // Home
-Route::get('/', 'Auth\LoginController@home');
-
-// Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+Route::get('/', 'HomeController@home')->name('/');
 
 // API
-Route::put('api/cards', 'CardController@create');
-Route::delete('api/cards/{card_id}', 'CardController@delete');
-Route::put('api/cards/{card_id}/', 'ItemController@create');
-Route::post('api/item/{id}', 'ItemController@update');
-Route::delete('api/item/{id}', 'ItemController@delete');
+
+// Users
+Route::get('/profile/{id}', 'UserController@show');
+
+//Others
+Route::get('FAQs', 'FAQController@faqs')->name('FAQs');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -35,8 +32,8 @@ Route::post('register', 'Auth\RegisterController@register');
 // Search
 Route::get('/search/api', 'SearchController@getSearchResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
-Route::get('/search/{category}', 'SearchController@homeCatgorySearch')->name('catgorySearch');
 Route::get('/auction/{id}','AuctionController@show');
 
-Route::get('/','HomeController@homePage');
-Route::get('/{id}','AuctionController@auctionPage');
+Route::get('/search/api', 'SearchController@getSearchResultsJson');
+Route::get('/search', 'SearchController@home')->name('search');
+Route::get('/search/{category}', 'SearchController@homeCatgorySearch')->name('catgorySearch');

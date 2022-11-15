@@ -4,7 +4,7 @@ function encodeForAjax(data) {
         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
     }).join('&');
 }
-  
+
 function sendAjaxRequest(method, url, data, handler) {
     let request = new XMLHttpRequest();
 
@@ -17,10 +17,10 @@ function sendAjaxRequest(method, url, data, handler) {
 function createElementFromHTML(htmlString) {
     var div = document.createElement('div');
     div.innerHTML = htmlString.trim();
-  
+
     // Change this to div.childNodes to support multiple top-level nodes.
     return div.firstChild;
-  }
+}
 function auctionUpdatedHandler() {
     let item = JSON.parse(this.responseText);
     let auction = document.querySelectorAll('#auction div')

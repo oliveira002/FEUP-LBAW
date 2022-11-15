@@ -8,8 +8,4 @@ function hideDiv() {
         x.style.display = "none";
         d.style.display = "block";
     }
-
-
-
-
 }

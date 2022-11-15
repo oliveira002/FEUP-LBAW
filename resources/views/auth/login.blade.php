@@ -11,206 +11,206 @@
 
 
 
-<section class="loginpage" id = "loginpage" >
-    <div class="container h-100">
-        <div class="row d-flex align-items-center justify-content-center h-95 py-5">
-            <div class="col-md-8 col-lg-7 col-xl-6">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                    class="img-fluid" alt="Phone image">
-            </div>
-            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                <div class="logoname">
+    <section class="loginpage" id = "loginpage" >
+        <div class="container h-100">
+            <div class="row d-flex align-items-center justify-content-center h-95 py-5">
+                <div class="col-md-8 col-lg-7 col-xl-6">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                         class="img-fluid" alt="Phone image">
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <div class="logoname">
                     <span>
                         WeBid
                     </span>
-                </div>
+                    </div>
 
-                <form method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-                    <!-- Email input -->
+                    <form method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+                        <!-- Email input -->
 
 
-                    <div class="form-outline mb-4">
-                        <input class="form-control form-control-lg" id="email" type="email" name="email"
-                            value="{{ old('email') }}" required autofocus />
-                        <label class="form-label" >Email address</label>
+                        <div class="form-outline mb-4">
+                            <input class="form-control form-control-lg" id="email" type="email" name="email"
+                                   value="{{ old('email') }}" required autofocus />
+                            <label class="form-label" >Email address</label>
 
-                        @if ($errors->has('email'))
-                        <span class="error">
+                            @if ($errors->has('email'))
+                                <span class="error">
                             {{ $errors->first('email') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
 
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        <input type="password" name = "password" id="password" class="form-control form-control-lg" required />
-                        <label  class="form-label" >Password</label>
-                        @if ($errors->has('password'))
-                        <span class="error">
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" name = "password" id="password" class="form-control form-control-lg" required />
+                            <label  class="form-label" >Password</label>
+                            @if ($errors->has('password'))
+                                <span class="error">
                             {{ $errors->first('password') }}
                         </span>
-                        @endif
-                    </div>
-
-
-
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <!-- Checkbox -->
-                        <div class="form-check">
-
-                            <input class = "form-check-input" type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            Remember Me
-
+                            @endif
                         </div>
-                        <a href="#!">Forgot password?</a>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-
-                    <a id="register-link" title="Click to do something"
-                       href="#" onclick="hideDiv();return false;">Register</a>
-                </form>
 
 
 
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <!-- Checkbox -->
+                            <div class="form-check">
+
+                                <input class = "form-check-input" type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                Remember Me
+
+                            </div>
+                            <a href="#!">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+
+                        <a id="register-link" title="Click to do something"
+                           href="#" onclick="hideDiv();return false;">Register</a>
+                    </form>
+
+
+
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="registerpage" id = "registerpage">
-    <div class="container h-100">
-        <div class="row d-flex align-items-center justify-content-center h-95 py-5">
-            <div class="col-md-8 col-lg-7 col-xl-6">
+    <section class="registerpage" id = "registerpage">
+        <div class="container h-100">
+            <div class="row d-flex align-items-center justify-content-center h-95 py-5">
+                <div class="col-md-8 col-lg-7 col-xl-6">
 
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                     class="img-fluid" alt="Phone image">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                         class="img-fluid" alt="Phone image">
 
-            </div>
-            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                <div class="logoname">
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <div class="logoname">
                     <span>
                         WeBid
                     </span>
-                </div>
+                    </div>
 
-                <form method="POST" action="{{ route('register') }}">
-                    {{ csrf_field() }}
+                    <form method="POST" action="{{ route('register') }}">
+                        {{ csrf_field() }}
 
-                    <!-- Name input -->
+                        <!-- Name input -->
                         <div class="form-outline mb-4">
                             <input type="text" name = "name" id="name" class="form-control form-control-lg" value="{{ old('name') }}" required autofocus />
-                        <label class="form-label" for="name">Username</label>
-                        @if ($errors->has('name'))
-                        <span class="error">
+                            <label class="form-label" for="name">Username</label>
+                            @if ($errors->has('name'))
+                                <span class="error">
                             {{ $errors->first('name') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
-                    <!-- Email input -->
-
-
-                    <div class="form-outline mb-4">
+                        <!-- Email input -->
 
 
+                        <div class="form-outline mb-4">
 
-                        <input class="form-control form-control-lg" id="email" type="email" name="email"
-                               value="{{ old('email') }}" required autofocus />
-                        <label class="form-label" for="form1Example13">Email address</label>
 
-                        @if ($errors->has('email'))
-                            <span class="error">
+
+                            <input class="form-control form-control-lg" id="email" type="email" name="email"
+                                   value="{{ old('email') }}" required autofocus />
+                            <label class="form-label" for="form1Example13">Email address</label>
+
+                            @if ($errors->has('email'))
+                                <span class="error">
                             {{ $errors->first('email') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
-                    <!-- First Name input -->
-                    <div class="form-outline mb-4">
-                        <input type="text" name = "first_name" id="first_name" class="form-control form-control-lg" value="{{ old('first_name') }}" required autofocus />
-                        <label for="first_name" class="form-label">First Name</label>
-                        @if ($errors->has('first_name'))
-                        <span class="error">
+                        <!-- First Name input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name = "first_name" id="first_name" class="form-control form-control-lg" value="{{ old('first_name') }}" required autofocus />
+                            <label for="first_name" class="form-label">First Name</label>
+                            @if ($errors->has('first_name'))
+                                <span class="error">
                             {{ $errors->first('first_name') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
-                    <!-- Last Name input -->
-                    <div class="form-outline mb-4">
-                        <input type="text" name = "last_name" id="last_name" class="form-control form-control-lg" value="{{ old('last_name') }}" required autofocus />
-                        <label for="last_name" class="form-label">Last Name</label>
-                        @if ($errors->has('last_name'))
-                        <span class="error">
+                        <!-- Last Name input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name = "last_name" id="last_name" class="form-control form-control-lg" value="{{ old('last_name') }}" required autofocus />
+                            <label for="last_name" class="form-label">Last Name</label>
+                            @if ($errors->has('last_name'))
+                                <span class="error">
                             {{ $errors->first('last_name') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
-                    <!-- Address input -->
-                    <div class="form-outline mb-4">
-                        <input type="text" name = "address" id="address" class="form-control form-control-lg" value="{{ old('address') }}" required autofocus />
-                        <label for="address" class="form-label" >Address</label>
-                        @if ($errors->has('address'))
-                        <span class="error">
+                        <!-- Address input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name = "address" id="address" class="form-control form-control-lg" value="{{ old('address') }}" required autofocus />
+                            <label for="address" class="form-label" >Address</label>
+                            @if ($errors->has('address'))
+                                <span class="error">
                             {{ $errors->first('address') }}
                         </span>
-                        @endif
-                    </div>
-                    <!-- Phone number input -->
-                    <div class="form-outline mb-4">
-                        <input type="text" name = "phone_number" id="phone_number" class="form-control form-control-lg" value="{{ old('phone_number') }}" required autofocus />
-                        <label class="form-label" for="phone_number">Phone Number</label>
-                        @if ($errors->has('phone_number'))
-                        <span class="error">
+                            @endif
+                        </div>
+                        <!-- Phone number input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name = "phone_number" id="phone_number" class="form-control form-control-lg" value="{{ old('phone_number') }}" required autofocus />
+                            <label class="form-label" for="phone_number">Phone Number</label>
+                            @if ($errors->has('phone_number'))
+                                <span class="error">
                             {{ $errors->first('phone_number') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        <input type="password" name = "password" id="password" class="form-control form-control-lg" required />
-                        <label for="password" class="form-label">Password</label>
-                        @if ($errors->has('password'))
-                            <span class="error">
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" name = "password" id="password" class="form-control form-control-lg" required />
+                            <label for="password" class="form-label">Password</label>
+                            @if ($errors->has('password'))
+                                <span class="error">
                             {{ $errors->first('password') }}
                         </span>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
-                    <!-- Password confirmation input -->
-                    <div class="form-outline mb-4">
-                        <input type="password" name = "password_confirmation" id="password_confirmation" class="form-control form-control-lg" required />
-                        <label for="password_confirmation" class="form-label">Confirm Password</label>
-                        @if ($errors->has('password_confirmation'))
-                            <span class="error">
+                        <!-- Password confirmation input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" name = "password_confirmation" id="password_confirmation" class="form-control form-control-lg" required />
+                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            @if ($errors->has('password_confirmation'))
+                                <span class="error">
                             {{ $errors->first('password_confirmation') }}
                         </span>
 
-                        @endif
-                    </div>
+                            @endif
+                        </div>
 
 
 
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                        Register
-                    </button>
-                    <a id="login-link"  title="hide register form"
-                       href="#" onclick="hideDiv();return false;">Login</a>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            Register
+                        </button>
+                        <a id="login-link"  title="hide register form"
+                           href="#" onclick="hideDiv();return false;">Login</a>
 
 
 
 
 
-                </form>
+                    </form>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 @endsection
