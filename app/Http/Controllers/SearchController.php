@@ -34,7 +34,7 @@ class SearchController extends Controller
         }
 
 
-        if($category === "all") {
+        if($category === 0) {
             $auctions = Auction::ftsSearch($search_query)->get();
         }
         else {
