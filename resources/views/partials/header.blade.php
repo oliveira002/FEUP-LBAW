@@ -3,8 +3,8 @@
         <a href="" id = "logo"> WeBid</a>
         <div class="search">
             <div class = "sbar">
-                <form action="" method="get">
-                    <input type="text" id="searchbar" name="searchbar" placeholder="Search anything...">
+                <form action="search" method="get">
+                    <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
                     <i class="fa fa-search"></i>
                 </form>
             </div>
