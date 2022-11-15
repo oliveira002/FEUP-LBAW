@@ -26,7 +26,6 @@
   <body>
     <main>
     @if(Route::currentRouteName() === 'login')
-
     @else
       @include('partials.header')
     @endif
