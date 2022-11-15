@@ -3,10 +3,17 @@
         <a href="{{route('/')}}" id = "logo"> WeBid</a>
         <div class="search">
             <div class = "sbar">
-                <form action="search" method="get">
+                @if(Route::currentRouteName() === '/')
+                <form action="{{ route('search') }}" method="get">
                     <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
                     <i class="fa fa-search"></i>
                 </form>
+                @else
+                <button>
+                    <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
+                    <i class="fa fa-search"></i>
+                </button>
+                @endif
             </div>
         </div>
         <div class="auth">

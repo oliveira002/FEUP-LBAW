@@ -2,10 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="d-flex flex-row flex-wrap justify-content-center ">
-            <p class = "fw-bold fs-2 mb-0"> Ending Soon! </p>
-        </div>
-        <div class="d-flex flex-row flex-wrap justify-content-center ">
+        <div id = "auction" class="d-flex flex-row flex-wrap justify-content-center ">
             @foreach($auctions as $auct)
                 <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                     <div class = "item">

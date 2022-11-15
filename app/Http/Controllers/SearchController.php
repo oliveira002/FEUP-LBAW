@@ -43,7 +43,6 @@ class SearchController extends Controller
         return json_encode($auctions);
     }
     public function homeCatgorySearch($category){
-        var_dump($category);
         $auctions = Auction::where('idcategory', $category)->get();
         return view('pages.search',['auctions' => $auctions]);
     }
