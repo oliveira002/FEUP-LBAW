@@ -13,6 +13,7 @@
                     class="img-fluid" alt="Phone image">
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <span>WeBid</span>
                 <form method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
                     <!-- Email input -->
@@ -29,7 +30,7 @@
                         </span>
                         @endif
                     </div>
-                   
+
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
@@ -47,10 +48,10 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <!-- Checkbox -->
                         <div class="form-check">
-                            
+
                             <input class = "form-check-input" type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
                             Remember Me
-                          
+
                         </div>
                         <a href="#!">Forgot password?</a>
                     </div>

@@ -6,9 +6,9 @@
     align-items: center;
     justify-content: center;
     color: #000000;
-    
+
 }
-  
+
 #login form {
     display: flex;
     flex-direction: column;
@@ -39,14 +39,14 @@
 #login form label{
     font-weight: bold;
     color: white;
-    
+
 }
 #login form label #remember{
 
     color: white;
     font-weight: normal;
     margin:auto;
-    
+
 }
 
 #login form button{
@@ -79,5 +79,13 @@
     font-size: 15px;
     font-weight: bold;
 }
+
+
+.container .row span {
+    color: black;
+    font-weight: bold;
+    font-size: 35px;
+}
+
 
 
