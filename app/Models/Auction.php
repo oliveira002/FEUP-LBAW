@@ -78,4 +78,9 @@ class Auction extends Model
         return $this->hasMany('App\Models\FavoriteAuction','idAuction','idAuction');
     }
 
+    public static function ftsSearch($search)
+    {
+        return Auction::whereRaw('tsvectors @@ to_tsquery(\'english\', ?)', [$search])
+            ->orderByRaw('ts_rank(tsvectors, to_tsquery(\'english\', ?)) DESC', [$search]);
+    }
 }
