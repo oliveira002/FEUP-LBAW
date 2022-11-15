@@ -24,13 +24,12 @@
         </div>
         <div class="d-flex flex-row flex-wrap justify-content-center ">
             @foreach($auctions as $auct)
-                <div class="d-flex flex-column p-3">
+                <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                     <div class = "item">
                         <img src= "alo.jpg" width="287" height="190">
-                        <div class = "prop">
-                            <p class = "fw-bold "> {{$auct->name}} </p>
-                            <p class = "fw-bold"> {{$auct->currentprice}}$ </p>
-                            <p class = "fw-bold"> {{$auct->enddate}} </p>
+                        <div class = "prop" >
+                            <p id = "price" class = "fw-bold mb-0 mt-1"> {{$auct->currentprice}}€ </p>
+                            <p id = "nome" class = "fw-bold mb-4"> {{$auct->name}} </p>
                         </div>
                     </div>
                 </div>
