@@ -1,8 +1,5 @@
-<div class="wrapper">
+<div class="cont">
     <header>
-        <div class="hamb">
-            <button><i class="fa-solid fa-bars"></i></button>
-        </div>
         <a href="" id = "logo"> WeBid</a>
         <div class="search">
             <div class = "sbar">
