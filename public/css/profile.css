@@ -1,0 +1,76 @@
+a {
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+#aside ul button {
+    width: 200px;
+    font-size: 19px;
+}
+
+#aside ul button:hover {
+    border-bottom: 1px solid black;
+}
+
+#aside ul button {
+    background-color: #efefef;
+}
+.linha {
+    margin-bottom: 0em;
+}
+img{
+    object-fit: cover;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+.outside {
+    margin-left: 5em;
+}
+
+
+.outside p{
+    font-size: 19px;
+}
+
+.outside label {
+    font-size: 19px;
+}
+
+.outside input {
+    font-size: 16px;
+}
+.usern p {
+    text-align: center;
+}
+
+.datau input {
+    background-color: #efefef;
+    border:none;
+}
+
+.data input {
+    background-color: #efefef;
+    border:none;
+}
+
+.outside {
+    margin: 0 auto;
+}
+
+.guy {
+    margin-right: 14em;
+}
+.data input {
+    border: none;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.activity p {
+    margin-bottom: 0.2em;
+}
