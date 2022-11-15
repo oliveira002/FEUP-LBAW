@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class SellerReport extends Model
 {
     public $timestamps  = false;
-    protected $table = 'sellerReport';
-    protected $primaryKey = 'idReport';
+    protected $table = 'sellerreport';
+    protected $primaryKey = 'idreport';
 
      /**
      * The attributes that are mass assignable.
@@ -20,14 +20,14 @@ class SellerReport extends Model
      * @var array
      */
     protected $fillable = [
-        'reportDate', 'description', 'isSolved', 'idSeller', 'idReporter',
+        'reportdate', 'description', 'issolved', 'idseller', 'idreporter',
     ];
 
     protected $casts = [
-        'isSolved' => 'boolean',
-        'reportDate' => 'timestamp',
-        'idSeller' => 'integer',
-        'idReporter' => 'integer',
+        'issolved' => 'boolean',
+        'reportdate' => 'timestamp',
+        'idseller' => 'integer',
+        'idreporter' => 'integer',
     ];
 
      /**

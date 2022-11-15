@@ -18,7 +18,7 @@ class User extends Authenticatable
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
     protected $table = 'user';
-    protected $primaryKey = 'idClient';
+    protected $primaryKey = 'idclient';
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'firstName', 'lastName', 'address', 'phoneNumber', 'balance', 'isBanned',
+        'username', 'email', 'password', 'firstname', 'lastname', 'address', 'phonenumber', 'balance', 'isnanned',
     ];
 
 	protected $hidden = [
@@ -34,7 +34,7 @@ class User extends Authenticatable
 	];
 
     protected $casts = [
-        'isBanned' => 'boolean',
+        'isbanned' => 'boolean',
         'balance' => 'float',
     ];
 

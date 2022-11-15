@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserLog extends Model
 {
     public $timestamps  = false;
-    protected $table = 'userLog';
-    protected $primaryKey = 'idSysLog';
+    protected $table = 'userlog';
+    protected $primaryKey = 'idsyslog';
 
      /**
      * The attributes that are mass assignable.
@@ -20,11 +20,11 @@ class UserLog extends Model
      * @var array
      */
     protected $fillable = [
-        'idClient',
+        'idclient',
     ];
 
     protected $casts = [
-        'idClient' => 'integer',
+        'idclient' => 'integer',
     ];
 
     /**

@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class FavoriteAuction extends Model
 {
     public $timestamps  = false;
-    protected $table = 'favoriteAuction';
-    protected $primaryKey = 'idAuction';
+    protected $table = 'favoriteauction';
+    protected $primaryKey = 'idauction';
 
      /**
      * The attributes that are mass assignable.
@@ -20,11 +20,11 @@ class FavoriteAuction extends Model
      * @var array
      */
     protected $fillable = [
-        'idClient',
+        'idclient',
     ];
 
     protected $casts = [
-        'idClient' => 'integer',
+        'idclient' => 'integer',
     ];
 
     /**

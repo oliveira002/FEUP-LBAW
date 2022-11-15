@@ -12,7 +12,7 @@ class Review extends Model
 {
     public $timestamps  = false;
     protected $table = 'review';
-    protected $primaryKey = 'idReview';
+    protected $primaryKey = 'idreview';
 
      /**
      * The attributes that are mass assignable.
@@ -20,14 +20,14 @@ class Review extends Model
      * @var array
      */
     protected $fillable = [
-        'rating', 'comment', 'reviewDate', 'idUserReviewer', 'idUserReviewed',
+        'rating', 'comment', 'reviewDate', 'iduserreviewer', 'iduserreviewed',
     ];
 
     protected $casts = [
         'rating' => 'float',
-        'reviewDate' => 'timestamp',
-        'idUserReviewer' => 'integer',
-        'idUserReviewed' => 'integer',
+        'reviewdate' => 'timestamp',
+        'iduserreviewer' => 'integer',
+        'iduserreviewed' => 'integer',
     ];
 
     /**

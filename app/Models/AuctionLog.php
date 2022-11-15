@@ -12,7 +12,7 @@ class AuctionLog extends Model
 {
     public $timestamps  = false;
     protected $table = 'auctionLog';
-    protected $primaryKey = 'idSysLog';
+    protected $primaryKey = 'idsyslog';
 
      /**
      * The attributes that are mass assignable.
@@ -20,11 +20,11 @@ class AuctionLog extends Model
      * @var array
      */
     protected $fillable = [
-        'idAuction',
+        'idauction',
     ];
 
     protected $casts = [
-        'idAuction' => 'integer',
+        'idauction' => 'integer',
     ];
 
     /**

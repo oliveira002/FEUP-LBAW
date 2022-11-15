@@ -12,7 +12,7 @@ class Deposit extends Model
 {
     public $timestamps  = false;
     protected $table = 'deposit';
-    protected $primaryKey = 'idDeposit';
+    protected $primaryKey = 'iddeposit';
 
      /**
      * The attributes that are mass assignable.
@@ -20,13 +20,13 @@ class Deposit extends Model
      * @var array
      */
     protected $fillable = [
-        'amount', 'method', 'depositDate', 'idClient',
+        'amount', 'method', 'depositdate', 'idclient',
     ];
 
     protected $casts = [
         'amount' => 'float',
-        'depositDate' => 'timestamp',
-        'idClient' => 'integer',
+        'depositdate' => 'timestamp',
+        'idclient' => 'integer',
     ];
 
     /**

@@ -12,18 +12,18 @@ class Bid extends Model
 {
     public $timestamps  = false;
     protected $table = 'bid';
-    protected $primaryKey = 'idBid';
+    protected $primaryKey = 'idbid';
 
     protected $fillable = [
-        'bidDate', 'isValid', 'price', 'idClient', 'idAuction',
+        'biddate', 'isvalid', 'price', 'idclient', 'idauction',
     ];
 
     protected $casts = [
-        'bidDate' => 'timestamp',
-        'isValid' => 'boolean',
+        'biddate' => 'timestamp',
+        'isvalid' => 'boolean',
         'price' => 'float',
-        'idClient' => 'integer',
-        'idAuction' => 'integer',
+        'idclient' => 'integer',
+        'idauction' => 'integer',
     ];
 
     /**

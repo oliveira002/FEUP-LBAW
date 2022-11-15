@@ -10,8 +10,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class SystemManager extends Authenticatable
 {
     public $timestamps  = false;
-    protected $table = 'systemManager';
-    protected $primaryKey = 'idSysMan';
+    protected $table = 'systemmanager';
+    protected $primaryKey = 'idsysman';
 
      /**
      * The attributes that are mass assignable.

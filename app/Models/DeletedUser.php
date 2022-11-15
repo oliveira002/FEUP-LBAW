@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class DeletedUser extends Model
 {
     public $timestamps  = false;
-    protected $table = 'deletedUser';
-    protected $primaryKey = 'idClient';
+    protected $table = 'deleteduser';
+    protected $primaryKey = 'idclient';
 
      /**
      * The attributes that are mass assignable.

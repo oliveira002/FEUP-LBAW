@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class SystemManagerLog extends Model
 {
     public $timestamps  = false;
-    protected $table = 'systemManagerLog';
-    protected $primaryKey = 'idSysLog';
+    protected $table = 'systemmanagerlog';
+    protected $primaryKey = 'idsyslog';
 
      /**
      * The attributes that are mass assignable.
@@ -20,12 +20,12 @@ class SystemManagerLog extends Model
      * @var array
      */
     protected $fillable = [
-        'logDate','logDescription','idSysMan', 'logType',
+        'logdate','logdescription','idsysman', 'logtype',
     ];
 
     protected $casts = [
-        'logDate' => 'timestamp',
-        'idSysMan' => 'logType',
+        'logdate' => 'timestamp',
+        'idsysman' => 'logType',
     ];
 
     /**

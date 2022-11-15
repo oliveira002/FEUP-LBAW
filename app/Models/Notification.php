@@ -12,7 +12,7 @@ class Notification extends Model
 {
     public $timestamps  = false;
     protected $table = 'notification';
-    protected $primaryKey = 'idNotification';
+    protected $primaryKey = 'idnotification';
 
      /**
      * The attributes that are mass assignable.
@@ -20,13 +20,13 @@ class Notification extends Model
      * @var array
      */
     protected $fillable = [
-        'content', 'isRead', 'notifDate', 'idClient',
+        'content', 'isread', 'notifdate', 'idclient',
     ];
 
     protected $casts = [
-        'isRead' => 'boolean',
-        'notifDate' => 'timestamp',
-        'idClient' => 'integer',
+        'isread' => 'boolean',
+        'notifdate' => 'timestamp',
+        'idclient' => 'integer',
     ];
 
     /**

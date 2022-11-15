@@ -12,22 +12,22 @@ use Illuminate\Database\Eloquent\Model;
 class AuctionReport extends Model
 {
     public $timestamps  = false;
-    protected $table = 'auctionReport';
-    protected $primaryKey = 'idReport';
+    protected $table = 'auctionreport';
+    protected $primaryKey = 'idreport';
 
     protected $fillable = [
-		'reportDate',
+		'reportdate',
 		'description',
-		'isSolved',
-		'idAuction',
-		'idReporter'
+		'issolved',
+		'idauction',
+		'idreporter'
 	];
 
     protected $casts = [
-        'reportDate' => 'timestamp',
-        'isSolved' => 'boolean',
-        'idAuction' => 'integer',
-        'idReporter' => 'integer',
+        'reportdate' => 'timestamp',
+        'issolved' => 'boolean',
+        'idauction' => 'integer',
+        'idreporter' => 'integer',
     ];
 
     /**

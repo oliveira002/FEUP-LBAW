@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class AuctionOwner extends Model
 {
     public $timestamps  = false;
-    protected $table = 'auctionOwner';
-    protected $primaryKey = 'idClient';
+    protected $table = 'auctionowner';
+    protected $primaryKey = 'idclient';
 
     protected $fillable = [
         'rating',

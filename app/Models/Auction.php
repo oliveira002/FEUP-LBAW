@@ -15,7 +15,7 @@ class Auction extends Model
 {
     public $timestamps  = false;
     protected $table = 'auction';
-    protected $primaryKey = 'idAuction';
+    protected $primaryKey = 'idauction';
 
      /**
      * The attributes that are mass assignable.
@@ -23,17 +23,17 @@ class Auction extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'startDate', 'endDate', 'startingPrice', 'currentPrice', 'description', 'isOver', 'idCategory', 'idOwner',
+        'name', 'startdate', 'enddate', 'startingprice', 'currentprice', 'description', 'isover', 'idcategory', 'idowner',
     ];
 
     protected $casts = [
-        'startDate' => 'timestamp',
-        'endDate' => 'timestamp',
-        'startPrice' => 'float',
-        'currentPrice' => 'float',
-        'isOver' => 'boolean',
-        'idCategory' => 'integer',
-        'idOwner' => 'integer',
+        'startdate' => 'timestamp',
+        'enddate' => 'timestamp',
+        'startprice' => 'float',
+        'currentprice' => 'float',
+        'isover' => 'boolean',
+        'idcategory' => 'integer',
+        'idowner' => 'integer',
     ];
 
     /**
