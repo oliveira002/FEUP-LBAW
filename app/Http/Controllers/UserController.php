@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bid;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
@@ -53,11 +54,27 @@ class UserController extends Controller
 
     public function myAuctions($id){
         $user = User::find($id);
-        $auctions = $user->auctions;
         $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
-
-
         return view('pages.userAuctions',['user' => $user, 'auctions' => $myauctions]);
+
+    }
+
+    public function myBids($id){
+        $user = User::find($id);
+        $mybids = Bid::selectRaw('*')->where('idclient','=',$id)->get();
+        return view('pages.user_bids',['user' => $user, 'bids' => $mybids]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function auctionById($id){
+        $auction = Auction::find($id);
+        $owner = User::find($auction->idclient);
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner]);
     }
 
 

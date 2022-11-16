@@ -193,6 +193,27 @@ ul.payment-selection{
     max-width: none;
     object-fit: cover;
 }
+.myBids #item-info p{
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.myBids .row{
+    margin-bottom: 10px;
+
+}
+
+.myBids .col-9 .row{
+    margin-left: 15px;
+
+}
+
+.myBids .row img{
+    width: 140px;
+    height: 100px;
+    max-width: none;
+    object-fit: cover;
+}
 
 #user-auctions{
     width: 66vh;

@@ -20,6 +20,7 @@ Route::get('/profile/{id}', 'UserController@show')->name('profile');
 Route::get('/profile/balance/{id}', 'UserController@balance')->name('balance');
 Route::post('/profile/balance/{id}', 'UserController@balance');
 Route::get('/profile/myauctions/{id}', 'UserController@myAuctions')->name('myauctions');
+Route::get('/profile/mybids/{id}', 'UserController@myBids')->name('mybids');
 
 
 //Others
