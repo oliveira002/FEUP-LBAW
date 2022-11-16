@@ -30,6 +30,9 @@ a {
     margin-right: 15%;
 }
 
+.lg {
+    margin-left: 0.5em;
+}
 .lg img{
     object-fit: cover;
     border-radius: 50%;
@@ -41,6 +44,17 @@ a {
 .cover ul li button {
     background-color: white;
 }
+
+.cover ul li button:hover {
+    border-left: 4px solid #0f0f0f;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+
+.hi {
+    border-left: 4px solid #0f0f0f;
+}
+
 
 .cover ul li {
     margin-bottom: 0.5em;
@@ -64,11 +78,23 @@ body {
     font-size: 20px;
 }
 
+
+.tmp{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0f0f0f;
+    margin-left: 10.7em;
+}
+
 .spec {
     background-color: white;
     margin-left: 5em;
     height: 100%;
-    width: 100%;
+}
+
+.outside {
+    width: 60%;
 }
 
 .save button {

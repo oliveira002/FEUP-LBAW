@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@home')->name('/');
 // API
 
 // Users
-Route::get('/profile/{id}', 'UserController@show');
+Route::get('/profile/{id}', 'UserController@show')->name('profile');
 Route::get('/profile/balance/{id}', 'UserController@balance');
 
 //Others

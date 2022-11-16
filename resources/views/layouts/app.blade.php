@@ -28,6 +28,8 @@
   <body>
     <main>
     @if(Route::currentRouteName() === 'login')
+    @elseif (Route::currentRouteName() === 'profile')
+      @include('partials.profheader')
     @else
       @include('partials.header')
     @endif
