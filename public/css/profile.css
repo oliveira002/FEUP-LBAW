@@ -129,4 +129,75 @@ label {
 
 input:focus {
     border: 1px solid black;
+<<<<<<< HEAD
 }
+=======
+}
+
+#balance-container{
+    background-color: white;
+    margin-left: 5em;
+    height: 100%;
+    width: 100%;
+    min-width: 40vh;
+
+}
+
+.payment-selection input, label {
+
+    margin:5px;
+}
+
+ul.payment-selection{
+    padding-left: 0;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.payment-selection label { font-size: 15px; }
+
+#balance-container input.form-control{
+    font-weight: bold;
+    flex: 0.5 1 auto;
+}
+
+#balance-container input.form-control:focus{
+    border: 1px solid black;
+}
+
+#balance-container img{
+    object-fit: cover;
+    box-shadow: none;
+    margin: auto;
+
+}
+
+.myAuctions #item-info p{
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.myAuctions .row{
+    margin-bottom: 10px;
+
+}
+
+.myAuctions .col-9 .row{
+    margin-left: 15px;
+
+}
+
+.myAuctions .row img{
+    width: 140px;
+    height: 100px;
+    max-width: none;
+    object-fit: cover;
+}
+
+#user-auctions{
+    width: 66vh;
+}
+
+
+
+>>>>>>> c2518a31064e0f3bdda242d82739a5e3b8f1d092
