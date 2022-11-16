@@ -21,9 +21,26 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 0.5px 4px;
 }
 
+.conth {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .auth {
     margin-left: auto;
 }
+
+.acc {
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.acc p {
+    text-align: center;
+}
+
 
 .cont2 {
     width: 100%;

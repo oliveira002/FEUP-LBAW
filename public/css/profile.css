@@ -30,6 +30,9 @@ a {
     margin-right: 15%;
 }
 
+.lg {
+    margin-left: 0.5em;
+}
 .lg img{
     object-fit: cover;
     border-radius: 50%;
@@ -64,11 +67,23 @@ body {
     font-size: 20px;
 }
 
+
+.tmp{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0f0f0f;
+    margin-left: 15em;
+}
+
 .spec {
     background-color: white;
     margin-left: 5em;
     height: 100%;
-    width: 100%;
+}
+
+.outside {
+    width: 60%;
 }
 
 .save button {

@@ -68,7 +68,7 @@
                     </li>
                 </ul>
             </div>
-            <div>
+            <div class = "outside">
                 <div class="spec d-flex flex-column ps-3 pe-3">
                     <div class = "stuf ms-3 mt-5 mb-4"> 
                         <p class ="h2 fw-bold"> My Details </p>
@@ -89,7 +89,7 @@
                         </div>
                         <div class = "data ms-3 mb-4">
                             <label for="html" class = "fw-bold">Phone Number:</label><br>
-                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}}">
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->phonenumber}}">
                         </div>
                     </div>
                     <div>
