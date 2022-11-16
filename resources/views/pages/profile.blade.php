@@ -12,7 +12,6 @@
                     <div class="nome ms-2">
                         <p class = "fw-bold mb-1">Hi,</p>
                        <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
-
                     </div>
                 </div>
                 <ul class = "ps-0 mt-2">

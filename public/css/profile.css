@@ -45,6 +45,17 @@ a {
     background-color: white;
 }
 
+.cover ul li button:hover {
+    border-left: 4px solid #0f0f0f;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+
+.hi {
+    border-left: 4px solid #0f0f0f;
+}
+
+
 .cover ul li {
     margin-bottom: 0.5em;
 }
@@ -73,7 +84,7 @@ body {
     font-weight: bold;
     text-decoration: none;
     color: #0f0f0f;
-    margin-left: 15em;
+    margin-left: 10.7em;
 }
 
 .spec {

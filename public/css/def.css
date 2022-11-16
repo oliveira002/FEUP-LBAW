@@ -118,6 +118,7 @@ footer{
 .reg button {
     background: #efefef;
     color: #0f0f0f;
+    padding: 0.4em 0.4em;
     border-radius: 12px;
     width: 98px;
     font-weight: bold;
