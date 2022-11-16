@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@home')->name('/');
 
 // Users
 Route::get('/profile/{id}', 'UserController@show');
+Route::get('/profile/balance/{id}', 'UserController@balance');
 
 //Others
 Route::get('FAQs', 'FAQController@faqs')->name('FAQs');
