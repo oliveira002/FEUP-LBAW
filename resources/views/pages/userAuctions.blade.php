@@ -68,47 +68,47 @@
                     </li>
                 </ul>
             </div>
-            <div>
-                <div class="spec d-flex flex-column ps-3 pe-3" id="balance-container">
+            <div class="myAuctions">
+                <div class="spec d-flex flex-column ps-3 pe-3" id="user-auctions">
                     <div class = "stuf ms-3 mt-5 mb-4">
                         <div class = "stuf ms-3 mt-5 mb-4">
-                            <p class = "h1 fw-bold">My Wallet</p>
+                            <h1 class = "fw-bold">My Auctions</h1>
+                            <p class = "fw-bold">Here you can see all your auctions</p>
 
                         </div>
-                        <div class = "stuf ms-3 mt-5 mb-4">
-                            <p class ="h4 fw-bold"> Balance: </p>
-                            <p class ="h4 fw-bold">  {{$user->balance}}€ </p>
+                    <div class = "stuf ms-3 mt-5 mb-4">
+                        <hr class = "mt-3 mb-3">
+                        @foreach($auctions as $auct)
 
-                        </div>
-                        <div class = "stuf ms-3 mt-5 mb-4">
-                            <p class ="h4 fw-bold"> Add funds: </p>
-                            <form action="" method="POST">
-                                {{ csrf_field() }}
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control" placeholder="Amount" aria-label="Amount" aria-describedby="button-addon2" name="amount" min="0">
 
+                            <div class = "row">
+                                <div class = "col-3">
+                                    <img src= "/item.jpg" width="130" height="95">
                                 </div>
-                                <ul class="payment-selection">
-                                    <input type="radio" id="paypall" name="deposit-type" value="Paypall" checked>
-                                    <label for="paypall"><i class="fa-brands fa-paypal"></i> Paypall</label>
-                                    <input type="radio" id="mbway" name="deposit-type" value="Mbway">
-                                    <label for="mbway"><img src= "/mbway-seeklogo.com.svg" alt="Mbway" width="50" height="25"></label>
+                                <div class = "col-9">
+                                    <div class = "row">
+                                        <div class = "col-12" id="item-info">
+                                            <p class = "fw-bold fs-5">{{$auct->name}}</p>
+                                        </div>
+                                        <div class = "col-12 " id="item-info">
+                                            <p class = "fw-bold">Current Bid: {{$auct->currentprice}}€</p>
+                                        </div>
+                                        <div class = "col-12" id="item-info">
+                                            <p class = "fw-bold">Ends: {{$auct->enddate}}</p>
+                                        </div>
+                                        <div class = "col-12" id="item-info">
+                                            <button class = "fw-bold btn btn-secondary btn-sm">View Auction</button>
+                                        </div>
 
-                                    <input type="radio" id="bank-transfer" name="deposit-type" value="Bank Transfer">
-                                    <label for="bank-transfer"><i class="fa-solid fa-university"></i> Bank Transfer</label>
-                                    <input type="radio" id="crypto" name="deposit-type" value="Crypto">
-                                    <label for="crypto"><i class="fa-brands fa-bitcoin"></i> Crypto</label>
-                                    <input type="radio" id="credit-card" name="deposit-type" value="Credit Card">
-                                    <label for="credit-card"><i class="fa-brands fa-cc-visa"></i> Credit Card</label>
 
-                                </ul>
-                                <button class = "btn btn-primary"> Add Funds </button>
+                                    </div>
+                                </div>
 
 
-                            </form>
+                            </div>
+                            <hr class = "mt-3 mb-3">
 
-                        </div>
-
+                        @endforeach
 
 
 
@@ -118,4 +118,5 @@
             </div>
         </div>
     </div>
+
 @endsection

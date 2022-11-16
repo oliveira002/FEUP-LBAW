@@ -17,7 +17,10 @@ Route::get('/', 'HomeController@home')->name('/');
 
 // Users
 Route::get('/profile/{id}', 'UserController@show')->name('profile');
-Route::get('/profile/balance/{id}', 'UserController@balance');
+Route::get('/profile/balance/{id}', 'UserController@balance')->name('balance');
+Route::post('/profile/balance/{id}', 'UserController@balance');
+Route::get('/profile/myauctions/{id}', 'UserController@myAuctions')->name('myauctions');
+
 
 //Others
 Route::get('FAQs', 'FAQController@faqs')->name('FAQs');

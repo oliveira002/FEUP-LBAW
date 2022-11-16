@@ -167,7 +167,33 @@ ul.payment-selection{
     box-shadow: none;
     margin: auto;
 
+}
+
+.myAuctions #item-info p{
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.myAuctions .row{
+    margin-bottom: 10px;
 
 }
+
+.myAuctions .col-9 .row{
+    margin-left: 15px;
+
+}
+
+.myAuctions .row img{
+    width: 140px;
+    height: 100px;
+    max-width: none;
+    object-fit: cover;
+}
+
+#user-auctions{
+    width: 66vh;
+}
+
 
 

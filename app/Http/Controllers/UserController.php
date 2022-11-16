@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Auction;
 
 class UserController extends Controller
 {
@@ -50,6 +51,16 @@ class UserController extends Controller
         return view('pages.profile',['user' => $user]);
     }
 
+    public function myAuctions($id){
+        $user = User::find($id);
+        $auctions = $user->auctions;
+        $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
+
+
+        return view('pages.userAuctions',['user' => $user, 'auctions' => $myauctions]);
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -60,6 +71,21 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('pages.balance',['user' => $user]);
+    }
+
+    /**
+     * Add deposit to user balance
+     *
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deposit(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->balance = $user->balance + $request->deposit;
+        $user->save();
+        return redirect()->route('profile', ['id' => $user->id]);
     }
 
     /**
