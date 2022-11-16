@@ -89,8 +89,8 @@
 
                                 </div>
                                 <ul class="payment-selection">
-                                    <input type="radio" id="paypall" name="deposit-type" value="Paypall" checked>
-                                    <label for="paypall"><i class="fa-brands fa-paypal"></i> Paypall</label>
+                                    <input type="radio" id="paypal" name="deposit-type" value="Paypal" checked>
+                                    <label for="paypal"><i class="fa-brands fa-paypal"></i> Paypal</label>
                                     <input type="radio" id="mbway" name="deposit-type" value="Mbway">
                                     <label for="mbway"><img src= "/mbway-seeklogo.com.svg" alt="Mbway" width="50" height="25"></label>
 

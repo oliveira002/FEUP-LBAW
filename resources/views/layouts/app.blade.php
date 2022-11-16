@@ -28,7 +28,7 @@
   <body>
     <main>
     @if(Route::currentRouteName() === 'login')
-    @elseif (Route::currentRouteName() === 'profile')
+    @elseif (Route::currentRouteName() === 'profile' || Route::currentRouteName() === 'myauctions' || Route::currentRouteName() === 'balance')
       @include('partials.profheader')
     @else
       @include('partials.header')

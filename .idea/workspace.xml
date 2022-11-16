@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="balance">
-      <change afterPath="$PROJECT_DIR$/resources/views/pages/userAuctions.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/def.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/def.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/balance.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/balance.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/profheader.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/profheader.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +172,7 @@
       <workItem from="1668556668889" duration="5000" />
       <workItem from="1668557203820" duration="711000" />
       <workItem from="1668596681443" duration="14329000" />
+      <workItem from="1668627624649" duration="735000" />
     </task>
     <task id="LOCAL-00001" summary="login">
       <created>1668519127144</created>
