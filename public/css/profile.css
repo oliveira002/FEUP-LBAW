@@ -9,6 +9,10 @@ a {
     padding-left: 1em;
 }
 
+#aside ul li a button i{
+    font-size: 21px;
+    margin-right: 5px;
+}
 
 #aside {
     max-width: max-content;
