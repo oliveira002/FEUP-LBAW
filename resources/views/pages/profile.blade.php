@@ -2,81 +2,100 @@
 
 @section('content')
     <link href="{{asset('css/profile.css')}}" rel="stylesheet">
-    <div class = "pattern">
-        <div id="profile" class = "d-flex">
+    <div class = "cover">
+        <div class="prof d-flex">
             <div id="aside">
-                <ul class = "ps-0">
-                    <li><a href=""><button>  My profile </button> </a> </li>
-                    <hr class ="mt-1 linha">
-                    <li><a href=""><button>  Wallet </button> </a> </li>
-                    <hr class ="mt-0 linha">
-                    <li><a href=""><button>  Bids </button> </a> </li>
-                    <hr class ="mt-0 linha">
-                    <li><a href=""><button>  Auctions </button> </a> </li>
-                    <hr class ="mt-0 linha">
-                    <li><a href=""><button>  Favourites </button> </a> </li>
-                    <hr class ="mt-0 linha">
-                    <li><a href=""><button>  My profile </button> </a> </li>
-                    <hr class ="mt-0 linha">
-                    <li><a href=""><button>  Support </button> </a> </li>
-                </ul>
-            </div>
-            <div class = "outside d-flex">
-                <div class = "guy">
-                    <div class = "informations mt-2">
-                        <img src="../alo.jpg" width= "150" height= 150">
+                <div class="hi d-flex pt-4 pb-4">
+                    <div class="lg">
+                        <img src= "/alo.jpg" width="120" height="120">
                     </div>
-                    <div class = "usern">
-                        <p> {{$user->username}}</p>
-                    </div>
-                    <div class = "datau ms-1">
-                        <label for="html" class = "fw-bold">FIRST NAME*:</label><br>
-                        <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}} {{$user->lastname}}">
-                    </div>
-                    <div class = "datau ms-1">
-                        <label for="html" class = "fw-bold">EMAIL ADRESS*:</label><br>
-                        <input type="text" class="formData ps-1" name = "email" value = "{{$user->email}}">
-                    </div>
-                    <div class = "datau ms-1">
-                        <label for="html" class = "fw-bold">Phone Number:</label><br>
-                        <input type="text" class="formData ps-1" name = "firstName" value = "{{$user->phonenumber}}">
+                    <div class="nome ms-2">
+                        <p class = "fw-bold mb-1">Hi,</p>
+                       <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
+
                     </div>
                 </div>
-                <div class = "right">
-                    <div class = "address d-flex">
-                        <div>
-                            <div class = "data ms-1">
-                                <label for="html" class = "fw-bold">Street Name</label><br>
-                                <input type="text" class="formData ps-1" name = "name" value = "Rua Dr. Roberto Frias">
-                            </div>
-                            <div class = "data ms-1">
-                                <label for="html" class = "fw-bold">Apt, House no, etc</label><br>
-                                <input type="text" class="formData ps-1" name = "name" value = "Rua Dr. Roberto Frias">
-                            </div>
+                <ul class = "ps-0 mt-2">
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            <i class="fa-solid fa-user"></i>
+                            Account Overview
+                        </button> </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            <i class="fa-solid fa-memo-circle-info"></i>
+                            My Details
+                        </button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            My Wallet
+                        </button> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            My Bids</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold"
+                            >My Auctions</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold"
+                            >Favourites</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            Support</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            Logout</button> 
+                        </a> 
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div class="spec d-flex flex-column ps-3 pe-3">
+                    <div class = "stuf ms-3 mt-5 mb-4"> 
+                        <p class ="h2 fw-bold"> My Details </p>
+                        <p class ="h4"> Feel free to change any of your details right below! </p>
+                    </div>
+                    <div class = "forms">
+                        <div class = "data ms-3 mb-4">
+                            <label for="html" class = "fw-bold">First Name:</label><br>
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}}">
                         </div>
-                        <div>
-                            <div class = "data ms-1">
-                                <label for="html" class = "fw-bold">Country</label><br>
-                                <input type="text" class="formData ps-1" name = "name" value = "Portugal">
-                            </div>
-                            <div class = "data ms-1">
-                                <label for="html" class = "fw-bold">City</label><br>
-                                <input type="text" class="formData ps-1" name = "name" value = "Porto">
-                            </div>
+                        <div class = "data ms-3 mb-4">
+                            <label for="html" class = "fw-bold">Last Name:</label><br>
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->lastname}}">
+                        </div>
+                        <div class = "data ms-3 mb-4">
+                            <label for="html" class = "fw-bold">Email:</label><br>
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->email}}">
+                        </div>
+                        <div class = "data ms-3 mb-4">
+                            <label for="html" class = "fw-bold">Phone Number:</label><br>
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}}">
                         </div>
                     </div>
-                    <div class = "activity">
-                        <div class = "ms-2 mt-4">
-                            <p class = "fw-bold"> Recent Activity </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
-                            <p> Auction of product X sold @ 2000$ </p>
+                    <div>
+                        <div class = "botao ps-0 ms-3">
+                            <a class = "save text-center" href = "">
+                                <button>
+                                    Save Changes
+                                </button>
+                            </a>
                         </div>
+                    </div>
+                    <div>
                     </div>
                 </div>
             </div>

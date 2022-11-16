@@ -3,74 +3,101 @@ a {
     color: #0f0f0f;
 }
 
-#aside ul button {
-    width: 200px;
-    font-size: 19px;
+#aside ul li a button{
+    font-size: 21px;
+    text-align: left !important;
+    padding-left: 1em;
 }
 
-#aside ul button:hover {
-    border-bottom: 1px solid black;
+
+#aside {
+    max-width: max-content;
 }
 
 #aside ul button {
-    background-color: #efefef;
+    width: 340px;
+    font-size: 20px;
+    height: 50px;
 }
-.linha {
-    margin-bottom: 0em;
+
+.prof {
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
-img{
+
+.lg img{
     object-fit: cover;
     border-radius: 50%;
     margin: auto;
-    display: block;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
 }
 
-.outside {
+
+.cover ul li button {
+    background-color: white;
+}
+
+.cover ul li {
+    margin-bottom: 0.5em;
+}
+body {
+    background-color: #eeeeee;
+}
+
+.hi p {
+    font-size: 20px;
+}
+.hi {
+    width: 340px;
+    align-items: center;
+}
+.hi, .bar {
+    background-color: white;
+}
+
+.nome {
+    font-size: 20px;
+}
+
+.spec {
+    background-color: white;
     margin-left: 5em;
+    height: 100%;
+    width: 100%;
 }
 
-
-.outside p{
-    font-size: 19px;
+.save button {
+    background: #0f0f0f;
+    color: white;
+    padding: 0.4em 0.4em;
+    width: 256px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 64px;
 }
 
-.outside label {
-    font-size: 19px;
+.stuf {
+    font-size: 20px;
+}
+label {
+    font-size: 20px;
 }
 
-.outside input {
-    font-size: 16px;
-}
-.usern p {
-    text-align: center;
-}
-
-.datau input {
-    background-color: #efefef;
-    border:none;
+.formData {
+    font-size: 20px;
 }
 
 .data input {
-    background-color: #efefef;
-    border:none;
+    width: 256px;
+    height: 40px;
 }
 
-.outside {
-    margin: 0 auto;
+.save button{
+    font-size: 20px;
 }
 
-.guy {
-    margin-right: 14em;
-}
-.data input {
-    border: none;
-}
+input:focus {
+    border: 1px solid black;
 
-.right {
-    margin-left: auto;
-}
-
-.activity p {
-    margin-bottom: 0.2em;
 }
