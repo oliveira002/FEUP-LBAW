@@ -8,46 +8,12 @@
     box-shadow: rgba(0, 0, 0, 0.32) 0px 0.5px 4px;
 }
 
-p {
-    color: #0f0f0f;
-    font-size: 19px;
-}
-.details {
-    color: #666666;
+.caixa {
+    background-color: #f4f4f4;
+    width: 650px;
 }
 
-.bidbtn button {
-    background: #0f0f0f;
-    color: white;
-    font-size: 22px;
-    padding: 0.1em 0.1em;
-    width: 190px;
-    font-weight: bold;
-    cursor: pointer;
-    height: 64px;
-}
-
-.inpt {
-    width: 110px;
-    border: 0;
-    background-color: #eeeeee;
-    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
-    font-size: 19px;
-}
-
-.inpt:focus {
-    outline: 0;
-    border: 0;
-}
-
-.hist {
-    text-align: center;
-}
-
-.hist img {
-    margin: 0 auto;
-}
-
-.pp {
-    font-size: 80px;
+.caixa2 {
+    width: 650px;
+    background-color: #fff5e6;
 }

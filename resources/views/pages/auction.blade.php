@@ -24,47 +24,31 @@
                     <div class="foto">
                         <img src = "../item.jpg" width= "400" height = "510">
                     </div>
-                    <div class = "mt-2 hist">
-                        <p class = "h2 fw-bold mb-0"> Current Bid: </p>
-                        <p class = "pp fw-bold mb-0"> {{$auction->currentprice}}€</p>
-                    </div>
-                    <div class = "text-center">
-                        <p class = "h4 fw-bold mb-2"> View Bidding History: </p>
-                        <p> Bidder 4 - 28th September   1600€</p>
-                        <p> Bidder 3 - 28th September   1600€</p>
-                        <p> Bidder 2 - 28th September   1600€</p>
-                        <p> Bidder 1 - 28th September   1600€</p>
-
-                    </div>
                 </div>
-                <div class="infos ms-4">
-                    <p class = "details fw-bold h5 mb-0"> Product Details: </p>
-                    <div class="texto">
-                        <p class = "fw-bold">{{$auction->description}}</p>
+                <div class = "texto ms-5">
+                    <p class = "h3 fw-bold"> {{$auction->name}}</p>
+                    <p class = "h5 fw-bold"> Current Bid: {{$auction->currentprice}}€</p>
+                    <div class = "caixa">
+                        <div class ="ms-3">
+                            <p class = "h5 fw-bold pt-5 pb-2"> Time Left: </p>
+                            <div class = "d-flex pt-2 pb-2">
+                                <p class = "h4 me-2 fw-bold"> 01 </p>
+                                <p class = "h4 me-2"> Days </p>
+                                <p class = "h4 me-2 fw-bold"> 13 </p>
+                                <p class = "h4 me-2"> Hours </p>
+                                <p class = "h4 me-2 fw-bold"> 29 </p>
+                                <p class = "h4 me-2"> Minutes </p>
+                                <p class = "h4 me-2 fw-bold"> 05 </p>
+                                <p class = "h4 me-2"> Seconds </p>
+                            </div>
+                            <p class = "h5 fw-bold pt-2 pb-2"> Auction Ends: </p>
+                            <p class = "h5 me-2 fw-bold pb-5"> {{$auction->enddate}} </p>
+                        </div>
                     </div>
-                </div>
-                <div class="bids ms-4">
-                    <p class = "details fw-bold h5 mb-0"> Name: </p>
-                    <div>
-                        <p class = "fw-bold"> {{$auction->name}} </p>
-                    </div>
-                    <p class = "details fw-bold h5 mb-0"> Initial Price: </p>
-                    <div>
-                        <p class = "fw-bold">{{$auction->startingprice}}€</p>
-                    </div>
-                    <p class = "details fw-bold h5 mb-0"> Auction Ends In: </p>
-                    <div>
-                        <p class = "fw-bold">24h</p>
-                    </div>
-                    <p class = "details fw-bold h5"> Bid Price (€): </p>
-                    <div class="acts">
-                        <input type="number" class="inpt ps-1 fw-bold" name = "name" value = "{{$minBid}}" min= {{$minBid}}>
-                        <div class = "mt-4">
-                            <a class = "bidbtn text-center" href = "">
-                                <button class = "fw-bold">
-                                     Place Bid 
-                                </button>
-                            </a>
+                    <div class = "caixa2">
+                        <div class ="ms-3">
+                            <p class = "h5 fw-bold pt-2 pb"> This is a bidding fee auction. </p>
+                            <p class = "h5 fw-bold pb-2"> All participants must put a bid of minimum</p>
                         </div>
                     </div>
                 </div>
