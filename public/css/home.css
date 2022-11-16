@@ -10,6 +10,16 @@ a{
     color: inherit;
 }
 
+.itemcateg a {
+    text-decoration: none;
+    color: white;
+}
+
+.itemcateg a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
 .cover img {
     box-shadow: rgba(0, 0, 0, 0.22) 0px 0.5px 4px;
     border-radius: 10px;
@@ -19,6 +29,37 @@ a{
     border-radius: 10px;
 }
 
+
+.itemcateg {
+    width: 287px;
+    height: 190px;
+    box-shadow: rgba(0, 0, 0, 0.52) 0px 0.5px 4px;
+    background-image: url('../alo.jpg');
+    align-items: center;
+
+}
+
+.item{
+    width: 287px;
+    height: 190px;
+    box-shadow: rgba(0, 0, 0, 0.52) 0px 0.5px 4px;
+    background-image: url('../alo.jpg');
+    align-items: center;
+    margin-bottom: 5em;
+}
+
+
+.itemauc {
+    width: 287px;
+    height: 190px;
+    box-shadow: rgba(0, 0, 0, 0.52) 0px 0.5px 4px;
+    background-image: url('../alo.jpg');
+    align-items: center;
+    margin-bottom: 6em;
+}
+
+
+
 #price{
     font-size: 20px;
 }
@@ -27,3 +68,4 @@ a{
     font-size: 16px;
 }
 img { max-width: 100%;}
+
