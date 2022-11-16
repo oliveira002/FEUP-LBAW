@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="capped margins" />
+    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="FIXED!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,17 +109,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/oliveira/Desktop/lbaw2225-24067731012f40ce17a83fbbafd641f51b6e591f",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/oliveira/Desktop/lbaw2225-24067731012f40ce17a83fbbafd641f51b6e591f&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/pages" />
@@ -161,7 +161,8 @@
       <workItem from="1668435939203" duration="19019000" />
       <workItem from="1668463222214" duration="3504000" />
       <workItem from="1668511370567" duration="34890000" />
-      <workItem from="1668555485052" duration="968000" />
+      <workItem from="1668555485052" duration="1176000" />
+      <workItem from="1668556668889" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="login">
       <created>1668519127144</created>
