@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AuctionOwner;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
@@ -50,7 +51,8 @@ class AuctionController extends Controller
     {
         $auction = Auction::find($id);
         $owner = User::find($auction->idowner);
-        return view('pages.auction',['auction' => $auction, 'owner' => $owner]);
+        $category = Category::find($auction->idcategory);
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category]);
     }
 
     /**
