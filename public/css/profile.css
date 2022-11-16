@@ -4,7 +4,7 @@ a {
 }
 
 #aside ul li a button{
-    font-size: 24px;
+    font-size: 21px;
     text-align: left !important;
     padding-left: 1em;
 }
@@ -95,4 +95,9 @@ label {
 
 .save button{
     font-size: 20px;
+}
+
+input:focus {
+    border: 1px solid black;
+
 }

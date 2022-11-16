@@ -16,14 +16,50 @@
                     </div>
                 </div>
                 <ul class = "ps-0 mt-2">
-                    <li><a href=""><button class = "fw-bold">Account Overview</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">My Details</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">My Wallet</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">My Bids</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">My Auctions</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">Favourites</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">Support</button> </a> </li>
-                    <li><a href=""><button class = "fw-bold">Logout</button> </a> </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            <i class="fa-solid fa-user"></i>
+                            Account Overview
+                        </button> </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            <i class="fa-solid fa-memo-circle-info"></i>
+                            My Details
+                        </button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            My Wallet
+                        </button> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            My Bids</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold"
+                            >My Auctions</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold"
+                            >Favourites</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            Support</button> 
+                        </a> 
+                    </li>
+                    <li>
+                        <a href=""><button class = "fw-bold">
+                            Logout</button> 
+                        </a> 
+                    </li>
                 </ul>
             </div>
             <div>
@@ -35,19 +71,19 @@
                     <div class = "forms">
                         <div class = "data ms-3 mb-4">
                             <label for="html" class = "fw-bold">First Name:</label><br>
-                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}} {{$user->lastname}}">
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}}">
                         </div>
                         <div class = "data ms-3 mb-4">
                             <label for="html" class = "fw-bold">Last Name:</label><br>
-                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}} {{$user->lastname}}">
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->lastname}}">
                         </div>
                         <div class = "data ms-3 mb-4">
                             <label for="html" class = "fw-bold">Email:</label><br>
-                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}} {{$user->lastname}}">
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->email}}">
                         </div>
                         <div class = "data ms-3 mb-4">
                             <label for="html" class = "fw-bold">Phone Number:</label><br>
-                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}} {{$user->lastname}}">
+                            <input type="text" class="formData ps-1" name = "name" value = "{{$user->firstname}}">
                         </div>
                     </div>
                     <div>
