@@ -43,11 +43,25 @@ class SearchController extends Controller
         return json_encode($auctions);
     }
     public function homeCatgorySearch($category){
-        $auctions = Auction::where('idcategory', $category)->get();
-        return view('pages.search',['auctions' => $auctions]);
+        if (!isset($_GET['search_query']) || $_GET['search_query'] == ""){
+            $search_query = '';
+            $auctions = Auction::where('idcategory', $category)->get();
+        }        
+        else{
+            $search_query = $_GET['search_query'];
+            $auctions = Auction::ftsSearch($search_query)->where('idcategory',$category)->get();
+        }
+        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query]);
     }
     public function home() {
-        $auctions = Auction::all();
-        return view('pages.search',['auctions' => $auctions]);
+        if (!isset($_GET['search_query']) || $_GET['search_query'] == ""){
+            $search_query = '';
+            $auctions = Auction::all();
+        }        
+        else{
+            $search_query = $_GET['search_query'];
+            $auctions = Auction::ftsSearch($search_query)->get();
+        }
+        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query]);
     }
 }

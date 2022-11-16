@@ -16,5 +16,10 @@
             @endforeach
         </div>
     </div>
+    <hidden id="search_text" value="{{$text_to_default}}"></hidden>
+    <script>
+        let txt = document.getElementById("search_text");
+        let search = document.getElementById("searchbar").value = txt.attributes.value.value;
+    </script>
 
 @endsection
