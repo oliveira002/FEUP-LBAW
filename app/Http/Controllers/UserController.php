@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bid;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
+use Auth;
 
 class UserController extends Controller
 {
@@ -45,25 +47,61 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $user = User::find($id);
-        return view('pages.profile',['user' => $user]);
+        if(Auth::check()){
+            return view('pages.profile',['user' => Auth::user()]);
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
     }
 
-    public function details($id)
+    public function details()
     {
-        $user = User::find($id);
-        return view('pages.mydetails',['user' => $user]);
+        if(Auth::check()){
+            return view('pages.mydetails',['user' => Auth::user()]);
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
     }
 
-    public function myAuctions($id){
-        $user = User::find($id);
-        $auctions = $user->auctions;
+    public function myAuctions(){
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+        $id = $user->id;
         $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
-
-
         return view('pages.userAuctions',['user' => $user, 'auctions' => $myauctions]);
+
+    }
+
+    public function myBids(){
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+        $id = $user->id;
+        $mybids = Bid::selectRaw('*')->where('idclient','=',$id)->get();
+        return view('pages.user_bids',['user' => $user, 'bids' => $mybids]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function auctionById($id){
+        $auction = Auction::find($id);
+        $owner = User::find($auction->idclient);
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner]);
     }
 
 
@@ -73,10 +111,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function balance($id)
+    public function balance()
     {
-        $user = User::find($id);
-        return view('pages.balance',['user' => $user]);
+        if(Auth::check()){
+            return view('pages.balance',['user' => Auth::user()]);
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
     }
 
     /**
@@ -88,7 +130,12 @@ class UserController extends Controller
      */
     public function addFunds($id,Request $request)
     {
-        $user = User::find($id);
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
         $user->balance = $user->balance + $request->input('amount');
         $user->save();
         return redirect()->route('balance', ['id' => $id]);
