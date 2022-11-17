@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="bids">
       <change afterPath="$PROJECT_DIR$/resources/views/pages/user_bids.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -11,6 +12,9 @@
       <change beforePath="$PROJECT_DIR$/resources/views/pages/userAuctions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/userAuctions.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
+=======
+    <list default="true" id="213cfa6f-50fd-40cb-80a1-ee874b02b265" name="Changes" comment="home" />
+>>>>>>> 74229f1bf1041e11f6442a6ea5355417c3e407ff
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,8 +179,14 @@
       <workItem from="1668557203820" duration="711000" />
       <workItem from="1668596681443" duration="14329000" />
       <workItem from="1668627624649" duration="735000" />
+<<<<<<< HEAD
       <workItem from="1668631433404" duration="1273000" />
       <workItem from="1668633518190" duration="3973000" />
+=======
+      <workItem from="1668631433404" duration="7043000" />
+      <workItem from="1668638868537" duration="4333000" />
+      <workItem from="1668690743497" duration="5246000" />
+>>>>>>> 74229f1bf1041e11f6442a6ea5355417c3e407ff
     </task>
     <task id="LOCAL-00001" summary="login">
       <created>1668519127144</created>
@@ -206,6 +216,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668609225043</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00005" summary="bids">
       <created>1668637519923</created>
       <option name="number" value="00005" />
@@ -214,6 +225,37 @@
       <updated>1668637519923</updated>
     </task>
     <option name="localTasksCounter" value="6" />
+=======
+    <task id="LOCAL-00005" summary="home">
+      <created>1668643194897</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668643194897</updated>
+    </task>
+    <task id="LOCAL-00006" summary="home">
+      <created>1668692738945</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668692738945</updated>
+    </task>
+    <task id="LOCAL-00007" summary="home">
+      <created>1668693638319</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668693638319</updated>
+    </task>
+    <task id="LOCAL-00008" summary="home">
+      <created>1668695353545</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668695353545</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+>>>>>>> 74229f1bf1041e11f6442a6ea5355417c3e407ff
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +276,7 @@
     <MESSAGE value="login" />
     <MESSAGE value="capped margins" />
     <MESSAGE value="balance" />
+<<<<<<< HEAD
     <MESSAGE value="bids" />
     <option name="LAST_COMMIT_MESSAGE" value="bids" />
   </component>
@@ -246,5 +289,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+=======
+    <MESSAGE value="home" />
+    <option name="LAST_COMMIT_MESSAGE" value="home" />
+>>>>>>> 74229f1bf1041e11f6442a6ea5355417c3e407ff
   </component>
 </project>

@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap%27');
+
+
 /* Global */
+
 
 *{
     margin: 0;
@@ -14,6 +19,13 @@
 
 }
 
+#logo:hover {
+    color:inherit;
+}
+
+.option a:hover {
+    color: white;
+}
 .cont {
     width: 100%;
     margin-right: auto;
@@ -56,10 +68,7 @@ button {
     border: none;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+
 
 ul{
     list-style: none;

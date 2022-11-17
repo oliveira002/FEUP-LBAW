@@ -52,6 +52,12 @@ class UserController extends Controller
         return view('pages.profile',['user' => $user]);
     }
 
+    public function details($id)
+    {
+        $user = User::find($id);
+        return view('pages.mydetails',['user' => $user]);
+    }
+
     public function myAuctions($id){
         $user = User::find($id);
         $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
@@ -97,12 +103,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function deposit(Request $request)
+    public function addFunds($id,Request $request)
     {
-        $user = User::find($request->id);
-        $user->balance = $user->balance + $request->deposit;
+        $user = User::find($id);
+        $user->balance = $user->balance + $request->input('amount');
         $user->save();
-        return redirect()->route('profile', ['id' => $user->id]);
+        return redirect()->route('balance', ['id' => $id]);
     }
 
     /**

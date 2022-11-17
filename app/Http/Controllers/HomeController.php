@@ -15,7 +15,7 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        $categories = Category::selectRaw('name')
+        $categories = Category::selectRaw('*')
             ->get();
         return view('pages.home',['auctions' => $soonAuction, 'categories' => $categories]);
     }

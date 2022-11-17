@@ -17,8 +17,9 @@ Route::get('/', 'HomeController@home')->name('/');
 
 // Users
 Route::get('/profile/{id}', 'UserController@show')->name('profile');
+Route::get('/profile/mydetails/{id}', 'UserController@details')->name('details');
 Route::get('/profile/balance/{id}', 'UserController@balance')->name('balance');
-Route::post('/profile/balance/{id}', 'UserController@balance');
+Route::post('profile/balance/{id}', 'UserController@addFunds')->name('addFunds');
 Route::get('/profile/myauctions/{id}', 'UserController@myAuctions')->name('myauctions');
 Route::get('/profile/mybids/{id}', 'UserController@myBids')->name('mybids');
 
@@ -37,8 +38,8 @@ Route::post('register', 'Auth\RegisterController@register');
 // Search
 Route::get('/search/api', 'SearchController@getSearchResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
-Route::get('/auction/{id}','AuctionController@show');
+Route::get('/auction/{id}','AuctionController@show')->name('auction');
 
 Route::get('/search/api', 'SearchController@getSearchResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
-Route::get('/search/{category}', 'SearchController@homeCatgorySearch')->name('catgorySearch');
+Route::get('/search/{category}', 'SearchController@homeCatgorySearch')->name('categorySearch');

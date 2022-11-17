@@ -1,3 +1,11 @@
+.ola a {
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+.ola a:hover {
+    color: inherit;
+}
 .page {
     width: 70%;
     margin-left: 15%;
@@ -5,15 +13,72 @@
 }
 
 .foto img {
-    box-shadow: rgba(0, 0, 0, 0.32) 0px 0.5px 4px;
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 0.5px 4px;
 }
 
 .caixa {
     background-color: #f4f4f4;
     width: 650px;
+    box-shadow: rgba(129, 129, 129, 0.22) 0px 0.5px 4px;
 }
 
 .caixa2 {
     width: 650px;
     background-color: #fff5e6;
+    color: #956429;
+    box-shadow: rgba(149, 100, 41, 0.22) 0px 0.5px 4px;
+}
+
+#nr {
+    color: #c2bcbd;
+}
+
+#pp {
+    color: #f1b642;
+}
+
+#pl {
+    color: #956429;
+}
+
+#ini {
+    color: #f1b642;
+}
+
+.defl {
+    color: #818181;
+}
+
+.inpt {
+    width: 9em;
+    border: 0;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.32) 0px 0.5px 4px;
+    border-radius: 2px;
+}
+
+.inpt:focus{
+    box-shadow: rgba(0, 0, 0, 0.52) 0px 0.5px 4px;
+    outline: none;
+}
+.bidbtn button{
+    background-color: #f4f4f4;
+    width: 9em;
+    height: 2em;
+    box-shadow: rgba(129, 129, 129, 0.52) 0px 0.5px 4px;
+}
+
+.pop {
+    color: inherit;
+    text-decoration: none;
+}
+
+.pop:hover {
+    color: inherit;
+}
+
+.dtls {
+    display:block;
+    width:564px;
+    word-wrap:break-word;
 }
