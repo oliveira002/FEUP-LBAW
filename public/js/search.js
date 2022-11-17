@@ -32,14 +32,16 @@ function auctionUpdatedHandler() {
     for(const auc of item){
         const html = `
         <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
-            <div class = "item">
-                <img src= "alo.jpg" width="287" height="190">
-                <div class = "prop" >
-                    <p id = "price" class = "fw-bold mb-0 mt-1"> ${auc.currentprice}€ </p>
-                    <p id = "nome" class = "fw-bold mb-5"> ${auc.name} </p>
+                <div class = "itemauc">
+                    <a href="{{route('auction',['id' => ${auc.idauction}])}}"><img src= "../alo.jpg" width="287" height="190"></a>
+                    <a href="{{route('auction',['id' => ${auc.idauction}])}}">
+                        <div class = "prop" >
+                            <p id = "price" class = "fw-bold mb-0 mt-1"> ${auc.currentprice}€ </p>
+                            <p id = "nome" class = "fw-bold mb-5"> ${auc.name} </p>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
         `
         Fhtml = Fhtml.concat(html)
     }
