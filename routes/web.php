@@ -16,16 +16,17 @@ Route::get('/', 'HomeController@home')->name('/');
 // API
 
 // Users
-Route::get('/profile/{id}', 'UserController@show')->name('profile');
-Route::get('/profile/mydetails/{id}', 'UserController@details')->name('details');
-Route::get('/profile/balance/{id}', 'UserController@balance')->name('balance');
-Route::post('profile/balance/{id}', 'UserController@addFunds')->name('addFunds');
-Route::get('/profile/myauctions/{id}', 'UserController@myAuctions')->name('myauctions');
-Route::get('/profile/mybids/{id}', 'UserController@myBids')->name('mybids');
+Route::get('/profile', 'UserController@show')->name('profile');
+Route::get('/profile/mydetails', 'UserController@details')->name('details');
+Route::get('/profile/balance', 'UserController@balance')->name('balance');
+Route::post('profile/balance', 'UserController@addFunds')->name('addFunds');
+Route::get('/profile/myauctions', 'UserController@myAuctions')->name('myauctions');
+Route::get('/profile/mybids', 'UserController@myBids')->name('mybids');
 
 
 //Others
 Route::get('/FAQs', 'FAQController@faqs')->name('FAQs');
+Route::post('/auction/{id}','UserController@createBid')->name('addbid');
 
 // Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
