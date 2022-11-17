@@ -17,6 +17,20 @@
             </div>
         </div>
         <div class="auth">
+            @if(Auth::check())
+                <a class = "log" href = "{{route('profile')}}">
+                    <button>
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </button>
+                </a>
+                <a href ="{{route('logout')}}" class = "reg" >
+                    <button>
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span> Logout </span>
+                    </button>
+                </a>
+            @else
             <a class = "log" href = "{{route('login')}}">
                 <button>
                     <i class="fa-solid fa-user"></i>
@@ -29,6 +43,7 @@
                     <span> Register </span>
                 </button>
             </a>
+            @endif
         </div>
     </header>
 </div>

@@ -16,11 +16,11 @@ Route::get('/', 'HomeController@home')->name('/');
 // API
 
 // Users
-Route::get('/profile/{id}', 'UserController@show')->name('profile');
-Route::get('/profile/mydetails/{id}', 'UserController@details')->name('details');
-Route::get('/profile/balance/{id}', 'UserController@balance')->name('balance');
-Route::post('profile/balance/{id}', 'UserController@addFunds')->name('addFunds');
-Route::get('/profile/myauctions/{id}', 'UserController@myAuctions')->name('myauctions');
+Route::get('/profile', 'UserController@show')->name('profile');
+Route::get('/profile/mydetails', 'UserController@details')->name('details');
+Route::get('/profile/balance', 'UserController@balance')->name('balance');
+Route::post('profile/balance', 'UserController@addFunds')->name('addFunds');
+Route::get('/profile/myauctions', 'UserController@myAuctions')->name('myauctions');
 
 
 //Others
@@ -28,6 +28,7 @@ Route::get('FAQs', 'FAQController@faqs')->name('FAQs');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('login', 'Auth\LoginController@authenticate');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');

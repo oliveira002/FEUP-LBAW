@@ -53,15 +53,22 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            echo "success";
-            //return redirect()->intended(route('home'));
+            return redirect()->intended(route('profile'));
         }
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             echo "success admin";
-            //return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended(route('profile'));
         }
-        echo "failed";
-        exit();
+        return redirect()->intended(route('login'));
+    }
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
