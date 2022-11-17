@@ -199,5 +199,31 @@ ul.payment-selection{
 }
 
 
+.out1 #aside ul li:nth-child(1) button{
+    border-left: 4px solid #f1b642;;
+}
 
->>>>>>> c2518a31064e0f3bdda242d82739a5e3b8f1d092
+.out2 #aside ul li:nth-child(2) button{
+    border-left: 4px solid #f1b642;;
+}
+
+.out3 #aside ul li:nth-child(3) button{
+    border-left: 4px solid #f1b642;;
+}
+
+.out4 #aside ul li:nth-child(4) button{
+    border-left: 4px solid #f1b642;;
+}
+
+.out5 #aside ul li:nth-child(5) button{
+    border-left: 4px solid #f1b642;;
+}
+
+.out6 #aside ul li:nth-child(6) button{
+    border-left: 4px solid #f1b642;;
+}
+
+.out7 #aside ul li:nth-child(7) button{
+    border-left: 4px solid #f1b642;;
+}
+

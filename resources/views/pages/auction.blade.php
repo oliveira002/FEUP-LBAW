@@ -58,7 +58,7 @@
                     </div>
                     <div>
                         <p class = "h5 fw-bold pt-3 defl"> Your Bid: </p>
-                        <input type="text"  class="inpt p-1" value="Amount"/>
+                        <input type="float" class= "inpt p-1" placeholder="{{$minBid}}"  name="amount" min= "{{$minBid}}">
                         <div class = "mt-3">
                             <a class = "bidbtn text-center" href = "">
                                 <button class = "fw-bold">
