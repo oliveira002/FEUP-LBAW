@@ -9,8 +9,6 @@
 
 @section('content')
 
-
-
     <section class="loginpage" id = "loginpage" >
         <div class="container h-100">
             <div class="row d-flex align-items-center justify-content-center h-95 py-5">
@@ -27,9 +25,8 @@
 
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
+
                         <!-- Email input -->
-
-
                         <div class="form-outline mb-4">
                             <input class="form-control form-control-lg" id="email" type="email" name="email"
                                    value="{{ old('email') }}" required autofocus />
@@ -42,7 +39,6 @@
                             @endif
                         </div>
 
-
                         <!-- Password input -->
                         <div class="form-outline mb-4">
                             <input type="password" name = "password" id="password" class="form-control form-control-lg" required />
@@ -53,8 +49,6 @@
                         </span>
                             @endif
                         </div>
-
-
 
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <!-- Checkbox -->
@@ -84,10 +78,8 @@
         <div class="container h-100">
             <div class="row d-flex align-items-center justify-content-center h-95 py-5">
                 <div class="col-md-8 col-lg-7 col-xl-6">
-
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                          class="img-fluid" alt="Phone image">
-
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <div class="logoname">
@@ -101,23 +93,18 @@
 
                         <!-- Name input -->
                         <div class="form-outline mb-4">
-                            <input type="text" name = "name" id="name" class="form-control form-control-lg" value="{{ old('name') }}" required autofocus />
+                            <input type="text" name="username" id="name" class="form-control form-control-lg" value="{{ old('name') }}" required autofocus />
                             <label class="form-label" for="name">Username</label>
-                            @if ($errors->has('name'))
+                            @if ($errors->has('username'))
                                 <span class="error">
-                            {{ $errors->first('name') }}
+                            {{ $errors->first('username') }}
                         </span>
                             @endif
                         </div>
 
                         <!-- Email input -->
-
-
                         <div class="form-outline mb-4">
-
-
-
-                            <input class="form-control form-control-lg" id="email" type="email" name="email"
+                         <input class="form-control form-control-lg" id="email" type="email" name="email"
                                    value="{{ old('email') }}" required autofocus />
                             <label class="form-label" for="form1Example13">Email address</label>
 
@@ -130,43 +117,22 @@
 
                         <!-- First Name input -->
                         <div class="form-outline mb-4">
-                            <input type="text" name = "first_name" id="first_name" class="form-control form-control-lg" value="{{ old('first_name') }}" required autofocus />
+                            <input type="text" name = "firstname" id="first_name" class="form-control form-control-lg" value="{{ old('first_name') }}" required autofocus />
                             <label for="first_name" class="form-label">First Name</label>
-                            @if ($errors->has('first_name'))
+                            @if ($errors->has('firstname'))
                                 <span class="error">
-                            {{ $errors->first('first_name') }}
+                            {{ $errors->first('firstname') }}
                         </span>
                             @endif
                         </div>
 
                         <!-- Last Name input -->
                         <div class="form-outline mb-4">
-                            <input type="text" name = "last_name" id="last_name" class="form-control form-control-lg" value="{{ old('last_name') }}" required autofocus />
+                            <input type="text" name = "lastname" id="last_name" class="form-control form-control-lg" value="{{ old('last_name') }}" required autofocus />
                             <label for="last_name" class="form-label">Last Name</label>
-                            @if ($errors->has('last_name'))
+                            @if ($errors->has('lastname'))
                                 <span class="error">
-                            {{ $errors->first('last_name') }}
-                        </span>
-                            @endif
-                        </div>
-
-                        <!-- Address input -->
-                        <div class="form-outline mb-4">
-                            <input type="text" name = "address" id="address" class="form-control form-control-lg" value="{{ old('address') }}" required autofocus />
-                            <label for="address" class="form-label" >Address</label>
-                            @if ($errors->has('address'))
-                                <span class="error">
-                            {{ $errors->first('address') }}
-                        </span>
-                            @endif
-                        </div>
-                        <!-- Phone number input -->
-                        <div class="form-outline mb-4">
-                            <input type="text" name = "phone_number" id="phone_number" class="form-control form-control-lg" value="{{ old('phone_number') }}" required autofocus />
-                            <label class="form-label" for="phone_number">Phone Number</label>
-                            @if ($errors->has('phone_number'))
-                                <span class="error">
-                            {{ $errors->first('phone_number') }}
+                            {{ $errors->first('lastname') }}
                         </span>
                             @endif
                         </div>
@@ -190,24 +156,14 @@
                                 <span class="error">
                             {{ $errors->first('password_confirmation') }}
                         </span>
-
                             @endif
                         </div>
-
-
-
                         <button type="submit" class="btn btn-primary btn-lg btn-block">
                             Register
                         </button>
                         <a id="login-link"  title="hide register form"
                            href="#" onclick="hideDiv();return false;">Login</a>
-
-
-
-
-
                     </form>
-
                 </div>
             </div>
         </div>
