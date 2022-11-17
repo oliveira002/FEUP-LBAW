@@ -74,7 +74,7 @@ class UserController extends Controller
         else{
             return redirect()->intended(route('login'));
         }
-        $id = $user->id;
+        $id = $user->idclient;
         $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
         return view('pages.userAuctions',['user' => $user, 'auctions' => $myauctions]);
 
@@ -87,7 +87,7 @@ class UserController extends Controller
         else{
             return redirect()->intended(route('login'));
         }
-        $id = $user->id;
+        $id = $user->idclient;
         $mybids = Bid::selectRaw('*')->where('idclient','=',$id)->get();
         return view('pages.user_bids',['user' => $user, 'bids' => $mybids]);
     }
@@ -128,7 +128,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addFunds($id,Request $request)
+    public function addFunds(Request $request)
     {
         if(Auth::check()){
             $user = Auth::user();
@@ -138,7 +138,7 @@ class UserController extends Controller
         }
         $user->balance = $user->balance + $request->input('amount');
         $user->save();
-        return redirect()->route('balance', ['id' => $id]);
+        return redirect()->route('balance', ['id' => $user->idclient]);
     }
 
     /**
