@@ -3,9 +3,9 @@
 @section('content')
     <link href="{{asset('css/profile.css')}}" rel="stylesheet">
     <div class = "cover">
-        <div class="prof d-flex">
+        <div class="prof d-flex out4">
             @include('partials.sidebar')
-            <div class="myAuctions">
+            <div class="myBids">
                 <div class="spec d-flex flex-column ps-3 pe-3" id="user-auctions">
                     <div class = "stuf ms-3 mt-5 mb-4">
                         <div class = "stuf ms-3 mt-5 mb-4">

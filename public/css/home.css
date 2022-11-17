@@ -34,7 +34,7 @@ a{
     width: 287px;
     height: 190px;
     box-shadow: rgba(0, 0, 0, 0.52) 0px 0.5px 4px;
-    background-image: url('../alo.jpg');
+
     align-items: center;
     transition: transform .2s;
 }
