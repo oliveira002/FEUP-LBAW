@@ -27,6 +27,7 @@ Route::get('/profile/mybids', 'UserController@myBids')->name('mybids');
 
 //Others
 Route::get('FAQs', 'FAQController@faqs')->name('FAQs');
+Route::post('/auction/{id}','UserController@createBid')->name('addbid');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

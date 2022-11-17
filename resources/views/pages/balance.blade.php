@@ -23,7 +23,6 @@
                                 {{ csrf_field() }}
                                 <div class="input-group mb-3">
                                     <input type="float" class="form-control" placeholder="Amount" aria-label="Amount" aria-describedby="button-addon2" name="amount" min="0">
-
                                 </div>
                                 <ul class="payment-selection">
                                     <input type="radio" id="paypal" name="deposit-type" value="Paypal" checked>
@@ -40,8 +39,6 @@
 
                                 </ul>
                                 <button class = "btn btn-primary"> Add Funds </button>
-
-
                             </form>
 
                         </div>

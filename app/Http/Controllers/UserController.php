@@ -121,6 +121,33 @@ class UserController extends Controller
         }
     }
 
+    public function createBid(Request $request)
+    {
+        $amount = $request->input('amount');
+
+        $idauction = $request->route('id');
+
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+        $lastId = Bid::selectRaw('idbid')->orderBy('idbid','desc')->first()->idbid;
+
+        $bid = new Bid();
+        $bid->idbid = $lastId + 1;
+        $bid->isvalid = true;
+        $bid->price = $amount;
+        $bid->idauction = $idauction;
+        $bid->idclient = $user->idclient;
+        $bid->biddate = now();
+        $bid->save();
+
+        return redirect()->route('auction', ['id' => $idauction]);
+    }
+
     /**
      * Add deposit to user balance
      *
