@@ -58,13 +58,26 @@
                     </div>
                     <div>
                         <p class = "h5 fw-bold pt-3 defl"> Your Bid: </p>
-                        <input type="float" class= "inpt p-1" placeholder="{{$minBid}}"  name="amount" min= "{{$minBid}}">
+                        <input type="float" class= "inpt p-1" placeholder="{{$minBid}}" value = "" name="amount" min= "{{$minBid}}">
                         <div class = "mt-3">
-                            <a class = "bidbtn text-center" href = "">
-                                <button class = "fw-bold">
+                            <a class = "bidbtn text-center">
+                                <button class="open-modal fw-bold" data-target="modal-1">
                                     Bid Now
                                 </button>
                             </a>
+                            <div id="modal-1" class="modal-window">
+                                <div class = "d-flex">
+                                    <h2>Bid Confirmation</h2>
+                                    <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                                </div>
+                                <p class = "rfix">This is a confirmation message to make sure you really want to bid on the auction <span class= "fw-bold h5">{{$auction->name}}</span> </p>
+                                <p class = "rfix">If you do not wish to bid, just press close otherwise press the confirm button</p>
+                                <div class = "d-flex">
+                                    <button class="modal-btn modal-hide cl">Close</button>
+                                    <button class="modal-btn modal-hide cf ms-3">Confirm</button>
+                                    </div>
+                            </div>
+                            <div class="modal-fader"></div>
                         </div>
                         <div class = "fav d-flex mt-4">
                             <div class = "me-4">
@@ -89,7 +102,7 @@
                             <span class = "fw-bold"> Category: </span>
                             <span class = "ms-2"> {{$category->name}} </span>
                         </div>
-                        <div class = "d-flex">
+                        <div class = "d-flex but">
                             <div>
                                 <span class = "fw-bold"> Description: </span>
                             </div>
