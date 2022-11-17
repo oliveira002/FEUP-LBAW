@@ -69,16 +69,13 @@
                         <p class = "h5 fw-bold pt-3 defl"> Your Bid: </p>
                         <form id="myform" method="post" action="{{route('addbid',['id' => $auction->idauction])}}">
                             {{ csrf_field() }}
-                            <input type="float" class= "inpt p-1" placeholder="{{$minBid}}" value = "" name="amount" min= "{{$minBid}}">
+                            <input type="float" class= "inpt p-1" placeholder="{{$minBid}}" value = "{{$minBid}}" name="amount" min= "{{$minBid}}">
                         </form>
                         <div class = "mt-3">
                             <a class = "bidbtn text-center">
                                 <button class="open-modal fw-bold" data-target="modal-1">
                                     Bid Now
                                 </button>
-
-
-
                             </a>
                             <div id="modal-1" class="modal-window">
                                 <div class = "d-flex">
