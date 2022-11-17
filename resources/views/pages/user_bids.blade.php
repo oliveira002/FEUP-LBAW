@@ -16,7 +16,7 @@
                             @foreach($bids as $bid)
 
                                 <?php
-                                    $auction = \App\Models\Auction::find($bid->idbid);
+                                    $auction = \App\Models\Auction::find($bid->idauction);
                                     ?>
                                 <div class = "row">
                                     <div class = "col-3">
@@ -25,7 +25,6 @@
                                     <div class = "col-9">
                                         <div class = "row">
                                             <div class = "col-12" id="item-info">
-
                                                 <p class = "fw-bold fs-5">{{$auction->name}}</p>
                                             </div>
                                             <div class = "col-12" id="item-info">
@@ -37,9 +36,6 @@
                                             <div class = "col-12" id="item-info">
                                                 <button class = "fw-lighter btn btn-secondary btn-sm">Bid</button>
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>

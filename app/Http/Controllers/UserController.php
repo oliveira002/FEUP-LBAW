@@ -125,7 +125,9 @@ class UserController extends Controller
     {
         $amount = $request->input('amount');
 
-        $idauction = $request->route('id');
+
+        $idauction = (int) $request->route('id');
+        var_dump($idauction);
 
         if(Auth::check()){
             $user = Auth::user();
