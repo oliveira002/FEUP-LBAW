@@ -7,7 +7,7 @@
             @include('partials.sidebar')
             <div class="myAuctions">
                 <div class="spec d-flex flex-column ps-3 pe-3" id="user-auctions">
-                    <div class = "stuf ms-3 mt-5 mb-4">
+                    <div class = "stuf ms-3 mt-4 mb-4">
                         <div class = "stuf ms-3 mt-5 mb-4">
                             <h1 class = "fw-bold">My Auctions</h1>
                             <p class = "fw-bold">Here you can see all your auctions</p>
@@ -34,9 +34,8 @@
                                             <p class = "fw-bold">Ends: {{$auct->enddate}}</p>
                                         </div>
                                         <div class = "col-12" id="item-info">
-                                            <button class = "fw-bold btn btn-secondary btn-sm">View Auction</button>
+                                           <a href = "{{route('auction',['id' => $auct->idauction])}}"><button class = "fw-bold btn btn-secondary btn-sm">View Auction</button></a>
                                         </div>
-
 
                                     </div>
                                 </div>

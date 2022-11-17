@@ -7,7 +7,7 @@
             @include('partials.sidebar')
             <div>
                 <div class="spec d-flex flex-column ps-3 pe-3" id="balance-container">
-                    <div class = "stuf ms-3 mt-5 mb-4">
+                    <div class = "stuf ms-3 mt-4 mb-4">
                         <div class = "stuf ms-3 mt-5 mb-4">
                             <p class = "h1 fw-bold">My Wallet</p>
 
@@ -45,11 +45,6 @@
                             </form>
 
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
