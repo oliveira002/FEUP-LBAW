@@ -80,12 +80,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function deposit(Request $request)
+    public function addFunds($id,Request $request)
     {
-        $user = User::find($request->id);
-        $user->balance = $user->balance + $request->deposit;
+        $user = User::find($id);
+        $user->balance = $user->balance + $request->input('amount');
         $user->save();
-        return redirect()->route('profile', ['id' => $user->id]);
+        return redirect()->route('balance', ['id' => $id]);
     }
 
     /**

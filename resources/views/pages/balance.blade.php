@@ -82,10 +82,10 @@
                         </div>
                         <div class = "stuf ms-3 mt-5 mb-4">
                             <p class ="h4 fw-bold"> Add funds: </p>
-                            <form action="" method="POST">
+                            <form action="{{route('addFunds',['id' => $user->idclient])}}" method="post">
                                 {{ csrf_field() }}
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control" placeholder="Amount" aria-label="Amount" aria-describedby="button-addon2" name="amount" min="0">
+                                    <input type="float" class="form-control" placeholder="Amount" aria-label="Amount" aria-describedby="button-addon2" name="amount" min="0">
 
                                 </div>
                                 <ul class="payment-selection">
