@@ -33,8 +33,8 @@ function auctionUpdatedHandler() {
         const html = `
         <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                 <div class = "itemauc">
-                    <a href="{{route('auction',['id' => ${auc.idauction}])}}"><img src= "../alo.jpg" width="287" height="190"></a>
-                    <a href="{{route('auction',['id' => ${auc.idauction}])}}">
+                    <a href="${window.location.origin + '/auction/' + auc.idauction}"><img src= "../alo.jpg" width="287" height="190"></a>
+                    <a href="${window.location.origin + '/auction/' + auc.idauction}">
                         <div class = "prop" >
                             <p id = "price" class = "fw-bold mb-0 mt-1"> ${auc.currentprice}€ </p>
                             <p id = "nome" class = "fw-bold mb-5"> ${auc.name} </p>
