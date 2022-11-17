@@ -143,7 +143,17 @@ class UserController extends Controller
         $bid->idauction = $idauction;
         $bid->idclient = $user->idclient;
         $bid->biddate = now();
-        $bid->save();
+        if(!is_numeric($amount)){
+            return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
+        }
+        try{
+            $bid->save();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withErrors(['error' => 'Your bid cannot be lower than the current price!']);
+        }
+
+
 
         return redirect()->route('auction', ['id' => $idauction]);
     }

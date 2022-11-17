@@ -56,6 +56,15 @@
                             </div>
                         </div>
                     </div>
+                        @if($errors->has('error'))
+                            <div class="alert alert-danger mb-0 mt-4">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     <div>
                         <p class = "h5 fw-bold pt-3 defl"> Your Bid: </p>
                         <form id="myform" method="post" action="{{route('addbid',['id' => $auction->idauction])}}">
@@ -67,6 +76,9 @@
                                 <button class="open-modal fw-bold" data-target="modal-1">
                                     Bid Now
                                 </button>
+
+
+
                             </a>
                             <div id="modal-1" class="modal-window">
                                 <div class = "d-flex">

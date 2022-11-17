@@ -151,3 +151,10 @@
     margin-bottom: 1.4em;
     margin-left: auto;
 }
+
+
+.alert ul{
+
+    margin-bottom: 0;
+    text-align: center;
+}
