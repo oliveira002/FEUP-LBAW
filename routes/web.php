@@ -22,6 +22,8 @@ Route::get('/profile/balance', 'UserController@balance')->name('balance');
 Route::post('profile/balance', 'UserController@addFunds')->name('addFunds');
 Route::get('/profile/myauctions', 'UserController@myAuctions')->name('myauctions');
 
+Route::get('/profile/mybids/{id}', 'UserController@myBids')->name('mybids');
+
 
 //Others
 Route::get('FAQs', 'FAQController@faqs')->name('FAQs');

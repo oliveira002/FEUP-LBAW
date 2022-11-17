@@ -12,8 +12,7 @@
                             <h1 class = "fw-bold">My Auctions</h1>
                             <p class = "fw-bold">Here you can see all your auctions</p>
 
-                        </div>
-                    <div class = "stuf ms-3 mt-5 mb-4">
+
                         <hr class = "mt-3 mb-3">
                         @foreach($auctions as $auct)
 
@@ -34,6 +33,7 @@
                                             <p class = "fw-bold">Ends: {{$auct->enddate}}</p>
                                         </div>
                                         <div class = "col-12" id="item-info">
+
                                            <a href = "{{route('auction',['id' => $auct->idauction])}}"><button class = "fw-bold btn btn-secondary btn-sm">View Auction</button></a>
                                         </div>
 
