@@ -51,6 +51,12 @@ class UserController extends Controller
         return view('pages.profile',['user' => $user]);
     }
 
+    public function details($id)
+    {
+        $user = User::find($id);
+        return view('pages.mydetails',['user' => $user]);
+    }
+
     public function myAuctions($id){
         $user = User::find($id);
         $auctions = $user->auctions;

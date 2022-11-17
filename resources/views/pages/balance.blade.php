@@ -2,7 +2,7 @@
 
 @section('content')
     <link href="{{asset('css/profile.css')}}" rel="stylesheet">
-    <div class = "cover">
+    <div class = "cover out3">
         <div class="prof d-flex">
             <div id="aside">
                 <div class="hi d-flex pt-4 pb-4">

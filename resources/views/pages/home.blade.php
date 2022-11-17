@@ -12,7 +12,7 @@
                         @foreach($chunk as $add)
                             <div class="d-flex flex-column p-3">
                                 <div class = "itemcateg d-flex justify-content-center">
-                                    <a href = "" class = "h4 fw-bold"> {{$add->name}}</a>
+                                    <a href = "{{route('categorySearch',['category' => $add->idcategory])}}" class = "h4 fw-bold"> {{$add->name}}</a>
                                 </div>
                             </div>
                         @endforeach
