@@ -80,13 +80,14 @@ class UserController extends Controller
 
     }
 
-    public function myBids($id){
+    public function myBids(){
         if(Auth::check()){
             $user = Auth::user();
         }
         else{
             return redirect()->intended(route('login'));
         }
+        $id = $user->id;
         $mybids = Bid::selectRaw('*')->where('idclient','=',$id)->get();
         return view('pages.user_bids',['user' => $user, 'bids' => $mybids]);
     }

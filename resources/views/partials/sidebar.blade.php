@@ -30,7 +30,7 @@
             </a>
         </li>
         <li>
-            <a href=""><button class = "fw-bold">
+            <a href="{{route('mybids')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-coins"></i>
                     My Bids</button>
             </a>
