@@ -11,7 +11,8 @@
                     <div class="d-flex flex-row flex-wrap justify-content-center ">
                         @foreach($chunk as $add)
                             <div class="d-flex flex-column p-3">
-                                <div class = "itemcateg d-flex justify-content-center">
+                                <div class = "itemcateg d-flex justify-content-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url('../images/{{$add->idcategory}}.jpg');">
+
                                     <a href = "{{route('categorySearch',['category' => $add->idcategory])}}" class = "h4 fw-bold"> {{$add->name}}</a>
                                 </div>
                             </div>
