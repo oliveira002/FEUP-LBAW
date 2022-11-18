@@ -12,25 +12,25 @@
                         <p class ="h4"> Feel free to change any of your details right below! </p>
                     </div>
                     <div class = "forms">
-                        <div class = "data ms-3 mb-4">
-                            <label for="html" class = "fw-bold ms-0">First Name:</label><br>
-                            <input type="text" class="form-control form-control-lg" name = "name" value = "{{$user->firstname}}">
+                        <div class = "input-box  ms-3 mb-3">
+                            <label for="html" class = "fw-bold ms-0">First Name:</label>
+                            <input type="text" class="" name = "name" value = "{{$user->firstname}}">
                         </div>
-                        <div class = "data ms-3 mb-4">
-                            <label for="html" class = "fw-bold ms-0">Last Name:</label><br>
-                            <input type="text" class="form-control form-control-lg" name = "name" value = "{{$user->lastname}}">
+                        <div class = "input-box ms-3 mb-3">
+                            <label for="html" class = "fw-bold ms-0">Last Name:</label>
+                            <input type="text" class="" name = "name" value = "{{$user->lastname}}">
                         </div>
-                        <div class = "data ms-3 mb-4">
-                            <label for="html" class = "fw-bold ms-0">Email:</label><br>
-                            <input type="text" class="form-control form-control-lg" name = "name" value = "{{$user->email}}">
+                        <div class = "input-box  ms-3 mb-3">
+                            <label for="html" class = "fw-bold ms-0">Email:</label>
+                            <input type="text" class="" name = "name" value = "{{$user->email}}">
                         </div>
-                        <div class = "data ms-3 mb-4">
-                            <label for="html" class = "fw-bold ms-0">Username:</label><br>
-                            <input type="text" class="form-control form-control-lg" name = "name" value = "{{$user->username}}">
+                        <div class = "input-box  ms-3 mb-3">
+                            <label for="html" class = "fw-bold ms-0">Username:</label>
+                            <input type="text" class="" name = "name" value = "{{$user->username}}">
                         </div>
-                        <div class = "data ms-3 mb-4">
-                            <label for="html" class = "fw-bold ms-0">Phone Number:</label><br>
-                            <input type="text" class="form-control form-control-lg" name = "name" value = "{{$user->phonenumber}}">
+                        <div class = "input-box  ms-3 mb-4">
+                            <label for="html" class = "fw-bold ms-0">Phone Number:</label>
+                            <input type="text" class="" name = "name" value = "{{$user->phonenumber}}">
                         </div>
                     </div>
                     <div>

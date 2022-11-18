@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <link href="{{asset('css/adminusers.css')}}" rel="stylesheet">
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <div class = "cover out2">
         <div class="prof d-flex">
             @include('partials.adminside')
@@ -45,7 +45,7 @@
                                         </td>
                                     </tr>
                                 </div>
-                                <div id="{{($user->idclient  * 2)-1}}" class="modal-window">
+                                <div id="modal-{{($user->idclient  * 2)-1}}" class="modal-window">
                                     <div class = "d-flex">
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>

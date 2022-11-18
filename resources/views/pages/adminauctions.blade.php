@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <link href="{{asset('css/adminusers.css')}}" rel="stylesheet">
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <div class = "cover out3">
         <div class="prof d-flex">
             @include('partials.adminside')

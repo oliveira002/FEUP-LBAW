@@ -67,7 +67,10 @@ class AuctionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $auction = Auction::find($id);
+        $owner = User::find($auction->idowner);
+        $category = Category::find($auction->idcategory);
+        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category]);
     }
 
     /**
