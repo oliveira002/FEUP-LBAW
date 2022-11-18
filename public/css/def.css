@@ -92,7 +92,6 @@ header {
 }
 
 body{
-    overflow-x: hidden;
     min-height: 90vh;
     position: relative;
 }
