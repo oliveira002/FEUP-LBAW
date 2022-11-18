@@ -31,6 +31,8 @@ Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
 //Others
 Route::get('/FAQs', 'FAQController@faqs')->name('FAQs');
 Route::post('/auction/{id}','UserController@createBid')->name('addbid');
+Route::delete('/auction/{id}', 'AuctionController@destroy')->name('deleteAuction');
+
 
 // Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

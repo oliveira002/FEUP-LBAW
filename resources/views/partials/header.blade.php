@@ -26,7 +26,7 @@
                 </a>
                 <a href ="{{route('logout')}}" class = "reg" >
                     <button>
-                        <i class="fa-solid fa-user-plus"></i>
+                        <i class="fa-solid fa-user-minus"></i>
                         <span> Logout </span>
                     </button>
                 </a>

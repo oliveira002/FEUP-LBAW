@@ -29,6 +29,26 @@
                 <div class = "texto ms-5">
                     <div class = "ola d-flex">
                         <p class = "h3 fw-bold me-3"> {{$auction->name}}</p>
+                        @if(Auth::id()==$auction->idowner)
+                            <div id="delete-auc"><button class="open-modal" data-target="modal-2"><i class="fa-solid fa-trash"></i><u id="delete-auc-text">Delete auction</u></button></div>
+                            <div id="modal-2" class="modal-window">
+                                <div class = "d-flex">
+                                    <h2>Deletion Confirmation</h2>
+                                    <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                                </div>
+                                <p class = "rfix">This is a confirmation message to make sure you really want to delete this auction: <span class= "fw-bold h5">{{$auction->name}}</span> </p>
+                                <p class = "rfix">If you do not wish to delete, just press close, otherwise, press the confirm button.</p>
+                                <div class = "d-flex">
+                                    <button class="modal-btn modal-hide cl">Close</button>
+                                    <form action="{{route('deleteAuction',['id' => $auction->idauction])}}" method="post">
+                                        <input class="modal-btn cf ms-3" type="submit" value="Confirm" />
+                                        @method('delete')
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-fader"></div>
+                        @endif
                     </div>
                     <p id = "ini" class = "h5 pb-2"> Current Bid: <span id = "pl" class = "h4 pb-2">{{$auction->currentprice}}€</span> </p>
                     <div class = "caixa mb-4">
