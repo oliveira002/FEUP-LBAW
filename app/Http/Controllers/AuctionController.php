@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
+use Auth;
 
 class AuctionController extends Controller
 {
@@ -50,8 +51,11 @@ class AuctionController extends Controller
     public function show($id)
     {
         $auction = Auction::find($id);
+        if(is_null($auction)) abort(404);
         $owner = User::find($auction->idowner);
+        if(is_null($owner)) abort(404);
         $category = Category::find($auction->idcategory);
+        if(is_null($category)) abort(404);
         return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category]);
     }
 
@@ -102,7 +106,18 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $auction = Auction::find($id);
+
+
+        if(Auth::id() == $auction->idowner)
+        {
+            $auction->delete();
+
+            return redirect('/');
+        }
+        else{
+            abort(403);
+        }
     }
 
 }

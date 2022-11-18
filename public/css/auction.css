@@ -129,7 +129,7 @@
     margin: 0;
 }
 
-.modal-btn {
+.modal-btn, a.modal-btn{
     background: #36a5a5;
     border: none;
     color: #fff;
@@ -163,6 +163,19 @@
 
     margin-bottom: 0;
     text-align: center;
+}
+
+#delete-auc{
+    margin-left: auto;
+    align-self: center;
+}
+
+#delete-auc button{
+    color:red;
+}
+
+#delete-auc-text{
+    margin-left: 0.3em;
 }
 
 
