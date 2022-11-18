@@ -26,6 +26,7 @@
       <script type="text/javascript" src={{ asset('js/search.js') }}> </script>
       <script type="text/javascript" src={{ asset('js/login.js') }}> </script>
       <script type="text/javascript" src={{ asset('js/popup.js') }} defer> </script>
+      <script type="text/javascript" src={{ asset('js/countdown.js') }} defer> </script>
   </head>
   <body>
     <main>

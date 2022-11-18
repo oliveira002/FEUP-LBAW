@@ -8,10 +8,10 @@
     $monthstr = $auction->enddate->format('M');
     $year = $auction->enddate->format('Y');
     $secs = $auction->enddate->format('s');
-    if($hour / 10 >0) {
+    if($hour / 10 < 0) {
         $hour = "0" . $hour;
     }
-    $finalStr = $monthstr.  " " .  $day. "," . " "  .$year . " " . $hour.":".$mins.":".$secs;
+    $finalStr = $monthstr.  " " .  $day. "," . " "  . $year . " " . $hour.":".$mins.":".$secs;
     $minBid = 0.05 * $auction->startingprice;
     $minBid = " " . ($minBid + $auction->currentprice);
 ?>
@@ -19,9 +19,10 @@
 
 
 @section('content')
+        <div class = "hidden" id = "datat" style = "display: none">{{$finalStr}}</div>
         <div class = "page">
             <div class = "d-flex">
-                <div>
+                <div class = "text-center">
                     <div class="foto">
                         <img src = "../item.jpg" width= "400" height = "510">
                     </div>
@@ -55,13 +56,13 @@
                         <div class ="ms-3">
                             <p class = "h5 fw-bold pt-4 pb-2 defl"> Time Left: </p>
                             <div class = "d-flex pt-2 pb-2">
-                                <p class = "h4 me-2 fw-bold"> 01 </p>
+                                <span id = "day" class = "h4 me-2 fw-bold">  </span>
                                 <p class = "h5 me-2"> Days </p>
-                                <p class = "h4 me-2 fw-bold"> 13 </p>
+                                <span id = "hour" class = "h4 me-2 fw-bold">  </span>
                                 <p class = "h5 me-2"> Hours </p>
-                                <p class = "h4 me-2 fw-bold"> 29 </p>
+                                <span id = "minute" class = "h4 me-2 fw-bold">  </span>
                                 <p class = "h5 me-2"> Minutes </p>
-                                <p class = "h4 me-2 fw-bold"> 05 </p>
+                                <span id = "second" class = "h4 me-2 fw-bold">  </span>
                                 <p class = "h5 me-2"> Seconds </p>
                             </div>
                             <p class = "h5 fw-bold pt-2 pb-2 defl"> Auction Ends: </p>
@@ -118,7 +119,46 @@
                             </div>
                             <div class = "me-4">
                                 <i class="fa-regular fa-star"></i>
-                                <a href class = "pop"> Add to favourites </a>
+                                <a href class = "pop"> Add to Favourites </a>
+                            </div>
+                            <div class = "me-4">
+                                <a class = "exit">
+                                    <button class="open-modal" data-target="modal-3">
+                                        <i class="fa-solid fa-coins"></i>
+                                        Bidding History
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="modal-3" class="modal-window">
+                            <div class = "d-flex">
+                                <h2>Bidding History</h2>
+                                <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                            </div>
+                            <div>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($bids as $bid)
+                                    <div>
+                                        <tr>
+                                            <th>{{$bid->idbid}}</th>
+                                            <td> {{$bid->biddate}}</td>
+                                            <td>{{$bid->price}}€</td>
+                                        </tr>
+                                    </div>
+                                @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class = "d-flex">
+                                <button class="modal-btn modal-hide cl">Close</button>
                             </div>
                         </div>
                         <hr class = "mt-3 mb-3">
@@ -145,4 +185,5 @@
                 </div>
             </div>
         </div>
+
 @endsection

@@ -51,13 +51,14 @@ class AuctionController extends Controller
      */
     public function show($id)
     {
+        $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
         if(is_null($auction)) abort(404);
         $owner = User::find($auction->idowner);
         if(is_null($owner)) abort(404);
         $category = Category::find($auction->idcategory);
         if(is_null($category)) abort(404);
-        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category]);
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids]);
     }
 
     /**
@@ -69,6 +70,9 @@ class AuctionController extends Controller
     public function edit($id)
     {
         $auction = Auction::find($id);
+        if(Auth::id() != $auction->idowner || !(Auth::guard('admin')->check())) {
+            return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
+        }
         $owner = User::find($auction->idowner);
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
@@ -86,7 +90,11 @@ class AuctionController extends Controller
     {
         //verificar se ha bids
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
+        $auction = Auction::find($id);
 
+        if(Auth::id() != $auction->idowner || !(Auth::guard('admin')->check())) {
+            return redirect()->back();
+        }
 
         if(count($bids) != 0) {
             return redirect()->back()->withErrors(['error' => 'Auction has bids already']);
