@@ -1,0 +1,131 @@
+a {
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+#side ul li a button{
+    font-size: 21px;
+    text-align: left !important;
+    padding-left: 1em;
+}
+
+#side ul li a button i{
+    font-size: 21px;
+    margin-right: 5px;
+}
+
+#side {
+    max-width: max-content;
+
+}
+
+.hi {
+    background-color: white;
+}
+
+#side ul button {
+    width: 340px;
+    font-size: 20px;
+    height: 50px;
+}
+
+.prof {
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.lg {
+    margin-left: 0.5em;
+}
+.lg img{
+    object-fit: cover;
+    border-radius: 50%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+.cover {
+    min-height: 80vh;
+}
+
+.cover ul li button {
+    background-color: white;
+}
+
+.cover ul li button:hover {
+    border-left: 4px solid #7e3af2;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+.cover ul li {
+    margin-bottom: 0.5em;
+}
+
+.rect {
+    width: 100%;
+    background-color: #7e3af2;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.outside {
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    margin-left: 2em;
+}
+
+.txtt {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 0;
+}
+
+.boxi {
+    background-color: #eeeeee;
+    padding: 1em;
+    align-items: center;
+    width: 206px;
+    border-radius: 15px;
+}
+
+.boxi2 {
+    padding: 1em;
+    align-items: center;
+}
+
+.numbers {
+    justify-content: center;
+}
+
+.boxi img {
+    border-radius: 50%;
+}
+
+.boxi2 img {
+    border-radius: 50%;
+}
+td {
+    vertical-align:middle;
+}
+
+.oview {
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 0.5px 4px;
+}
+
+.stuf {
+    margin-left: 0.2em;
+}
+
+.smore  {
+    width: fit-content;
+    margin: auto;
+}
