@@ -23,15 +23,22 @@ class AdminController extends Controller
         $users = array();
 
         $allact = Auction::selectRaw('*')->orderBy('idauction','asc')->get();
-
+        $arrAll [] =[];
         foreach($allact as $act) {
+            $arr [] =[];
             $user  = User::selectRaw('*')
                 ->where('idclient','=',$act->idowner)
-                ->get();
+                ->get()
+                ->first();
 
-            $users[] = $user;
+            $arr["name"] = $act->name;
+            $arr["idauction"] = $act->idauction;  
+            $arr["owner"] = $user->username;
+
+            array_push($arrAll, $arr);
         }
-        return view('pages.adminauctions',['auctions' => $allact,'owners' => $users]);
+        array_shift($arrAll);
+        return view('pages.adminauctions',['auctions' => $arrAll]);
     }
 
     public function getBids(){

@@ -12,10 +12,8 @@
                             <p class ="h3 fw-bold"> All Users </p>
                             <div class="search2">
                                 <div class = "sbar2">
-                                        <form action="{{ route('search') }}" method="get">
-                                            <input type="text" id="searchbar2" name="search_query" placeholder="Search a user...">
-                                            <i class="fa fa-search"></i>
-                                        </form>
+                                    <input type="text" id="searchbar2" name="search_query" placeholder="Search a user...">
+                                    <i class="fa fa-search"></i>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +27,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id = "tablecontent">
                             @foreach($users as $user)
                                 <div class = "d-flex align-items-center">
                                     <tr>
@@ -45,7 +43,7 @@
                                         </td>
                                     </tr>
                                 </div>
-                                <div id="{{($user->idclient  * 2)-1}}" class="modal-window">
+                                <div id="modal-{{($user->idclient  * 2)-1}}" class="modal-window">
                                     <div class = "d-flex">
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
@@ -79,4 +77,8 @@
             </div>
         </div>
     </div>
+    <script>
+        let searchUser = document.querySelector('#searchbar2')
+        searchUser.addEventListener("input",updateUser)
+    </script>
 @endsection

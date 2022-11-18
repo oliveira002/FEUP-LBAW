@@ -41,7 +41,8 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 
 // Search
-Route::get('/search/api', 'SearchController@getSearchResultsJson');
+Route::get('/search/user/api', 'SearchController@getSearchUserResultsJson');
+Route::get('/search/auction/api', 'SearchController@getSearchActionsResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
 Route::get('/auction/{id}','AuctionController@show')->name('auction');
 

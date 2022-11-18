@@ -1,4 +1,4 @@
-(function () {
+function functionPopInit() {
     document.querySelectorAll(".open-modal").forEach(function (trigger) {
         trigger.addEventListener("click", function () {
             hideAllModalWindows();
@@ -15,7 +15,7 @@
     document.querySelector(".modal-fader").addEventListener("click", function () {
         hideAllModalWindows();
     });
-})();
+};
 
 function showModalWindow (buttonEl) {
     var modalTarget = "#" + buttonEl.getAttribute("data-target");
@@ -38,3 +38,4 @@ function hideAllModalWindows () {
         }
     });
 }
+functionPopInit();
