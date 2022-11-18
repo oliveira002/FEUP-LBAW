@@ -40,13 +40,12 @@
                                         <td class = "mt-3">{{$user->email}}</td>
                                         <td>
                                             <a href = "" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                                            <a class="open-modal fw-bold linkii" data-target="modal-2"> <i class="fa-solid fa-ban"></i> </a>
-                                            <a class="open-modal fw-bold linkii" data-target="modal-1"> <i class="fa-solid fa-trash"></i> </a>
+                                            <a class="open-modal fw-bold linkii" data-target="modal-{{($user->idclient * 2)-1}}"> <i class="fa-solid fa-ban"></i> </a>
+                                            <a class="open-modal fw-bold linkii" data-target="modal-{{($user->idclient  * 2)}}"> <i class="fa-solid fa-trash"></i> </a>
                                         </td>
                                     </tr>
                                 </div>
-                                <div id="modal-1" class="modal-window">
-                                    {{$user}}
+                                <div id="{{($user->idclient  * 2)-1}}" class="modal-window">
                                     <div class = "d-flex">
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
@@ -58,7 +57,7 @@
                                         <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Confirm"/>
                                     </div>
                                 </div>
-                                <div id="modal-2" class="modal-window">
+                                <div id="modal-{{($user->idclient * 2)}}" class="modal-window">
                                     <div class = "d-flex">
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>

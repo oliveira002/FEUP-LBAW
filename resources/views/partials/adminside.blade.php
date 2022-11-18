@@ -10,27 +10,27 @@
     </div>
     <ul class = "ps-0 mt-2">
         <li>
-            <a href = "{{route('profile')}}"><button class = "fw-bold">
+            <a href = "{{route('admin')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-user"></i>
                     Dashboard
                 </button> </a>
         </li>
         <li>
-            <a href="{{route('details')}}"><button class = "fw-bold">
+            <a href="{{route('manusers')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-address-card"></i>
                     Costumers
                 </button>
             </a>
         </li>
         <li>
-            <a href="{{route('balance')}}"><button class = "fw-bold">
+            <a href="{{route('manauctions')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-wallet"></i>
                     Auctions
                 </button>
             </a>
         </li>
         <li>
-            <a href="{{route('mybids')}}"><button class = "fw-bold">
+            <a href="{{route('manbids')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-coins"></i>
                     Bids</button>
             </a>
@@ -48,4 +48,4 @@
             </a>
         </li>
     </ul>
-</div>            
+</div>
