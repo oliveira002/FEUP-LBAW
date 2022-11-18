@@ -1,5 +1,5 @@
 <div id="side">
-    <div class="hi d-flex pt-4 pb-4">
+    <div class="hi d-flex pt-4 pb-4 wat">
         <div class="lg">
             <img src= "/alo.jpg" width="120" height="120">
         </div>
@@ -24,7 +24,7 @@
         </li>
         <li>
             <a href="{{route('manauctions')}}"><button class = "fw-bold">
-                    <i class="fa-solid fa-wallet"></i>
+                    <i class="fa-solid fa-house-user"></i>
                     Auctions
                 </button>
             </a>
@@ -37,7 +37,7 @@
         </li>
         <li>
             <a href="{{route('mybids')}}"><button class = "fw-bold">
-                    <i class="fa-solid fa-coins"></i>
+                    <i class="fa-solid fa-question"></i>
                     Reports</button>
             </a>
         </li>
