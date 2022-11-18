@@ -129,3 +129,30 @@ td {
     width: fit-content;
     margin: auto;
 }
+.out1 #side ul li:nth-child(1) button{
+    border-left: 4px solid #7e3af2;
+}
+
+.out2 #side ul li:nth-child(2) button{
+    border-left: 4px solid #7e3af2;
+}
+
+.out3 #side ul li:nth-child(3) button{
+    border-left: 4px solid #7e3af2;
+}
+
+.out4 #side ul li:nth-child(4) button{
+    border-left: 4px solid #7e3af2;
+}
+
+.out5 #side ul li:nth-child(5) button{
+    border-left: 4px solid #7e3af2;
+}
+
+.out6 #side ul li:nth-child(6) button{
+    border-left: 4px solid #7e3af2;
+}
+
+.out7 #side ul li:nth-child(7) button{
+    border-left: 4px solid #7e3af2;
+}
