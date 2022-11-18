@@ -114,6 +114,7 @@ function userUpdateHandler(){
         Fhtml = Fhtml.concat(html)
     }
     document.querySelector('#tablecontent').insertAdjacentHTML('beforeend',Fhtml)
+    functionPopInit()
 }
 
 function updateAdminAuction(){

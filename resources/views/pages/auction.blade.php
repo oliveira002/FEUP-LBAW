@@ -140,8 +140,8 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">Id</th>
-                                        <th scope="col">Price</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">Price</th>
                                     </tr>
                                     </thead>
                                     <tbody>
