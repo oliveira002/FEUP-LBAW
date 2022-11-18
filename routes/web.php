@@ -23,6 +23,7 @@ Route::post('profile/balance', 'UserController@addFunds')->name('addFunds');
 Route::get('/profile/myauctions', 'UserController@myAuctions')->name('myauctions');
 Route::get('/profile/mybids', 'UserController@myBids')->name('mybids');
 Route::get('/admin', 'AdminController@admin')->name('admin');
+Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
 
 
 //Others

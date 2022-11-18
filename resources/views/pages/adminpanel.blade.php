@@ -10,7 +10,7 @@
                     <div class = "stuf mt-4 mb-4">
                         <p class ="h2 fw-bold mb-4"> Dashboard </p>
                         <div class = "rect">
-                            <p class = "txtt"> You are in the admin panel, here you can administrate the website</p>
+                            <p class = "txtt"> You are in the admin panel, here you can administrate the website.</p>
                         </div>
                         <div class = "d-flex mt-4 numbers">
                             <div class = "d-flex boxi">
@@ -49,34 +49,33 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <div class = "d-flex align-items-center">
                               <tr>
-                                <th class = "d-flex boxi2" scope="row">
+                                <th class = "boxi2" scope="row">
                                     <img src= "/alo.jpg" width="40" height="40">
-                                    <span class = "ms-2 fw-light"> André Garcia </span>
-                                    <td class = "mt-3">10$</td>
-                                    <td>Tennis</td>
-                                    <td>2022/02/01</td>
+                                    <span class = "ms-2 fw-light">André Garcia </span>
                                 </th>
+                                  <td class = "mt-3">10$</td>
+                                  <td>Tennis</td>
+                                  <td>2022/02/01</td>
                               </tr>
                             </div>
                               <tr>
-                                <th class = "d-flex boxi2" scope="row">
+                                <th class = "boxi2" scope="row">
                                     <img src= "/alo.jpg" width="40" height="40">
-                                    <span class = "ms-2 fw-light"> André Garcia </span>
-                                    <td class = "mt-3">10$</td>
-                                    <td>Tennis</td>
-                                    <td>2022/02/01</td>
+                                    <span class = "ms-2 fw-light">André Garcia </span>
                                 </th>
+                                  <td class = "mt-3">10$</td>
+                                  <td>Tennis</td>
+                                  <td>2022/02/01</td>
                               </tr>
                               <tr>
-                                <th class = "d-flex boxi2" scope="row">
+                                <th class = "boxi2" scope="row">
                                     <img src= "/alo.jpg" width="40" height="40">
-                                    <span class = "ms-2 fw-light"> André Garcia </span>
-                                    <td class = "mt-3">10$</td>
-                                    <td>Tennis</td>
-                                    <td>2022/02/01</td>
+                                    <span class = "ms-2 fw-light">André Garcia </span>
                                 </th>
+                                  <td class = "mt-3">10$</td>
+                                  <td>Tennis</td>
+                                  <td>2022/02/01</td>
                               </tr>
                             </tbody>
                           </table>

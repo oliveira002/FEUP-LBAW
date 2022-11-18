@@ -116,12 +116,7 @@ body {
 }
 td {
     vertical-align:middle;
-    width:180px;
-    word-wrap: break-word;
-    word-break: break-all;
-    white-space: normal;
 }
-
 
 
 .oview {
@@ -162,4 +157,50 @@ td {
 
 .out7 #side ul li:nth-child(7) button{
     border-left: 4px solid #7e3af2;
+}
+
+.search2 {
+    margin-left: auto;
+    vertical-align: middle;
+    border: none;
+    background-color: #efefef;
+    border-radius: 50px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.sbar2 i {
+    vertical-align: middle;
+    margin-right: 1.5em;
+}
+
+#searchbar2 {
+    border: none;
+    text-align: left;
+    margin-left: 0.8em;
+    width: 200px;
+    float: left;
+    background-color: #efefef;
+}
+
+#searchbar2:focus {
+    outline: none;
+}
+
+
+
+thead {
+    position: sticky;
+    background-color: #efefef;
+    z-index: 999;
+}
+
+.tableContainer {
+    height: 380px;
+    overflow-y: auto;
+}
+
+.linkii:hover {
+    cursor: pointer;
+    color: #6b6b6b;
 }

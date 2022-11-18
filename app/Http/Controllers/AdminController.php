@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,5 +10,10 @@ class AdminController extends Controller
     public function admin(){
         $alo = ["alo"];
         return view('pages.adminpanel',['alo' => $alo]);
+    }
+
+    public function getUsers(){
+        $allusers = User::selectRaw('*')->get();
+        return view('pages.adminusers',['users' => $allusers]);
     }
 }
