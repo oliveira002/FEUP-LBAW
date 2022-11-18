@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@home')->name('/');
 
 // Users
 Route::get('/profile', 'UserController@show')->name('profile');
+Route::get('/profile/{username}', 'UserController@showUser')->name('Userprofile');
 Route::get('/profile/mydetails', 'UserController@details')->name('details');
 Route::get('/profile/balance', 'UserController@balance')->name('balance');
 Route::post('profile/balance', 'UserController@addFunds')->name('addFunds');
@@ -45,7 +46,8 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 
 // Search
-Route::get('/search/api', 'SearchController@getSearchResultsJson');
+Route::get('/search/user/api', 'SearchController@getSearchUserResultsJson');
+Route::get('/search/auction/api', 'SearchController@getSearchActionsResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
 Route::get('/auction/{id}','AuctionController@show')->name('auction');
 

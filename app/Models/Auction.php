@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 
 /**
@@ -81,6 +83,31 @@ class Auction extends Model
     public static function ftsSearch($search)
     {
         return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
+            ->orWhere('name', 'ilike', '%' . $search . '%') 
+            ->orWhere('description', 'ilike', '%' . $search . '%')
+            ->where('isover', false)
             ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
+    }
+
+    public static function searchWithUser($search)
+    {
+        return DB::table('auction')
+            ->join("user", 'user.idclient', '=', 'auction.idowner')
+            ->select('*','user.username')
+            ->whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
+            ->orWhere('name', 'ilike', '%' . $search . '%')
+            ->orWhere('description', 'ilike', '%' . $search . '%')
+            ->whereRaw('auction.isover = false')
+            ->whereRaw('auction.idowner = "user".idclient')
+            ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
+    }
+    public static function getAll()
+    {
+        return DB::table('auction')
+            ->join("user", 'user.idclient', '=', 'auction.idowner')
+            ->select('*','user.username')
+            ->whereRaw('auction.isover = false')
+            ->whereRaw('auction.idowner = "user".idclient')
+            ->orderBy('auction.idauction', 'ASC');
     }
 }

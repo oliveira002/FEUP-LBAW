@@ -101,4 +101,12 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\AuctionOwner', 'idClient' , 'idClient');
     }
 
+    public static function searchUser($search)
+    {
+        return User::query()->where('username', 'LIKE', "%{$search}%")
+        ->orWhere('firstname', 'LIKE', "%{$search}%")
+        ->orWhere('lastname', 'LIKE', "%{$search}%")
+        ->orWhere('email', 'LIKE', "%{$search}%");
+    }
+
 }
