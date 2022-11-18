@@ -27,7 +27,8 @@ $minBid = " " . ($minBid + $auction->currentprice);
                 </div>
             </div>
             <div class = "contii">
-                <form action="#">
+                <form action="" method = "POST">
+                    {{ csrf_field() }}
                     <div class="form-header">
                         <div class="title">
                             <h1>Edit Auction</h1>
@@ -42,24 +43,26 @@ $minBid = " " . ($minBid + $auction->currentprice);
 
                             <div class="input-box">
                                 <label for="firstname">Category:</label>
-                                <select id="cars" name="cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="fiat">Fiat</option>
-                                    <option value="audi">Audi</option>
+                                <select id="cats" name="cats">
+                                     @foreach($categories as $cat)
+                                        <option value="{{$cat->name}}">{{$cat->name}}</option>
+                                     @endforeach
                                 </select>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction Description:</label>
-                                <input id="firstname" type="text" name="firstname" value="{{$auction->description}}" required>
+                                <input id="firstname" type="text" name="desc" value="{{$auction->description}}" required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction Starting Price:</label>
-                                <input id="firstname" type="text" name="firstname" value="{{$auction->startingprice}}€" required>
+                                <input id="firstname" type="text" name="price" value="{{$auction->startingprice}}€" required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction End Date:</label>
-                                <input id="firstname" type="text" name="firstname" value="{{$auction->enddate}}" required>
+                                <input id="firstname" type="text" name="enddate" value="{{$auction->enddate}}" required>
+                            </div>
+                            <div class="continue-button">
+                                <input type="submit" class = "continue-button" value="Save Changes"/>
                             </div>
                         </div>
                     </div>

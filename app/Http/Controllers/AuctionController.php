@@ -66,7 +66,8 @@ class AuctionController extends Controller
         $auction = Auction::find($id);
         $owner = User::find($auction->idowner);
         $category = Category::find($auction->idcategory);
-        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category]);
+        $allcategories = Category::all();
+        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories]);
     }
 
     /**
@@ -78,7 +79,19 @@ class AuctionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $auction = Auction::find($id);
+        $name = $request->input('nome');
+        $catName = $request->input('cats');
+        $categ = Category::select('idcategory')->where('name','=',$catName)->get();
+        foreach($categ as $idcat) {
+            $idCategory = $idcat->idcategory;
+        }
+        $desc =  $request->input('desc');
+        $price = (float)substr($request->input('price'), 0, -1);
+        $enddate = (string)$request->input('enddate');
+
+        Auction::where('idauction', $id)->update(['name' => $name,'startingprice' => $price, 'enddate' => $enddate, 'description' => $desc, 'idcategory' => $idCategory ]);
+        return redirect()->route('auction', ['id' => $id]);
     }
 
     /**

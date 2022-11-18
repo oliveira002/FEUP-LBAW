@@ -33,6 +33,7 @@ Route::get('/edit/{id}', 'AuctionController@edit')->name('edit');
 //Others
 Route::get('/FAQs', 'FAQController@faqs')->name('FAQs');
 Route::post('/auction/{id}','UserController@createBid')->name('addbid');
+Route::post('/edit/{id}','AuctionController@update')->name('updateAuction');
 
 // Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
