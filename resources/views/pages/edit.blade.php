@@ -23,12 +23,22 @@ $minBid = " " . ($minBid + $auction->currentprice);
         <div class = "d-flex">
             <div>
                 <div class="foto">
-                    <img src = "../item.jpg" width= "400" height = "510">
+                    <img src = "../item.jpg"width= "400" height = "510">
                 </div>
             </div>
             <div class = "contii">
+                @if($errors->has('error'))
+                    <div class="mb-0 mt-2 alert alert-danger">
+                        <ul class = "ps-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="" method = "POST">
                     {{ csrf_field() }}
+                    @method('PUT')
                     <div class="form-header">
                         <div class="title">
                             <h1>Edit Auction</h1>
@@ -40,7 +50,6 @@ $minBid = " " . ($minBid + $auction->currentprice);
                                 <label for="firstname">Auction Name:</label>
                                 <input id="firstname" type="text" name="nome" value="{{$auction->name}}" required>
                             </div>
-
                             <div class="input-box">
                                 <label for="firstname">Category:</label>
                                 <select id="cats" name="cats">
