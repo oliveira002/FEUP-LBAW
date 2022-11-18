@@ -22,17 +22,16 @@ class AdminController extends Controller
     public function getAuctions(){
         $users = array();
 
-        $allact = Auction::selectRaw('*')->get();
+        $allact = Auction::selectRaw('*')->orderBy('idauction','asc')->get();
 
-        return view('pages.adminauctions',['auctions' => $allact]);
-    }
+        foreach($allact as $act) {
+            $user  = User::selectRaw('*')
+                ->where('idclient','=',$act->idowner)
+                ->get();
 
-    public static function getOwner($id) {
-        $user  = User::selectRaw('*')
-            ->where('idclient','=',$id)
-            ->get();
-
-        return view('pages.adminauctions',['own' => $user]);
+            $users[] = $user;
+        }
+        return view('pages.adminauctions',['auctions' => $allact,'owners' => $users]);
     }
 
     public function getBids(){

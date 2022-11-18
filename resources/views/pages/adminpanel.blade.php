@@ -80,7 +80,7 @@
                             </tbody>
                           </table>
                           <div class = "smore">
-                            <a href = "" class = "fw-bold h5"> View All </a>
+                            <a href = "{{route('manbids')}}" class = "fw-bold h5"> View All </a>
                           </div>
                     </div>
                 </div>

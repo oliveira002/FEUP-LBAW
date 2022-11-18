@@ -103,7 +103,7 @@ body {
     background: #0f0f0f;
     color: white;
     padding: 0.4em 0.4em;
-    width: 256px;
+    width: 200px;
     font-weight: bold;
     cursor: pointer;
     height: 64px;
@@ -128,11 +128,6 @@ label {
 .save button{
     font-size: 20px;
 }
-
-input:focus {
-    border: 1px solid black;
-}
-
 
 #balance-container{
     background-color: white;

@@ -26,11 +26,15 @@ Route::get('/admin', 'AdminController@admin')->name('admin');
 Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
+Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
+
 
 
 //Others
 Route::get('/FAQs', 'FAQController@faqs')->name('FAQs');
 Route::post('/auction/{id}','UserController@createBid')->name('addbid');
+Route::delete('/auction/{id}', 'AuctionController@destroy')->name('deleteAuction');
+Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction');
 
 // Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

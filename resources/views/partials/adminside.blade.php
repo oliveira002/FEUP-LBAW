@@ -1,5 +1,5 @@
 <div id="side">
-    <div class="hi d-flex pt-4 pb-4">
+    <div class="hi d-flex pt-4 pb-4 wat">
         <div class="lg">
             <img src= "/alo.jpg" width="120" height="120">
         </div>
@@ -10,34 +10,34 @@
     </div>
     <ul class = "ps-0 mt-2">
         <li>
-            <a href = "{{route('profile')}}"><button class = "fw-bold">
+            <a href = "{{route('admin')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-user"></i>
                     Dashboard
                 </button> </a>
         </li>
         <li>
-            <a href="{{route('details')}}"><button class = "fw-bold">
+            <a href="{{route('manusers')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-address-card"></i>
                     Costumers
                 </button>
             </a>
         </li>
         <li>
-            <a href="{{route('balance')}}"><button class = "fw-bold">
-                    <i class="fa-solid fa-wallet"></i>
+            <a href="{{route('manauctions')}}"><button class = "fw-bold">
+                    <i class="fa-solid fa-house-user"></i>
                     Auctions
                 </button>
             </a>
         </li>
         <li>
-            <a href="{{route('mybids')}}"><button class = "fw-bold">
+            <a href="{{route('manbids')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-coins"></i>
                     Bids</button>
             </a>
         </li>
         <li>
             <a href="{{route('mybids')}}"><button class = "fw-bold">
-                    <i class="fa-solid fa-coins"></i>
+                    <i class="fa-solid fa-question"></i>
                     Reports</button>
             </a>
         </li>
@@ -48,4 +48,4 @@
             </a>
         </li>
     </ul>
-</div>            
+</div>

@@ -190,11 +190,17 @@ footer{
     padding-bottom: 8px;
 }
 
-.sbar i {
+.sbar a {
     vertical-align: middle;
-    margin-right: 1.5em;
+    margin-right: 1.6em;
+    text-decoration: none;
+    color: inherit;
 }
 
+.sbar a:hover {
+    text-decoration: none;
+    color: inherit;
+}
 #searchbar {
     border: none;
     text-align: left;

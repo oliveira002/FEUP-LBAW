@@ -6,12 +6,12 @@
                 @if(Route::currentRouteName() === '/')
                     <form action="{{ route('search') }}" method="get">
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
-                        <i class="fa fa-search"></i>
+                        <a href="" > <i class="fa fa-search"> </i> </a>
                     </form>
                 @else
                     <button>
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
-                        <i class="fa fa-search"></i>
+                        <a href="" > <i class="fa fa-search"> </i> </a>
                     </button>
                 @endif
             </div>
@@ -26,7 +26,7 @@
                 </a>
                 <a href ="{{route('logout')}}" class = "reg" >
                     <button>
-                        <i class="fa-solid fa-user-plus"></i>
+                        <i class="fa-solid fa-user-minus"></i>
                         <span> Logout </span>
                     </button>
                 </a>

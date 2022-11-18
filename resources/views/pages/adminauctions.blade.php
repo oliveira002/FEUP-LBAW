@@ -1,10 +1,7 @@
 @extends('layouts.app')
-@inject('own', 'App\Http\Controllers\AdminController')
-
-
 
 @section('content')
-    <link href="{{asset('css/adminusers.css')}}" rel="stylesheet">
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <div class = "cover out3">
         <div class="prof d-flex">
             @include('partials.adminside')
@@ -33,39 +30,28 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($auctions as $act)
+                                @foreach($auctions as $idx => $value)
+                                    @foreach($owners[$idx] as $own)
                                     <div class = "d-flex align-items-center">
                                         <tr>
-                                            <th class = "fw-bold">{{$act->idauction}}</th>
+                                            <th class = "fw-bold">{{$auctions[$idx]->idauction}}</th>
                                             <td>
-                                                <span class = "ms-2 fw-light">{{$act->name}}</span>
+                                                <span class = "ms-2 fw-light">{{$auctions[$idx]->name}}</span>
                                             </td>
-                                            <td class = "mt-3"></td>
+                                            <td class = "mt-3">{{$own->firstname}}</td>
                                             <td>
-                                                <a href = "" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                                                <a class="open-modal fw-bold linkii" data-target="modal-2"> <i class="fa-solid fa-ban"></i> </a>
-                                                <a class="open-modal fw-bold linkii" data-target="modal-1"> <i class="fa-solid fa-trash"></i> </a>
+                                                <a href = "{{route('auction',['id' => $auctions[$idx]->idauction])}}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
+                                                <a class="open-modal fw-bold linkii" data-target="modal-{{($auctions[$idx]->idauction)}}"> <i class="fa-solid fa-trash"></i> </a>
                                             </td>
                                         </tr>
                                     </div>
-                                    <div id="modal-1" class="modal-window">
+                                    @endforeach
+                                    <div id="modal-{{($auctions[$idx]->idauction)}}" class="modal-window">
                                         <div class = "d-flex">
                                             <h2>Ban Confirmation</h2>
                                             <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
                                         </div>
-                                        <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BAN </span> the user <span class = "fw-bold"> </span> </p>
-                                        <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
-                                        <div class = "d-flex">
-                                            <button class="modal-btn modal-hide cl">Close</button>
-                                            <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Confirm"/>
-                                        </div>
-                                    </div>
-                                    <div id="modal-2" class="modal-window">
-                                        <div class = "d-flex">
-                                            <h2>Ban Confirmation</h2>
-                                            <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
-                                        </div>
-                                        <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BLOCK </span> the user <span class = "fw-bold"></span> </p>
+                                        <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> DELETE </span>  the auction <span class = "fw-bold">{{$auctions[$idx]->name}}</span> </p>
                                         <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
                                         <div class = "d-flex">
                                             <button class="modal-btn modal-hide cl">Close</button>
