@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<?php $fullName = ""> ?>
 
 @section('content')
     <link href="{{asset('css/adminusers.css')}}" rel="stylesheet">
@@ -47,11 +46,12 @@
                                     </tr>
                                 </div>
                                 <div id="modal-1" class="modal-window">
+                                    {{$user}}
                                     <div class = "d-flex">
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
                                     </div>
-                                    <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BAN </span>  the user <span class = "fw-bold">{{$fullName}}</span> </p>
+                                    <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BAN </span>  the user <span class = "fw-bold"></span> </p>
                                     <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
                                     <div class = "d-flex">
                                         <button class="modal-btn modal-hide cl">Close</button>
@@ -63,7 +63,7 @@
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
                                     </div>
-                                    <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BLOCK </span> the user <span class = "fw-bold">{{$fullName}}</span> </p>
+                                    <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BLOCK </span> the user <span class = "fw-bold">{{$user->firstname}} {{$user->lastname}}</span> </p>
                                     <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
                                     <div class = "d-flex">
                                         <button class="modal-btn modal-hide cl">Close</button>

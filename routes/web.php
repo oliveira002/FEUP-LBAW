@@ -24,6 +24,8 @@ Route::get('/profile/myauctions', 'UserController@myAuctions')->name('myauctions
 Route::get('/profile/mybids', 'UserController@myBids')->name('mybids');
 Route::get('/admin', 'AdminController@admin')->name('admin');
 Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
+Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
+Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
 
 
 //Others
