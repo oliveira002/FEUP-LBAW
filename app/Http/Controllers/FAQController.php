@@ -11,4 +11,10 @@ class FAQController extends Controller
             "How do I participate in an auction?",];
         return view('pages.faq',['faqs' => $faqs]);
     }
+
+    public function faq(){
+        $faqs = ["What is WeBid?",
+            "How do I participate in an auction?",];
+        return view('pages.edit',['faqs' => $faqs]);
+    }
 }

@@ -45,7 +45,7 @@
                                         </td>
                                     </tr>
                                 </div>
-                                <div id="{{($user->idclient  * 2)-1}}" class="modal-window">
+                                <div id="modal-{{($user->idclient  * 2)-1}}" class="modal-window">
                                     <div class = "d-flex">
                                         <h2>Ban Confirmation</h2>
                                         <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>

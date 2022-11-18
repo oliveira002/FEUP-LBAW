@@ -34,8 +34,10 @@
     @elseif (Route::currentRouteName() === 'profile' || Route::currentRouteName() === 'myauctions' || Route::currentRouteName() === 'balance' || Route::currentRouteName() === 'mybids' || Route::currentRouteName() === 'details' || Route::currentRouteName() === 'favourites' || Route::currentRouteName() === 'support')
 
       @include('partials.profheader')
-    @else
-      @include('partials.header')
+    @elseif(Route::currentRouteName() === 'admin' || Route::currentRouteName() === 'manusers' || Route::currentRouteName() === 'manbids' || Route::currentRouteName() === 'manauctions')
+      @include('partials.adminheader')
+        @else
+        @include('partials.header')
     @endif
 
 
