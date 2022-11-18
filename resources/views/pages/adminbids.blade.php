@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <link href="{{asset('css/adminusers.css')}}" rel="stylesheet">
-    <div class = "cover out2">
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet">
+    <div class = "cover out4">
         <div class="prof d-flex">
             @include('partials.adminside')
             <div class = "outside">
