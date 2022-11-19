@@ -38,7 +38,6 @@ Route::post('/auction/{id}','UserController@createBid')->name('addbid');
 Route::delete('/auction/{id}', 'AuctionController@destroy')->name('deleteAuction');
 Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction');
 Route::put('/profile/{username}/mydetails', 'UserController@update')->name('updetails');
-Route::put('/profile/{username}/mydetails/edit', 'UserController@adminupdate')->name('adminupdetails');
 
 // Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

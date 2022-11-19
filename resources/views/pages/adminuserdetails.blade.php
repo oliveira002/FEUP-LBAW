@@ -50,7 +50,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method = "POST" action = "{{route('adminupdetails',['username' => $user->username])}}">
+                    <form method = "POST" action = "{{route('updetails',['username' => $user->username])}}">
                         {{ csrf_field() }}
                         @method('PUT')
                     <div class = "forms d-flex">
