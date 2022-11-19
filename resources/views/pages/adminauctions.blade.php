@@ -51,7 +51,11 @@
                                         <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
                                         <div class = "d-flex">
                                             <button class="modal-btn modal-hide cl">Close</button>
-                                            <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Confirm"/>
+                                            <form action="{{route('deleteAuction',['id' => $auctions[$idx]["idauction"]])}}" method="post">
+                                                <input class="modal-btn cf ms-3" type="submit" value="Confirm" />
+                                                @method('delete')
+                                                @csrf
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="modal-fader"></div>
