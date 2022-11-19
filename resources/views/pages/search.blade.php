@@ -5,11 +5,11 @@
     @foreach($category as $cat)
         <div class = "ms-3 me-3 junto">
             <a href="" class = "d-flex flex-column fic">
-                <?php $str = "../catsearch/" . $cat->idcategory .".png"?>
+                <?php $str = "../images/" . $cat->idcategory .".jpg"?>
 
                 <div class = "bgo d-flex justify-content-center">
 
-                    <img src="{{$str}}" width="50" height="50">
+                    <img src="{{$str}}" width="70" height="70">
                 </div>
                 <span class = "fw-bold">{{$cat->name}}</span>
             </a>
@@ -19,11 +19,24 @@
 <hr class = "mt-3 mb-4 lina">
 <div class = "filtros">
     <div class = "ms-5 mt-2">
-        <p class = "h3"> Sort By: </p>
+        <p class = "h4"> Display: </p>
+        <div class = "d-flex flex-column">
+            <div>
+                <input class  type="radio" name= "tempo" value="filter" checked>
+                <label for="tempo">Upcoming Items</label>
+            </div>
+            <div>
+                <input class type="radio" name= "tempo" value="filter">
+                <label for="tempo">Past Items</label>
+            </div>
+        </div>
+    </div>
+    <div class = "ms-5 mt-2">
+        <p class = "h4"> Sort by: </p>
         <div class = "d-flex flex-column">
             <div>
                 <input class  type="radio" name= "filter" value="filter" checked>
-                <label for="filter">Chosen for you (Default)</label>
+                <label for="filter">Recommended</label>
             </div>
             <div>
                 <input class type="radio" name= "filter" value="filter">
@@ -36,22 +49,11 @@
         </div>
     </div>
         <div class = "ms-5 mt-4 class =">
-            <p class = "h3"> Price Range: </p>
-            <div>
-                <div class ="d-flex">
-                    <button class="preco fw-bold me-2">
-                        <10€
-                    </button>
-                    <button class="preco fw-bold me-2" >
-                        <50€
-                    </button>
-                    <button class="preco fw-bold me-2" >
-                        <100€
-                    </button>
-                    <button class="preco fw-bold me-2" >
-                        >100€
-                    </button>
-                </div>
+            <p class = "h4"> Price Range: </p>
+            <div class = "d-flex range">
+                <input id="pricemin" type="number" name="min" value="" min = "0" max = "1000000" placeholder="0">
+                <span class = "h5 ms-2 me-2 mt-1"> to </span>
+                <input id="pricemax" type="number" name="max" value="" min = "0" max = "1000000" placeholder="100000">
             </div>
         </div>
     <div>
@@ -66,7 +68,11 @@
 </div>
 <div class ="pattern">
     <div class="container-fluid">
-        <div id = "auction" class="d-flex flex-row flex-wrap justify-content-center">
+        <div>
+            <div class = "h4 titt"> {{count($auctions)}} items displayed</div>
+            @include('partials.categ')
+        </div>
+        <div id = "auction" class="d-flex flex-row flex-wrap justify gridd">
             @foreach($auctions as $auct)
                 <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                     <div class = "itemauc">
