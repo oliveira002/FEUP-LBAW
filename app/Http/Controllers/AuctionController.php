@@ -130,7 +130,7 @@ class AuctionController extends Controller
             return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
         }
         if($price <= 0) {
-            return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
+            return redirect()->back()->withErrors(['error' => 'The amount must be a number!']);
         }
         if(!date('Y-m-d H:i:s', strtotime($enddate)) == $enddate) {
             return redirect()->back()->withErrors(['error' => 'The end date is not valid!']);

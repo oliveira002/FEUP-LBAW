@@ -177,6 +177,12 @@
                         </div>
                         <div class = "d-flex but">
                             <div>
+                                <span class = "fw-bold"> Initial Price: </span>
+                            </div>
+                            <span class = "ms-2 dtls"> {{$auction->startingprice}}€</span>
+                        </div>
+                        <div class = "d-flex but">
+                            <div>
                                 <span class = "fw-bold"> Description: </span>
                             </div>
                             <span class = "ms-2 dtls"> {{$auction->description}}</span>

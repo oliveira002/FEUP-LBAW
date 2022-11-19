@@ -36,7 +36,7 @@ $minBid = " " . ($minBid + $auction->currentprice);
                         </ul>
                     </div>
                 @endif
-                <form action="" method = "POST">
+                <form action="{{route('updateAuction',['id' => $auction->idauction])}}" method = "POST">
                     {{ csrf_field() }}
                     @method('PUT')
                     <div class="form-header">
