@@ -21,8 +21,13 @@
                                 <p class = "mb-2 ms-3 h5 mt-4">Rating</p>
                                 <?php
                                     $own = \App\Models\AuctionOwner::find($user->idclient);
-                                    if($own) {
-                                        $rating = $own->rating;
+                                    if(!is_null($own)) {
+                                        if((string) $own->rating === "") {
+                                            $rating = "0";
+                                        }
+                                        else {
+                                            $rating = $own->rating;
+                                        }
                                     }
                                     else {
                                         $rating = "0";
