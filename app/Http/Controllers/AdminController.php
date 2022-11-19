@@ -6,12 +6,18 @@ use App\Models\Auction;
 use App\Models\Bid;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminController extends Controller
 {
     public function admin(){
         $alo = ["alo"];
-        return view('pages.adminpanel',['alo' => $alo]);
+        if(Auth::guard('admin')->check()){
+            return view('pages.adminpanel',['alo' => $alo]);
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
     }
 
     public function getUsers(){
