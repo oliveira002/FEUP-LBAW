@@ -6,20 +6,20 @@
         <div class="prof d-flex">
             @include('partials.sidebar')
             <div class = "outside">
-                @if($errors->has('error'))
-                    <div class="mb-0 mt-2 alert alert-danger">
-                        <ul class = "ps-0">
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="spec d-flex flex-column ps-3 pe-3">
                     <div class = "stuf ms-3 mt-4 mb-4">
                         <p class ="h2 fw-bold"> My Details </p>
                         <p class ="h4"> Feel free to change any of your details right below! </p>
                     </div>
+                    @if($errors->has('error'))
+                        <div class="mb-4 alert alert-danger">
+                            <ul class = "ps-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method = "POST">
                         {{ csrf_field() }}
                         @method('PUT')

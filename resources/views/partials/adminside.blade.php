@@ -36,13 +36,13 @@
             </a>
         </li>
         <li>
-            <a href="{{route('mybids')}}"><button class = "fw-bold">
+            <a href=""><button class = "fw-bold">
                     <i class="fa-solid fa-question"></i>
                     Reports</button>
             </a>
         </li>
         <li>
-            <a href="{{route('logout')}}""><button class = "fw-bold">
+            <a href="{{route('logout')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Logout</button>
             </a>

@@ -59,7 +59,7 @@ class UserController extends Controller
 
     public function showUser($username)
     {
-        
+
         if(Auth::check()){
             if(Auth::user()->username === $username){
                 return view('pages.profile',['user' => Auth::user()]);
@@ -72,7 +72,7 @@ class UserController extends Controller
         else{
             return view('pages.userprofile',['user' => $user]);
         }
-        
+
     }
 
     public function details()
@@ -223,7 +223,7 @@ class UserController extends Controller
         $lastname = $request->input('lastname');
         $email = $request->input('email');
         $phonenumber = $request->input('phonenumber');
-        $username = $request->input('phonenumber');
+        $username = $request->input('username');
 
         //checks
         $checkemail = User::selectRaw('*')->where('email','=',$email)->get();
@@ -243,7 +243,7 @@ class UserController extends Controller
         }
 
         User::where('idclient', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'phonenumber' => $phonenumber , 'username' => $username]);
-        return redirect()->route('details');
+        return redirect()->route('details',['username' => $username]);
     }
 
     /**
