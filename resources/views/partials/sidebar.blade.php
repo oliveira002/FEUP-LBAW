@@ -54,7 +54,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('logout')}}""><button class = "fw-bold">
+            <a href="{{route('logout')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Logout</button>
             </a>
