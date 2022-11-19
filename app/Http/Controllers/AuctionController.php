@@ -142,7 +142,7 @@ class AuctionController extends Controller
         $auction = Auction::find($id);
 
 
-        if(Auth::id() == $auction->idowner)
+        if(Auth::id() == $auction->idowner || Auth::guard('admin')->check())
         {
             $auction->delete();
 
