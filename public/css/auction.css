@@ -174,11 +174,19 @@
     color:red;
 }
 
+
 #delete-auc-text{
     margin-left: 0.3em;
 }
 
+#edit-auc{
+    margin-left: auto;
+    align-self: center;
+}
 
+#edit-auc-text{
+    margin-left: 0.3em;
+}
 
 .contii {
     margin-left: 4em;
