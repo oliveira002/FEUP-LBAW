@@ -59,10 +59,10 @@
                                         <img src= "/alo.jpg" width="40" height="40">
                                         <span class = "ms-2 fw-light">André Garcia </span>
                                     </th>
-                                    <td class = "mt-3">alo</td>
+                                    <td class = "mt-3">2022-12-10 13:12:11</td>
                                     <td>
                                         <a href = "" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                                        <a class="open-modal fw-bold linkii" data-target=""> <i class="fa-solid fa-trash"></i> </a>
+                                        <a class="open-modal fw-bold linkii" data-target=""> <i class="fa-solid fa-check"></i></a>
                                     </td>
                                 </tr>
                             </div>
