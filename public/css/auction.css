@@ -261,4 +261,10 @@
     border: 0;
 }
 
+.fds {
+    width: 400px;
+    height: 510px;
+    min-width: 200px;
+    min-height: 250px;
 
+}

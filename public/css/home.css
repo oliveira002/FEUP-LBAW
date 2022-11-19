@@ -54,12 +54,35 @@ a{
 
 
 .itemauc {
-    width: 287px;
+    width: fit-content;
     height: 190px;
     box-shadow: rgba(0, 0, 0, 0.52) 0px 0.5px 4px;
     align-items: center;
+
+    transition: transform .2s;
+    background: black;
+    margin: 0 auto 6em;
+
+
+}
+
+.container-img{
+    width: 287px;
+    height: 190px;
+
+    align-items: center;
     margin-bottom: 6em;
     transition: transform .2s;
+
+}
+.itemauc img{
+    width: 287px;
+    height: 190px;
+    display:block;
+    margin:0;
+    object-fit: cover;
+
+
 }
 
 .itemauc a {

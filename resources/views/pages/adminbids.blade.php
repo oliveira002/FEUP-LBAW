@@ -43,7 +43,7 @@
                                             </td>
                                             <td class = "mt-3">
                                                 {{$bid->idauction}}
-                                                <img src="{{asset('/alo.jpg')}}" class = "arrow" width="20" height="20">
+
                                             </td>
                                             <td class = "mt-3">{{$bid->price}}€</td>
                                             <td>

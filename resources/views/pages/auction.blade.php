@@ -24,7 +24,7 @@
             <div class = "d-flex">
                 <div class = "text-center">
                     <div class="foto">
-                        <img src = "../item.jpg" width= "400" height = "510">
+                        <img src = "../images/{{$auction->idauction}}/1.jpg" class ="fds img-fluid">
                     </div>
                 </div>
                 <div class = "texto ms-5">
