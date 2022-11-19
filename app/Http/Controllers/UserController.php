@@ -145,6 +145,7 @@ class UserController extends Controller
 
 
         $idauction = (int) $request->route('id');
+        $auction = Auction::find($idauction);
 
         if(Auth::check()) {
             if(Auth::user()->idclient === $auction->idowner) {
@@ -157,7 +158,7 @@ class UserController extends Controller
         }
 
         $lastId = Bid::selectRaw('idbid')->orderBy('idbid','desc')->first()->idbid;
-
+        $user = Auth::user();
         $bid = new Bid();
         $bid->idbid = $lastId + 1;
         $bid->isvalid = true;

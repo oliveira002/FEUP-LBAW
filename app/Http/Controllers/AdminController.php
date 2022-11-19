@@ -25,6 +25,10 @@ class AdminController extends Controller
         return view('pages.adminusers',['users' => $allusers]);
     }
 
+    public function editAuctions(){
+        
+    }
+
     public function getAuctions(){
         $users = array();
 
