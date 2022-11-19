@@ -21,7 +21,7 @@ $user = Auth::user();
             </div>
         </div>
         <div class="auth">
-            @if(Auth::check())
+            @if(Auth::guard('web')->check())
                 <a class="balance" href="{{route('balance')}}">
                     <button>
                         <span>Balance: {{$user->balance}}€</span>
@@ -39,6 +39,19 @@ $user = Auth::user();
                         <span> Logout </span>
                     </button>
                 </a>
+            @elseif(Auth::guard('admin')->check())
+            <a class="log" href="{{route('admin')}}">
+                <button>
+                    <i class="fa-solid fa-user"></i>
+                    <span>Admin</span>
+                </button>
+            </a>
+            <a href="{{route('logout')}}" class="reg" >
+                <button>
+                    <i class="fa-solid fa-user-minus"></i>
+                    <span> Logout </span>
+                </button>
+            </a>
             @else
             <a class = "log" href = "{{route('login')}}">
                 <button>

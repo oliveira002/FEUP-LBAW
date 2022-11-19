@@ -53,12 +53,11 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended(route('profile'));
+            return redirect()->intended(route('/'));
         }
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            echo "success admin";
-            return redirect()->intended(route('profile'));
+            return redirect()->intended(route('admin'));
         }
         return redirect()->intended(route('login'));
     }
