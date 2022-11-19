@@ -25,8 +25,14 @@ class AdminController extends Controller
         return view('pages.adminusers',['users' => $allusers]);
     }
 
-    public function editAuctions(){
-        
+    public function editUser($username){
+        if(Auth::guard('admin')->check()){
+            $user = User::where('username', $username)->first();
+            return view('pages.adminuserdetails',['user' => $user]);
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
     }
 
     public function getAuctions(){

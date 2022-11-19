@@ -22,6 +22,12 @@
                     </li>
                     <li>
 
+                        <a href="{{route('editusers',['username' => $user->username])}}"><button class = "fw-bold">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Edit User</button>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{url()->previous()}}"><button class = "fw-bold">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Go Back</button>

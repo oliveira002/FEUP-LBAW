@@ -25,6 +25,7 @@ Route::get('/profile/{username}/myauctions', 'UserController@myAuctions')->name(
 Route::get('/profile/{username}/mybids', 'UserController@myBids')->name('mybids');
 Route::get('/admin', 'AdminController@admin')->name('admin');
 Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
+Route::get('/admin/users/{username}/edit', 'AdminController@editUser')->name('editusers');
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
@@ -37,6 +38,7 @@ Route::post('/auction/{id}','UserController@createBid')->name('addbid');
 Route::delete('/auction/{id}', 'AuctionController@destroy')->name('deleteAuction');
 Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction');
 Route::put('/profile/{username}/mydetails', 'UserController@update')->name('updetails');
+Route::put('/profile/{username}/mydetails/edit', 'UserController@adminupdate')->name('adminupdetails');
 
 // Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

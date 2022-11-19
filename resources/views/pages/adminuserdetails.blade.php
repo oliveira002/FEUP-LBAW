@@ -4,7 +4,37 @@
     <link href="{{asset('css/profile.css')}}" rel="stylesheet">
     <div class = "cover out2">
         <div class="prof d-flex">
-            @include('partials.sidebar')
+            <div id="aside">
+                <div class="hi d-flex pt-4 pb-4">
+                    <div class="lg">
+                        <img src= "/alo.jpg" width="120" height="120">
+                    </div>
+                    <div class="nome ms-3 me-2">
+                        <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
+                    </div>
+                </div>
+                <ul class = "ps-0 mt-2">
+                    <li>
+                        <a href = "{{route('profile',['username' =>$user->username])}}"><button class = "fw-bold">
+                                <i class="fa-solid fa-user"></i>
+                                Account Overview
+                            </button> </a>
+                    </li>
+                    <li>
+
+                        <a href="{{route('editusers',['username' => $user->username])}}"><button class = "fw-bold">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Edit User</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url()->previous()}}"><button class = "fw-bold">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Go Back</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class = "outside">
                 <div class="spec d-flex flex-column ps-3 pe-3">
                     <div class = "stuf ms-3 mt-4 mb-4">
@@ -20,7 +50,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method = "POST" action = "{{route('updetails',['username',$user->username])}}">
+                    <form method = "POST" action = "{{route('adminupdetails',['username' => $user->username])}}">
                         {{ csrf_field() }}
                         @method('PUT')
                     <div class = "forms d-flex">
