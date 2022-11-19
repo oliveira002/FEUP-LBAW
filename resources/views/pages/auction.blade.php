@@ -16,8 +16,6 @@
     $minBid = " " . ($minBid + $auction->currentprice);
 ?>
 
-
-
 @section('content')
         <div class = "hidden" id = "datat" style = "display: none">{{$finalStr}}</div>
         <div class = "page">
@@ -30,7 +28,8 @@
                 <div class = "texto ms-5">
                     <div class = "ola d-flex">
                         <p class = "h3 fw-bold me-3"> {{$auction->name}}</p>
-                        @if(Auth::id()==$auction->idowner)
+                        @if(Auth::id()==$auction->idowner || Auth::guard('admin')->check())
+                            <div id="edit-auc"><a href="{{route('edit',['id' => $auction->idauction])}}"><i class="fa-solid fa-pencil"></i><u id="edit-auc-text">Edit auction</u></a></div>
                             <div id="delete-auc"><button class="open-modal" data-target="modal-2"><i class="fa-solid fa-trash"></i><u id="delete-auc-text">Delete auction</u></button></div>
                             <div id="modal-2" class="modal-window">
                                 <div class = "d-flex">
