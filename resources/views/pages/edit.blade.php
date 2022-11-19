@@ -23,7 +23,7 @@ $minBid = " " . ($minBid + $auction->currentprice);
         <div class = "d-flex">
             <div>
                 <div class="foto">
-                    <img src = "../item.jpg"width= "400" height = "510">
+                    <img class = "img-fluid" src = "/images/{{$auction->idauction}}/1.jpg"width= "400" height = "510">
                 </div>
             </div>
             <div class = "contii">
