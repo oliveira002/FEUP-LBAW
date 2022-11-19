@@ -4,7 +4,7 @@
 <div class = "catg d-flex justify-content-center mb-3">
     @foreach($category as $cat)
         <div class = "ms-3 me-3 junto">
-            <a href="" class = "d-flex flex-column fic">
+            <a href="{{route('categorySearch', ['category' => $cat->idcategory] )}}" class = "d-flex flex-column fic">
                 <?php $str = "../images/" . $cat->idcategory .".jpg"?>
 
                 <div class = "bgo d-flex justify-content-center">

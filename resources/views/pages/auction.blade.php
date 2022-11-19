@@ -116,7 +116,7 @@
                         <div class = "fav d-flex mt-4">
                             <div class = "me-4">
                                 <i class="fa-solid fa-user-tag"></i>
-                                <a href class = "pop"> Seller Profile </a>
+                                <a href="{{route('profile',['username' =>$owner->username])}}" class = "pop"> Seller Profile </a>
                             </div>
                             <div class = "me-4">
                                 <i class="fa-regular fa-star"></i>

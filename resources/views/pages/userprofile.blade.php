@@ -9,8 +9,7 @@
                     <div class="lg">
                         <img src= "/alo.jpg" width="120" height="120">
                     </div>
-                    <div class="nome ms-2 me-2">
-                        <p class = "fw-bold mb-1">Hi,</p>
+                    <div class="nome ms-3 me-2">
                         <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
                     </div>
                 </div>
@@ -21,10 +20,11 @@
                                 Account Overview
                             </button> </a>
                     </li>
+                    <li>
 
-                        <a href="{{route('logout')}}"><button class = "fw-bold">
+                        <a href="{{url()->previous()}}"><button class = "fw-bold">
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            Logout</button>
+                            Go Back</button>
                         </a>
                     </li>
                 </ul>
