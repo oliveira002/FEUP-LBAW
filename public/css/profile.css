@@ -299,3 +299,7 @@ ul.payment-selection{
 .botao {
     width: 460px;
 }
+
+.centro {
+    align-items: center;
+}

@@ -23,7 +23,7 @@
                     <li>
 
                         <a href="{{route('editusers',['username' => $user->username])}}"><button class = "fw-bold">
-                            <i class="fa-solid fa-right-from-bracket"></i>
+                                <i class="fa-regular fa-pen-to-square"></i>
                             Edit User</button>
                         </a>
                     </li>
