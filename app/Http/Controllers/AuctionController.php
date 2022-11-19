@@ -70,9 +70,17 @@ class AuctionController extends Controller
     public function edit($id)
     {
         $auction = Auction::find($id);
-        if(Auth::id() != $auction->idowner || !(Auth::guard('admin')->check())) {
+
+        if(Auth::check()) {
+            if(Auth::user()->idclient != $auction->idowner) {
+                return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
+            }
+        }
+
+        elseif(!Auth::guard('admin')->check()) {
             return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
         }
+
         $owner = User::find($auction->idowner);
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
@@ -92,8 +100,14 @@ class AuctionController extends Controller
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
 
-        if(Auth::id() != $auction->idowner || !(Auth::guard('admin')->check())) {
-            return redirect()->back();
+        if(Auth::check()) {
+            if(Auth::user()->idclient != $auction->idowner) {
+                return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
+            }
+        }
+
+        elseif(!Auth::guard('admin')->check()) {
+            return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
         }
 
         if(count($bids) != 0) {
@@ -101,7 +115,6 @@ class AuctionController extends Controller
         }
 
         //valores a dar update
-        $auction = Auction::find($id);
         $name = $request->input('nome');
         $catName = $request->input('cats');
         $categ = Category::select('idcategory')->where('name','=',$catName)->get();
@@ -112,11 +125,7 @@ class AuctionController extends Controller
         $price = (float)substr($request->input('price'), 0, -1);
         $enddate = (string)$request->input('enddate');
 
-        // checks
-        /*if(!(Auth::check() && Auth::user()->idclient == $auction->idowner)){
-            return redirect()->back()->withErrors(['error' => 'Must be either an admin or the owner of the auction']);
-        }*/
-
+        //checks
         if(!is_numeric($price)){
             return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
         }
