@@ -1,3 +1,7 @@
+<?php
+$user = Auth::user();
+?>
+
 <div class="cont">
     <header>
         <a href="{{route('/')}}" id = "logo"> WeBid</a>
@@ -18,13 +22,18 @@
         </div>
         <div class="auth">
             @if(Auth::check())
-                <a class = "log" href = "{{route('profile')}}">
+                <a class="balance" href="{{route('balance')}}">
+                    <button>
+                        <span>Balance: {{$user->balance}}€</span>
+                    </button>
+                </a>
+                <a class="log" href="{{route('profile')}}">
                     <button>
                         <i class="fa-solid fa-user"></i>
                         <span>Profile</span>
                     </button>
                 </a>
-                <a href ="{{route('logout')}}" class = "reg" >
+                <a href="{{route('logout')}}" class="reg" >
                     <button>
                         <i class="fa-solid fa-user-minus"></i>
                         <span> Logout </span>
