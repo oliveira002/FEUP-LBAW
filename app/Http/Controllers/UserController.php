@@ -59,7 +59,20 @@ class UserController extends Controller
 
     public function showUser($username)
     {
-        return view('pages.profile',['user' => User::where('username',$username)->first()]);
+        
+        if(Auth::check()){
+            if(Auth::user()->username === $username){
+                return view('pages.profile',['user' => Auth::user()]);
+            }
+        }
+        $user = User::where('username', $username)->first();
+        if($user == null){
+            return redirect()->intended(route('/'));
+        }
+        else{
+            return view('pages.userprofile',['user' => $user]);
+        }
+        
     }
 
     public function details()
@@ -132,7 +145,6 @@ class UserController extends Controller
 
 
         $idauction = (int) $request->route('id');
-        var_dump($idauction);
 
         if(Auth::check()){
             $user = Auth::user();
@@ -203,9 +215,35 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+        $id = $user->idclient;
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+        $email = $request->input('email');
+        $phonenumber = $request->input('phonenumber');
+        $username = $request->input('phonenumber');
+
+        //checks
+        $checkemail = User::selectRaw('*')->where('email','=',$email)->get();
+        $checkphone = User::selectRaw('*')->where('phonenumber','=',$phonenumber)->get();
+        $checkuser = User::selectRaw('*')->where('username','=',$username)->get();
+
+        if(count($checkemail) != 0 && $email != $user->email) {
+            return redirect()->back()->withErrors(['error' => 'Email already used!']);
+        }
+
+        if(count($checkphone) != 0 && $phonenumber != $user->phonenumber) {
+            return redirect()->back()->withErrors(['error' => 'Phone Number already used!']);
+        }
+
+        if(count($checkuser) != 0 && $username != $user->username) {
+            return redirect()->back()->withErrors(['error' => 'Username already used!']);
+        }
+
+        User::where('idclient', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'phonenumber' => $phonenumber , 'username' => $username]);
+        return redirect()->route('details');
     }
 
     /**

@@ -37,8 +37,9 @@
                                             </td>
                                             <td class = "mt-3">{{$auctions[$idx]["owner"]}}</td>
                                             <td>
-                                                <a href = "{{route('auction',['id' => $auctions[$idx]["idauction"]])}}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                                                <a class="open-modal fw-bold linkii" data-target="modal-{{($auctions[$idx]["idauction"])}}"> <i class="fa-solid fa-trash"></i> </a>
+                                                <a href = "{{route('auction',['id' => $auctions[$idx]["idauction"]])}}" class = "linkii"><i class="fa-solid fa-eye"></i></a>
+                                                <a href = "{{route('edit',['id' => $auctions[$idx]["idauction"]])}}" class = "linkii"><i class="fa-solid fa-pencil"></i></a>
+                                                <a class="open-modal fw-bold linkii" data-target="modal-{{($auctions[$idx]["idauction"])}}"><i class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     </div>

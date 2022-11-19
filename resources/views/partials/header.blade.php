@@ -22,12 +22,12 @@ $user = Auth::user();
         </div>
         <div class="auth">
             @if(Auth::guard('web')->check())
-                <a class="balance" href="{{route('balance')}}">
+                <a class="balance" href="{{route('balance',['username' =>$user->username])}}">
                     <button>
                         <span>Balance: {{$user->balance}}€</span>
                     </button>
                 </a>
-                <a class="log" href="{{route('profile')}}">
+                <a class="log" href="{{route('profile',['username' =>$user->username])}}">
                     <button>
                         <i class="fa-solid fa-user"></i>
                         <span>Profile</span>

@@ -10,33 +10,33 @@
     </div>
     <ul class = "ps-0 mt-2">
         <li>
-            <a href = "{{route('profile')}}"><button class = "fw-bold">
+            <a href = "{{route('profile',['username' =>$user->username])}}"><button class = "fw-bold">
                     <i class="fa-solid fa-user"></i>
                     Account Overview
                 </button> </a>
         </li>
         <li>
-            <a href="{{route('details')}}"><button class = "fw-bold">
+            <a href="{{route('details',['username' =>$user->username])}}"><button class = "fw-bold">
                     <i class="fa-solid fa-address-card"></i>
                     My Details
                 </button>
             </a>
         </li>
         <li>
-            <a href="{{route('balance')}}"><button class = "fw-bold">
+            <a href="{{route('balance',['username' =>$user->username])}}"><button class = "fw-bold">
                     <i class="fa-solid fa-wallet"></i>
                     My Wallet
                 </button>
             </a>
         </li>
         <li>
-            <a href="{{route('mybids')}}"><button class = "fw-bold">
+            <a href="{{route('mybids',['username' =>$user->username])}}"><button class = "fw-bold">
                     <i class="fa-solid fa-coins"></i>
                     My Bids</button>
             </a>
         </li>
         <li>
-            <a href="{{route('myauctions')}}"><button class = "fw-bold">
+            <a href="{{route('myauctions',['username' =>$user->username])}}"><button class = "fw-bold">
                     <i class="fa-solid fa-house-user"></i>
                     My Auctions</button>
             </a>
@@ -54,7 +54,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('logout')}}""><button class = "fw-bold">
+            <a href="{{route('logout')}}"><button class = "fw-bold">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Logout</button>
             </a>

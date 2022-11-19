@@ -89,6 +89,14 @@ class Auction extends Model
             ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
     }
 
+    public static function ftsSearchCat($search,$cat)
+    {
+        return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
+            ->where('isover', false)
+            ->where('idcategory',$cat)
+            ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
+    }
+
     public static function searchWithUser($search)
     {
         return DB::table('auction')
