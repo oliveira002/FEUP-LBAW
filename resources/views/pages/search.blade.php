@@ -22,11 +22,11 @@
         <p class = "h4"> Display: </p>
         <div class = "d-flex flex-column">
             <div>
-                <input class  type="radio" name= "tempo" value="filter" checked>
+                <input id = "up" class  type="radio" name= "tempo" value="filter" checked>
                 <label for="tempo">Upcoming Items</label>
             </div>
             <div>
-                <input class type="radio" name= "tempo" value="filter">
+                <input id = "past" class type="radio" name= "tempo" value="filter">
                 <label for="tempo">Past Items</label>
             </div>
         </div>
@@ -35,15 +35,15 @@
         <p class = "h4"> Sort by: </p>
         <div class = "d-flex flex-column">
             <div>
-                <input class  type="radio" name= "filter" value="filter" checked>
+                <input id = "normal" class  type="radio" name= "filter" value="filter" checked>
                 <label for="filter">Recommended</label>
             </div>
             <div>
-                <input class type="radio" name= "filter" value="filter">
+                <input id = "sort_pop" class type="radio" name= "filter" value="filter">
                 <label for="filter">Most Popular</label>
             </div>
             <div>
-                <input class type="radio" name= "filter" value="filter">
+                <input id = "sort_rating" class type="radio" name= "filter" value="filter">
                 <label for="filter">Rating</label>
             </div>
         </div>

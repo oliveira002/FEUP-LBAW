@@ -40,7 +40,7 @@ class SearchController extends Controller
             $auctions = Auction::ftsSearch($search_query)->get();
         }
         else {
-            $auctions = Auction::ftsSearch($search_query)->where('idcategory',$category)->get();
+            $auctions = Auction::ftsSearchCat($search_query,$category)->get();
         }
         return json_encode($auctions);
     }
@@ -78,10 +78,11 @@ class SearchController extends Controller
         }
         else{
             $search_query = $_GET['search_query'];
-            $auctions = Auction::ftsSearch($search_query)->where('idcategory',$category)->get();
+            $auctions = Auction::ftsSearchCat($search_query,$category)->get();
         }
         return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories]);
     }
+    
     public function home() {
         $categories = Category::selectRaw('*')->get();
         if (!isset($_GET['search_query']) || $_GET['search_query'] == ""){
