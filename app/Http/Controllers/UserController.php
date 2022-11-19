@@ -146,11 +146,14 @@ class UserController extends Controller
 
         $idauction = (int) $request->route('id');
 
-        if(Auth::check()){
-            $user = Auth::user();
+        if(Auth::check()) {
+            if(Auth::user()->idclient === $auction->idowner) {
+                return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
+            }
         }
-        else{
-            return redirect()->intended(route('login'));
+
+        elseif(Auth::guard('admin')->check()) {
+            return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
         }
 
         $lastId = Bid::selectRaw('idbid')->orderBy('idbid','desc')->first()->idbid;
