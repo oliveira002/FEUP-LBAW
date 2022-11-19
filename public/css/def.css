@@ -139,6 +139,10 @@ footer{
     border: none;
 }
 
+.balance{
+    text-decoration: none;
+    margin-right: 2em;
+}
 
 .log button i {
     font-size: 14px;
