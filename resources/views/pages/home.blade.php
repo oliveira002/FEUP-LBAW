@@ -27,15 +27,17 @@
             <div class="d-flex flex-row flex-wrap justify-content-center">
                 @foreach($auctions as $auct)
                     <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
-                        <div class = "itemauc">
-                            <a href="{{route('auction',['id' => $auct->idauction])}}"><img src= "alo.jpg" width="287" height="190"></a>
-                            <a href="{{route('auction',['id' => $auct->idauction])}}">
-                                <div class = "prop" >
-                                    <p id = "price" class = "fw-bold mb-0 mt-1"> {{$auct->currentprice}}€ </p>
-                                    <p id = "nome" class = "fw-bold mb-5"> {{$auct->name}} </p>
-                                </div>
-                            </a>
-                        </div>
+                        <div class="container-img">
+                            <div class = "itemauc">
+                                <a href="{{route('auction',['id' => $auct->idauction])}}"><img class= "img-fluid" src= "images/{{$auct->idauction}}/1.jpg"></a>
+                                <a href="{{route('auction',['id' => $auct->idauction])}}">
+                                    <div class = "prop" >
+                                        <p id = "price" class = "fw-bold mb-0 mt-1">{{$auct->currentprice}}€ </p>
+                                        <p id = "nome" class = "fw-bold mb-5"> {{$auct->name}} </p>
+                                    </div>
+                                </a>
+                            </div>
+                    </div>
                     </div>
                 @endforeach
             </div>

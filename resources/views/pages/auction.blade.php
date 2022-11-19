@@ -16,13 +16,15 @@
     $minBid = " " . ($minBid + $auction->currentprice);
 ?>
 
+
+
 @section('content')
         <div class = "hidden" id = "datat" style = "display: none">{{$finalStr}}</div>
         <div class = "page">
             <div class = "d-flex">
                 <div class = "text-center">
                     <div class="foto">
-                        <img src = "../item.jpg" class ="fds img-fluid">
+                        <img src = "../images/{{$auction->idauction}}/1.jpg" class ="fds img-fluid">
                     </div>
                 </div>
                 <div class = "texto ms-5">
