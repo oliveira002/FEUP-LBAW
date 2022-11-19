@@ -66,11 +66,12 @@ class UserController extends Controller
             }
         }
         $user = User::where('username', $username)->first();
+        $auctions = Auction::where('idowner',$user->idclient)->get();
         if($user == null){
             return redirect()->intended(route('/'));
         }
         else{
-            return view('pages.userprofile',['user' => $user]);
+            return view('pages.userprofile',['user' => $user, 'auctions' => $auctions]);
         }
 
     }
