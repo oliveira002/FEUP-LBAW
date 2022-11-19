@@ -30,11 +30,13 @@ function auctionUpdatedHandler() {
     });
 
     let Fhtml = ``
+    var number = 0
     for(const auc of item){
+        number++
         const html = `
         <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                 <div class = "itemauc">
-                    <a href="${window.location.origin + '/auction/' + auc.idauction}"><img src= "../alo.jpg" width="287" height="190"></a>
+                    <a href="${window.location.origin + '/auction/' + auc.idauction}"><img src= "${'/images/' + auc.idauction + '/1.jpg'}"+ width="287" height="190"></a>
                     <a href="${window.location.origin + '/auction/' + auc.idauction}">
                         <div class = "prop" >
                             <p id = "price" class = "fw-bold mb-0 mt-1"> ${auc.currentprice}€ </p>
@@ -46,6 +48,8 @@ function auctionUpdatedHandler() {
         `
         Fhtml = Fhtml.concat(html)
     }
+    var a = document.querySelector("#content > div.pattern > div > div:nth-child(1) > div")
+    a.innerHTML = number + " items displayed"
     document.querySelector('#auction').insertAdjacentHTML('beforeend',Fhtml)
 
 }
@@ -114,6 +118,7 @@ function userUpdateHandler(){
         `
         Fhtml = Fhtml.concat(html)
     }
+
     document.querySelector('#tablecontent').insertAdjacentHTML('beforeend',Fhtml)
     functionPopInit()
 }

@@ -76,7 +76,7 @@
             @foreach($auctions as $auct)
                 <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                     <div class = "itemauc">
-                        <a href="{{route('auction',['id' => $auct->idauction])}}"><img src= "../alo.jpg" width="287" height="190"></a>
+                        <a href="{{route('auction',['id' => $auct->idauction])}}"><img src= "/images/{{$auct->idauction}}/1.jpg" width="287" height="190"></a>
                         <a href="{{route('auction',['id' => $auct->idauction])}}">
                             <div class = "prop" >
                                 <p id = "price" class = "fw-bold mb-0 mt-1"> {{$auct->currentprice}}€ </p>

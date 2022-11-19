@@ -20,7 +20,7 @@
                                     ?>
                                 <div class = "row">
                                     <div class = "col-3">
-                                        <img src= "/item.jpg" width="130" height="95">
+                                        <img src= "/images/{{$auction->idauction}}/1.jpg" width="130" height="95">
                                     </div>
                                     <div class = "col-9">
                                         <div class = "row">
@@ -34,7 +34,11 @@
                                                 <p class = "fw-bold">Current bid: {{$auction->currentprice}}€</p>
                                             </div>
                                             <div class = "col-12" id="item-info">
-                                                <button class = "fw-lighter btn btn-secondary btn-sm">Bid</button>
+                                                <form action="{{route('auction', $auction->idauction)}}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" class= "fw-lighter btn btn-secondary btn-sm">Bid</button>
+                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
