@@ -16,7 +16,7 @@
                 </div>
                 <ul class = "ps-0 mt-2">
                     <li>
-                        <a href = "{{route('profile')}}"><button class = "fw-bold">
+                        <a href = "{{route('profile',['username' =>$user->username])}}"><button class = "fw-bold">
                                 <i class="fa-solid fa-user"></i>
                                 Account Overview
                             </button> </a>

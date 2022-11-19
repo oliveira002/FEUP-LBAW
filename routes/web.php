@@ -16,13 +16,13 @@ Route::get('/', 'HomeController@home')->name('/');
 // API
 
 // Users
-Route::get('/profile', 'UserController@show')->name('profile');
-Route::get('/profile/{username}', 'UserController@showUser')->name('Userprofile');
-Route::get('/profile/mydetails', 'UserController@details')->name('details');
-Route::get('/profile/balance', 'UserController@balance')->name('balance');
-Route::post('profile/balance', 'UserController@addFunds')->name('addFunds');
-Route::get('/profile/myauctions', 'UserController@myAuctions')->name('myauctions');
-Route::get('/profile/mybids', 'UserController@myBids')->name('mybids');
+//Route::get('/profile', 'UserController@show')->name('profile');
+Route::get('/profile/{username}', 'UserController@showUser')->name('profile');
+Route::get('/profile/{username}/mydetails', 'UserController@details')->name('details');
+Route::get('/profile/{username}/balance', 'UserController@balance')->name('balance');
+Route::post('profile/{username}/balance', 'UserController@addFunds')->name('addFunds');
+Route::get('/profile/{username}/myauctions', 'UserController@myAuctions')->name('myauctions');
+Route::get('/profile/{username}/mybids', 'UserController@myBids')->name('mybids');
 Route::get('/admin', 'AdminController@admin')->name('admin');
 Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');

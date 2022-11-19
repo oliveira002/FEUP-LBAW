@@ -60,7 +60,19 @@ class UserController extends Controller
     public function showUser($username)
     {
         
-        return view('pages.profile',['user' => User::where('username',$username)->first()]);
+        if(Auth::check()){
+            if(Auth::user()->username === $username){
+                return view('pages.profile',['user' => Auth::user()]);
+            }
+        }
+        $user = User::where('username', $username)->first();
+        if($user == null){
+            return redirect()->intended(route('/'));
+        }
+        else{
+            return view('pages.userprofile',['user' => $user]);
+        }
+        
     }
 
     public function details()
