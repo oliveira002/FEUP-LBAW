@@ -49,8 +49,9 @@ class UserController extends Controller
      */
     public function show()
     {
+        $auctions = Auction::find(Auth::user()->idclient);
         if(Auth::check()){
-            return view('pages.profile',['user' => Auth::user()]);
+            return view('pages.profile',['user' => Auth::user(),'auctions' => $auctions]);
         }
         else{
             return redirect()->intended(route('login'));
@@ -62,7 +63,8 @@ class UserController extends Controller
 
         if(Auth::check()){
             if(Auth::user()->username === $username){
-                return view('pages.profile',['user' => Auth::user()]);
+                $auctions = Auction::where('idowner',Auth::user()->idclient)->get();
+                return view('pages.profile',['user' => Auth::user(),'auctions'=>$auctions]);
             }
         }
         $user = User::where('username', $username)->first();

@@ -20,13 +20,14 @@
                                 Account Overview
                             </button> </a>
                     </li>
+                    @if(Auth::guard('admin')->check())
                     <li>
-
                         <a href="{{route('editusers',['username' => $user->username])}}"><button class = "fw-bold">
-                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <i class="fa-regular fa-pen-to-square"></i>
                             Edit User</button>
                         </a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{url()->previous()}}"><button class = "fw-bold">
                             <i class="fa-solid fa-right-from-bracket"></i>
@@ -49,7 +50,16 @@
                             <div class = "ms-4 mt-3">
                                 <p class = "mt-3 mb-2 ms-3 h4 fw-bold">{{$user->firstname}} {{$user->lastname}}</p>
                                 <p class = "mb-2 ms-3 h5 mt-4">Rating</p>
-                                <p class = "mb-3 ms-3 h3 cor ">5.0</p>
+                                <?php
+                                    $own = \App\Models\AuctionOwner::find($user->idclient);
+                                    if($own) {
+                                        $rating = $own->rating;
+                                    }
+                                    else {
+                                        $rating = "0";
+                                    }
+                                ?>
+                                <p class = "mb-3 ms-3 h3 cor ">{{$rating}}</p>
                                 <a href = "" class = "mb-2 ms-3 h5 rep mt-2"><button> Report user <i class="fa-regular fa-thumbs-down"></i>  </button> </a>
                             </div>
                         </div>
@@ -86,8 +96,8 @@
                         <div class = "auctions mb-4">
                             <span class = "cor2 h4 mb-5"> Owned Auctions </span>
                             @foreach($auctions as $auct)
-                                <div class = "d-flex mt-2 mb-5">
-                                    <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg" src= "/images/{{$auct->idauction}}/1.jpg" width="193" height="130"> </a>
+                                <div class = "d-flex mt-2 mb-5 centro">
+                                    <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" > </a>
                                     <div class ="mb-4">
                                         <div>
                                             <p class = "h5 ms-4 mt-2 cor2 fw-bold mb-0"> Auction Name:</p>

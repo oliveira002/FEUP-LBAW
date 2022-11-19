@@ -14,27 +14,27 @@
                         </div>
                         <div class = "d-flex mt-4 numbers">
                             <div class = "d-flex boxi">
-                                <img src= "/alo.jpg" width="50" height="50">
+                                <img class = "fill" src= "/user.png" width="50" height="50">
                                 <div class = "ms-2">
                                     <span class = "h5"> Total </span>
                                     <p class = "h5 mb-0"> Costumers </p>
-                                    <p class = "h5 fw-bold mb-0"> 1000 </p>
+                                    <p class = "h5 fw-bold mb-0"> {{$numUsers}} </p>
                                 </div>
                             </div>
                             <div class = "d-flex boxi ms-5">
-                                <img src= "/alo.jpg" width="50" height="50">
+                                <img class = "fill" src= "/numauc.png" width="50" height="50">
                                 <div class = "ms-2">
                                     <span class = "h5"> Total </span>
                                     <p class = "h5 mb-0"> Auctions </p>
-                                    <p class = "h5 fw-bold mb-0"> 1000 </p>
+                                    <p class = "h5 fw-bold mb-0"> {{$numAuc}} </p>
                                 </div>
                             </div>
                             <div class = "d-flex boxi ms-5">
-                                <img src= "/alo.jpg" width="50" height="50">
+                                <img class = "fill" src= "/numbid.png" width="50" height="50">
                                 <div class = "ms-2">
                                     <span class = "h5"> Total</span>
                                     <p class = "h5"> Bids </p>
-                                    <p class = "h5 fw-bold mb-0"> 1000 </p>
+                                    <p class = "h5 fw-bold mb-0"> {{$numBids}} </p>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             </tbody>
                           </table>
                           <div class = "smore">
-                            <a href = "{{route('manbids')}}" class = "fw-bold h5"> View All </a>
+                            <a href = "" class = "fw-bold h5"> View All </a>
                           </div>
                     </div>
                 </div>
