@@ -23,7 +23,7 @@ $minBid = " " . ($minBid + $auction->currentprice);
         <div class="d-flex">
             <div>
                 <div class="foto">
-                    <img class="img-fluid" src="/images/{{$auction->idauction}}/1.jpg" width="400" height="510">
+                    <img src="../item.jpg" width="400" height="510">
                 </div>
             </div>
             <div class="contii">
@@ -36,19 +36,19 @@ $minBid = " " . ($minBid + $auction->currentprice);
                         </ul>
                     </div>
                 @endif
-                <form action="{{route('updateAuction',['id' => $auction->idauction])}}" method="POST">
+                <form action="" method="POST">
                     {{ csrf_field() }}
                     @method('PUT')
                     <div class="form-header">
                         <div class="title">
-                            <h1>Edit Auction</h1>
+                            <h1>Create Auction</h1>
                         </div>
                     </div>
                     <div class="input-group">
                         <div>
                             <div class="input-box">
                                 <label for="firstname">Auction Name:</label>
-                                <input id="firstname" type="text" name="nome" value="{{$auction->name}}" required>
+                                <input id="firstname" type="text" name="nome" placeholder="Auction name" required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Category:</label>
@@ -60,11 +60,13 @@ $minBid = " " . ($minBid + $auction->currentprice);
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction Description:</label>
-                                <input id="firstname" type="text" name="desc" value="{{$auction->description}}" required>
+                                <input id="firstname" type="text" name="desc" value="{{$auction->description}}"
+                                       required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction Starting Price:</label>
-                                <input id="firstname" type="text" name="price" value="{{$auction->startingprice}}€" required>
+                                <input id="firstname" type="text" name="price" value="{{$auction->startingprice}}€"
+                                       required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction End Date:</label>

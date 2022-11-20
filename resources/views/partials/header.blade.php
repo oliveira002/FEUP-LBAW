@@ -4,18 +4,18 @@ $user = Auth::user();
 
 <div class="cont">
     <header>
-        <a href="{{route('/')}}" id = "logo"> WeBid</a>
+        <a href="{{route('/')}}" id="logo"> WeBid</a>
         <div class="search">
-            <div class = "sbar">
+            <div class="sbar">
                 @if(Route::currentRouteName() === '/')
                     <form action="{{ route('search') }}" method="get">
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
-                        <a href="" > <i class="fa fa-search"> </i> </a>
+                        <a href=""> <i class="fa fa-search"> </i> </a>
                     </form>
                 @else
                     <button>
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
-                        <a href="" > <i class="fa fa-search"> </i> </a>
+                        <a href=""> <i class="fa fa-search"> </i> </a>
                     </button>
                 @endif
             </div>
@@ -33,38 +33,38 @@ $user = Auth::user();
                         <span>Profile</span>
                     </button>
                 </a>
-                <a href="{{route('logout')}}" class="reg" >
+                <a href="{{route('logout')}}" class="reg">
                     <button>
                         <i class="fa-solid fa-user-minus"></i>
                         <span> Logout </span>
                     </button>
                 </a>
             @elseif(Auth::guard('admin')->check())
-            <a class="log" href="{{route('admin')}}">
-                <button>
-                    <i class="fa-solid fa-user"></i>
-                    <span>Admin</span>
-                </button>
-            </a>
-            <a href="{{route('logout')}}" class="reg" >
-                <button>
-                    <i class="fa-solid fa-user-minus"></i>
-                    <span> Logout </span>
-                </button>
-            </a>
+                <a class="log" href="{{route('admin')}}">
+                    <button>
+                        <i class="fa-solid fa-user"></i>
+                        <span>Admin</span>
+                    </button>
+                </a>
+                <a href="{{route('logout')}}" class="reg">
+                    <button>
+                        <i class="fa-solid fa-user-minus"></i>
+                        <span> Logout </span>
+                    </button>
+                </a>
             @else
-            <a class = "log" href = "{{route('login')}}">
-                <button>
-                    <i class="fa-solid fa-user"></i>
-                    <span>Login</span>
-                </button>
-            </a>
-            <a href ="{{route('register')}}" class = "reg" >
-                <button>
-                    <i class="fa-solid fa-user-plus"></i>
-                    <span> Register </span>
-                </button>
-            </a>
+                <a class="log" href="{{route('login')}}">
+                    <button>
+                        <i class="fa-solid fa-user"></i>
+                        <span>Login</span>
+                    </button>
+                </a>
+                <a href="{{route('register')}}" class="reg">
+                    <button>
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span> Register </span>
+                    </button>
+                </a>
             @endif
         </div>
     </header>

@@ -103,11 +103,8 @@
     padding-top: 15vh;
 }
 
-.loginpage{
+.loginpage .registerpage{
     display: block;
-}
-.registerpage{
-    display: none;
 }
 
 .loginpage a:last-child{
@@ -123,3 +120,6 @@
     font-weight: bold;
 }
 
+.alert ul{
+    padding-left: 0;
+}

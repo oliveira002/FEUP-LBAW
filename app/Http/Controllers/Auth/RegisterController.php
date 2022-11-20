@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -50,9 +51,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => 'required|string|max:30|unique:user',
             'email' => 'required|string|email|max:50|unique:user',
-            'firstname' => 'required|string|max:30|',
-            'lastname' => 'required|string|max:30|',
-            'password' => 'required|string|min:8|confirmed',
+            'firstname' => 'required|string|max:30|alpha_dash',
+            'lastname' => 'required|string|max:30|alpha_dash',
+            'password' => 'required|string|min:8|confirmed|alpha_num',
         ]);
     }
 

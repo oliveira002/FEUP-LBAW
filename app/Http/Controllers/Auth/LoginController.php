@@ -49,7 +49,11 @@ class LoginController extends Controller
     public function home() {
         return redirect('login');
     }
+
     public function authenticate(Request $request) {
+
+        $this->validateLogin($request);
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
@@ -59,8 +63,9 @@ class LoginController extends Controller
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended(route('admin'));
         }
-        return redirect()->intended(route('login'));
+        return redirect()->intended(route('login'))->withErrors(['wrong_credentials' => 'These credentials do not match any on our system. Try again!']);
     }
+
     public function logout(Request $request){
         Auth::logout();
 

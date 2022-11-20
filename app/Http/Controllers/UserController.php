@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use Auth;
+use Hash;
 
 class UserController extends Controller
 {
@@ -251,6 +252,30 @@ class UserController extends Controller
         return redirect()->route('details',['username' => $username]);
     }
 
+    public function updatePassword(Request $request){
+
+        $user = Auth::user();
+        $curr_pass_input = $request->get('current_password');
+
+        if (!(Hash::check($curr_pass_input, $user->password))) {
+            return redirect()->back()->withErrors(["errorCurrPass"=>"Your password is invalid!"]);
+        }
+        if(strcmp($curr_pass_input, $request->get('new_password')) == 0){
+            return redirect()->back()->withErrors(["new_password"=>"New Password cannot be same as your current password!"]);
+        }
+
+        $validated = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed|alpha_num'
+        ]);
+
+        $user->password = bcrypt($request->get('new_password'));
+        $user->save();
+
+        return redirect()->back()->withErros(["success"=>"Your password has been changed successfully!"]);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -261,4 +286,6 @@ class UserController extends Controller
     {
         //
     }
+
+
 }
