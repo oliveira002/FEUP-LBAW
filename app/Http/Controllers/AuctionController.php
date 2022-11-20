@@ -153,6 +153,7 @@ class AuctionController extends Controller
             'idcategory' => $request->input('cat'),
             'description' => $request->input('desc'),
             'startingprice' => $request->input('price'),
+            'currentprice' => $request->input('price'),
             'enddate' => date('Y-m-d H:i:s', strtotime($request->input('enddate'))),
         ]);
 
