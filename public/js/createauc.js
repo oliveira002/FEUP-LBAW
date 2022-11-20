@@ -1,0 +1,56 @@
+function setEndDateMinMaxValue(){
+    let now     = new Date();
+
+    let mindate = new Date(now.setHours(now.getHours() + 1));
+    let minyear    = mindate.getFullYear();
+    let minmonth   = mindate.getMonth()+1;
+    let minday     = mindate.getDate();
+    let minhour    = mindate.getHours();
+    let minminute  = mindate.getMinutes();
+
+    if(minmonth.toString().length === 1) {
+        minmonth = '0'+minmonth;
+    }
+    if(minday.toString().length === 1) {
+        minday = '0'+minday;
+    }
+    if(minhour.toString().length === 1) {
+        minhour = '0'+minhour;
+    }
+    if(minminute.toString().length === 1) {
+        minminute = '0'+minminute;
+    }
+
+    let maxdate = new Date(now.setMonth(now.getMonth()+6));
+    let maxyear    = maxdate.getFullYear();
+    let maxmonth   = maxdate.getMonth()+1;
+    let maxday     = maxdate.getDate();
+    let maxhour    = maxdate.getHours();
+    let maxminute  = maxdate.getMinutes();
+
+    if(maxmonth.toString().length === 1) {
+        maxmonth = '0'+maxmonth;
+    }
+    if(maxday.toString().length === 1) {
+        maxday = '0'+maxday;
+    }
+    if(maxhour.toString().length === 1) {
+        maxhour = '0'+maxhour;
+    }
+    if(maxminute.toString().length === 1) {
+        maxminute = '0'+maxminute;
+    }
+
+    const min = minyear + '-' + minmonth + '-' + minday + 'T' + minhour + ':' + minminute;
+    const max = maxyear + '-' + maxmonth + '-' + maxday + 'T' + maxhour + ':' + maxminute;
+
+    const dateControl = document.getElementById('enddate2');
+    dateControl.value = min;
+    dateControl.min = min;
+    dateControl.max = max;
+
+
+}setEndDateMinMaxValue();
+
+
+

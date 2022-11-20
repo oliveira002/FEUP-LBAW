@@ -59,16 +59,16 @@ $minBid = " " . ($minBid + $auction->currentprice);
                                 </select>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Auction Description:</label>
-                                <input id="firstname" type="text" name="desc" value="{{$auction->description}}" required>
+                                <label for="desc">Auction Description:</label>
+                                <input id="desc" type="text" name="desc" value="{{$auction->description}}" required>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Auction Starting Price:</label>
-                                <input id="firstname" type="text" name="price" value="{{$auction->startingprice}}€" required>
+                                <label for="price">Auction Starting Price:</label>
+                                <input id="price" type="text" name="price" value="{{$auction->startingprice}}€" required>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Auction End Date:</label>
-                                <input id="firstname" type="text" name="enddate" value="{{$auction->enddate}}" required>
+                                <label for="enddate">Auction End Date:</label>
+                                <input id="enddate" type="text" name="enddate" value="{{$auction->enddate}}" required>
                             </div>
                             <div class="continue-button">
                                 <input type="submit" class="continue-button" value="Save Changes"/>

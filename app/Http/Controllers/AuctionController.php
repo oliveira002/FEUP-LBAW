@@ -29,7 +29,8 @@ class AuctionController extends Controller
      */
     public function create()
     {
-        //
+        $allcategories = Category::all();
+        return(view('pages.createauction',['categories' => $allcategories]));
     }
 
     /**
@@ -50,7 +51,7 @@ class AuctionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
+    {
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
         $this->authorize("view", $auction);
@@ -70,7 +71,7 @@ class AuctionController extends Controller
      */
     public function edit($id)
     {
-        
+
         $auction = Auction::find($id);
 
         if(Auth::check()) {
@@ -99,7 +100,7 @@ class AuctionController extends Controller
     public function update(Request $request, $id)
     {
         //verificar se ha bids
-        
+
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
 
@@ -151,7 +152,7 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $auction = Auction::find($id);
         $this->authorize("delete", $auction);
 
