@@ -182,7 +182,7 @@ class AuctionController extends Controller
         {
             $auction->delete();
 
-            return redirect('/');
+            return redirect()->back();
         }
         else{
             abort(403);
