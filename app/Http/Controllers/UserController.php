@@ -187,10 +187,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $name)
+    public function update(Request $request, $username)
     {
 
-        $user = User::where('username','=',$name)->first();
+        $user = User::where('username','=',$username)->first();
+
+        if ($request->hasFile('auc_pic')) {
+            $image = $request->file('auc_pic');
+            $photoName = $user->idclient . '.jpg';
+            $image->move('images/users/', $photoName);
+        }
+
+
         $this->authorize("update", $user);
         $id = $user->idclient;
         $firstname = $request->input('firstname');

@@ -14,11 +14,16 @@ function counter() {
         document.getElementById("minute").innerHTML = minutes;
         document.getElementById("second").innerHTML =seconds;
         if (t < 0) {
+            const boxes = document.querySelectorAll('.dia');
+            for (const box of boxes) {
+                box.classList.add('nt');
+            }
             clearInterval(x);
-            document.getElementById("day").innerHTML ='0';
-            document.getElementById("hour").innerHTML ='0';
-            document.getElementById("minute").innerHTML ='0' ;
-            document.getElementById("second").innerHTML = '0'; }
+            document.getElementById("expired").innerHTML = 'ENDED';
+            document.getElementById("day").innerHTML ='';
+            document.getElementById("hour").innerHTML ='';
+            document.getElementById("minute").innerHTML ='' ;
+            document.getElementById("second").innerHTML = ''; }
     }, 1000);
 
 }counter();
