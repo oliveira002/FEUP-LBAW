@@ -34,6 +34,14 @@
                                 @foreach($bids as $bid)
                                         <?php
                                             $user = \App\Models\User::find($bid->idclient);
+                                            $auction = \App\Models\Auction::find($bid->idauction);
+
+                                            if($bid->isvalid){
+                                                $valid = "Valid";
+                                            }
+                                            else{
+                                                $valid = "Invalid";
+                                            }
                                         ?>
                                     <div class = "d-flex align-items-center">
                                         <tr>
@@ -47,13 +55,13 @@
                                             </td>
                                             <td class = "mt-3">{{$bid->price}}€</td>
                                             <td>
-                                                <a class="open-modal fw-bold linkii" data-target="modal-2"> <i class="fa-solid fa-eye"></i></a>
-                                                <a class="open-modal fw-bold linkii" data-target="modal-1"> <i class="fa-solid fa-trash"></i> </a>
+                                                <a  onclick="valid()" class="open-modal fw-bold linkii" data-target="modal-{{$bid->idbid*2}}"> <i class="fa-solid fa-eye"></i></a>
+                                                <a class="open-modal fw-bold linkii" data-target="modal-{{$bid->idbid*2-1}}"> <i class="fa-solid fa-trash"></i> </a>
                                             </td>
 
                                         </tr>
                                     </div>
-                                        <div id="modal-1" class="modal-window">
+                                        <div id="modal-{{$bid->idbid*2-1}}" class="modal-window">
                                             <div class = "d-flex">
                                                 <h2>Ban Confirmation</h2>
                                                 <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
@@ -66,31 +74,36 @@
                                             </div>
                                         </div>
                                         <!bid information modal>
-                                        <div id="modal-2" class="modal-window">
+                                        <div id="modal-{{$bid->idbid*2}}" class="modal-window">
 
                                             <div class = "d-flex">
-                                                <h2>Bid Infomation</h2>
+                                                <h2>Bid Information</h2>
                                                 <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
                                             </div>
                                             <div class = "d-flex">
                                                 <div class = "d-flex flex-column">
                                                     <p class = "rfix">Bid Id: <span class = "fw-bold"> {{$bid->idbid}} </span> </p>
                                                     <p class = "rfix">Bid Date: <span class = "fw-bold"> {{$bid->biddate}} </span> </p>
-                                                    <p class = "rfix">Is Bid Valid? <span class = "fw-bold"> {{$bid->isvalid}} </span> </p>
+                                                    <p class = "rfix">Bid: <span class = "fw-bold bidstatus"  >{{$valid}} </span> </p>
                                                     <p class = "rfix">Client Name: <span class = "fw-bold"> {{$user->firstname }} {{$user->lastname}} </span> </p>
                                                     <p class = "rfix">Auction Id: <span class = "fw-bold"> {{$bid->idauction}} </span> </p>
+                                                    <p class = "rfix">Auction Name: <span class = "fw-bold"> {{$auction->name}} </span> </p>
                                                     <p class = "rfix">Price: <span class = "fw-bold"> {{$bid->price}}€ </span> </p>
 
                                                     <!--view user profile-->
-                                                    <a href="" class = "">View User Profile</a>
-                                                    <button class="modal-btn modal-hide cl">Close</button>
+                                                    <div class = "d-flex">
+                                                        <form action="{{ route('profile', ['username' => $user->username]) }}" method="get">
+                                                            <input type="submit" class="modal-btn cf"  value="View User Profile"/>
+                                                        </form>
+                                                        <form action="{{ route('auction', ['id' => $auction->idauction]) }}" method="get">
+                                                            <input type="submit" class="modal-btn cf ms-3"  value="View Auction"/>
+                                                        </form>
+
+
+
+                                                    <button class="modal-btn modal-hide cl ms-3">Close</button>
+                                                    </div>
                                                 </div>
-
-
-
-
-
-
 
 
 

@@ -34,6 +34,9 @@
                                                 <p class = "fw-bold">Current bid: {{$auction->currentprice}}€</p>
                                             </div>
                                             <div class = "col-12" id="item-info">
+                                                <p class = "fw-bold">Ends at: {{$auction->enddate}}</p>
+                                            </div>
+                                            <div class = "col-12" id="item-info">
                                                 <form action="{{route('auction', $auction->idauction)}}" method="GET">
                                                     @csrf
                                                     <button type="submit" class= "fw-lighter btn btn-secondary btn-sm">Bid</button>

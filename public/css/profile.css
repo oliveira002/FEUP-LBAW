@@ -210,11 +210,15 @@ ul.payment-selection{
 
 }
 
+.myBids .row .col-3{
+    margin:auto;
+}
 .myBids .row img{
     width: 140px;
     height: 100px;
-    max-width: none;
+
     object-fit: cover;
+
 }
 
 #user-auctions{
