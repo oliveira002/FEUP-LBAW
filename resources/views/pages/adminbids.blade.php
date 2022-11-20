@@ -11,12 +11,6 @@
                         <div class = "d-flex query mt-4">
                             <p class ="h3 fw-bold"> All Bids </p>
                             <div class="search2">
-                                <div class = "sbar2">
-                                    <form action="{{ route('search') }}" method="get">
-                                        <input type="text" id="searchbar2" name="search_query" placeholder="Search a bid...">
-                                        <i class="fa fa-search"></i>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                         <div class = "tableContainer">
