@@ -312,3 +312,8 @@ ul.payment-selection{
 .centro {
     align-items: center;
 }
+
+.new_auc{
+    align-self: center;
+    margin-left: auto;
+}
