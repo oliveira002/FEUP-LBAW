@@ -13,7 +13,7 @@
                             <div class="search2">
                                 <div class="sbar2">
                                     <input type="text" id="searchbar2" name="search_query"
-                                           placeholder="Search a user...">
+                                           placeholder="Search an auction...">
                                     <i class="fa fa-search"></i>
                                 </div>
                             </div>
