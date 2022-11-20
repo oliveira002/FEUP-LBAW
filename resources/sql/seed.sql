@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Category(
 
 CREATE TABLE IF NOT EXISTS AuctionOwner(
     idClient SERIAL PRIMARY KEY,
-    rating   FLOAT,
+    rating   FLOAT DEFAULT 0,
     FOREIGN KEY (idClient) REFERENCES "user" ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT validRating CHECK((rating BETWEEN 0 AND 10) OR (rating IS NULL))
 );
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Review(
     reviewDate     TIMESTAMP NOT NULL,
     idUserReviewer INTEGER NOT NULL,
     idUserReviewed INTEGER NOT NULL,
-    CONSTRAINT validRating CHECK(rating BETWEEN 0 AND 10), 
+    CONSTRAINT validRating CHECK(rating BETWEEN 0 AND 10),
     FOREIGN KEY (idUserReviewer) REFERENCES "user"(idClient) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (idUserReviewed) REFERENCES AuctionOwner(idClient) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -177,8 +177,8 @@ CREATE TABLE IF NOT EXISTS DeletedUser(
 --          INDEX CREATION          --
 --------------------------------------
 
--- 1) 
-CREATE INDEX id_client ON Notification(idClient); 
+-- 1)
+CREATE INDEX id_client ON Notification(idClient);
 
 -- 2)
 CREATE INDEX auction_category ON Auction(idCategory);
@@ -194,10 +194,10 @@ CREATE INDEX user_username ON "user" USING hash(username);
 -- 1) Prevent Self Bidding
 DROP FUNCTION IF EXISTS check_bid() CASCADE;
 
-CREATE FUNCTION check_bid() RETURNS TRIGGER AS 
+CREATE FUNCTION check_bid() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF 
+    IF
         (NEW.idClient = (SELECT idOwner from Auction WHERE(Auction.idAuction = New.IdAuction)))
     THEN
         RAISE EXCEPTION 'Cannot bid on your own auction';
@@ -215,11 +215,11 @@ EXECUTE PROCEDURE check_bid();
 -- 2) Prevent Self Review
 DROP FUNCTION IF EXISTS create_review() CASCADE;
 
-CREATE FUNCTION create_review() RETURNS TRIGGER AS 
+CREATE FUNCTION create_review() RETURNS TRIGGER AS
 $BODY$
 
 BEGIN
-    IF 
+    IF
         (NEW.idUserReviewer = NEW.idUserReviewed)
     THEN
         RAISE EXCEPTION 'Cannot review yourself';
@@ -237,11 +237,11 @@ EXECUTE PROCEDURE create_review();
 -- 3) Updates current auction bid and prevents lower bid than current bid
 DROP FUNCTION IF EXISTS create_bid() CASCADE;
 
-CREATE FUNCTION create_bid() RETURNS TRIGGER AS 
+CREATE FUNCTION create_bid() RETURNS TRIGGER AS
 $BODY$
 
 BEGIN
-    IF 
+    IF
         (NEW.price < (SELECT currentprice FROM Auction
     WHERE(Auction.idAuction = NEW.idAuction)))
     THEN
@@ -262,7 +262,7 @@ EXECUTE PROCEDURE create_bid();
 -- 4) Adds a user to the deleted "user" table after deleting on the "user" table
 DROP FUNCTION IF EXISTS client_delete() CASCADE;
 
-CREATE FUNCTION client_delete() RETURNS TRIGGER AS 
+CREATE FUNCTION client_delete() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     insert into DeletedUser (idClient, username) values (old.idClient, old.username);
@@ -275,11 +275,11 @@ CREATE TRIGGER client_delete
 AFTER DELETE ON "user"
 FOR EACH ROW
 EXECUTE PROCEDURE client_delete();
- 
+
 -- 5) Updates an Auction Owner's review score after he receives a new review.
 DROP FUNCTION IF EXISTS change_rating() CASCADE;
 
-CREATE FUNCTION change_rating() RETURNS TRIGGER AS 
+CREATE FUNCTION change_rating() RETURNS TRIGGER AS
 $BODY$
 
 BEGIN
@@ -297,7 +297,7 @@ EXECUTE PROCEDURE change_rating();
 -- 6) After an user is outbid, send him a notification
 DROP FUNCTION IF EXISTS high_notif() CASCADE;
 
-CREATE FUNCTION high_notif() RETURNS TRIGGER AS 
+CREATE FUNCTION high_notif() RETURNS TRIGGER AS
 $BODY$
 
 BEGIN
@@ -316,7 +316,7 @@ EXECUTE PROCEDURE high_notif();
 -- 7) After a new deposit is made, increase that "user"'s balance.
 DROP FUNCTION IF EXISTS balance_update() CASCADE;
 
-CREATE FUNCTION balance_update() RETURNS TRIGGER AS 
+CREATE FUNCTION balance_update() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     UPDATE "user" SET balance = (Select balance from "user" where idClient = New.idClient) + New.amount WHERE "user".idClient = New.idClient;
@@ -333,18 +333,18 @@ EXECUTE PROCEDURE balance_update();
 -- 8) Checks if an user has any active bids or auctions before deleting his account, not allowing the deletion if he does.
 DROP FUNCTION IF EXISTS check_del() CASCADE;
 
-CREATE FUNCTION check_del() RETURNS TRIGGER AS 
+CREATE FUNCTION check_del() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF EXISTS
         (select * from auction where auction.idOwner = OLD.idClient AND auction.endDate > NOW())
     THEN
         RAISE EXCEPTION 'Cannot delete user, he currently has active auctions';
-    END IF;    
+    END IF;
     IF EXISTS
         (select from Bid where Bid.idClient = OLD.idClient AND Bid.Price = (Select currentprice from Auction where auction.idAuction = Bid.idAuction))
     THEN
-        RAISE EXCEPTION 'Cannot delete user, he currently has active bids';    
+        RAISE EXCEPTION 'Cannot delete user, he currently has active bids';
     END IF;
 
 RETURN OLD;
@@ -360,14 +360,14 @@ EXECUTE PROCEDURE check_del();
 -- 9) Check if an Owner already exists before creating auction
 DROP FUNCTION IF EXISTS check_own() CASCADE;
 
-CREATE FUNCTION check_own() RETURNS TRIGGER AS 
+CREATE FUNCTION check_own() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF NOT EXISTS
         (select * from AuctionOwner where AuctionOwner.idClient = NEW.idOwner)
     THEN
         INSERT INTO AuctionOwner(idClient) values (New.idOwner);
-    END IF;    
+    END IF;
 RETURN NEW;
 END
 $BODY$
