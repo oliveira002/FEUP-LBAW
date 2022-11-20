@@ -25,7 +25,7 @@
                                 <input id="name" type="text" name="name" value="" required>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Category:</label>
+                                <label for="cats">Category:</label>
                                 <select id="cats" name="cat">
                                     @foreach($categories as $cat)
                                         <option value="{{$cat->idcategory}}">{{$cat->name}}</option>
@@ -41,7 +41,7 @@
                                 <input id="price" type="number" name="price" step="0.01" min="1" required>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Auction End Date:</label>
+                                <label for="enddate2">Auction End Date:</label>
                                 <input id="enddate2" type="datetime-local" name="enddate" value="" min=""  required>
                             </div>
                             <div class="continue-button">

@@ -1,4 +1,5 @@
 function setEndDateMinMaxValue(){
+
     let now     = new Date();
 
     let mindate = new Date(now.setHours(now.getHours() + 1));
@@ -44,10 +45,18 @@ function setEndDateMinMaxValue(){
     const min = minyear + '-' + minmonth + '-' + minday + 'T' + minhour + ':' + minminute;
     const max = maxyear + '-' + maxmonth + '-' + maxday + 'T' + maxhour + ':' + maxminute;
 
-    const dateControl = document.getElementById('enddate2');
-    dateControl.value = min;
-    dateControl.min = min;
-    dateControl.max = max;
+    const dateControl2 = document.getElementById('enddate2');
+    if(dateControl2 != null){
+        dateControl2.value = min;
+        dateControl2.min = min;
+        dateControl2.max = max;
+    }
+
+    const dateControl = document.getElementById('enddate');
+    if(dateControl != null){
+        dateControl.min = min;
+        dateControl.max = max;
+    }
 
 
 }setEndDateMinMaxValue();
