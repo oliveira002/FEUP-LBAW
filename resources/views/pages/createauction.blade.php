@@ -2,15 +2,14 @@
 
 @section('content')
     <div class="page">
-        <form action="{{route('submitNewAuc')}}" method="POST" class="d-flex">
+        <form action="{{route('submitNewAuc')}}" method="POST" class="d-flex" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div>
-                <img id="photo" src="#" alt="auction image"/>
-                <div class="foto d-block">
+                <div class="uppic">
                     <label for="auc_pic"><i class="fa-solid fa-cloud-arrow-up"></i>Upload a picture</label>
-                    <input name="auc_pic" id="auc_pic" class="img-fluid" type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
+                    <input name="auc_pic" id="auc_pic" class="img-fluid" required type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
                 </div>
-            </div><
+            </div>
             <div class="contii">
                 <div>
                     <div class="form-header">
