@@ -10,6 +10,7 @@
                     <div class = "stuf mt-4 mb-4">
                         <div class = "d-flex query mt-4">
                             <p class ="h3 fw-bold"> All Users </p>
+
                             <div class="search2">
                                 <div class = "sbar2">
                                     <input type="text" id="searchbar2" name="search_query" placeholder="Search a user...">
@@ -17,6 +18,9 @@
                                 </div>
                             </div>
                         </div>
+                        <hr id="createuser" class = "mt-2 mb-2">
+                            <a href="{{route('createuser')}}" class = "linkii mt-4"><i class="fa-solid fa-user-plus"></i> Create a user</a>
+                        <hr id="createuser" class = "mt-2 mb-2">
                         <div class = "tableContainer">
                         <table class="table oview mt-4">
                             <thead>
@@ -78,6 +82,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>

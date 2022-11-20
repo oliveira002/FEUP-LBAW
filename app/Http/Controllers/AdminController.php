@@ -64,4 +64,13 @@ class AdminController extends Controller
         $allbids = Bid::selectRaw('*')->get();
         return view('pages.adminbids',['bids' => $allbids]);
     }
+    public function createUser(){
+        if(Auth::guard('admin')->check()){
+            return view('pages.admincreateuser');
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+    }
 }

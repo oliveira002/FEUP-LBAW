@@ -7,7 +7,7 @@
             @include('partials.sidebar')
             <div class="myBids">
                 <div class="spec d-flex flex-column ps-3 pe-3" id="user-auctions">
-                    <div class = "stuf ms-3 mt-5 mb-4">
+                    <div class = "stuf ms-3 mt-4 mb-4">
                         <div class = "stuf ms-3 mt-5 mb-4">
                             <h1 class = "fw-bold">My Bids</h1>
                             <p class = "fw-bold">Here you can see all your bids</p>

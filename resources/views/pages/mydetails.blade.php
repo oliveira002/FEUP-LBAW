@@ -44,7 +44,7 @@
                                     <input type="text" class="" name="username" value="{{$user->username}}">
                                 </div>
                                 <div class="input-box  ms-3 mb-3">
-                                    <label for="html" class="fw-bold ms-0">Adress:</label>
+                                    <label for="html" class="fw-bold ms-0">Address:</label>
                                     <input type="text" class="" name="address" value="{{$user->address}}">
                                 </div>
                                 <div class="input-box  ms-3 mb-4">
