@@ -146,48 +146,6 @@ class UserController extends Controller
         }
     }
 
-    public function createBid(Request $request)
-    {
-        $amount = $request->input('amount');
-
-
-        $idauction = (int) $request->route('id');
-        $auction = Auction::find($idauction);
-
-        if(Auth::check()) {
-            if(Auth::user()->idclient === $auction->idowner) {
-                return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
-            }
-        }
-
-        elseif(Auth::guard('admin')->check()) {
-            return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
-        }
-
-        $lastId = Bid::selectRaw('idbid')->orderBy('idbid','desc')->first()->idbid;
-        $user = Auth::user();
-        $bid = new Bid();
-        $bid->idbid = $lastId + 1;
-        $bid->isvalid = true;
-        $bid->price = $amount;
-        $bid->idauction = $idauction;
-        $bid->idclient = $user->idclient;
-        $bid->biddate = now();
-        if(!is_numeric($amount)){
-            return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
-        }
-        try{
-            $bid->save();
-        }
-        catch(\Exception $e){
-            return redirect()->back()->withErrors(['error' => 'Your bid cannot be lower than the current price!']);
-        }
-
-
-
-        return redirect()->route('auction', ['id' => $idauction]);
-    }
-
     /**
      * Add deposit to user balance
      *
@@ -229,8 +187,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $name)
     {
-        $this->authorize("update", Auth::user());
+       
         $user = User::where('username','=',$name)->first();
+        $this->authorize("update", $user);
         $id = $user->idclient;
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');

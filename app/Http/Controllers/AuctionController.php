@@ -50,9 +50,10 @@ class AuctionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
+        $this->authorize("view", $auction);
         if(is_null($auction)) abort(404);
         $owner = User::find($auction->idowner);
         if(is_null($owner)) abort(404);
@@ -69,6 +70,7 @@ class AuctionController extends Controller
      */
     public function edit($id)
     {
+        
         $auction = Auction::find($id);
 
         if(Auth::check()) {
@@ -80,7 +82,7 @@ class AuctionController extends Controller
         elseif(!Auth::guard('admin')->check()) {
             return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
         }
-
+        $this->authorize("update", $auction);
         $owner = User::find($auction->idowner);
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
@@ -97,6 +99,7 @@ class AuctionController extends Controller
     public function update(Request $request, $id)
     {
         //verificar se ha bids
+        
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
 
@@ -113,7 +116,7 @@ class AuctionController extends Controller
         if(count($bids) != 0) {
             return redirect()->back()->withErrors(['error' => 'Auction has bids already']);
         }
-
+        $this->authorize("update", $auction);
         //valores a dar update
         $name = $request->input('nome');
         $catName = $request->input('cats');
@@ -148,8 +151,9 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
+        
         $auction = Auction::find($id);
-
+        $this->authorize("delete", $auction);
 
         if(Auth::id() == $auction->idowner || Auth::guard('admin')->check())
         {
