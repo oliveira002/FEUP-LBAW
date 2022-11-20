@@ -14,7 +14,7 @@
                     <div class = "ms-3">
                         <div class = "d-flex">
                             <div class="mb-4 lg">
-                                <img src= "../alo.jpg" width="200" height="200">
+                                <img src= "/images/users/{{$user->idclient}}.jpg" width="200" height="200">
                             </div>
                             <div class = "ms-4 mt-3">
                                 <p class = "mt-3 mb-2 ms-3 h4 fw-bold">{{$user->firstname}} {{$user->lastname}}</p>

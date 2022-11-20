@@ -7,7 +7,7 @@
             <div id="aside">
                 <div class="hi d-flex pt-4 pb-4">
                     <div class="lg">
-                        <img src= "/alo.jpg" width="120" height="120">
+                        <img src= "/images/users/{{$user->idclient}}.jpg" width="120" height="120">
                     </div>
                     <div class="nome ms-3 me-2">
                         <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
@@ -45,7 +45,7 @@
                     <div class = "ms-3">
                         <div class = "d-flex">
                             <div class="mb-4 lg">
-                                <img src= "../alo.jpg" width="200" height="200">
+                                <img src= "/images/users/{{$user->idclient}}.jpg" width="200" height="200">
                             </div>
                             <div class = "ms-4 mt-3">
                                 <p class = "mt-3 mb-2 ms-3 h4 fw-bold">{{$user->firstname}} {{$user->lastname}}</p>

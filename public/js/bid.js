@@ -10,8 +10,6 @@ function valid(){
         console.log(a[i].innerHTML);
     }
 
-
-
 }
 valid();
 

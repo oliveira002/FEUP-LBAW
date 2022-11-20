@@ -2,16 +2,19 @@
 
 <?php
 $day = $auction->enddate->format('d');
-$month = $auction->enddate->format('F');
-$hour = $auction->enddate->format('G');
+$month = $auction->enddate->format('m');
+$hour = $auction->enddate->format('H');
 $mins = $auction->enddate->format('i');
 $monthstr = $auction->enddate->format('M');
 $year = $auction->enddate->format('Y');
 $secs = $auction->enddate->format('s');
-if ($hour / 10 > 0) {
+if ($hour / 10 < 0) {
     $hour = "0" . $hour;
 }
-$finalStr = $monthstr . " " . $day . "," . " " . $year . " " . $hour . ":" . $mins . ":" . $secs;
+if ($mins / 10 < 0) {
+    $mins = "0" . $mins;
+}
+$finalStr = $year . '-' . $month . '-' . $day . 'T' . $hour . ':' . $mins;
 $minBid = 0.05 * $auction->startingprice;
 $minBid = " " . ($minBid + $auction->currentprice);
 ?>
@@ -47,28 +50,28 @@ $minBid = " " . ($minBid + $auction->currentprice);
                     <div class="input-group">
                         <div>
                             <div class="input-box">
-                                <label for="firstname">Auction Name:</label>
-                                <input id="firstname" type="text" name="nome" value="{{$auction->name}}" required>
+                                <label for="name">Auction Name:</label>
+                                <input id="name" type="text" name="name" value="{{$auction->name}}" required>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Category:</label>
-                                <select id="cats" name="cats">
+                                <label for="cats">Category:</label>
+                                <select id="cats" name="cat">
                                     @foreach($categories as $cat)
-                                        <option value="{{$cat->name}}">{{$cat->name}}</option>
+                                        <option value="{{$cat->idcategory}}">{{$cat->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="input-box">
                                 <label for="desc">Auction Description:</label>
-                                <input id="desc" type="text" name="desc" value="{{$auction->description}}" required>
+                                <textarea id="desc" name="desc" required>{{$auction->description}}</textarea>
                             </div>
                             <div class="input-box">
                                 <label for="price">Auction Starting Price:</label>
-                                <input id="price" type="text" name="price" value="{{$auction->startingprice}}€" required>
+                                <input id="price" type="number" name="price" step="0.01" min="1" value="{{$auction->startingprice}}" required>
                             </div>
                             <div class="input-box">
                                 <label for="enddate">Auction End Date:</label>
-                                <input id="enddate" type="text" name="enddate" value="{{$auction->enddate}}" required>
+                                <input id="enddate" type="datetime-local" name="enddate" value="{{$finalStr}}" required>
                             </div>
                             <div class="continue-button">
                                 <input type="submit" class="continue-button" value="Save Changes"/>

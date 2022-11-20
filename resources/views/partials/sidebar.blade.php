@@ -1,7 +1,7 @@
 <div id="aside">
     <div class="hi d-flex pt-4 pb-4">
         <div class="lg">
-            <img src= "/alo.jpg" width="120" height="120">
+            <img src= "/images/users/{{$user->idclient}}.jpg" width="120" height="120">
         </div>
         <div class="nome ms-2 me-2">
             <p class = "fw-bold mb-1">Hi,</p>

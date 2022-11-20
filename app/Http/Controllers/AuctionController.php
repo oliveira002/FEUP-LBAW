@@ -47,6 +47,12 @@ class AuctionController extends Controller
     {
         if(Auth::check() || Auth::guard('admin')->check()){
             $lastId = Auction::selectRaw('idauction')->orderBy('idauction','desc')->first()->idauction;
+            $id = $lastId + 1;
+            if ($request->hasFile('auc_pic')) {
+                $image = $request->file('auc_pic');
+                $photoName = '1.jpg';
+                $image->move('images/' . ($id), $photoName);
+            }
 
             $auction = Auction::create([
                 'idauction' => $lastId+1,
@@ -139,30 +145,18 @@ class AuctionController extends Controller
         if(count($bids) != 0) {
             return redirect()->back()->withErrors(['error' => 'Auction has bids already']);
         }
+
         $this->authorize("update", $auction);
-        //valores a dar update
-        $name = $request->input('nome');
-        $catName = $request->input('cats');
-        $categ = Category::select('idcategory')->where('name','=',$catName)->get();
-        foreach($categ as $idcat) {
-            $idCategory = $idcat->idcategory;
-        }
-        $desc =  $request->input('desc');
-        $price = (float)substr($request->input('price'), 0, -1);
-        $enddate = (string)$request->input('enddate');
 
-        //checks
-        if(!is_numeric($price)){
-            return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
-        }
-        if($price <= 0) {
-            return redirect()->back()->withErrors(['error' => 'The amount must be a number!']);
-        }
-        if(!date('Y-m-d H:i:s', strtotime($enddate)) == $enddate) {
-            return redirect()->back()->withErrors(['error' => 'The end date is not valid!']);
-        }
+        Auction::where('idauction', $id)->update([
+            'name' => $request->input('name'),
+            'idcategory' => $request->input('cat'),
+            'description' => $request->input('desc'),
+            'startingprice' => $request->input('price'),
+            'currentprice' => $request->input('price'),
+            'enddate' => date('Y-m-d H:i:s', strtotime($request->input('enddate'))),
+        ]);
 
-        Auction::where('idauction', $id)->update(['name' => $name,'startingprice' => $price, 'enddate' => $enddate, 'description' => $desc, 'idcategory' => $idCategory ]);
         return redirect()->route('auction', ['id' => $id]);
     }
 
@@ -181,8 +175,7 @@ class AuctionController extends Controller
         if(Auth::id() == $auction->idowner || Auth::guard('admin')->check())
         {
             $auction->delete();
-
-            return redirect()->back();
+            return redirect()->route('/');
         }
         else{
             abort(403);

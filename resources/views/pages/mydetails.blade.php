@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{route('updetails',['username',$user->username])}}">
+                    <form method="POST" action="{{route('updetails',['username' => $user->username])}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @method('PUT')
                         <div class="forms d-flex">
@@ -37,6 +37,12 @@
                                     <label for="html" class="fw-bold ms-0">Email:</label>
                                     <input type="text" class="" name="email" value="{{$user->email}}">
                                 </div>
+                                <div class ="ms-3 mb-3">
+                                    <button class = "uppic" type = "button">
+                                        <label for="auc_pic"><i class="fa-solid fa-cloud-arrow-up"></i>Change picture</label>
+                                        <input name="auc_pic" id="auc_pic" class="img-fluid" type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
+                                    </button>
+                                </div>
                             </div>
                             <div class="ms-5">
                                 <div class="input-box  ms-3 mb-3">
@@ -52,6 +58,7 @@
                                     <input type="text" class="" name="phonenumber" value="{{$user->phonenumber}}">
                                 </div>
                             </div>
+
                         </div>
                         <div>
                             <div class="continue-button botao ps-0 ms-3 mb-4">
