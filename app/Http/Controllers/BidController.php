@@ -33,6 +33,10 @@ class BidController extends Controller
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
 
+        if($auction->enddate < now()) {
+            return redirect()->back()->withErrors(['error' => 'Auction finished already!']);
+        }
+
 
         $this->authorize("create", Bid::class);
 
