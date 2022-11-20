@@ -4,11 +4,19 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Auth;
 
 class UserPolicy
 {
     use HandlesAuthorization;
-    
+    public function before(?User $user,$ability)
+    {
+              
+      if(Auth::guard('admin')->check()){
+        return true;
+      }
+        return null;
+    }
     /**
      * Determine whether the user can view any models.
      *
@@ -27,7 +35,7 @@ class UserPolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, User $model)
+    public function view(?User $user, User $model)
     {
         return $user->id === $model->id;
     }
@@ -88,6 +96,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-        //
+      return $user->id === $model->id;
     }
 }

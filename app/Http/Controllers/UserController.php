@@ -49,6 +49,7 @@ class UserController extends Controller
      */
     public function show()
     {
+        $this->authorize("view", Auth::user());
         $auctions = Auction::find(Auth::user()->idclient);
         if(Auth::check()){
             return view('pages.profile',['user' => Auth::user(),'auctions' => $auctions]);
@@ -60,7 +61,7 @@ class UserController extends Controller
 
     public function showUser($username)
     {
-
+        
         if(Auth::check()){
             if(Auth::user()->username === $username){
                 $auctions = Auction::where('idowner',Auth::user()->idclient)->get();
@@ -79,6 +80,7 @@ class UserController extends Controller
 
     public function details()
     {
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             return view('pages.mydetails',['user' => Auth::user()]);
         }
@@ -88,6 +90,7 @@ class UserController extends Controller
     }
 
     public function myAuctions(){
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
         }
@@ -101,6 +104,7 @@ class UserController extends Controller
     }
 
     public function myBids(){
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
         }
@@ -133,6 +137,7 @@ class UserController extends Controller
      */
     public function balance()
     {
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             return view('pages.balance',['user' => Auth::user()]);
         }
@@ -192,6 +197,7 @@ class UserController extends Controller
      */
     public function addFunds(Request $request)
     {
+        $this->authorize("update", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
         }
@@ -223,6 +229,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $name)
     {
+        $this->authorize("update", Auth::user());
         $user = User::where('username','=',$name)->first();
         $id = $user->idclient;
         $firstname = $request->input('firstname');
