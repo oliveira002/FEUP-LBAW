@@ -30,7 +30,7 @@ Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions'
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
 Route::get('/auction/create', 'AuctionController@create')->name('createAuction');
-Route::post('/auction', 'AuctionController@store');
+Route::post('/auction', 'AuctionController@store')->name('submitNewAuc');
 
 
 

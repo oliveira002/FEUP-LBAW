@@ -25,7 +25,7 @@ class Auction extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'startdate', 'enddate', 'startingprice', 'currentprice', 'description', 'isover', 'idcategory', 'idowner',
+        'idauction', 'name', 'startdate', 'enddate', 'startingprice', 'currentprice', 'description', 'isover', 'idcategory', 'idowner',
     ];
 
     protected $casts = [
@@ -83,7 +83,7 @@ class Auction extends Model
     public static function ftsSearch($search)
     {
         return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
-            ->orWhere('name', 'ilike', '%' . $search . '%') 
+            ->orWhere('name', 'ilike', '%' . $search . '%')
             ->orWhere('description', 'ilike', '%' . $search . '%')
             ->where('isover', false)
             ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);

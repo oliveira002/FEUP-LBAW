@@ -100,21 +100,25 @@
                         </div>
                         <div class = "auctions mb-4">
                             <span class = "cor2 h4 mb-5"> Owned Auctions </span>
-                            @foreach($auctions as $auct)
-                                <div class = "d-flex mt-2 mb-5 centro">
-                                    <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" > </a>
-                                    <div class ="mb-4">
-                                        <div>
-                                            <p class = "h5 ms-4 mt-2 cor2 fw-bold mb-0"> Auction Name:</p>
-                                            <p class = "h5 ms-4 mt-0"> {{$auct->name}}</p>
-                                        </div>
-                                        <div>
-                                            <p class = "h5 ms-4 mt-3 cor2 fw-bold"> Price:</p>
-                                            <p class = "h5 ms-4 mt-0"> {{$auct->currentprice}}€</p>
+                            @if(count($auctions)==0)
+                                <div>This user has no active auctions.</div>
+                            @else
+                                @foreach($auctions as $auct)
+                                    <div class = "d-flex mt-2 mb-5 centro">
+                                        <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" > </a>
+                                        <div class ="mb-4">
+                                            <div>
+                                                <p class = "h5 ms-4 mt-2 cor2 fw-bold mb-0"> Auction Name:</p>
+                                                <p class = "h5 ms-4 mt-0"> {{$auct->name}}</p>
+                                            </div>
+                                            <div>
+                                                <p class = "h5 ms-4 mt-3 cor2 fw-bold"> Price:</p>
+                                                <p class = "h5 ms-4 mt-0"> {{$auct->currentprice}}€</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
