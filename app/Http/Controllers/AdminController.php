@@ -12,8 +12,11 @@ class AdminController extends Controller
 {
     public function admin(){
         $alo = ["alo"];
+        $numUsers = count(User::selectRaw('*')->get());
+        $numAuc = count(Auction::selectRaw('*')->get());
+        $numBids = count(Bid::selectRaw('*')->get());
         if(Auth::guard('admin')->check()){
-            return view('pages.adminpanel',['alo' => $alo]);
+            return view('pages.adminpanel',['alo' => $alo,'numUsers' => $numUsers,'numAuc' => $numAuc,'numBids' => $numBids]);
         }
         else{
             return redirect()->intended(route('login'));
@@ -25,8 +28,14 @@ class AdminController extends Controller
         return view('pages.adminusers',['users' => $allusers]);
     }
 
-    public function editAuctions(){
-        
+    public function editUser($username){
+        if(Auth::guard('admin')->check()){
+            $user = User::where('username', $username)->first();
+            return view('pages.adminuserdetails',['user' => $user]);
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
     }
 
     public function getAuctions(){
@@ -42,7 +51,7 @@ class AdminController extends Controller
                 ->first();
 
             $arr["name"] = $act->name;
-            $arr["idauction"] = $act->idauction;  
+            $arr["idauction"] = $act->idauction;
             $arr["owner"] = $user->username;
 
             array_push($arrAll, $arr);

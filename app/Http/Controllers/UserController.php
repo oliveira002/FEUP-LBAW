@@ -50,8 +50,10 @@ class UserController extends Controller
      */
     public function show()
     {
+        $this->authorize("view", Auth::user());
+        $auctions = Auction::find(Auth::user()->idclient);
         if(Auth::check()){
-            return view('pages.profile',['user' => Auth::user()]);
+            return view('pages.profile',['user' => Auth::user(),'auctions' => $auctions]);
         }
         else{
             return redirect()->intended(route('login'));
@@ -60,10 +62,11 @@ class UserController extends Controller
 
     public function showUser($username)
     {
-
+        
         if(Auth::check()){
             if(Auth::user()->username === $username){
-                return view('pages.profile',['user' => Auth::user()]);
+                $auctions = Auction::where('idowner',Auth::user()->idclient)->get();
+                return view('pages.profile',['user' => Auth::user(),'auctions'=>$auctions]);
             }
         }
         $user = User::where('username', $username)->first();
@@ -74,11 +77,11 @@ class UserController extends Controller
         else{
             return view('pages.userprofile',['user' => $user, 'auctions' => $auctions]);
         }
-
     }
 
     public function details()
     {
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             return view('pages.mydetails',['user' => Auth::user()]);
         }
@@ -88,6 +91,7 @@ class UserController extends Controller
     }
 
     public function myAuctions(){
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
         }
@@ -101,6 +105,7 @@ class UserController extends Controller
     }
 
     public function myBids(){
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
         }
@@ -133,54 +138,13 @@ class UserController extends Controller
      */
     public function balance()
     {
+        $this->authorize("view", Auth::user());
         if(Auth::check()){
             return view('pages.balance',['user' => Auth::user()]);
         }
         else{
             return redirect()->intended(route('login'));
         }
-    }
-
-    public function createBid(Request $request)
-    {
-        $amount = $request->input('amount');
-
-
-        $idauction = (int) $request->route('id');
-        $auction = Auction::find($idauction);
-
-        if(Auth::check()) {
-            if(Auth::user()->idclient === $auction->idowner) {
-                return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
-            }
-        }
-
-        elseif(Auth::guard('admin')->check()) {
-            return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
-        }
-
-        $lastId = Bid::selectRaw('idbid')->orderBy('idbid','desc')->first()->idbid;
-        $user = Auth::user();
-        $bid = new Bid();
-        $bid->idbid = $lastId + 1;
-        $bid->isvalid = true;
-        $bid->price = $amount;
-        $bid->idauction = $idauction;
-        $bid->idclient = $user->idclient;
-        $bid->biddate = now();
-        if(!is_numeric($amount)){
-            return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
-        }
-        try{
-            $bid->save();
-        }
-        catch(\Exception $e){
-            return redirect()->back()->withErrors(['error' => 'Your bid cannot be lower than the current price!']);
-        }
-
-
-
-        return redirect()->route('auction', ['id' => $idauction]);
     }
 
     /**
@@ -192,6 +156,7 @@ class UserController extends Controller
      */
     public function addFunds(Request $request)
     {
+        $this->authorize("update", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
         }
@@ -221,9 +186,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $name)
     {
-        $user = Auth::user();
+       
+        $user = User::where('username','=',$name)->first();
+        $this->authorize("update", $user);
         $id = $user->idclient;
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
@@ -249,7 +216,7 @@ class UserController extends Controller
         }
 
         User::where('idclient', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'phonenumber' => $phonenumber , 'username' => $username]);
-        return redirect()->route('details',['username' => $username]);
+        return redirect()->route('profile',['username' => $username]);
     }
 
     public function updatePassword(Request $request){

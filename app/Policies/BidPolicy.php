@@ -2,11 +2,12 @@
 
 namespace App\Policies;
 
+use App\Models\Bid;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Auth;
 
-class UserPolicy
+class BidPolicy
 {
     use HandlesAuthorization;
     public function before(?User $user,$ability)
@@ -31,12 +32,12 @@ class UserPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(?User $user, User $model)
+    public function view(?User $user, Bid $bid)
     {
-        return $user->idclient === $model->idclient;
+        return true;
     }
 
     /**
@@ -54,34 +55,34 @@ class UserPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(?User $user, User $model)
+    public function update(?User $user, Bid $bid)
     {
-      return $user->idclient === $model->idclient;
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(?User $user, User $model)
+    public function delete(?User $user, Bid $bid)
     {
-      return $user->id === $model->id;
+        return false;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(?User $user, User $model)
+    public function restore(?User $user, Bid $bid)
     {
         //
     }
@@ -90,11 +91,11 @@ class UserPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(?User $user, User $model)
+    public function forceDelete(?User $user, Bid $bid)
     {
-      return $user->idclient === $model->idclient;
+        return false;
     }
 }
