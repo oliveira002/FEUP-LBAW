@@ -6,17 +6,17 @@
         <div class="d-flex">
             <div>
                 <div class="foto">
-                    <img class="img-fluid mt-4 user" src="/user-def.png" width="400" height="510" >
+                    <img class="img-fluid mt-4 user" src="/default-user-image.png" width="400" height="510" >
                 </div>
                 <!--Upload image-->
 
                 <div class="input-group"  >
 
                     <div class="input-box" id="upload-image">
-                        <label for="firstname">Upload Image:</label>
+                        <label class ="mt-2" for="firstname">Upload Image:</label>
                         <input type="file" name="file" id="file" class="inputfile" hidden onchange=""/>
                         <div class="upload-btn-wrapper">
-                            <label for="file" class="btn btn-secondary mt-2">Choose a file</label>
+                            <label for="file" class="btn btn-outline-secondary mt-2">Choose a file</label>
                         </div>
 
 
