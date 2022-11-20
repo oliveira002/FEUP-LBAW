@@ -57,14 +57,15 @@
                         <div class ="ms-3">
                             <p class = "h5 fw-bold pt-4 pb-2 defl"> Time Left: </p>
                             <div class = "d-flex pt-2 pb-2">
+                                <p class = "h5 me-2" id = "expired"> </p>
                                 <span id = "day" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2"> Days </p>
+                                <p class = "h5 me-2 dia"> Days </p>
                                 <span id = "hour" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2"> Hours </p>
+                                <p class = "h5 me-2 dia"> Hours </p>
                                 <span id = "minute" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2"> Minutes </p>
+                                <p class = "h5 me-2 dia"> Minutes </p>
                                 <span id = "second" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2"> Seconds </p>
+                                <p class = "h5 me-2 dia"> Seconds </p>
                             </div>
                             <p class = "h5 fw-bold pt-2 pb-2 defl"> Auction Ends: </p>
                             <p class = "h5 me-2 pb-4"> {{$auction->enddate}} </p>
