@@ -10,7 +10,7 @@ class UserPolicy
 {
     use HandlesAuthorization;
     public function before(?User $user,$ability)
-    {        
+    {
       if(Auth::guard('admin')->check()){
         return true;
       }
@@ -71,7 +71,7 @@ class UserPolicy
      */
     public function delete(?User $user, User $model)
     {
-      return $user->id === $model->id;
+      return $user->idclient === $model->idclient;
     }
 
     /**

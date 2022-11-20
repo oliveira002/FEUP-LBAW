@@ -62,7 +62,7 @@ class UserController extends Controller
 
     public function showUser($username)
     {
-        
+
         if(Auth::check()){
             if(Auth::user()->username === $username){
                 $auctions = Auction::where('idowner',Auth::user()->idclient)->get();
@@ -70,11 +70,12 @@ class UserController extends Controller
             }
         }
         $user = User::where('username', $username)->first();
-        $auctions = Auction::where('idowner',$user->idclient)->get();
         if($user == null){
+            abort(404);
             return redirect()->intended(route('/'));
         }
         else{
+            $auctions = Auction::where('idowner',$user->idclient)->get();
             return view('pages.userprofile',['user' => $user, 'auctions' => $auctions]);
         }
     }
@@ -188,7 +189,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $name)
     {
-       
+
         $user = User::where('username','=',$name)->first();
         $this->authorize("update", $user);
         $id = $user->idclient;
@@ -249,10 +250,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($username)
     {
-        //
+        $user = User::find($username);
+        $this->authorize("delete", $user);
+
+        if(Auth::guard('admin')->check())
+        {
+            $user->delete();
+            return redirect()->back();
+        }
+        else{
+            abort(403);
+        }
     }
-
-
 }

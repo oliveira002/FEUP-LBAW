@@ -12,7 +12,7 @@ class BidController extends Controller
 {
     public function createBid(Request $request)
     {
-        
+
         $amount = $request->input('amount');
 
 
@@ -28,6 +28,12 @@ class BidController extends Controller
         elseif(Auth::guard('admin')->check()) {
             return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
         }
+
+        elseif(!Auth::check()) {
+            return redirect()->back()->withErrors(['error' => 'Need to login first!']);
+        }
+
+
         $this->authorize("create", Bid::class);
 
         $lastId = Bid::selectRaw('idbid')->orderBy('idbid','desc')->first()->idbid;
