@@ -29,6 +29,10 @@ Route::get('/profile/{username}/edit', 'AdminController@editUser')->name('editus
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
+Route::get('/auction/create', 'AuctionController@create')->name('createAuction');
+Route::post('/auction', 'AuctionController@store')->name('submitNewAuc');
+
+
 
 
 
@@ -40,6 +44,7 @@ Route::delete('/admin/users/{id}', 'UserController@destroy')->name('deleteUser')
 Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction');
 Route::put('/profile/{username}/mydetails', 'UserController@update')->name('updetails');
 Route::put('/profile/{username}/mypassword', 'UserController@updatePassword')->name('updatePassword');
+
 
 
 // Authentication

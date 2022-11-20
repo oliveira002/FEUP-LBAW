@@ -1,44 +1,18 @@
 @extends('layouts.app')
 
-<?php
-$day = $auction->enddate->format('d');
-$month = $auction->enddate->format('F');
-$hour = $auction->enddate->format('G');
-$mins = $auction->enddate->format('i');
-$monthstr = $auction->enddate->format('M');
-$year = $auction->enddate->format('Y');
-$secs = $auction->enddate->format('s');
-if ($hour / 10 > 0) {
-    $hour = "0" . $hour;
-}
-$finalStr = $monthstr . " " . $day . "," . " " . $year . " " . $hour . ":" . $mins . ":" . $secs;
-$minBid = 0.05 * $auction->startingprice;
-$minBid = " " . ($minBid + $auction->currentprice);
-?>
-
-
-
 @section('content')
     <div class="page">
-        <div class="d-flex">
+        <form action="{{route('submitNewAuc')}}" method="POST" class="d-flex">
+            {{ csrf_field() }}
             <div>
-                <div class="foto">
-                    <img src="../item.jpg" width="400" height="510">
+                <img id="photo" src="#" alt="auction image"/>
+                <div class="foto d-block">
+                    <label for="auc_pic"><i class="fa-solid fa-cloud-arrow-up"></i>Upload a picture</label>
+                    <input name="auc_pic" id="auc_pic" class="img-fluid" type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
                 </div>
-            </div>
+            </div><
             <div class="contii">
-                @if($errors->has('error'))
-                    <div class="mb-0 mt-2 alert alert-danger">
-                        <ul class="ps-0">
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form action="" method="POST">
-                    {{ csrf_field() }}
-                    @method('PUT')
+                <div>
                     <div class="form-header">
                         <div class="title">
                             <h1>Create Auction</h1>
@@ -47,37 +21,35 @@ $minBid = " " . ($minBid + $auction->currentprice);
                     <div class="input-group">
                         <div>
                             <div class="input-box">
-                                <label for="firstname">Auction Name:</label>
-                                <input id="firstname" type="text" name="nome" placeholder="Auction name" required>
+                                <label for="name">Auction Name:</label>
+                                <input id="name" type="text" name="name" value="" required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Category:</label>
-                                <select id="cats" name="cats">
+                                <select id="cats" name="cat">
                                     @foreach($categories as $cat)
-                                        <option value="{{$cat->name}}">{{$cat->name}}</option>
+                                        <option value="{{$cat->idcategory}}">{{$cat->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Auction Description:</label>
-                                <input id="firstname" type="text" name="desc" value="{{$auction->description}}"
-                                       required>
+                                <label for="desc">Auction Description:</label>
+                                <textarea id="desc" name="desc" required></textarea>
                             </div>
                             <div class="input-box">
-                                <label for="firstname">Auction Starting Price:</label>
-                                <input id="firstname" type="text" name="price" value="{{$auction->startingprice}}€"
-                                       required>
+                                <label for="price">Auction Starting Price:</label>
+                                <input id="price" type="number" name="price" step="0.01" min="1" required>
                             </div>
                             <div class="input-box">
                                 <label for="firstname">Auction End Date:</label>
-                                <input id="firstname" type="text" name="enddate" value="{{$auction->enddate}}" required>
+                                <input id="enddate2" type="datetime-local" name="enddate" value="" min=""  required>
                             </div>
                             <div class="continue-button">
-                                <input type="submit" class="continue-button" value="Save Changes"/>
+                                <input type="submit" class="continue-button" value="Create auction"/>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
 @endsection

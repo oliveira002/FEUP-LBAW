@@ -29,7 +29,12 @@ class AuctionController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::check() || Auth::guard('admin')->check()){
+            $allcategories = Category::all();
+            return(view('pages.createauction',['categories' => $allcategories]));
+        }
+        abort(403);
+
     }
 
     /**
@@ -40,7 +45,25 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check() || Auth::guard('admin')->check()){
+            $lastId = Auction::selectRaw('idauction')->orderBy('idauction','desc')->first()->idauction;
+
+            $auction = Auction::create([
+                'idauction' => $lastId+1,
+                'name' => $request->input('name'),
+                'startdate' => date('Y-m-d H:i:s'),
+                'enddate' => date('Y-m-d H:i:s', strtotime($request->input('enddate'))),
+                'startingprice' => $request->input('price'),
+                'currentprice' => $request->input('price'),
+                'description' => $request->input('desc'),
+                'isover' => 'False',
+                'idcategory' => $request->input('cat'),
+                'idowner' => Auth::id(),
+            ]);
+
+            return redirect()->route('auction', ['id' => ($auction->idauction)]);
+        }
+        abort(403);
     }
 
     /**
@@ -50,7 +73,7 @@ class AuctionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
+    {
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
         $this->authorize("view", $auction);
@@ -70,7 +93,7 @@ class AuctionController extends Controller
      */
     public function edit($id)
     {
-        
+
         $auction = Auction::find($id);
 
         if(Auth::check()) {
@@ -99,7 +122,7 @@ class AuctionController extends Controller
     public function update(Request $request, $id)
     {
         //verificar se ha bids
-        
+
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
 
@@ -151,7 +174,7 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $auction = Auction::find($id);
         $this->authorize("delete", $auction);
 

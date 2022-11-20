@@ -13,7 +13,7 @@
                             <p class="fw-bold">Here you can see all your auctions</p>
                             <hr class="mt-3 mb-3">
                             @if(count($auctions)==0)
-                                <div>You have no auctions. Click <a href="{{route('/')}}"><u>here</u></a> to create one
+                                <div>You have no auctions. Click <a href="{{route('createAuction')}}"><u>here</u></a> to create one
                                 </div>
                             @else
                                 @foreach($auctions as $auct)
