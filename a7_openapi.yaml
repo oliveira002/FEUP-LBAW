@@ -17,7 +17,7 @@ tags:
   - name: 'M01: Authentication and Individual Profile'
   - name: 'M02: Auctions'
   - name: 'M03: Bidding'
-  - name: 'M04: Loans'
+  - name: 'M04: Search Api And Search Pages'
   - name: 'M05: User Administration and Static pages'
 
 paths:
@@ -431,8 +431,8 @@ paths:
                   value: '/auction/{id}'
 
     delete:
-      operationId: 'R203'
-      summary: 'R203: Delete Auction Action'
+      operationId: 'R202'
+      summary: 'R202: Delete Auction Action'
       description: 'Process delete Auction form. Access: USR, ADM'
       tags:
         - 'M02: Auctions'
@@ -467,8 +467,8 @@ paths:
 
   /auction/{id}/edit:
     put:
-      operationId: 'R202'
-      summary: 'R202: Update Auction Action'
+      operationId: 'R203'
+      summary: 'R203: Update Auction Action'
       description: 'Process edit Auction form. Access: USR, ADM'
       tags:
         - 'M02: Auctions'
@@ -614,4 +614,334 @@ paths:
                 403Error:
                   description: 'Forbidden. Redirect to Home page.'
                   value: '/'
-      
+  /search:
+    get:
+      operationId: 'R401'
+      summary: 'R401: Search Page'
+      description: 'Show the Search page. Access: PUB'
+      tags:
+        - 'M04: Search'
+      parameters:
+        - in: query
+          name: query_search
+          description: 'Search query.'
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: category
+          description: 'Auction Category.'
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: 'OK. Show Search page UI'
+  /search/api:
+    get:
+      operationId: 'R402'
+      summary: 'R402: Search Auctions Api'
+      description: 'Search Auctions and returns result as JSON. Access: PUB'
+      tags:
+        - 'M04: Search'
+      parameters:
+        - in: query
+          name: query_search
+          description: 'Search query.'
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: category
+          description: 'Auction Category.'
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idauction:
+                      type: number
+                    name:
+                      type: string
+                    startdate:  
+                      type: string
+                    enddate:
+                      type: string
+                    startingprice:
+                      type: number
+                    currentprice:
+                      type: number
+                    description:
+                      type: string
+                    isover:
+                      type: boolean
+                    idcategory:
+                      type: number
+                    idowner:
+                      type: number
+                    tsvectors:
+                      type: string
+                example:
+                  - idauction: 11
+                  - name: 'Camera'
+                  - startdate: '2022-10-02T10:18:06.000000Z'
+                  - enddate: '2022-11-21T13:35:09.000000Z'
+                  - startingprice: 50
+                  - currentprice: 50
+                  - description: 'Polaroid i20X29 20.0MP Digital Camera'
+                  - isover: false
+                  - idcategory: 7
+                  - idowner: 10
+                  - tsvectors: "20.0':4B 'camera':1A,7B 'digit':6B 'i20x29':3B 'mp':5B 'polaroid':2B"
+  /search/auction/api:
+    get:
+      operationId: 'R403'
+      summary: 'R403: Search Auctions Api'
+      description: 'Search Auctions and returns result as JSON. Access: PUB'
+      tags:
+        - 'M04: Search'
+      parameters:
+        - in: query
+          name: query_search
+          description: 'Search query.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idauction:
+                      type: number
+                    name:
+                      type: string
+                    startdate:  
+                      type: string
+                    enddate:
+                      type: string
+                    startingprice:
+                      type: number
+                    currentprice:
+                      type: number
+                    description:
+                      type: string
+                    isover:
+                      type: boolean
+                    idcategory:
+                      type: number
+                    idowner:
+                      type: number
+                    tsvectors:
+                      type: string
+                example:
+                  - idauction: 11
+                  - name: 'Camera'
+                  - startdate: '2022-10-02T10:18:06.000000Z'
+                  - enddate: '2022-11-21T13:35:09.000000Z'
+                  - startingprice: 50
+                  - currentprice: 50
+                  - description: 'Polaroid i20X29 20.0MP Digital Camera'
+                  - isover: false
+                  - idcategory: 7
+                  - idowner: 10
+                  - tsvectors: "20.0':4B 'camera':1A,7B 'digit':6B 'i20x29':3B 'mp':5B 'polaroid':2B"
+
+  /search/{category}:
+    get:
+      operationId: 'R404'
+      summary: 'R404: Search Page with filter'
+      description: 'Show the Search page for a specific Category. Access: PUB'
+      tags:
+        - 'M04: Search'
+      parameters:
+        - in: query
+          name: query_search
+          description: 'Search query.'
+          required: false
+          schema:
+            type: string
+        - in: path
+          name: category
+          description: 'Auction Category.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: 'OK. Show Search page UI'
+
+  /search/user/api:
+    get:
+      operationId: 'R405'
+      summary: 'R405: Search Users Api'
+      description: 'Search Users and returns result as JSON. Access: PUB'
+      tags:
+        - 'M04: Search'
+      parameters:
+        - in: query
+          name: query_search
+          description: 'Search query.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idclient:
+                      type: number
+                    username:
+                      type: string
+                    email:
+                      type: string
+                    firstname:
+                      type: string
+                    lastname:
+                      type: string
+                    address:
+                      type: string
+                    phonenumber:
+                      type: string
+                    isbanned:
+                      type: boolean
+                    balance:
+                      type: number
+                example:
+                  - idclient: 1
+                  - username: 'cminister0'
+                  - email: 'cminister0'
+                  - firstname: 'Constantina'
+                  - lastname: 'Minister'
+                  - address: '42749 Holmberg Trail'
+                  - phonenumber: '2516074366'
+                  - isbanned: false
+                  - balance: 0
+  /admin:
+    get:
+      operationId: 'R501'
+      summary: 'R501: Admin Page'
+      description: 'Show the Admin page. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      responses:
+        '200':
+          description: 'OK. Show Admin page UI'
+        '403':
+          description: 'Forbidden. User is not an Admin.'
+  /admin/users:
+    get:
+      operationId: 'R502'
+      summary: 'R502: Admin Users Page'
+      description: 'Show the Admin Users page. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      responses:
+        '200':
+          description: 'OK. Show Admin Users page UI'
+        '403':
+          description: 'Forbidden. User is not an Admin.'
+  /admin/createuser:
+    get:
+      operationId: 'R503'
+      summary: 'R503: Admin Create User Page'
+      description: 'Show the Admin Create User page. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      responses:
+        '200':
+          description: 'OK. Show Admin Create User page UI'
+        '403':
+          description: 'Forbidden. User is not an Admin.'
+  /admin/auctions:
+    get:
+      operationId: 'R504'
+      summary: 'R504: Admin Auctions Page'
+      description: 'Show the Admin Auctions page. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      responses:
+        '200':
+          description: 'OK. Show Admin Auctions page UI'
+        '403':
+          description: 'Forbidden. User is not an Admin.'
+  /admin/bids:
+    get:
+      operationId: 'R505'
+      summary: 'R505: Admin Bids Page'
+      description: 'Show the Admin Bids page. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      responses:
+        '200':
+          description: 'OK. Show Admin Bids page UI'
+        '403':
+          description: 'Forbidden. User is not an Admin.'
+  /profile/{username}/edit:
+    get:
+      operationId: 'R506'
+      summary: 'R601: Edit User Profile Page'
+      description: 'Show the Admin Edit User Profile page. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Edit Profile page UI'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/users/{id}:
+    delete:
+      operationId: 'R507'
+      summary: 'R507: Delete User Action'
+      description: 'Delete a User. Access: ADM'
+      tags:
+        - 'M05: Admin'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the user.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '302':
+          description: 'Redirect after processing Auction Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Delete. Redirect to Admin user Page.'
+                  value: '/admin/users'
+                302Error:
+                  description: 'Failed Delete. Redirect to admin user details.'
+                  value: '/admin/users'
+        '403':
+          description: 'Forbidden. User is not an admin.'
