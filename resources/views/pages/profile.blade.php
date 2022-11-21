@@ -14,14 +14,13 @@
                     <div class = "ms-3">
                         <div class = "d-flex">
                             <div class="mb-4 lg">
-                                <?php 
-                                    if(file_exists("/imagers/user/".$user->idclient.'.jpg')) {
-                                        $path = "/images/users/".$user->idclient.".jpg";
-                                    }
-                                    else {
-                                        $path = "/images/users/def.png";
-                                    }
-                        
+                                <?php
+                                if(file_exists('images/users/'.$user->idclient.'.jpg')) {
+                                    $path = '/images/users/'.$user->idclient.'.jpg';
+                                }
+                                else {
+                                    $path = "/images/users/def.png";
+                                }
                                 ?>
                                 <img src= "{{$path}}" width="200" height="200">
                             </div>

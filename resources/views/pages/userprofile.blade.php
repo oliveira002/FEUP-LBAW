@@ -7,14 +7,13 @@
             <div id="aside">
                 <div class="hi d-flex pt-4 pb-4">
                     <div class="lg">
-                        <?php 
-                            if(file_exists("/imagers/user/".$user->idclient.'.jpg')) {
-                                $path = "/images/users/".$user->idclient.".jpg";
-                            }
-                            else {
-                                $path = "/images/users/def.png";
-                            }
-                
+                        <?php
+                        if(file_exists('images/users/'.$user->idclient.'.jpg')) {
+                            $path = '/images/users/'.$user->idclient.'.jpg';
+                        }
+                        else {
+                            $path = "/images/users/def.png";
+                        }
                         ?>
                         <img src= "{{$path}}" width="120" height="120">
                     </div>

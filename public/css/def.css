@@ -142,6 +142,7 @@ footer{
 .balance{
     text-decoration: none;
     margin-right: 2em;
+    align-self: center;
 }
 
 .log button i {
