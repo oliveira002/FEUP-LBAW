@@ -112,6 +112,7 @@ class AuctionController extends Controller
             return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
         }
         $this->authorize("update", $auction);
+
         $owner = User::find($auction->idowner);
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
@@ -147,6 +148,12 @@ class AuctionController extends Controller
         }
 
         $this->authorize("update", $auction);
+
+        if ($request->hasFile('auc_pic')) {
+            $image = $request->file('auc_pic');
+            $photoName = '1.jpg';
+            $image->move('images/' . ($id), $photoName);
+        }
 
         Auction::where('idauction', $id)->update([
             'name' => $request->input('name'),

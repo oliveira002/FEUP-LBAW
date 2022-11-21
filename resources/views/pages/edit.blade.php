@@ -23,10 +23,16 @@ $minBid = " " . ($minBid + $auction->currentprice);
 
 @section('content')
     <div class="page">
-        <div class="d-flex">
+        <form action="{{route('updateAuction',['id' => $auction->idauction])}}" method="POST" class = "d-flex" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            @method('PUT')
             <div>
                 <div class="foto">
                     <img class="img-fluid" src="/images/{{$auction->idauction}}/1.jpg" width="400" height="510">
+                </div>
+                <div class="uppic mb-2">
+                    <label for="auc_pic"><i class="fa-solid fa-cloud-arrow-up"></i>Change picture</label>
+                    <input name="auc_pic" id="auc_pic" class="img-fluid" type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
                 </div>
             </div>
             <div class="contii">
@@ -39,9 +45,7 @@ $minBid = " " . ($minBid + $auction->currentprice);
                         </ul>
                     </div>
                 @endif
-                <form action="{{route('updateAuction',['id' => $auction->idauction])}}" method="POST">
-                    {{ csrf_field() }}
-                    @method('PUT')
+                <div>
                     <div class="form-header">
                         <div class="title">
                             <h1>Edit Auction</h1>
@@ -73,12 +77,12 @@ $minBid = " " . ($minBid + $auction->currentprice);
                                 <label for="enddate">Auction End Date:</label>
                                 <input id="enddate" type="datetime-local" name="enddate" value="{{$finalStr}}" required>
                             </div>
-                            <div class="continue-button">
+                            <div class="continue-button mb-3">
                                 <input type="submit" class="continue-button" value="Save Changes"/>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
 @endsection
