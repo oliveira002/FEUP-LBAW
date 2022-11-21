@@ -2,8 +2,8 @@ openapi: 3.0.0
 
 info:
   version: '1.0'
-  title: 'LBAW MediaLibrary Web API'
-  description: 'Web Resources Specification (A7) for MediaLibrary'
+  title: 'WeBid'
+  description: 'Web Resources Specification (A7) for WeBid'
 
 servers:
 - url: http://lbaw.fe.up.pt
@@ -49,7 +49,7 @@ paths:
                   type: string
                 password:
                   type: string
-              requered:
+              required:
                 - email
                 - password
 
@@ -118,7 +118,7 @@ paths:
                   type: string
                 lastname:
                   type: string
-              requered:
+              required:
                 - username
                 - email
                 - password
@@ -213,7 +213,7 @@ paths:
                   type: string
                 phonenumber:
                   type: string
-              requered:
+              required:
                 - username
                 - email
                 - password
@@ -262,7 +262,7 @@ paths:
                   type: string
                 newpasswordconfirmation:
                   type: string
-              requered:
+              required:
                 - password
                 - newpassword
                 - newpasswordconfirmation
@@ -320,7 +320,7 @@ paths:
               properties:
                 amount:
                   type: number
-              requered:
+              required:
                 - amount
       responses:
         '302':
@@ -412,7 +412,7 @@ paths:
                   type: number
                 id:
                   type: number
-              requered:
+              required:
                 - amount
                 - id
       responses:
@@ -498,7 +498,7 @@ paths:
                   type: number
                 enddate:
                   type: string
-              requered:
+              required:
                 - name
                 - idcategory
                 - description
@@ -583,7 +583,7 @@ paths:
                   type: number
                 enddate:
                   type: string
-              requered:
+              required:
                 - name
                 - idcategory
                 - description
@@ -671,7 +671,7 @@ paths:
                       type: number
                     name:
                       type: string
-                    startdate:  
+                    startdate:
                       type: string
                     enddate:
                       type: string
@@ -729,7 +729,7 @@ paths:
                       type: number
                     name:
                       type: string
-                    startdate:  
+                    startdate:
                       type: string
                     enddate:
                       type: string
@@ -945,3 +945,35 @@ paths:
                   value: '/admin/users'
         '403':
           description: 'Forbidden. User is not an admin.'
+  /viewabout:
+    get:
+    operationId: 'R508'
+    summary: 'R508: View About Page'
+    description: 'View the About Page. Access: PUB'
+    tags:
+      - 'M05: User Administration and Static pages'
+    responses:
+      '200':
+        description: 'Ok. Show'
+
+  /viewcontact:
+    get:
+    operationId: 'R509'
+    summary: 'R509: View Contact Page'
+    description: 'View the Contact Page. Access: PUB'
+    tags:
+      - 'M05: User Administration and Static pages'
+    responses:
+      '200':
+        description: 'Ok. Show'
+
+  /viewfaq:
+    get:
+    operationId: 'R510'
+    summary: 'R510: View FAQ Page'
+    description: 'View the FAQ Page. Access: PUB'
+    tags:
+      - 'M05: User Administration and Static pages'
+    responses:
+      '200':
+        description: 'Ok. Show'
