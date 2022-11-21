@@ -166,7 +166,7 @@ class UserController extends Controller
         }
         $user->balance = $user->balance + $request->input('amount');
         $user->save();
-        return view('pages.balance',['user' => Auth::user()]);
+        return redirect()->back();
     }
 
     /**
