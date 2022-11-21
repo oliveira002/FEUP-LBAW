@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Auth;
+
 
 class RegisterController extends Controller
 {
@@ -53,7 +55,12 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:50|unique:user',
             'firstname' => 'required|string|max:30|alpha_dash',
             'lastname' => 'required|string|max:30|alpha_dash',
-            'password' => 'required|string|min:8|confirmed|alpha_num',
+            'password' => [
+                'required',
+                'min:8',
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
+            ]
         ]);
     }
 
@@ -77,5 +84,33 @@ class RegisterController extends Controller
             'balance' => '0',
             'isbanned' => 'False',
         ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  Request  $request
+     * @return \App\Models\User
+     */
+    protected function createAdm(Request  $request)
+    {
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $lastId = User::selectRaw('idclient')->orderBy('idclient','desc')->first()->idclient;
+
+        User::create([
+            'idclient' => $lastId+1,
+            'username' => $request->input('username'),
+            'password' => bcrypt($request->input('password')),
+            'email' => $request->input('email'),
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+            'balance' => '0',
+            'isbanned' => 'False',
+        ]);
+
+        return redirect()->route('profile',['username' => $request->input('username')]);
     }
 }

@@ -34,6 +34,7 @@ Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions'
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
 Route::delete('/admin/users/{id}', 'UserController@destroy')->name('deleteUser');
 Route::get('/profile/{username}/edit', 'AdminController@editUser')->name('editusers');
+Route::post('/admin/createuser', 'Auth\RegisterController@createAdm')->name('admregister');
 
 //auctions
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');

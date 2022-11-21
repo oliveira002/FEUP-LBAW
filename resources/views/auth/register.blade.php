@@ -86,7 +86,6 @@
                                 </div>
                             @endif
                         </div>
-
                         <!-- Password confirmation input -->
                         <div class="form-outline mb-4">
                             <input type="password" name="password_confirmation" id="password_confirmation"
