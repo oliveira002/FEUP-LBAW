@@ -7,13 +7,13 @@ body {
     background-color: #eeeeee;
 }
 
-#side ul li a button{
+#side ul li a button {
     font-size: 21px;
     text-align: left !important;
     padding-left: 1em;
 }
 
-#side ul li a button i{
+#side ul li a button i {
     font-size: 21px;
     margin-right: 5px;
 }
@@ -42,7 +42,8 @@ body {
 .lg {
     margin-left: 0.5em;
 }
-.lg img{
+
+.lg img {
     object-fit: cover;
     border-radius: 50%;
     margin: auto;
@@ -114,10 +115,10 @@ body {
 .boxi2 img {
     border-radius: 50%;
 }
-td {
-    vertical-align:middle;
-}
 
+td {
+    vertical-align: middle;
+}
 
 
 .oview {
@@ -128,35 +129,36 @@ td {
     margin-left: 0.2em;
 }
 
-.smore  {
+.smore {
     width: fit-content;
     margin: auto;
 }
-.out1 #side ul li:nth-child(1) button{
+
+.out1 #side ul li:nth-child(1) button {
     border-left: 4px solid #7e3af2;
 }
 
-.out2 #side ul li:nth-child(2) button{
+.out2 #side ul li:nth-child(2) button {
     border-left: 4px solid #7e3af2;
 }
 
-.out3 #side ul li:nth-child(3) button{
+.out3 #side ul li:nth-child(3) button {
     border-left: 4px solid #7e3af2;
 }
 
-.out4 #side ul li:nth-child(4) button{
+.out4 #side ul li:nth-child(4) button {
     border-left: 4px solid #7e3af2;
 }
 
-.out5 #side ul li:nth-child(5) button{
+.out5 #side ul li:nth-child(5) button {
     border-left: 4px solid #7e3af2;
 }
 
-.out6 #side ul li:nth-child(6) button{
+.out6 #side ul li:nth-child(6) button {
     border-left: 4px solid #7e3af2;
 }
 
-.out7 #side ul li:nth-child(7) button{
+.out7 #side ul li:nth-child(7) button {
     border-left: 4px solid #7e3af2;
 }
 
@@ -195,7 +197,6 @@ td {
 }
 
 
-
 thead {
     position: sticky;
     background-color: #efefef;
@@ -212,45 +213,51 @@ thead {
     color: #6b6b6b;
 }
 
-hr#createuser{
+hr#createuser {
     border: 1px solid #6b6b6b;
     width: 130px;
 }
 
 
-.outside
-{
+.outside {
     min-width: fit-content;
     max-width: 55vh;
 }
 
-#upload-image label{
+#upload-image label {
     width: 400px;
     min-width: 350px;
 
 }
-#upload-image label.btn{
+
+#upload-image label.btn {
     width: 100%;
     min-width: 0;
 
 }
 
-img.user{
+img.user {
     min-width: 350px;
 }
 
-label.choose-file{
+label.choose-file {
 
     width: 350px;
 }
 
-#upload-image label{
+#upload-image label {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#upload-image .upload-btn-wrapper{
+
+#upload-image .upload-btn-wrapper {
     margin-left: 45%;
     margin-right: 45%;
     width: 220px;
+}
+
+.adminreg{
+    align-items: center;
+    justify-content: center;
 }

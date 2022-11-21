@@ -6,17 +6,27 @@ use App\Models\Auction;
 use App\Models\Bid;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
+
 use Auth;
 
 class AdminController extends Controller
 {
+
+    use RegistersUsers;
+
+    protected $redirectTo = '/';
+
     public function admin(){
-        $alo = ["alo"];
+
         $numUsers = count(User::selectRaw('*')->get());
         $numAuc = count(Auction::selectRaw('*')->get());
         $numBids = count(Bid::selectRaw('*')->get());
         if(Auth::guard('admin')->check()){
-            return view('pages.adminpanel',['alo' => $alo,'numUsers' => $numUsers,'numAuc' => $numAuc,'numBids' => $numBids]);
+            return view('pages.adminpanel',['numUsers' => $numUsers,'numAuc' => $numAuc,'numBids' => $numBids]);
         }
         else{
             return redirect()->intended(route('login'));
@@ -24,6 +34,9 @@ class AdminController extends Controller
     }
 
     public function getUsers(){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
         $allusers = User::selectRaw('*')->get();
         return view('pages.adminusers',['users' => $allusers]);
     }
@@ -34,11 +47,16 @@ class AdminController extends Controller
             return view('pages.adminuserdetails',['user' => $user]);
         }
         else{
-            return redirect()->intended(route('login'));
+            abort(403);
         }
     }
 
     public function getAuctions(){
+
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
         $users = array();
 
         $allact = Auction::selectRaw('*')->orderBy('idauction','asc')->get();
@@ -61,16 +79,21 @@ class AdminController extends Controller
     }
 
     public function getBids(){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
         $allbids = Bid::selectRaw('*')->get();
         return view('pages.adminbids',['bids' => $allbids]);
     }
+
     public function createUser(){
         if(Auth::guard('admin')->check()){
             return view('pages.admincreateuser');
         }
         else{
-            return redirect()->intended(route('login'));
+            abort(403);
         }
-
     }
+
 }
