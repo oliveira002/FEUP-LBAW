@@ -20,7 +20,7 @@ $user = Auth::user();
                 @endif
             </div>
         </div>
-        <div class="auth">
+        <div class="auth d-flex">
             @if(Auth::guard('web')->check())
                 <a class="balance" href="{{route('balance',['username' =>$user->username])}}">
                     <button>
@@ -46,12 +46,13 @@ $user = Auth::user();
                         <span>Admin</span>
                     </button>
                 </a>
-                <a href="{{route('logout')}}" class="reg">
+                <form class="reg" method="POST" action="{{route('logout')}}">
+                    {{csrf_field()}}
                     <button>
                         <i class="fa-solid fa-user-minus"></i>
                         <span> Logout </span>
                     </button>
-                </a>
+                </form>
             @else
                 <a class="log" href="{{route('login')}}">
                     <button>
