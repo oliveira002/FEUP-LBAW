@@ -248,7 +248,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
 
-        return redirect()->back()->withErros(["success"=>"Your password has been changed successfully!"]);
+        return redirect()->back()->withErrors(["success"=>"Your password has been changed successfully!"]);
 
     }
 
@@ -262,6 +262,12 @@ class UserController extends Controller
     {
         $user = User::find($username);
         $this->authorize("delete", $user);
+
+        $bids = Bid::selectRaw('*')->where('idclient','=',$user->idclient)->get();
+
+        if(count($bids) > 0) {
+            return redirect()->back()->withErrors(['error'=>'This user has bids!']);
+        }
 
         if(Auth::guard('admin')->check())
         {

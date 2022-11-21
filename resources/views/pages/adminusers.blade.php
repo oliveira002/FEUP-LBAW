@@ -8,6 +8,15 @@
             <div class = "outside">
                 <div class="spec d-flex flex-column ps-3 pe-3">
                     <div class = "stuf mt-4 mb-4">
+                        @if($errors->has('error'))
+                            <div class="alert alert-danger mb-0 mt-4">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class = "d-flex query mt-4">
                             <p class ="h3 fw-bold"> All Users </p>
 
