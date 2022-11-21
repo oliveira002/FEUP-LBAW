@@ -82,18 +82,15 @@ class Auction extends Model
 
     public static function ftsSearch($search)
     {
-        return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
-            ->orWhere('name', 'ilike', '%' . $search . '%')
-            ->orWhere('description', 'ilike', '%' . $search . '%')
-            ->where('isover', false)
+        return Auction::whereRaw('(tsvectors @@ websearch_to_tsquery(\'english\', ?) OR (name ilike ? OR description ilike ?)) AND isover = false', 
+        [$search,'%' . $search . '%','%' .$search . '%'])
             ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
     }
 
     public static function ftsSearchCat($search,$cat)
     {
-        return Auction::whereRaw('tsvectors @@ websearch_to_tsquery(\'english\', ?)', [$search])
-            ->where('isover', false)
-            ->where('idcategory',$cat)
+        return Auction::whereRaw('(tsvectors @@ websearch_to_tsquery(\'english\', ?) OR (name ilike ? OR description ilike ?)) AND isover = false AND idcategory = ?',
+            [$search,'%' . $search . '%','%' .$search . '%',$cat])
             ->orderByRaw('ts_rank(tsvectors, websearch_to_tsquery(\'english\', ?)) DESC', [$search]);
     }
 
