@@ -947,33 +947,33 @@ paths:
           description: 'Forbidden. User is not an admin.'
   /viewabout:
     get:
-    operationId: 'R508'
-    summary: 'R508: View About Page'
-    description: 'View the About Page. Access: PUB'
-    tags:
-      - 'M05: User Administration and Static pages'
-    responses:
-      '200':
-        description: 'Ok. Show'
+      operationId: 'R508'
+      summary: 'R508: View About Page'
+      description: 'View the About Page. Access: PUB'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
 
   /viewcontact:
     get:
-    operationId: 'R509'
-    summary: 'R509: View Contact Page'
-    description: 'View the Contact Page. Access: PUB'
-    tags:
-      - 'M05: User Administration and Static pages'
-    responses:
-      '200':
-        description: 'Ok. Show'
+      operationId: 'R509'
+      summary: 'R509: View Contact Page'
+      description: 'View the Contact Page. Access: PUB'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
 
   /viewfaq:
     get:
-    operationId: 'R510'
-    summary: 'R510: View FAQ Page'
-    description: 'View the FAQ Page. Access: PUB'
-    tags:
-      - 'M05: User Administration and Static pages'
-    responses:
-      '200':
-        description: 'Ok. Show'
+      operationId: 'R510'
+      summary: 'R510: View FAQ Page'
+      description: 'View the FAQ Page. Access: PUB'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
