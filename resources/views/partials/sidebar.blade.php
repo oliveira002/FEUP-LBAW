@@ -1,7 +1,16 @@
 <div id="aside">
     <div class="hi d-flex pt-4 pb-4">
         <div class="lg">
-            <img src= "/images/users/{{$user->idclient}}.jpg" width="120" height="120">
+            <?php 
+                if(file_exists("/imagers/user/".$user->idclient.'.jpg')) {
+                    $path = "/images/users/".$user->idclient.".jpg";
+                }
+                else {
+                    $path = "/images/users/def.png";
+                }
+                        
+            ?>
+            <img src= "{{$path}}" width="120" height="120">
         </div>
         <div class="nome ms-2 me-2">
             <p class = "fw-bold mb-1">Hi,</p>
