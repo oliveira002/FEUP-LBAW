@@ -1,4 +1,4 @@
-
+var flag = 1;
 function counter() {
     var deadline = document.getElementById("datat").innerHTML;
     deadline = new Date(deadline).getTime();
@@ -14,16 +14,21 @@ function counter() {
         document.getElementById("minute").innerHTML = minutes;
         document.getElementById("second").innerHTML =seconds;
         if (t < 0) {
-            const boxes = document.querySelectorAll('.dia');
+            /*const boxes = document.querySelectorAll('.dia');
             for (const box of boxes) {
                 box.classList.add('nt');
             }
+            document.getElementById("expired").innerHTML = 'ENDED';*/
             clearInterval(x);
-            document.getElementById("expired").innerHTML = 'ENDED';
             document.getElementById("day").innerHTML ='';
             document.getElementById("hour").innerHTML ='';
             document.getElementById("minute").innerHTML ='' ;
-            document.getElementById("second").innerHTML = ''; }
+            document.getElementById("second").innerHTML = ''; 
+            if(flag == 1) {
+                location.reload();
+                flag++;
+            }
+        }
     }, 1000);
 
 }counter();

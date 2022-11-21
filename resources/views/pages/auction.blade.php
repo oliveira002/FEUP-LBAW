@@ -55,6 +55,28 @@
                     <p id = "ini" class = "h5 pb-2"> Current Bid: <span id = "pl" class = "h4 pb-2">{{$auction->currentprice}}€</span> </p>
                     <div class = "caixa mb-4">
                         <div class ="ms-3">
+                            @if($auction->enddate < now())
+                             <p class = "h2 fw-bold pt-3 pb-3 defl"> Auction Expired! </p>
+                             <?php
+                                $nobids = 1;
+                                if(!is_null($bids->last())) {
+                                    $iduser = $bids->last()->idclient;
+                                    $user = \App\Models\User::find($iduser);
+                                    $nobids = 0;
+                                }
+                                
+                             ?>
+                             <div class = "pb-4">
+                                @if($nobids)
+                                    <p class = "h5 me-2"> There were no bids in the auction. </p>
+                                @else
+                             <p class = "h5 me-2"> Auction Won by: <span class = "fw-bold h5">{{$user->firstname}} {{$user->lastname}} </span></p>
+                             <p class = "h5 me-2"> Winning Bid Price: <span class = "fw-bold h5"> {{$bids->last()->price}}€ </span> </p>
+                             <p class = "h5 me-2"> Winning Bid Date: <span class = "fw-bold h5"> {{$bids->last()->biddate}} </span> </p>
+                             @endif
+                             </div>
+
+                            @else
                             <p class = "h5 fw-bold pt-4 pb-2 defl"> Time Left: </p>
                             <div class = "d-flex pt-2 pb-2">
                                 <p class = "h5 me-2" id = "expired"> </p>
@@ -69,6 +91,7 @@
                             </div>
                             <p class = "h5 fw-bold pt-2 pb-2 defl"> Auction Ends: </p>
                             <p class = "h5 me-2 pb-4"> {{$auction->enddate}} </p>
+                            @endif
                         </div>
                     </div>
                     <div class = "caixa2 mb-2">
