@@ -33,12 +33,13 @@ $user = Auth::user();
                         <span>Profile</span>
                     </button>
                 </a>
-                <a href="{{route('logout')}}" class="reg">
-                    <button>
+                <form method="POST" action="{{route('logout')}}" class="reg">
+                    @csrf
+                    <button type="submit">
                         <i class="fa-solid fa-user-minus"></i>
                         <span> Logout </span>
                     </button>
-                </a>
+                </form>
             @elseif(Auth::guard('admin')->check())
                 <a class="log" href="{{route('admin')}}">
                     <button>

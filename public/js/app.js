@@ -1,28 +1,4 @@
 function addEventListeners() {
-    let itemCheckers = document.querySelectorAll('article.card li.item input[type=checkbox]');
-    [].forEach.call(itemCheckers, function(checker) {
-        checker.addEventListener('change', sendItemUpdateRequest);
-    });
-
-    let itemCreators = document.querySelectorAll('article.card form.new_item');
-    [].forEach.call(itemCreators, function(creator) {
-        creator.addEventListener('submit', sendCreateItemRequest);
-    });
-
-    let itemDeleters = document.querySelectorAll('article.card li a.delete');
-    [].forEach.call(itemDeleters, function(deleter) {
-        deleter.addEventListener('click', sendDeleteItemRequest);
-    });
-
-    let cardDeleters = document.querySelectorAll('article.card header a.delete');
-    [].forEach.call(cardDeleters, function(deleter) {
-        deleter.addEventListener('click', sendDeleteCardRequest);
-    });
-
-    let cardCreator = document.querySelector('article.card form.new_card');
-    if (cardCreator != null)
-        cardCreator.addEventListener('submit', sendCreateCardRequest);
-
     let search = document.querySelector('#searchbar')
     if(search!=null)
         search.addEventListener("input",updateAuction)
