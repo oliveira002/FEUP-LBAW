@@ -7,7 +7,16 @@
             <div id="aside">
                 <div class="hi d-flex pt-4 pb-4">
                     <div class="lg">
-                        <img src= "/alo.jpg" width="120" height="120">
+                        <?php 
+                            if(file_exists("/imagers/user/".$user->idclient.'.jpg')) {
+                                $path = "/images/users/".$user->idclient.".jpg";
+                            }
+                            else {
+                                $path = "/images/users/def.png";
+                            }
+                
+                        ?>
+                        <img src= "{{$path}}" width="120" height="120">
                     </div>
                     <div class="nome ms-3 me-2">
                         <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
