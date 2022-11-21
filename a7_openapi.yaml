@@ -1,0 +1,617 @@
+openapi: 3.0.0
+
+info:
+  version: '1.0'
+  title: 'LBAW MediaLibrary Web API'
+  description: 'Web Resources Specification (A7) for MediaLibrary'
+
+servers:
+- url: http://lbaw.fe.up.pt
+  description: Production server
+
+externalDocs:
+  description: Find more info here.
+  url: https://web.fe.up.pt/~ssn/wiki/teach/lbaw/medialib/a07
+
+tags:
+  - name: 'M01: Authentication and Individual Profile'
+  - name: 'M02: Auctions'
+  - name: 'M03: Bidding'
+  - name: 'M04: Loans'
+  - name: 'M05: User Administration and Static pages'
+
+paths:
+
+  /login:
+    get:
+      operationId: 'R101'
+      summary: 'R101: Login Form'
+      description: 'Provide login form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'OK. Show Login form UI'
+    post:
+      operationId: 'R102'
+      summary: 'R102: Login Action'
+      description: 'Process login form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              requered:
+                - email
+                - password
+
+      responses:
+        '302':
+          description: 'Redirect after processing the login credentials.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful authentication. Redirect to Home page.'
+                  value: '/'
+                302Error:
+                  description: 'Failed authentication. Redirect to login form.'
+                  value: '/login'
+  /logout:
+    get:
+      operationId: 'R103'
+      summary: 'R103: Logout Action'
+      description: 'Process logout action of current authenticated user. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect after processing logout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful logout. Redirect to Home Page.'
+                  value: '/login'
+  /register:
+    get:
+      operationId: 'R104'
+      summary: 'R104: Register Form'
+      description: 'Provide new user register form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'OK. Show Register form UI'
+    post:
+      operationId: 'R105'
+      summary: 'R105: Register Action'
+      description: 'Process new user register form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+              requered:
+                - username
+                - email
+                - password
+                - firstname
+                - lastname
+      responses:
+        '302':
+          description: 'Redirect after processing new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful registration. Redirect to Home page.'
+                  value: '/'
+                302Error:
+                  description: 'Failed registration. Redirect to register form.'
+                  value: '/register'
+  /profile/{username}:
+    get:
+      operationId: 'R106'
+      summary: 'R106: View User Profile Page'
+      description: 'Show the User profile. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Profile page UI'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                200Authenticated:
+                  description: 'If user the user that is being viewd is Authenticated. View full User Profile.'
+                  value: '/users/{username}'
+                302Unauthenticate:
+                  description: 'If user the user that is being viewd is not Authenticated. View partial User Profile.'
+                  value: '/users/{username}'
+  /profile/{username}/mydetails:
+    get:
+      operationId: 'R107'
+      summary: 'R107: Edit User Profile Form'
+      description: 'Provide edit user profile form. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Edit Profile form UI'
+    put:
+      operationId: 'R108'
+      summary: 'R108: Edit User Profile Action'
+      description: 'Process edit user profile form. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                phonenumber:
+                  type: string
+              requered:
+                - username
+                - email
+                - password
+                - firstname
+                - lastname
+                - phonenumber
+      responses:
+        '302':
+          description: 'Redirect after processing edit user profile information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful edit. Redirect to User Profile page.'
+                  value: '/profile/{username}'
+                302Error:
+                  description: 'Failed edit. Redirect to Edit Profile form.'
+                  value: '/profile/{username}/mydetails'
+
+  /profile/{username}/mypassword:
+    put:
+      operationId: 'R109'
+      summary: 'R109: Edit User Password Action'
+      description: 'Process edit user password form. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                newpassword:
+                  type: string
+                newpasswordconfirmation:
+                  type: string
+              requered:
+                - password
+                - newpassword
+                - newpasswordconfirmation
+      responses:
+        '302':
+          description: 'Redirect after processing edit user password information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful edit. Redirect to User Profile page.'
+                  value: '/profile/{username}'
+                302Error:
+                  description: 'Failed edit. Redirect to Edit Profile form.'
+                  value: '/profile/{username}/mydetails'
+
+  /profile/{username}/balance:
+    get:
+      operationId: 'R110'
+      summary: 'R110: View User Balance'
+      description: 'Show the User balance. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Balance page UI'
+    post:
+      operationId: 'R111'
+      summary: 'R111: Add User Balance'
+      description: 'Add balance to the User. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+              requered:
+                - amount
+      responses:
+        '302':
+          description: 'Redirect after processing add balance.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful add balance. Redirect to Balance page.'
+                  value: '/profile/{username}/balance'
+                302Error:
+                  description: 'Failed add balance. Redirect to Balance page.'
+                  value: '/profile/{username}/balance'
+
+  /profile/{username}/myauctions:
+    get:
+      operationId: 'R112'
+      summary: 'R112: View User Auctions'
+      description: 'Show the User auctions. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Auctions page UI'
+  /profile/{username}/mybids:
+    get:
+      operationId: 'R113'
+      summary: 'R113: View User Bids'
+      description: 'Show the User bids. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Bids page UI'
+  /auction/{id}:
+    get:
+      operationId: 'R201'
+      summary: 'R201: View Auction'
+      description: 'Show the Auction details. Access: PUB'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Auction page UI'
+    post:
+      operationId: 'R301'
+      summary: 'R301: Add a Bid'
+      description: 'Bid on a certain Auction as a authenticated user'
+      tags:
+        - 'M03: Bidding'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                id:
+                  type: number
+              requered:
+                - amount
+                - id
+      responses:
+        '302':
+          description: 'Redirect after processing Bid on Auction.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful bid. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed edit. Redirect to Auction details.'
+                  value: '/auction/{id}'
+
+    delete:
+      operationId: 'R203'
+      summary: 'R203: Delete Auction Action'
+      description: 'Process delete Auction form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: 'Redirect after processing Auction Delete.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Delete. Redirect to Home page.'
+                  value: '/'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+
+  /auction/{id}/edit:
+    put:
+      operationId: 'R202'
+      summary: 'R202: Update Auction Action'
+      description: 'Process edit Auction form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                idcategory:
+                  type: number
+                description:
+                  type: string
+                startingprice:
+                  type: number
+                currentprice:
+                  type: number
+                enddate:
+                  type: string
+              requered:
+                - name
+                - idcategory
+                - description
+                - startingprice
+                - currentprice
+                - enddate
+      responses:
+        '302':
+          description: 'Redirect after processing Auction Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Update. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed Update. Redirect to Auction details.'
+                  value: '/auction/{id}'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+    get:
+      operationId: 'R204'
+      summary: 'R204: Edit Auction Form'
+      description: 'Show the Auction edit form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Auction Edit page UI'
+
+  /auction/create:
+    get:
+      operationId: 'R205'
+      summary: 'R205: Create Auction Form'
+      description: 'Show the Auction create form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      responses:
+        '200':
+          description: 'OK. Show Auction Create page UI'
+
+  /auction:
+    post:
+      operationId: 'R206'
+      summary: 'R206: Create Auction Action'
+      description: 'Process create Auction form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                idcategory:
+                  type: number
+                description:
+                  type: string
+                startingprice:
+                  type: number
+                currentprice:
+                  type: number
+                enddate:
+                  type: string
+              requered:
+                - name
+                - idcategory
+                - description
+                - startingprice
+                - currentprice
+                - enddate
+      responses:
+        '302':
+          description: 'Redirect after processing Auction Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+      
