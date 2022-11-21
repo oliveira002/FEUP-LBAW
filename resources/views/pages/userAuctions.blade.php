@@ -21,7 +21,7 @@
                                 @foreach($auctions as $auct)
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="../images/{{$auct->idauction}}/1.jpg" width="130" height="95">
+                                            <img src="/images/{{$auct->idauction}}/1.jpg" width="130" height="95">
                                         </div>
                                         <div class="col-9">
                                             <div class="row">
