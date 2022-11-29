@@ -19,6 +19,7 @@ tags:
   - name: 'M03: Bidding'
   - name: 'M04: Search Api And Search Pages'
   - name: 'M05: User Administration and Static pages'
+  - name: 'M06: User To User Interactions and Notifications'
 
 paths:
 
@@ -68,7 +69,7 @@ paths:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
   /logout:
-    get:
+    post:
       operationId: 'R103'
       summary: 'R103: Logout Action'
       description: 'Process logout action of current authenticated user. Access: USR, ADM'
@@ -945,7 +946,7 @@ paths:
                   value: '/admin/users'
         '403':
           description: 'Forbidden. User is not an admin.'
-  /viewabout:
+  /about:
     get:
       operationId: 'R508'
       summary: 'R508: View About Page'
@@ -956,7 +957,7 @@ paths:
         '200':
           description: 'Ok. Show'
 
-  /viewcontact:
+  /contacts:
     get:
       operationId: 'R509'
       summary: 'R509: View Contact Page'
@@ -967,7 +968,7 @@ paths:
         '200':
           description: 'Ok. Show'
 
-  /viewfaq:
+  /FAQs:
     get:
       operationId: 'R510'
       summary: 'R510: View FAQ Page'
@@ -977,3 +978,217 @@ paths:
       responses:
         '200':
           description: 'Ok. Show'
+
+  /profile/{username}/review:
+    get:
+      operationId: 'R601'
+      summary: 'R601: Review User Profile Page'
+      description: 'Show the Review User Profile page. Access: PUB'
+      tags:
+        - 'M06: User To User Interactions and Notifications'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Review Profile page UI'
+    post:
+      operationId: 'R602'
+      summary: 'R602: Review User Action'
+      description: 'Review a User. Access: USR'
+      tags:
+        - 'M06: User To User Interactions and Notifications'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'Review Form'
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: number
+                  description: 'Rating of the user.'
+                  minimum: 1
+                  maximum: 5
+                review:
+                  type: string
+                  description: 'Review of the user.'
+                iduserreviewer:
+                  type: number
+                  description: 'ID of the user reviewer.'
+                iduserreviewed:
+                  type: number
+                  description: 'ID of the user reviewed.'
+              required:
+                - rating
+                - review
+            examples:
+              ReviewForm:
+                value:
+                  rating: 5
+                  review: 'Great seller!'
+                  iduserreviewer: 1
+                  iduserreviewed: 2
+      responses:
+        '302':
+          description: 'Redirect after processing Review Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Review. Redirect to Review Profile Page.'
+                  value: '/profile/{username}/review'
+                302Error:
+                  description: 'Failed Review. Redirect to Review Profile Page.'
+                  value: '/profile/{username}/review'
+        '403':
+          description: 'Forbidden. User is not logged in.'
+  /profile/{username}/report:
+    get:
+      operationId: 'R603'
+      summary: 'R603: Report User Profile Page'
+      description: 'Show the Report User Profile page. Access: PUB'
+      tags:
+        - 'M06: User To User Interactions and Notifications'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Report Profile page UI'
+    post:
+      operationId: 'R604'
+      summary: 'R604: Report User Action'
+      description: 'Report a User. Access: USR'
+      tags:
+        - 'M06: User To User Interactions and Notifications'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'Report Form'
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                review:
+                  type: string
+                  description: 'Review of the user.'
+                idseller:
+                  type: number
+                  description: 'ID of the seller.'
+                idreporter:
+                  type: number
+                  description: 'ID of the reporter.'
+              required:
+                - rating
+                - review
+            examples:
+              ReviewForm:
+                value:
+                  review: 'Worst seller!'
+                  idseller: 1
+                  idreporter: 2
+      responses:
+        '302':
+          description: 'Redirect after processing Report Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Report. Redirect to Report Profile Page.'
+                  value: '/profile/{username}/report'
+                302Error:
+                  description: 'Failed Report. Redirect to Report Profile Page.'
+                  value: '/profile/{username}/report'
+        '403':
+          description: 'Forbidden. User is not logged in.'
+          
+  /profile/{username}/notification:
+    get:
+      operationId: 'R605'
+      summary: 'R605: User Notification Json'
+      description: 'Get the User Notification Json. Access: USR'
+      tags:
+        - 'M06: User To User Interactions and Notifications'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idnotification:
+                      type: number
+                    content:
+                      type: string
+                    isread:
+                      type: boolean
+                    idclient:
+                      type: number
+                example:
+                  - idnotification: 1
+                  - content: 'You have a new review!'
+                  - isread: false
+                  - idclient: 1
+  /profile/{username}/favorites:
+    get:
+      operationId: 'R606'
+      summary: 'R606: Favorites User Profile Page'
+      description: 'Show the Favorites User Profile page. Access: USR, ADM'
+      tags:
+        - 'M06: User To User Interactions and Notifications'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Favorites Profile page UI'
+        '403':
+          description: 'Forbidden. User is not logged in.'
+
+
+
+
+
+            

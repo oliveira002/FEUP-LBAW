@@ -74,7 +74,7 @@ class SearchController extends Controller
         $categories = Category::selectRaw('*')->get();
         if (!isset($_GET['search_query']) || $_GET['search_query'] == ""){
             $search_query = '';
-            $auctions = Auction::where('idcategory', $category)->get();
+            $auctions = Auction::where('idcategory', $category)->where('isover',false)->get();
         }
         else{
             $search_query = $_GET['search_query'];

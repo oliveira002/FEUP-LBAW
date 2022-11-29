@@ -103,10 +103,10 @@ class User extends Authenticatable
 
     public static function searchUser($search)
     {
-        return User::query()->orWhere('username', 'LIKE', "%{$search}%")
-        ->orWhere('firstname', 'LIKE', "%{$search}%")
-        ->orWhere('lastname', 'LIKE', "%{$search}%")
-        ->orWhere('email', 'LIKE', "%{$search}%");
+        return User::query()->orWhere('username', 'ilIKE', "%{$search}%")
+        ->orWhere('firstname', 'ilIKE', "%{$search}%")
+        ->orWhere('lastname', 'ilIKE', "%{$search}%")
+        ->orWhere('email', 'ilIKE', "%{$search}%");
     }
 
 }

@@ -84,7 +84,7 @@ function userUpdateHandler(){
             </td>
             <td class = "mt-3">${usr.email}</td>
             <td>
-                <a href = "" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
+                <a href = "${window.location.origin + '/profile/' + usr.username}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
                 <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient * 2)-1}"> <i class="fa-solid fa-ban"></i> </a>
                 <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient  * 2)}"> <i class="fa-solid fa-trash"></i> </a>
             </td>
