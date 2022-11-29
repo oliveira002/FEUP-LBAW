@@ -19,6 +19,7 @@
     <link href="{{ asset('css/search.css') }}" rel="stylesheet">
     <link href="{{ asset('css/auction.css') }}" rel="stylesheet">
 
+
     <script src="https://kit.fontawesome.com/221bee115b.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         // Fix for Firefox autofocus CSS bug
@@ -31,6 +32,7 @@
     <script type="text/javascript" src={{ asset('js/countdown.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/createauc.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/bid.js') }} defer></script>
+    <script type="text/javascript" src={{ asset('js/images.js') }} defer></script>
 </head>
 <body>
 <main>
