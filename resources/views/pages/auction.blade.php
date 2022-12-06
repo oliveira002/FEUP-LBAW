@@ -106,7 +106,7 @@
                     <p id = "ini" class = "h5 pb-2"> Current Bid: <span id = "pl" class = "h4 pb-2">{{$auction->currentprice}}€</span> </p>
                     <div class = "caixa mb-4">
                         <div class ="ms-3">
-                            @if($auction->enddate < now())
+                            @if($auction->isover)
                              <p class = "h2 fw-bold pt-3 pb-3 defl"> Auction Expired! </p>
                              <?php
                                 $nobids = 1;
