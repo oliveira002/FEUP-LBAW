@@ -277,6 +277,82 @@
 .nt {
     display: none;
 }
+.slideshow{
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.slide{
 
+    inset: 0;
+    transition: 2s;
+    z-index: 0;
+
+}
+
+
+.slide img{
+    display: block;
+    object-fit: cover;
+    object-position: center;
+
+}
+.slide[data-active]{
+    -webkit-animation: cssAnimation 1s forwards;
+    animation: cssAnimation2 5s forwards;
+    transition-delay: 2s;
+
+
+
+}
+@keyframes cssAnimation2 {
+    0%   {opacity: 0;}
+    15%  {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.slideshow button{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    background: rgb(0,0,0,.6);
+
+    z-index: 2;
+}
+.slideshow button:hover{
+    background: rgb(0,0,0,1);
+}
+
+
+.slideshow ul{
+    padding:0;
+    margin:0;
+}
+
+.buttons{
+    bottom: 5px;
+    position: absolute;
+    z-index: 2;
+}
 
 

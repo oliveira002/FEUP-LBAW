@@ -23,8 +23,58 @@
         <div class = "page">
             <div class = "d-flex">
                 <div class = "text-center">
-                    <div class="foto">
-                        <img src = "../images/{{$auction->idauction}}/1.jpg" class ="fds img-fluid">
+                    <!- show Images here ->
+                    <?php
+
+                    $directory =  "images/" . $auction->idauction . "/";
+                    $images = glob($directory . "/*.jpg");
+                    $imagescount = 0;
+                    $files= glob($directory . "/*.jpg");
+                    if($files){
+                        $imagescount = count($files);
+                    }
+                    ?>
+                    <section aria-label="Images" class="foto">
+                        <div class="slideshow" data-slideshow>
+                            <div class="buttons">
+                                <button class="slideshow-button prev" data-slideshow-button="prev">
+                                    <i class="fa-solid fa-angles-left"></i>
+                                </button>
+                                <button class="next ms-5 slideshow-button " data-slideshow-button="next">
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </button>
+                            </div>
+
+                            <ul data-slides>
+                                <?php
+                                    if($imagescount==1){
+                                        echo "<li class='slide'>";
+
+                                        echo "<div class='foto'>";
+                                        echo "<img src='../images/{$auction->idauction}/1.jpg' alt='Image 1' class ='fds img-fluid'/>";
+                                        echo "</div>";
+                                        echo "</li>";
+
+                                    }
+                                    else{
+                                        for($i = 1; $i <= $imagescount; $i++) {
+                                            if($i == 1) {
+                                                echo "<li class='slide' data-active>";
+                                            } else {
+                                                echo "<li class='slide' hidden>";
+                                            }
+                                            echo "<div class='foto'>";
+                                            echo "<img src='../images/{$auction->idauction}/$i.jpg' alt='Image $i' class ='fds img-fluid'/>";
+                                            echo "</div>";
+                                            echo "</li>";
+                                        }
+                                    }
+                                    ?>
+
+                            </ul>
+                        </div>
+                    </section>
+                    <div>
 
                     </div>
                 </div>
