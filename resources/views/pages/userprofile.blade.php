@@ -73,7 +73,31 @@
                                     }
                                 ?>
                                 <p class = "mb-3 ms-3 h3 cor ">{{$rating}}</p>
-                                <a href = "" class = "mb-2 ms-3 h5 rep mt-2"><button> Report user <i class="fa-regular fa-thumbs-down"></i>  </button> </a>
+                                <a class = "text-center rep">
+                                    <button class="open-modal fw-bold" data-target="modal-1">
+                                        Report user <i class="fa-regular fa-thumbs-down"></i>  
+                                    </button>
+                                </a>
+                                <div id="modal-1" class="modal-window bab">
+                                    <div class = "d-flex">
+                                        <h2>Motive</h2>
+                                        <button class = "close modal-hide mt-2 xau"><i class="fa-solid fa-x "></i></button>
+                                    </div>
+                                    <div class = "">
+                                        <div class="input-group">
+                                            <div class = "">
+                                                <div class="input-box">
+                                                    <textarea id="desc" name="desc" style="height:170px; width:410px;" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "d-flex">
+                                        <button class="modal-btn modal-hide cl">Close</button>
+                                        <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Submit"/>
+                                    </div>
+                                </div>
+                                <div class="modal-fader"></div>
                             </div>
                         </div>
                         <div class = "d-flex">

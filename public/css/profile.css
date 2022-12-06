@@ -327,3 +327,16 @@ ul.payment-selection{
     font-size: 14px;
     background-color: #f8f8f8;
 }
+
+.bab {
+    width: 450px;
+}
+
+.cent {
+    margin: auto;
+    justify-content: center;
+}
+
+.xau {
+    margin-left: auto;
+}
