@@ -90,13 +90,13 @@
                                                 <fieldset class="rating">
                                                     <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Very Good"></label>
                                                     <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full" title="Good"> </label>
-                                                    <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full" title="Average"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3" checked/><label for="star3" class="full" title="Average"></label>
                                                     <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full" title="Bad"> </label>
                                                     <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full" title="Awful"></label>
                                                 </fieldset>
                                             </div>
                                             <div class = "subt d-flex">
-                                                <p class = "h5 mb-3" id="rating-value"></p>
+                                                <p class = "h5 mb-3" id="rating-value">Average Experience 😑</p>
                                             </div>
                                             <div>
                                                 <div class="input-box">
