@@ -378,6 +378,25 @@ BEFORE INSERT ON Auction
 FOR EACH ROW
 EXECUTE PROCEDURE check_own();
 
+-- 10) notification for the auction owner
+DROP FUNCTION IF EXISTS newbid_notif() CASCADE;
+
+CREATE FUNCTION newbid_notif() RETURNS TRIGGER AS
+    $BODY$
+
+BEGIN
+INSERT INTO Notification(content,isRead,notifDate,idClient)
+    (SELECT CONCAT('New Bid on Auction "', Auction.name, '"'), False, NOW(), Auction.idOwner from Auction where Auction.idauction = NEW.IdAuction);
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER newbid_notif
+    AFTER INSERT ON Bid
+    FOR EACH ROW
+    EXECUTE PROCEDURE newbid_notif();
+
 -- Full Text Search
 ALTER TABLE Auction
 ADD COLUMN tsvectors TSVECTOR;
