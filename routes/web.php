@@ -41,6 +41,7 @@ Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
 Route::get('/auction/create', 'AuctionController@create')->name('createAuction');
 Route::post('/auction', 'AuctionController@store')->name('submitNewAuc');
 Route::post('/auction/{id}','BidController@createBid')->name('addbid');
+Route::post('/profile/{id}','ReportController@createSellerReport')->name('createSellerReport');
 Route::delete('/auction/{id}', 'AuctionController@destroy')->name('deleteAuction');
 Route::get('/auction/{id}','AuctionController@show')->name('auction');
 Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction');

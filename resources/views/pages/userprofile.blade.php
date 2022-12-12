@@ -79,7 +79,7 @@
                                     </button>
                                 </a>
                                 <div id="modal-1" class="modal-window bab">
-                                    <form id="myform" method="post" action="">
+                                    <form id="myform" method="post" action="{{route('createSellerReport',['id' => $user->username])}}">
                                         {{ csrf_field() }}
                                         <div class = "d-flex">
                                             <h4>How would you rate your experience?</h4>
