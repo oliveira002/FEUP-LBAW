@@ -33,6 +33,7 @@
     <script type="text/javascript" src={{ asset('js/createauc.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/bid.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/images.js') }} defer></script>
+    <script type="text/javascript" src={{ asset('js/rate.js') }} defer></script>
 </head>
 <body>
 <main>

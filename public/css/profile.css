@@ -366,13 +366,8 @@ ul.payment-selection{
 
 .subt {
     justify-content: center;
+    margin: auto;
 }
-
-.subt span {
-    margin-right: 15px;
-    margin-left: 15px;
-}
-
 
 .rating > label{
     color: #ddd;
@@ -408,3 +403,4 @@ ul.payment-selection{
     padding: 5px;
     box-sizing: border-box;
 }
+

@@ -95,16 +95,12 @@
                                                     <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full" title="Awful"></label>
                                                 </fieldset>
                                             </div>
-                                           <!--<div class = "subt d-flex">
-                                                <span class = "h3"> 1 </span>
-                                                <span class = "h3"> 2 </span>
-                                                <span class = "h3"> 3 </span>
-                                                <span class = "h3"> 4 </span>
-                                                <span class = "h3"> 5 </span>
-                                            </div>--!>
+                                            <div class = "subt d-flex">
+                                                <p class = "h5 mb-3" id="rating-value"></p>
+                                            </div>
                                             <div>
                                                 <div class="input-box">
-                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Describe your experience..." required></textarea>
+                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Describe your experience or just simple rate the seller!" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
