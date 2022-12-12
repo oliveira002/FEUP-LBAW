@@ -75,27 +75,44 @@
                                 <p class = "mb-3 ms-3 h3 cor ">{{$rating}}</p>
                                 <a class = "text-center rep">
                                     <button class="open-modal fw-bold" data-target="modal-1">
-                                        Report user <i class="fa-regular fa-thumbs-down"></i>  
+                                        Report user <i class="fa-regular fa-thumbs-down"></i>
                                     </button>
                                 </a>
                                 <div id="modal-1" class="modal-window bab">
-                                    <div class = "d-flex">
-                                        <h2>Motive</h2>
-                                        <button class = "close modal-hide mt-2 xau"><i class="fa-solid fa-x "></i></button>
-                                    </div>
-                                    <div class = "">
-                                        <div class="input-group">
-                                            <div class = "">
+                                    <form id="myform" method="post" action="">
+                                        {{ csrf_field() }}
+                                        <div class = "d-flex">
+                                            <h4>How would you rate your experience?</h4>
+                                            <button class = "close modal-hide mt-2 xau"><i class="fa-solid fa-x "></i></button>
+                                        </div>
+                                        <div class>
+                                            <div class = "rates d-flex">
+                                                <fieldset class="rating">
+                                                    <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Very Good"></label>
+                                                    <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full" title="Good"> </label>
+                                                    <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full" title="Average"></label>
+                                                    <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full" title="Bad"> </label>
+                                                    <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full" title="Awful"></label>
+                                                </fieldset>
+                                            </div>
+                                           <!--<div class = "subt d-flex">
+                                                <span class = "h3"> 1 </span>
+                                                <span class = "h3"> 2 </span>
+                                                <span class = "h3"> 3 </span>
+                                                <span class = "h3"> 4 </span>
+                                                <span class = "h3"> 5 </span>
+                                            </div>--!>
+                                            <div>
                                                 <div class="input-box">
-                                                    <textarea id="desc" name="desc" style="height:170px; width:410px;" required></textarea>
+                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Describe your experience..." required></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class = "d-flex">
-                                        <button class="modal-btn modal-hide cl">Close</button>
-                                        <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Submit"/>
-                                    </div>
+                                        <div class = "d-flex">
+                                            <button class="modal-btn modal-hide cl">Close</button>
+                                            <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Submit"/>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="modal-fader"></div>
                             </div>

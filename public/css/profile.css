@@ -340,3 +340,71 @@ ul.payment-selection{
 .xau {
     margin-left: auto;
 }
+
+.rates {
+    justify-content: center;
+}
+
+.rating > input{
+    display: none;
+}
+
+.rating > label:before{
+    content: '\f005';
+    font-family: FontAwesome;
+    margin: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.rating > .half:before{
+    content: '\f089';
+    position: absolute;
+    cursor: pointer;
+}
+
+.subt {
+    justify-content: center;
+}
+
+.subt span {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+
+.rating > label{
+    color: #ddd;
+    float: right;
+    cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label{
+    color: #f1b642;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label{
+    color: #f1b642;
+}
+
+.txtt {
+    border-radius: 4px;
+    height:170px;
+    width:410px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
+.txtt:focus {
+    outline: none;
+}
+
+.txtt {
+    padding: 5px;
+    box-sizing: border-box;
+}
