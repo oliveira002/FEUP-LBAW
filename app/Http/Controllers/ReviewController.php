@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\AuctionReport;
 use App\Models\Bid;
+use App\Models\Review;
 use App\Models\SellerReport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ReportController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,9 +27,9 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createSellerReport(Request $request)
+    public function createReview(Request $request)
     {
-        $rating = $request->input('amount');
+        $rating = $request->input('rating');
         $content = $request->input('desc');
         $ownerUsername = $request->route('id');
         $idowner = User::where('username',$ownerUsername)->first()->idclient;
@@ -47,33 +48,22 @@ class ReportController extends Controller
         }
 
 
-        if(!SellerReport::selectRaw('idreport')->orderBy('idreport', 'desc')->first()) {
+        if(!Review::selectRaw('idreview')->orderBy('idreview', 'desc')->first()) {
             $lastId = 0;
         }
         else {
-            $lastId = SellerReport::selectRaw('idreport')->orderBy('idreport', 'desc')->first()->idreport;
-        }
-        if(!AuctionReport::selectRaw('idreport')->orderBy('idreport', 'desc')->first()) {
-            $lastId2 = 0;
-        }
-        else {
-            $lastId2 = AuctionReport::selectRaw('idreport')->orderBy('idreport', 'desc')->first()->idreport;
+            $lastId = Review::selectRaw('idreview')->orderBy('idreview', 'desc')->first()->idreport;
         }
 
-        if ($lastId < $lastId2) {
-            $lastId = $lastId2 + 1;
-        } else {
-            $lastId = $lastId + 1;
-        }
-        $report = new SellerReport();
-        $report->idreport = $lastId;
-        $report->reportdate = now();
-        $report->description = $content;
-        $report->issolved = false;
-        $report->idseller = $idowner;
-        $report->idreporter = $user;
 
-        $report->save();
+        $review = new Review();
+        $review->reviewdate = now();
+        $review->comment = $content;
+        $review->rating = $rating;
+        $review->iduserreviewed = $idowner;
+        $review->iduserreviewer = $user;
+
+        $review->save();
 
         return redirect()->back();
     }

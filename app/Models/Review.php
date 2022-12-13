@@ -20,7 +20,7 @@ class Review extends Model
      * @var array
      */
     protected $fillable = [
-        'rating', 'comment', 'reviewDate', 'iduserreviewer', 'iduserreviewed',
+        'idreview','rating', 'comment', 'reviewDate', 'iduserreviewer', 'iduserreviewed',
     ];
 
     protected $casts = [
