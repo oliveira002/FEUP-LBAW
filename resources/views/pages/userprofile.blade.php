@@ -73,9 +73,14 @@
                                     }
                                 ?>
                                 <p class = "mb-3 ms-3 h3 cor ">{{$rating}}</p>
-                                <a class = "text-center rep">
+                                <a class = "text-center rep ms-3">
                                     <button class="open-modal fw-bold" data-target="modal-1">
-                                        Review user
+                                        Review User
+                                    </button>
+                                </a>
+                                <a class = "text-center rep ms-3">
+                                    <button class="open-modal fw-bold" data-target="modal-2">
+                                        Report User <i class="fa-regular fa-thumbs-down"> </i>
                                     </button>
                                 </a>
                                 <div id="modal-1" class="modal-window bab">
@@ -107,6 +112,26 @@
                                         <div class = "d-flex">
                                             <button class="modal-btn modal-hide cl">Close</button>
                                             <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Submit"/>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="modal-2" class="modal-window bab">
+                                    <form id="myform2" method="post" action="{{route('createSellerReport',['id' => $user->username])}}">
+                                        {{ csrf_field() }}
+                                        <div class = "d-flex">
+                                            <h4>Why do you want to report this user?</h4>
+                                            <button class = "close modal-hide mt-2 xau"><i class="fa-solid fa-x "></i></button>
+                                        </div>
+                                        <div>
+                                            <div class = "mt-3">
+                                                <div class="input-box">
+                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Write the motive for reporting this user..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "d-flex">
+                                            <button class="modal-btn modal-hide cl">Close</button>
+                                            <input type="submit" form="myform2" class="modal-btn cf ms-3"  value="Submit"/>
                                         </div>
                                     </form>
                                 </div>
@@ -171,3 +196,4 @@
         </div>
     </div>
 @endsection
+

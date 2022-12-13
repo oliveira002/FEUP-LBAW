@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\AuctionReport;
 use App\Models\Bid;
-use App\Models\Review;
 use App\Models\SellerReport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ReviewController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,9 +26,8 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createReview(Request $request)
+    public function createSellerReport(Request $request)
     {
-        $rating = $request->input('rating');
         $content = $request->input('desc');
         $ownerUsername = $request->route('id');
         $idowner = User::where('username',$ownerUsername)->first()->idclient;
@@ -47,14 +45,16 @@ class ReviewController extends Controller
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
 
-        $review = new Review();
-        $review->reviewdate = now();
-        $review->comment = $content;
-        $review->rating = $rating;
-        $review->iduserreviewed = $idowner;
-        $review->iduserreviewer = $user;
 
-        $review->save();
+
+        $report = new SellerReport();
+        $report->reportdate = now();
+        $report->description = $content;
+        $report->issolved = false;
+        $report->idseller = $idowner;
+        $report->idreporter = $user;
+
+        $report->save();
 
         return redirect()->back();
     }

@@ -20,7 +20,7 @@ class SellerReport extends Model
      * @var array
      */
     protected $fillable = [
-        'reportdate', 'description', 'issolved', 'idseller', 'idreporter',
+        'idreport','reportdate', 'description', 'issolved', 'idseller', 'idreporter',
     ];
 
     protected $casts = [
