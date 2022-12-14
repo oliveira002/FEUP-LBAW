@@ -355,4 +355,37 @@
     z-index: 2;
 }
 
+#favorite.fa-solid{
+    color: rgb(255, 240, 36);
+
+}
+
+.hov a{
+
+    background-image: linear-gradient(
+        to right,
+        #b6a50b,
+        #e7d425 50%,
+        #000 50%
+      );
+    background-size: 200% 100%;
+    background-position: -100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.hov a:hover {
+    background-position: 0;
+
+   }
+
+.hov a:hover::before {
+    width: 100%;
+
+  }
+
 

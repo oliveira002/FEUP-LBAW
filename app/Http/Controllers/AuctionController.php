@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use App\Models\Bid;
+use App\Models\FavoriteAuction;
 use Auth;
 
 class AuctionController extends Controller
@@ -88,7 +89,9 @@ class AuctionController extends Controller
         if(is_null($owner)) abort(404);
         $category = Category::find($auction->idcategory);
         if(is_null($category)) abort(404);
-        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids]);
+        $isfavorite = FavoriteAuction::where('idclient','=',Auth::id())->where('idauction','=',$auction->idauction)->exists();
+
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids, 'isfavorite' => $isfavorite]);
     }
 
     /**
@@ -186,6 +189,67 @@ class AuctionController extends Controller
         }
         else{
             abort(403);
+        }
+    }
+
+    /**
+     * Add or remove auction from favorites
+     * 
+     * 
+     * 
+     */
+    public function favorite()
+    {
+
+    
+    
+        if (!isset($_GET['idauction'])) {
+            abort(403);
+        }
+        else{
+            $idauction = $_GET['idauction'];
+        }
+
+
+        //check if auction is already in favorites
+ 
+        
+ 
+        //$this->authorize("favorite", $auction);
+      
+        if(Auth::user()) {
+            $user = Auth::user();
+            $idclient = $user->idclient;
+            $fav = FavoriteAuction::select('*')->where('idclient','=',$idclient)->where('idauction','=',$idauction)->get();
+            if(count($fav)==0){
+           
+                //add to favourite auction
+                if($idclient == $user->idclient && $idauction != 0) {
+                    $fav = new FavoriteAuction();
+                    $fav->idclient = $idclient;
+                    $fav->idauction = $idauction;
+                    $fav->save();
+                    return json_encode(1);
+                }
+            }
+            else{
+                //remove from favourite auction
+                if($idclient == $user->idclient && $idauction != 0) {
+                    $fav = FavoriteAuction::select('*')->where('idclient','=',Auth::user()->idclient)->where('idauction','=',$idauction)->first();
+                    $fav->delete();
+                    return json_encode(0);
+                }
+            }
+            
+            
+
+        }
+        elseif (Auth::guard('admin')->check()) {
+            
+            return json_encode(-1);
+        }
+        else{
+            return json_encode(-2);
         }
     }
 

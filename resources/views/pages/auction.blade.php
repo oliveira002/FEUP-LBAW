@@ -189,19 +189,33 @@
                             <div class="modal-fader"></div>
                         </div>
                         <div class = "fav d-flex mt-4">
-                            <div class = "me-4">
+                            <div class = "me-4 hov">
                                 <i class="fa-solid fa-user-tag"></i>
                                 <a href="{{route('profile',['username' =>$owner->username])}}" class = "pop"> Seller Profile </a>
                             </div>
-                            <div class = "me-4">
-                                <i class="fa-regular fa-star"></i>
-                                <a href class = "pop"> Add to Favourites </a>
+                            <div class = "me-4 hov">
+
+                            <button id="favbtn" idauction="{{$auction->idauction}}">
+                                @if(Auth::guard('admin')->check())
+                                @else
+                                    @if($isfavorite)
+                                        <i class="fa-solid fa-star" id="favorite"></i>
+                                        <a class = "pop" id="favtext"> Remove from Favourites </a>
+                                    @else
+                                        <i class="fa-regular fa-star" id="favorite"></i>
+                                        <a class = "pop" id="favtext"> Add to Favourites </a>
+                                    @endif
+                                @endif
+
+                             
+                            </button>
+                            
                             </div>
-                            <div class = "me-4">
+                            <div class = "me-4 hov">
                                 <a class = "exit">
                                     <button class="open-modal" data-target="modal-3">
                                         <i class="fa-solid fa-coins"></i>
-                                        Bidding History
+                                        <a>Bidding History</a>
                                     </button>
                                 </a>
                             </div>
