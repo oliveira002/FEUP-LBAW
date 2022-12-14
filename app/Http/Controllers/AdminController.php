@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\Bid;
+use App\Models\SellerReport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -85,6 +86,15 @@ class AdminController extends Controller
 
         $allbids = Bid::selectRaw('*')->get();
         return view('pages.adminbids',['bids' => $allbids]);
+    }
+
+    public function getSellerReports() {
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $allSeller = SellerReport::selectRaw('*')->orderBy('issolved','asc')->orderBy('idreport','asc')->get();
+        return view('pages.adminsellreports',['reports' => $allSeller]);
     }
 
     public function createUser(){

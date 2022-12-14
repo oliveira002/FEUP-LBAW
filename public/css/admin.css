@@ -261,3 +261,7 @@ label.choose-file {
     align-items: center;
     justify-content: center;
 }
+
+.red {
+    background-color: #a53636;
+}

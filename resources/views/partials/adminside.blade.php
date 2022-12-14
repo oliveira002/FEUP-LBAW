@@ -42,10 +42,18 @@
             </a>
         </li>
         <li>
+            <a href="{{route('sellreports')}}">
+                <button class="fw-bold">
+                    <i class="fa-solid fa-question"></i>
+                    Seller Reports
+                </button>
+            </a>
+        </li>
+        <li>
             <a href="">
                 <button class="fw-bold">
                     <i class="fa-solid fa-question"></i>
-                    Reports
+                    Auction Reports
                 </button>
             </a>
         </li>

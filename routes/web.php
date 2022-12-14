@@ -32,9 +32,11 @@ Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
 Route::get('/admin/createuser', 'AdminController@createUser')->name('createuser');
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
+Route::get('/admin/sellerreports', 'AdminController@getSellerReports')->name('sellreports');
 Route::delete('/admin/users/{id}', 'UserController@destroy')->name('deleteUser');
 Route::get('/profile/{username}/edit', 'AdminController@editUser')->name('editusers');
 Route::post('/admin/createuser', 'Auth\RegisterController@createAdm')->name('admregister');
+Route::put('/admin/sellerreports/{id}', 'ReportController@changeStatus')->name('changeStatus');
 
 //auctions
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
