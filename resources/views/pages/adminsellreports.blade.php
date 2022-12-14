@@ -52,6 +52,10 @@
                                             <h2>Motive</h2>
                                             <button class="close modal-hide"><i class="fa-solid fa-x "></i></button>
                                         </div>
+                                        <div class ="d-flex">
+                                            <span class ="fw-bold">Date:</span>
+                                            <span class="rfix ms-2 mb-2">{{$rep->reportdate}}</span>
+                                        </div>
                                         <p class="rfix">{{($rep->description)}}</p>
                                         <div class="d-flex">
                                             <button class="modal-btn modal-hide cl">Close</button>
