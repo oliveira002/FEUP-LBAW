@@ -15,18 +15,22 @@ class BidController extends Controller
 
         $amount = $request->input('amount');
 
-
         $idauction = (int) $request->route('id');
+
         $auction = Auction::find($idauction);
+
+        $minBid = 0.05 * $auction->startingprice;
+        $minBid = $minBid + $auction->currentprice;
+
 
         if(Auth::check()) {
             if(Auth::user()->idclient === $auction->idowner) {
-                return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
+                return redirect()->back()->withErrors(['error' => 'Cannot bid on your own auction']);
             }
         }
 
         elseif(Auth::guard('admin')->check()) {
-            return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
+            return redirect()->back()->withErrors(['error' => 'An admin cannot do that!']);
         }
 
         elseif(!Auth::check()) {
@@ -35,6 +39,10 @@ class BidController extends Controller
 
         if($auction->enddate < now()) {
             return redirect()->back()->withErrors(['error' => 'Auction finished already!']);
+        }
+
+        if($amount < $minBid) {
+            return redirect()->back()->withErrors(['error' => 'Bid price is below minimum!']);
         }
 
 
