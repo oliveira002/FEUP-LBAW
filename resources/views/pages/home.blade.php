@@ -42,6 +42,35 @@
                 @endforeach
             </div>
         </div>
+        @if ($favorites !== null)
+            <div class="container-fluid">
+                <div class="d-flex flex-row flex-wrap justify-content-center ">
+                    <p class = "fw-bold fs-2 mb-0"><i class="fa-solid fa-bookmark fa-xs"></i> Favorite Auctions </p>
+                </div>
+                <div class="d-flex flex-row flex-wrap justify-content-center">
+                    @foreach($favorites as $auct)
+                        <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
+                            <div class="container-img">
+                                <div class = "itemauc">
+                                    <a href="{{route('auction',['id' => $auct->idauction])}}"><img class= "img-fluid" src= "images/{{$auct->idauction}}/1.jpg"></a>
+                                    <a href="{{route('auction',['id' => $auct->idauction])}}">
+                                        <div class = "prop" >
+
+                                            <p id = "nome" class = "fw-bold mb-5"> {{$auct->name}} </p>
+                                        </div>
+                                    </a>
+                                </div>
+                        </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+         
+
+    
+      
+       
     </div>
 
 @endsection
