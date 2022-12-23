@@ -388,4 +388,25 @@
 
   }
 
+.xau {
+    margin-left: auto;
+}
+
+.txtt {
+    border-radius: 4px;
+    height:170px;
+    width:410px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
+.txtt:focus {
+    outline: none;
+}
+
+.txtt {
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
 

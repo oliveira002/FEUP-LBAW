@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
 use App\Models\AuctionReport;
 use App\Models\Bid;
 use App\Models\SellerReport;
@@ -52,6 +53,39 @@ class ReportController extends Controller
         $report->description = $content;
         $report->issolved = false;
         $report->idseller = $idowner;
+        $report->idreporter = $user;
+
+        $report->save();
+
+        return redirect()->back();
+    }
+
+    public function createAuctionReport(Request $request)
+    {
+        $content = $request->input('desc');
+        $idauction = $request->route('id');
+        $idowner = Auction::where('idauction',$idauction)->first()->idowner;
+        $user = Auth::user()->idclient;
+
+        // falta distinguir se ganhou ou nao a auction
+
+        if (Auth::check()) {
+            if (Auth::user()->idclient === $idowner) {
+                return redirect()->back()->withErrors(['error' => 'Cannot Review Yourself']);
+            }
+        } elseif (Auth::guard('admin')->check()) {
+            return redirect()->back()->withErrors(['error' => 'An admin cannot review anyone']);
+        } elseif (!Auth::check()) {
+            return redirect()->back()->withErrors(['error' => 'Need to login first!']);
+        }
+
+
+
+        $report = new AuctionReport();
+        $report->reportdate = now();
+        $report->description = $content;
+        $report->issolved = false;
+        $report->idauction = $idauction;
         $report->idreporter = $user;
 
         $report->save();

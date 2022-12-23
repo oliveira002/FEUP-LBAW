@@ -23,17 +23,17 @@ class HomeController extends Controller
                 ->get();
             $favorite_auctions = array();
             foreach($favorites as $favorite) {
-                
+
                 $auction = Auction::selectRaw('*')
                 ->where('idauction','=',$favorite->idauction)
                 ->first();
                 array_push($favorite_auctions, $auction);
-                
+
             }
         }
         else
-            $favorites = null;
-            
+            $favorite_auctions = null;
+
         $categories = Category::selectRaw('*')
             ->get();
         return view('pages.home',['auctions' => $soonAuction, 'categories' => $categories, 'favorites' => $favorite_auctions]);
