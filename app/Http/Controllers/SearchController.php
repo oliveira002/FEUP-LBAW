@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Notification;
 
 class SearchController extends Controller
 {
