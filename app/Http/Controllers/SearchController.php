@@ -80,7 +80,17 @@ class SearchController extends Controller
             $search_query = $_GET['search_query'];
             $auctions = Auction::ftsSearchCat($search_query,$category)->get();
         }
-        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories]);
+        if(Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                    ->where('idclient','=',Auth::user()->idclient)
+                    ->where('isread','=','False')
+                    ->orderBy('notifdate','desc')
+                    ->get();
+        }
+        else{
+            $notifications = null;
+        }
+        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
     }
     
     public function home() {
@@ -93,6 +103,16 @@ class SearchController extends Controller
             $search_query = $_GET['search_query'];
             $auctions = Auction::ftsSearch($search_query)->get();
         }
-        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories]);
+        if(Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                    ->where('idclient','=',Auth::user()->idclient)
+                    ->where('isread','=','False')
+                    ->orderBy('notifdate','desc')
+                    ->get();
+        }
+        else{
+            $notifications = null;
+        }
+        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
     }
 }
