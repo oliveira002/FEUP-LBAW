@@ -10,6 +10,7 @@ use App\Models\Auction;
 use App\Models\Bid;
 use App\Models\FavoriteAuction;
 use Auth;
+use App\Models\SystemManagerLog;
 
 class AuctionController extends Controller
 {
@@ -46,7 +47,8 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::check() || Auth::guard('admin')->check()){
+        $this->authorize("web");
+        if(Auth::guard('admin')->check()){
             $lastId = Auction::selectRaw('idauction')->orderBy('idauction','desc')->first()->idauction;
             $id = $lastId + 1;
             if ($request->hasFile('auc_pic')) {
@@ -119,6 +121,7 @@ class AuctionController extends Controller
         $owner = User::find($auction->idowner);
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
+
         return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories]);
     }
 
@@ -167,6 +170,15 @@ class AuctionController extends Controller
             'enddate' => date('Y-m-d H:i:s', strtotime($request->input('enddate'))),
         ]);
 
+        if(Auth::guard('admin')->check()){
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Edit Auction ' . $auction->idauction,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Auction',
+            ]);
+        }
+        
         return redirect()->route('auction', ['id' => $id]);
     }
 

@@ -25,7 +25,6 @@ class SystemManagerLog extends Model
 
     protected $casts = [
         'logdate' => 'datetime',
-        'idsysman' => 'logType',
     ];
 
     /**

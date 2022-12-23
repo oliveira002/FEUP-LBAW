@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS SystemManagerLog(
     logType         VARCHAR(50) NOT NULL,
     idSysMan        INTEGER NOT NULL,
     FOREIGN KEY (idSysMan) REFERENCES SystemManager ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT TypeCheck CHECK (logType = 'Ban' OR logType = 'Unban' or logType = 'Delete' or logType = 'other')
+    CONSTRAINT TypeCheck CHECK (logType = 'Ban' OR logType = 'Unban' or logType = 'Create User' or logType = 'Update Report' or logType = 'Delete User' or logType = 'Delete Auction' or logType = 'Update Auction' or logType = 'Delete Bid' or logType = 'other')
 );
 
 CREATE TABLE IF NOT EXISTS Deposit(
