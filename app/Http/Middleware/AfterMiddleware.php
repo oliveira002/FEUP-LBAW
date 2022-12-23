@@ -13,7 +13,6 @@ class AfterMiddleware
     public function handle($request, Closure $next)
     {
         DB::beginTransaction();
-        try{
             $auctions = Auction::all();
             foreach($auctions as $auction){
                 if($auction->isover){
@@ -32,26 +31,26 @@ class AfterMiddleware
                         Notification::create([
                             'idclient' => $bid->idclient,
                             'notifdate' => date('Y-m-d H:i:s'),
-                            'message' => 'You won the auction: ' . $auction->name,
+                            'content' => 'You won the auction: ' . $auction->name,
                             'isread' => false
                         ]);
                         Notification::create([
-                            'idclient' => $auction->idclient,
+                            'idclient' => $auction->idowner,
                             'notifdate' => date('Y-m-d H:i:s'),
-                            'message' => 'Your auction ' . $auction->name . ' has Ended.' ,
+                            'content' => 'Your auction ' . $auction->name . ' has Ended.' ,
                             'isread' => false
                         ]);
                         $bids = Bid::selectRaw('*')
-                            ->where('idauction', $auction->idauction)
+                            ->where('idauction', $auction->idowner)
                             ->where('isvalid', true)
                             ->where('idclient', '!=', $bid->idclient)
-                            ->groupBy('idclient')
+                            ->groupBy('idclient','idbid')
                             ->get();
                         foreach($bids as $bid1){
                             Notification::create([
                                 'idclient' => $bid1->idclient,
                                 'notifdate' => date('Y-m-d H:i:s'),
-                                'message' => 'A auction you participated has ended ' . $auction->name,
+                                'content' => 'A auction you participated has ended ' . $auction->name,
                                 'isread' => false
                             ]);
                         }
@@ -67,22 +66,20 @@ class AfterMiddleware
                         Notification::create([
                             'idclient' => $bid->idclient,
                             'notifdate' => date('Y-m-d H:i:s'),
-                            'message' => 'A auction you participated is about to end ' . $auction->name,
+                            'content' => 'A auction you participated is about to end ' . $auction->name,
                             'isread' => false
                         ]);
                     }
                     Notification::create([
-                        'idclient' => $auction->idclient,
+                        'idclient' => $auction->idowner,
                         'notifdate' => date('Y-m-d H:i:s'),
-                        'message' => 'Your auction ' . $auction->name . ' is about to end.' ,
+                        'content' => 'Your auction ' . $auction->name . ' is about to end.' ,
                         'isread' => false
                     ]);
                 }
             }
             DB::commit();
-        }catch(\Exception $e){
-            DB::rollBack();
-        }
+        
         
         return $next($request);
     }

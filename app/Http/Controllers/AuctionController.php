@@ -173,12 +173,12 @@ class AuctionController extends Controller
         if(Auth::guard('admin')->check()){
             SystemManagerLog::create([
                 'idsysman' => Auth::guard('admin')->id(),
-                'logdescription' => 'Edit Auction ' . $auction->idauction,
+                'logdescription' => 'Edit Auction' . $auction->idauction,
                 'logdate' => date('Y-m-d H:i:s'),
                 'logtype' => 'Update Auction',
             ]);
         }
-        
+
         return redirect()->route('auction', ['id' => $id]);
     }
 
@@ -193,6 +193,15 @@ class AuctionController extends Controller
 
         $auction = Auction::find($id);
         $this->authorize("delete", $auction);
+
+        if(Auth::guard('admin')->check()){
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Delete Auction' . $auction->idauction,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Auction',
+            ]);
+        }
 
         if(Auth::id() == $auction->idowner || Auth::guard('admin')->check())
         {

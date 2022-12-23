@@ -94,24 +94,50 @@ class ReportController extends Controller
     }
 
     public function changeStatus($id) {
+        $this->authorize('update');
         $report = SellerReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'UnResolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
         }
         else {
             $report->update(['issolved' => "1"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Resolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
         }
-
+        
         return redirect()->back();
     }
 
     public function changeStatus2($id) {
+        $this->authorize('update');
         $report = AuctionReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'UnResolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
         }
         else {
             $report->update(['issolved' => "1"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Resolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
         }
 
         return redirect()->back();

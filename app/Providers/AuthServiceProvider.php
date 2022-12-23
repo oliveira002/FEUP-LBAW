@@ -16,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
             User::class => UserPolicy::class,
             Auction::class => AuctionPolicy::class,
             Bid::class => BidPolicy::class,
+            AuctionReport::class => ReportPolicy::class,
+            SellerReport::class => ReportPolicy::class,
     ];
 
     /**
