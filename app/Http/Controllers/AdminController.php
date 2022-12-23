@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\AuctionReport;
 use App\Models\Bid;
 use App\Models\SellerReport;
 use App\Models\User;
@@ -95,6 +96,15 @@ class AdminController extends Controller
 
         $allSeller = SellerReport::selectRaw('*')->orderBy('issolved','asc')->orderBy('idreport','asc')->get();
         return view('pages.adminsellreports',['reports' => $allSeller]);
+    }
+
+    public function getAuctionReports() {
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $allSeller = AuctionReport::selectRaw('*')->orderBy('issolved','asc')->orderBy('idreport','asc')->get();
+        return view('pages.adminauctionreports',['reports' => $allSeller]);
     }
 
     public function createUser(){

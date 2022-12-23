@@ -13,7 +13,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
                            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    
+
     <link href="{{ asset('css/def.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
@@ -37,7 +37,7 @@
     <script type="text/javascript" src={{ asset('js/images.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/rate.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/favorites.js') }} defer></script>
-    
+
 </head>
 <body>
 <main>
@@ -46,7 +46,7 @@
     @elseif (Route::currentRouteName() === 'profile' || Route::currentRouteName() === 'myauctions' || Route::currentRouteName() === 'balance' || Route::currentRouteName() === 'mybids' || Route::currentRouteName() === 'details' || Route::currentRouteName() === 'favourites' || Route::currentRouteName() === 'support' || Route::currentRouteName() === 'editusers')
 
         @include('partials.profheader')
-    @elseif(Route::currentRouteName() === 'admin' || Route::currentRouteName() === 'manusers' || Route::currentRouteName() === 'manbids' || Route::currentRouteName() === 'manauctions' || Route::currentRouteName() === 'createuser' || Route::currentRouteName() === 'sellreports')
+    @elseif(Route::currentRouteName() === 'admin' || Route::currentRouteName() === 'manusers' || Route::currentRouteName() === 'manbids' || Route::currentRouteName() === 'manauctions' || Route::currentRouteName() === 'createuser' || Route::currentRouteName() === 'sellreports' || Route::currentRouteName() === 'auctionreports')
         @include('partials.adminheader')
     @else
         @include('partials.header')

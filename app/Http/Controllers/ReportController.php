@@ -105,6 +105,18 @@ class ReportController extends Controller
         return redirect()->back();
     }
 
+    public function changeStatus2($id) {
+        $report = AuctionReport::find($id);
+        if($report->issolved) {
+            $report->update(['issolved' => "0"]);
+        }
+        else {
+            $report->update(['issolved' => "1"]);
+        }
+
+        return redirect()->back();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
