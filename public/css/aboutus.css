@@ -1,0 +1,23 @@
+.aboutUsImg {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+}
+
+.aboutUsWrapper{
+    gap: 30px;
+    justify-content: center;
+}
+
+.aboutUsPerson{
+    flex-direction: column;
+}
+
+.aboutUsName{
+    text-align: center;
+}
+
+#meetTheTeam{
+    text-align: center;
+}
