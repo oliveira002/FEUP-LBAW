@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bid;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use Auth;
@@ -20,7 +21,7 @@ class BidController extends Controller
         $auction = Auction::find($idauction);
 
         $minBid = 0.05 * $auction->startingprice;
-        $minBid = $minBid + $auction->currentprice;
+        $minBid = $minBid + $auction->currentprice - 0.01;
 
 
         if(Auth::check()) {
@@ -57,17 +58,21 @@ class BidController extends Controller
         $bid->idauction = $idauction;
         $bid->idclient = $user->idclient;
         $bid->biddate = now();
+
+
         if(!is_numeric($amount)){
             return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
         }
         try{
             $bid->save();
+            if(date('Y-m-d H:i:s', strtotime('+15 minutes')) > $auction->enddate) {
+                $auction->enddate = date('Y-m-d H:i:s', strtotime('+30 minutes'));
+                $auction->save();
+            }
         }
         catch(\Exception $e){
             return redirect()->back()->withErrors(['error' => 'Your bid cannot be lower than the current price!']);
         }
-
-
 
         return redirect()->route('auction', ['id' => $idauction]);
     }
