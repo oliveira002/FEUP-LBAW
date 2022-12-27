@@ -8,6 +8,8 @@
 .aboutUsWrapper{
     gap: 30px;
     justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .aboutUsPerson{
@@ -19,5 +21,30 @@
 }
 
 #meetTheTeam{
+    margin-top: 7.5em;
     text-align: center;
+}
+
+.aboutUsText{
+    text-align: center;
+    word-break: break-word;
+    width: 65%;
+    align-self: center;
+}
+
+.aboutUsGlobal{
+    width: 65%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.globalWrapper{
+    justify-content: center;
+}
+
+.aboutUsTextWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
