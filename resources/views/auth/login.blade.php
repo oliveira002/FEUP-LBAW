@@ -19,10 +19,10 @@
                     <div class="logoname">
                         <a href="{{route('/')}}"><span>WeBid</span></a>
                     </div>
-                    @if($errors->has('wrong_credentials'))
+                    @if($errors->has('email'))
                         <div class="alert alert-danger mb-1.5 mt-1.5">
                             <ul>
-                                <li>{{ $errors->first('wrong_credentials') }}</li>
+                                <li>{{ $errors->first('email') }}</li>
                             </ul>
                         </div>
                     @endif
@@ -47,10 +47,10 @@
                             <!-- Checkbox -->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="remember"
-                                       name="remember" {{ old('remember') ? 'checked' : '' }} />
+                                       name="remember" value="{{ old('remember') ? 'checked' : '' }}" />
                                 Remember Me
                             </div>
-                            <a href="#!">Forgot password?</a>
+                            <a href="{{ route('recovery') }}">Forgot password?</a>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
