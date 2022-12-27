@@ -33,6 +33,7 @@ Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
 Route::get('/admin/createuser', 'AdminController@createUser')->name('createuser');
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
+Route::get('/admin/logs', 'AdminController@getLogs')->name('adminlogs');
 Route::get('/admin/sellerreports', 'AdminController@getSellerReports')->name('sellreports');
 Route::get('/admin/auctionreports', 'AdminController@getAuctionReports')->name('auctionreports');
 Route::delete('/admin/users/{id}', 'UserController@destroy')->name('deleteUser');

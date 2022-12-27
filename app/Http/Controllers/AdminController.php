@@ -6,6 +6,7 @@ use App\Models\Auction;
 use App\Models\AuctionReport;
 use App\Models\Bid;
 use App\Models\SellerReport;
+use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -114,6 +115,15 @@ class AdminController extends Controller
         else{
             abort(403);
         }
+    }
+
+    public function getLogs(){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $logs = SystemManagerLog::selectRaw('*')->get();
+        return view('pages.adminlogs',['logs' => $logs]);
     }
 
 }

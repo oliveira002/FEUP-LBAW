@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bid;
+use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
@@ -281,7 +282,7 @@ class UserController extends Controller
 
         if(Auth::guard('admin')->check())
         {
-            
+
             SystemManagerLog::create([
                 'idsysman' => Auth::guard('admin')->id(),
                 'logdescription' => 'Deleted User id: ' . $user->idclient,

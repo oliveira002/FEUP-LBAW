@@ -50,10 +50,18 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{route('auctionreports')}}">
                 <button class="fw-bold">
                     <i class="fa-solid fa-question"></i>
                     Auction Reports
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('adminlogs')}}">
+                <button class="fw-bold">
+                    <i class="fa-solid fa-book"></i>
+                    Logs
                 </button>
             </a>
         </li>
@@ -66,5 +74,6 @@
                 </button>
             </form>
         </li>
+
     </ul>
 </div>

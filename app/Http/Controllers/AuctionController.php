@@ -197,7 +197,7 @@ class AuctionController extends Controller
         if(Auth::guard('admin')->check()){
             SystemManagerLog::create([
                 'idsysman' => Auth::guard('admin')->id(),
-                'logdescription' => 'Delete Auction' . $auction->idauction,
+                'logdescription' => 'Delete Auction ' . $auction->idauction,
                 'logdate' => date('Y-m-d H:i:s'),
                 'logtype' => 'Update Auction',
             ]);
@@ -215,15 +215,15 @@ class AuctionController extends Controller
 
     /**
      * Add or remove auction from favorites
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
     public function favorite()
     {
 
-    
-    
+
+
         if (!isset($_GET['idauction'])) {
             abort(403);
         }
@@ -233,17 +233,17 @@ class AuctionController extends Controller
 
 
         //check if auction is already in favorites
- 
-        
- 
+
+
+
         //$this->authorize("favorite", $auction);
-      
+
         if(Auth::user()) {
             $user = Auth::user();
             $idclient = $user->idclient;
             $fav = FavoriteAuction::select('*')->where('idclient','=',$idclient)->where('idauction','=',$idauction)->get();
             if(count($fav)==0){
-           
+
                 //add to favourite auction
                 if($idclient == $user->idclient && $idauction != 0) {
                     $fav = new FavoriteAuction();
@@ -261,12 +261,12 @@ class AuctionController extends Controller
                     return json_encode(0);
                 }
             }
-            
-            
+
+
 
         }
         elseif (Auth::guard('admin')->check()) {
-            
+
             return json_encode(-1);
         }
         else{
