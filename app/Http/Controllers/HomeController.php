@@ -32,7 +32,7 @@ class HomeController extends Controller
             }
         }
         else
-            $favorites = null;
+            $favorite_auctions = null;
             
         $categories = Category::selectRaw('*')
             ->get();
