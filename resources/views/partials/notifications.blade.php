@@ -12,6 +12,12 @@
         <?php
             $counter = 1;
             ?>
+        @if(is_null($notifications))
+            <li>
+                <span class="h6 fw-bold me-2"> {{$counter}}</span>
+                No notifications
+            </li>
+        @else
         @foreach($notifications as $notif)
             <li>
                 <span class="h6 fw-bold me-2"> {{$counter}}</span>
@@ -22,5 +28,6 @@
             </li>
             <?php $counter = $counter + 1?>
         @endforeach
+        @endif
     </ul>
 </div>
