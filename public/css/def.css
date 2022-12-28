@@ -238,7 +238,7 @@ footer{
 .heading-section{
 	font-size: 28px;
 	color: black;
-	
+
 }
 .heading-section small{
     font-size: 18px;
@@ -365,8 +365,8 @@ a[data-toggle="collapse"] {
     background: #494ca2 !important;
     border-color: #494ca2 !important;
   }
-  
- 
+
+
 
 
   #sidebar .form-control {
@@ -395,4 +395,20 @@ a[data-toggle="collapse"] {
   }
   #sidebar .subscribe-form .form-control {
     background: #1a1aff;
+  }
+
+  #logoutbt {
+    border-radius: 0;
+    background-color: black;
+    color: white;
+    margin:0;
+    padding:10px 0;
+    width: 215px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    color:rgba(255, 255, 255, 0.6);
+    font-weight: normal;
+  }
+  #logoutbt:hover {
+    color: white;
   }

@@ -42,7 +42,7 @@
                 @endforeach
             </div>
         </div>
-        @if ($favorites !== null)
+        @if ($favorites !== null && count($favorites) > 0)
             <div class="container-fluid">
                 <div class="d-flex flex-row flex-wrap justify-content-center ">
                     <p class = "fw-bold fs-2 mb-0"><i class="fa-solid fa-bookmark fa-xs"></i> Favorite Auctions </p>
@@ -66,11 +66,11 @@
                 </div>
             </div>
         @endif
-         
 
-    
-      
-       
+
+
+
+
     </div>
 
 @endsection
