@@ -35,11 +35,16 @@ $user = Auth::user();
                         <span>Balance: {{$user->balance}}€</span>
                     </button>
                 </a>
-                <div class="notif" onclick="showNotif()">
-                    <button>
-                        <i class="fa-solid fa-bell"></i>
+                <div class="notif">
+                    <button onclick="showNotif()">
+                        <i class="fa-solid fa-bell fa-gradient"></i>
+                        <span class="num-count">{{count($notifications)}}</span>
                     </button>
+                    @if(Auth::check())
+                        @include('partials.notifications')
+                    @endif
                 </div>
+
                 <a class="log" href="{{route('profile',['username' =>$user->username])}}">
                     <button>
                         <i class="fa-solid fa-user"></i>

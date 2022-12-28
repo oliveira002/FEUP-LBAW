@@ -21,7 +21,7 @@
     <link href="{{ asset('css/auction.css') }}" rel="stylesheet">
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://kit.fontawesome.com/221bee115b.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         // Fix for Firefox autofocus CSS bug

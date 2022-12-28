@@ -1,4 +1,5 @@
 <div class="notlist escondido" id = "notifs">
+
     <ul>
         <li>
             <div class="d-flex init">

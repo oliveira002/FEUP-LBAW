@@ -3,7 +3,8 @@
 
 @section('content')
     <div class ="pattern">
-        @include('partials.notifications')
+
+
         <div class="container-fluid">
             <div class="d-flex flex-row flex-wrap justify-content-center ">
                 <p class = "fw-bold fs-2"> Categories </p>

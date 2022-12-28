@@ -113,6 +113,7 @@ footer{
 }
 
 .notif {
+    position: relative;
     text-decoration: none;
     margin-right: 2em;
 }
@@ -415,8 +416,8 @@ a[data-toggle="collapse"] {
 
 
   .notlist {
-      top: 5em;
-      right: 33em;
+      top: 3.3em;
+      right: -10px;
       background: white;
       z-index: 999;
       position: absolute;
@@ -429,9 +430,10 @@ a[data-toggle="collapse"] {
       margin-bottom: 0;
   }
   .notlist {
-      width: fit-content;
+      width: 420px;
       box-shadow: rgb(0 0 0 / 12%) 0px 3px 20px;
       border-radius: 8px;
+      text-align: left;
   }
 
   .notlist ul {
@@ -476,13 +478,11 @@ a[data-toggle="collapse"] {
 }
 
 .escondido {
-    display: none;
+    opacity: 0;
+
 }
 
-.fadeIn {
-    opacity: 0;
-    transition: opacity 0.5s linear;
-}
+
 
 
   #logoutbt {
@@ -500,3 +500,68 @@ a[data-toggle="collapse"] {
   #logoutbt:hover {
     color: white;
   }
+.fadeIn {
+
+   animation: opa 0.5s ease-in-out;
+
+}
+@keyframes opa {
+   0% {
+       opacity: 0;
+       transform: translateY(-100%);
+   }
+    50% {
+      opacity: 0.3;
+    }
+
+
+   100% {
+
+      opacity: 1;
+         transform: translateY(0);
+   }
+}
+
+.fadeOut {
+
+   animation: opa2 0.5s ease-in-out;
+
+}
+@keyframes opa2 {
+   0% {
+       transform: translateY(0);
+
+      opacity: 1;
+   }
+    50% {
+      opacity: 0.3;
+    }
+   100% {
+       transform: translateY(-100%);
+
+      opacity: 0;
+   }
+}
+
+.fa-gradient {
+    background: -webkit-gradient(linear, left top, left bottom, from(#000428), to(#004e92));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+span.num-count{
+    position: absolute;
+    user-select: none;
+    cursor: default;
+    font-size: 0.6rem;
+    background: #e74c3c;
+    width: 1.2rem;
+    height: 1.2rem;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    top: -0.33rem;
+    right: -.66rem;
+    box-sizing: border-box;
+}

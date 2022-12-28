@@ -157,24 +157,16 @@ function createItem(item) {
     return new_item;
 }
 
-(function($) {
+function sidebarToggle() {
+    document.getElementById('sidebarCollapse').addEventListener('click', function () {
+        console.log('click');
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+}
+sidebarToggle();
 
-	"use strict";
 
-	var fullHeight = function() {
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
 
-	};
-	fullHeight();
-
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-  });
-
-})(jQuery);
 
 addEventListeners();
