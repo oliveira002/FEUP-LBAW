@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS "user"(
     address     VARCHAR(70),
     phoneNumber VARCHAR(13) UNIQUE,
     isBanned    BOOLEAN NOT NULL,
-    balance     FLOAT NOT NULL
+    balance     FLOAT NOT NULL,
+    remember_token TEXT
 );
 
 CREATE TABLE IF NOT EXISTS Category(

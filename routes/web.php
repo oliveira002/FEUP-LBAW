@@ -53,6 +53,7 @@ Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction
 //Others
 Route::get('/FAQs', 'FAQController@faqs')->name('FAQs');
 Route::get('/AboutUs', 'AboutUsController@aboutus')->name('AboutUs');
+Route::get('/ContactUs', 'ContactUsController@contactus')->name('ContactUs');
 
 
 // Authentication
@@ -61,9 +62,10 @@ Route::post('/login', 'Auth\LoginController@authenticate');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
-Route::get('/forgot-password', 'Auth\LoginController@showRecoveryForm')->middleware('guest')->name('recovery');  //new
-Route::post('/forgot-password', 'Auth\LoginController@recoverPass')->middleware('guest')->name('password.email'); //new
-Route::get('/reset-password/{token}', 'Auth\LoginController@resetPass')->middleware('guest')->name('password.reset'); //new
+Route::get('/forgot-password', 'Auth\PasswordRecoveryController@showRecoveryForm')->middleware('guest')->name('recovery');  //new
+Route::post('/forgot-password', 'Auth\PasswordRecoveryController@recoverPass')->middleware('guest')->name('password.email'); //new
+Route::get('/reset-password/{token}', 'Auth\PasswordRecoveryController@resetPass')->middleware('guest')->name('password.reset'); //new
+Route::post('/reset-password', 'Auth\PasswordRecoveryController@updatePass')->middleware('guest')->name('password.update');
 
 
 // Search

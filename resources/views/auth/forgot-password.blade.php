@@ -19,10 +19,10 @@
                     <div class="logoname">
                         <a href="{{route('/')}}"><span>WeBid</span></a>
                     </div>
-                    @if($errors->has('wrong_credentials'))
+                    @if($errors->has('email'))
                         <div class="alert alert-danger mb-1.5 mt-1.5">
                             <ul>
-                                <li>{{ $errors->first('wrong_credentials') }}</li>
+                                <li>{{ $errors->first('email') }}</li>
                             </ul>
                         </div>
                     @endif
@@ -31,17 +31,13 @@
                     </div><br>
                     <form method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
-
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <input class="form-control form-control-lg" id="email" type="email" name="email"
                                    value="{{ old('email') }}" required autofocus/>
                             <label class="form-label">Email address</label>
                         </div>
-
-
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Send Recovery Link</button>
                     </form>
                 </div>
             </div>

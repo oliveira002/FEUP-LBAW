@@ -40,11 +40,12 @@
     <script type="text/javascript" src={{ asset('js/images.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/rate.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/favorites.js') }} defer></script>
+    <script type="text/javascript" src={{ asset('js/recoverpass.js') }} defer></script>
 
 </head>
 <body>
 <main>
-    @if(Route::currentRouteName() === 'login' || Route::currentRouteName() === 'register' || Route::currentRouteName() === 'recovery'  )
+    @if(Route::currentRouteName() === 'login' || Route::currentRouteName() === 'register' || Route::currentRouteName() === 'recovery' || Route::currentRouteName() === 'password.reset' )
 
     @elseif (Route::currentRouteName() === 'profile' || Route::currentRouteName() === 'myauctions' || Route::currentRouteName() === 'balance' || Route::currentRouteName() === 'mybids' || Route::currentRouteName() === 'details' || Route::currentRouteName() === 'favourites' || Route::currentRouteName() === 'support' || Route::currentRouteName() === 'editusers')
 

@@ -57,11 +57,13 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        $remember = $request->has('remember_me') ? true : false;
+
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended(route('/'));
         }
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended(route('admin'));
         }
         return redirect()->intended(route('login'))->withErrors(['wrong_credentials' => 'These credentials do not match any on our system. Try again!']);
@@ -77,30 +79,5 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Show the application's password recovery form.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showRecoveryForm()
-    {
-        return view('auth.forgot-password');
-    }
 
-    public function recoverPass(Request $request){
-        $request->validate(['email' => 'required|email']);
-        
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-        
-        return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
-                    : back()->withErrors(['email' => __($status)]);
-    }
-
-    public function resetPass($token) {
-        return view('auth.reset-password', ['token' => $token]);
-    }
-    
 }
