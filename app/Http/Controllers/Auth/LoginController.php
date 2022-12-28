@@ -57,7 +57,7 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        $remember = $request->has('remember_me') ? true : false;
+        $remember = $request->has('remember') ? true : false;
 
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended(route('/'));
