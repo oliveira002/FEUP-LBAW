@@ -413,6 +413,7 @@ a[data-toggle="collapse"] {
   }
 
 
+
   .notlist {
       top: 5em;
       right: 33em;
@@ -482,3 +483,20 @@ a[data-toggle="collapse"] {
     opacity: 0;
     transition: opacity 0.5s linear;
 }
+
+
+  #logoutbt {
+    border-radius: 0;
+    background-color: black;
+    color: white;
+    margin:0;
+    padding:10px 0;
+    width: 215px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    color:rgba(255, 255, 255, 0.6);
+    font-weight: normal;
+  }
+  #logoutbt:hover {
+    color: white;
+  }
