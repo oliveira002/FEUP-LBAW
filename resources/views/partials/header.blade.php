@@ -8,7 +8,7 @@ $user = Auth::user();
             <span class="sr-only">Toggle Menu</span>
         </button>
     </div>
-    
+
     <div class="p-4">
         <h1><a href="{{route('/')}}" class="logo">WeBid</a></h1>
   <ul class="list-unstyled components mb-3">
@@ -33,20 +33,18 @@ $user = Auth::user();
     <li>
         <a href="#"><span class="fa-solid fa-ban mr-3"></span> Report a user</a>
     </li>
-    <li>  
+    <li>
         <a href="#"><span class="fa-solid fa-right-from-bracket mr-3"></span> Logout</a>
     </li>
-    
+
   </ul>
- 
- 
+
+
 
 </div>
 </nav>
 <div class="cont">
     <header>
-        
-
         <a href="{{route('/')}}" id="logo"> WeBid</a>
         <div class="search">
             <div class="sbar">
@@ -70,6 +68,11 @@ $user = Auth::user();
                         <span>Balance: {{$user->balance}}€</span>
                     </button>
                 </a>
+                <div class="notif" onclick="showNotif()">
+                    <button>
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                </div>
                 <a class="log" href="{{route('profile',['username' =>$user->username])}}">
                     <button>
                         <i class="fa-solid fa-user"></i>

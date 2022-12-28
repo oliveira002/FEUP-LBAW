@@ -10,7 +10,7 @@ class ReportPolicy
     use HandlesAuthorization;
 
     public function before(?User $user,$ability)
-    {        
+    {
       if(Auth::guard('admin')->check()){
         return true;
       }
@@ -24,6 +24,7 @@ class ReportPolicy
 
     public function update(?User $user)
     {
+        exit(20);
         return false;
     }
 }

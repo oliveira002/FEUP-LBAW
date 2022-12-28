@@ -6,6 +6,7 @@ use App\Models\Auction;
 use App\Models\AuctionReport;
 use App\Models\Bid;
 use App\Models\SellerReport;
+use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -94,7 +95,7 @@ class ReportController extends Controller
     }
 
     public function changeStatus($id) {
-        $this->authorize('update');
+        $this->authorize('update',SellerReport::class);
         $report = SellerReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);
@@ -114,12 +115,12 @@ class ReportController extends Controller
                 'logtype' => 'Update Report',
             ]);
         }
-        
+
         return redirect()->back();
     }
 
     public function changeStatus2($id) {
-        $this->authorize('update');
+        $this->authorize('update',AuctionReport::class);
         $report = AuctionReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);

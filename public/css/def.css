@@ -112,6 +112,21 @@ footer{
     margin-right: 2em;
 }
 
+.notif {
+    text-decoration: none;
+    margin-right: 2em;
+}
+
+.notif button {
+    background: #efefef;
+    color: black;
+    border-radius: 12px;
+    padding: 0.4em 0.4em;
+    width: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 .log button {
     background: #0f0f0f;
@@ -238,7 +253,7 @@ footer{
 .heading-section{
 	font-size: 28px;
 	color: black;
-	
+
 }
 .heading-section small{
     font-size: 18px;
@@ -365,8 +380,8 @@ a[data-toggle="collapse"] {
     background: #494ca2 !important;
     border-color: #494ca2 !important;
   }
-  
- 
+
+
 
 
   #sidebar .form-control {
@@ -396,3 +411,74 @@ a[data-toggle="collapse"] {
   #sidebar .subscribe-form .form-control {
     background: #1a1aff;
   }
+
+
+  .notlist {
+      top: 5em;
+      right: 33em;
+      background: white;
+      z-index: 999;
+      position: absolute;
+  }
+  .notlist > span {
+      padding-left: 1em;
+  }
+
+  .notlist ul {
+      margin-bottom: 0;
+  }
+  .notlist {
+      width: fit-content;
+      box-shadow: rgb(0 0 0 / 12%) 0px 3px 20px;
+      border-radius: 8px;
+  }
+
+  .notlist ul {
+      padding: 0;
+  }
+
+  .notlist ul li {
+      padding: 1em;
+  }
+
+  .init, .init button i {
+      color: #575757;
+  }
+
+
+  .notlist ul li:not(:first-child):hover {
+      background: #f6f6f6;
+  }
+
+  .notlist  ul li:not(:last-child) {
+      border-bottom: 1px solid gray;
+  }
+
+  .init span {
+      margin: 0;
+  }
+  .init button {
+      margin-left: auto;
+  }
+
+.notlist:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    width: 0;
+    height: 0;
+    transform: translate(-1rem, -100%);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid #ffffff;
+}
+
+.escondido {
+    display: none;
+}
+
+.fadeIn {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
