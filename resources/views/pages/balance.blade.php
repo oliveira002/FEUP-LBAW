@@ -26,19 +26,26 @@
                                            aria-describedby="button-addon2" name="amount" min="0">
                                 </div>
                                 <ul class="payment-selection">
-                                    <input type="radio" id="paypal" name="deposit-type" value="Paypal" checked>
-                                    <label for="paypal"><i class="fa-brands fa-paypal"></i> Paypal</label>
-                                    <input type="radio" id="mbway" name="deposit-type" value="Mbway">
-                                    <label for="mbway"><img src="/mbway-seeklogo.com.svg" alt="Mbway" width="50"
-                                                            height="25"></label>
-
-                                    <input type="radio" id="bank-transfer" name="deposit-type" value="Bank Transfer">
-                                    <label for="bank-transfer"><i class="fa-solid fa-university"></i> Bank
-                                        Transfer</label>
-                                    <input type="radio" id="crypto" name="deposit-type" value="Crypto">
-                                    <label for="crypto"><i class="fa-brands fa-bitcoin"></i> Crypto</label>
+                                    <div class="opt">
+                                        <input type="radio" id="paypal" name="deposit-type" value="Paypal" checked>
+                                        <label for="paypal"><i class="fa-brands fa-paypal"></i> Paypal</label>
+                                    </div>
+                                    <div class="opt">
+                                        <input type="radio" id="mbway" name="deposit-type" value="Mbway">
+                                        <label for="mbway"><img src="/mbway-seeklogo.com.svg" alt="Mbway" width="50" height="25"></label>
+                                    </div>
+                                    <div class="opt">
+                                        <input type="radio" id="bank-transfer" name="deposit-type" value="Bank Transfer">
+                                        <label for="bank-transfer"><i class="fa-solid fa-university"></i> Bank Transfer</label>
+                                    </div>
+                                    <div class="opt">
+                                        <input type="radio" id="crypto" name="deposit-type" value="Crypto">
+                                        <label for="crypto"><i class="fa-brands fa-bitcoin"></i> Crypto</label>
+                                    </div>
+                                    <div class="opt">
                                     <input type="radio" id="credit-card" name="deposit-type" value="Credit Card">
                                     <label for="credit-card"><i class="fa-brands fa-cc-visa"></i> Credit Card</label>
+                                    </div>
 
                                 </ul>
                                 <button class="btn btn-primary"> Add Funds</button>

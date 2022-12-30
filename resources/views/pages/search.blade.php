@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="search s2">
+    <div class="sbar sb2">
+        <button>
+            <input type="text" id="searchbar2" name="search_query" placeholder="Search anything...">
+            <a href=""> <i class="fa fa-search"> </i> </a>
+        </button>
+    </div>
+</div>
 <div class = "catg d-flex justify-content-center mb-3">
     @foreach($category as $cat)
         <div class = "ms-3 me-3 junto">

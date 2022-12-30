@@ -7,9 +7,14 @@ function showNotif() {
 
     }
     else {
-        out.classList.add('escondido');
+
         out.classList.remove('fadeIn')
         out.classList.add('fadeOut')
+
+        setTimeout(function() {
+            out.classList.add('escondido');
+        }
+        , 400);
 
     }
 }

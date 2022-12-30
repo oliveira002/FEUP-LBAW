@@ -2,6 +2,12 @@ function addEventListeners() {
     let search = document.querySelector('#searchbar')
     if(search!=null)
         search.addEventListener("input",updateAuction)
+
+    let search2 = document.querySelector('#searchbar2')
+    if(search2!=null)
+        search2.addEventListener("input",updateAuction)
+
+
 }
 
 function encodeForAjax(data) {

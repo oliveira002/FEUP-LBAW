@@ -38,7 +38,11 @@ $user = Auth::user();
                 <div class="notif">
                     <button onclick="showNotif()">
                         <i class="fa-solid fa-bell fa-gradient"></i>
-                        <span class="num-count">{{count($notifications)}}</span>
+                        @if(is_null($notifications))
+                            <span class="num-count">0</span>
+                        @else
+                            <span class="num-count">{{count($notifications)}}</span>
+                        @endif
                     </button>
                     @if(Auth::check())
                         @include('partials.notifications')

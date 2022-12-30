@@ -4,7 +4,7 @@
         <div class="m-4 option">
             <a class="m-3 fw-bold h4" href="{{route('FAQs')}}"> FAQ </a>
             <a class="m-3 fw-bold h4" href=""> About Us </a>
-            <a class="fw-bold h4" href=""> Contact Us </a>
+            <a class="m-3 fw-bold h4" href=""> Contact Us </a>
         </div>
     </footer>
 </div>

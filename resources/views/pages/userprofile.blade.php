@@ -105,7 +105,7 @@
                                             </div>
                                             <div>
                                                 <div class="input-box">
-                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Describe your experience or just simple rate the seller!" required></textarea>
+                                                    <textarea class = "txtt2" id="desc" name="desc" placeholder="Describe your experience or just simple rate the seller!" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                                         <div>
                                             <div class = "mt-3">
                                                 <div class="input-box">
-                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Write the motive for reporting this user..." required></textarea>
+                                                    <textarea class = "txtt2" id="desc" name="desc" placeholder="Write the motive for reporting this user..." required></textarea>
                                                 </div>
                                             </div>
                                         </div>

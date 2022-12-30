@@ -153,6 +153,8 @@ footer{
 .search form{
     box-shadow: none;
     border: none;
+    display: flex;
+    flex-direction: row;
 }
 
 .balance{
@@ -223,6 +225,14 @@ footer{
     color: inherit;
 }
 #searchbar {
+    border: none;
+    text-align: left;
+    margin-left: 0.8em;
+    width: 350px;
+    float: left;
+    background-color: #efefef;
+}
+#searchbar2 {
     border: none;
     text-align: left;
     margin-left: 0.8em;
@@ -479,7 +489,7 @@ a[data-toggle="collapse"] {
 
 .escondido {
     opacity: 0;
-
+    display: none;
 }
 
 
@@ -564,4 +574,20 @@ span.num-count{
     top: -0.33rem;
     right: -.66rem;
     box-sizing: border-box;
+}
+
+.search .sbar button{
+    display: flex;
+    flex-direction: row;
+}
+.opt2{
+    display: flex;
+    flex-direction: row;
+}
+#content{
+    padding-bottom: 3em;
+}
+
+.search.s2{
+    display: none;
 }

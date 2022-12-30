@@ -11,6 +11,7 @@ use App\Models\Bid;
 use App\Models\FavoriteAuction;
 use Auth;
 use App\Models\SystemManagerLog;
+use App\Models\Notification;
 
 class AuctionController extends Controller
 {
@@ -92,8 +93,18 @@ class AuctionController extends Controller
         $category = Category::find($auction->idcategory);
         if(is_null($category)) abort(404);
         $isfavorite = FavoriteAuction::where('idclient','=',Auth::id())->where('idauction','=',$auction->idauction)->exists();
+        if(\Illuminate\Support\Facades\Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->where('isread','=','False')
+                ->orderBy('notifdate','desc')
+                ->get();
+        }
+        else{
+            $notifications = null;
+        }
 
-        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids, 'isfavorite' => $isfavorite]);
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids, 'isfavorite' => $isfavorite , 'notifications' => $notifications]);
     }
 
     /**
