@@ -232,9 +232,6 @@ class AuctionController extends Controller
      */
     public function favorite()
     {
-
-
-
         if (!isset($_GET['idauction'])) {
             abort(403);
         }

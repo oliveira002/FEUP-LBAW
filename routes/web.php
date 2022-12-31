@@ -47,6 +47,7 @@ Route::put('/admin/auctionreports/{id}', 'ReportController@changeStatus2')->name
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
 Route::get('/auction/create', 'AuctionController@create')->name('createAuction');
 Route::post('/auction', 'AuctionController@store')->name('submitNewAuc');
+Route::post('/readnotification', 'UserController@readNotif')->name('readnotif');
 Route::post('/auction/{id}','BidController@createBid')->name('addbid');
 Route::post('/profile/{id}/createReview','ReviewController@createReview')->name('createReview');
 Route::post('/profile/{id}/createReport','ReportController@createSellerReport')->name('createSellerReport');

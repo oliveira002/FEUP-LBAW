@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bid;
 use App\Models\FavoriteAuction;
+use App\Models\Notification;
 use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,6 +12,15 @@ use App\Models\Auction;
 use Auth;
 use Hash;
 
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
 class UserController extends Controller
 {
     /**
@@ -316,4 +326,20 @@ class UserController extends Controller
             abort(403);
         }
     }
+
+    public function readNotif() {
+        if (!isset($_GET['id'])) {
+            abort(403);
+        }
+        else{
+            $id= $_GET['id'];
+        }
+
+        $notif = Notification::select('*')->where('idnotification','=',$id)->first();
+
+        $notif->isread = 1;
+        $notif->save();
+        return redirect()->back();
+    }
+
 }

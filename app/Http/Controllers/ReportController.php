@@ -94,7 +94,10 @@ class ReportController extends Controller
     }
 
     public function changeStatus($id) {
-        $this->authorize('update',SellerReport::class);
+        //$this->authorize('update',SellerReport::class);
+        if(!Auth::guard('admin')->check()){
+            return redirect()->back()->withErrors(['Not an ADMIN!']);
+        }
         $report = SellerReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);
@@ -119,7 +122,10 @@ class ReportController extends Controller
     }
 
     public function changeStatus2($id) {
-        $this->authorize('update',AuctionReport::class);
+        if(!Auth::guard('admin')->check()){
+            return redirect()->back()->withErrors(['Not an ADMIN!']);
+        }
+        //$this->authorize('update',AuctionReport::class);
         $report = AuctionReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);

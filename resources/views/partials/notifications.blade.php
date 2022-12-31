@@ -18,10 +18,10 @@
             </li>
         @else
         @foreach($notifications as $notif)
-            <li class="d-flex">
+            <li class="d-flex"  notif-id = {{$notif->idnotification}}>
                 <span class="h6 fw-bold me-2"> {{$counter}}</span>
-                {{$notif->content}}
-                <button class="">
+                <span>{{$notif->content}} </span>
+                <button class = "rNotif">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </li>

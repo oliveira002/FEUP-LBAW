@@ -19,13 +19,13 @@ function encodeForAjax(data) {
 
 function sendAjaxRequest(method, url, data, handler) {
     let request = new XMLHttpRequest();
-
     request.open(method, url, true);
     request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.addEventListener('load', handler);
     request.send(encodeForAjax(data));
 }
+
 
 function sendItemUpdateRequest() {
     let item = this.closest('li.item');
