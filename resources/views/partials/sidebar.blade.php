@@ -57,7 +57,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{route('myfav',['username' =>$user->username])}}">
                 <button class="fw-bold">
                     <i class="fa-solid fa-star"></i>
                     Favourites

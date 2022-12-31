@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bid;
+use App\Models\FavoriteAuction;
 use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -103,6 +104,24 @@ class UserController extends Controller
         $id = $user->idclient;
         $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
         return view('pages.userAuctions',['user' => $user, 'auctions' => $myauctions]);
+
+    }
+
+    public function favAuctions() {
+        $this->authorize("view", Auth::user());
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+        $id = $user->idclient;
+        $auctions = Auction::join('favoriteauction', 'auction.idauction', '=', 'favoriteauction.idauction')
+            ->where('favoriteauction.idclient', $id)
+            ->select('*')
+            ->get();
+        return view('pages.userfav',['user' => $user, 'auctions' => $auctions]);
 
     }
 

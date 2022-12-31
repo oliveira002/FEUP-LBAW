@@ -22,6 +22,7 @@ Route::get('/profile/{username}/mydetails', 'UserController@details')->name('det
 Route::get('/profile/{username}/balance', 'UserController@balance')->name('balance');
 Route::post('profile/{username}/balance', 'UserController@addFunds')->name('addFunds');
 Route::get('/profile/{username}/myauctions', 'UserController@myAuctions')->name('myauctions');
+Route::get('/profile/{username}/myfavourites', 'UserController@favAuctions')->name('myfav');
 Route::get('/profile/{username}/mybids', 'UserController@myBids')->name('mybids');
 Route::put('/profile/{username}/mydetails', 'UserController@update')->name('updetails');
 Route::put('/profile/{username}/mypassword', 'UserController@updatePassword')->name('updatePassword');

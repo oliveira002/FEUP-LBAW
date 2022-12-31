@@ -492,6 +492,22 @@ a[data-toggle="collapse"] {
     display: none;
 }
 
+.notlist ul li {
+    align-items: center;
+}
+
+.notlist ul li div {
+    align-items: center;
+}
+
+.notlist ul li span {
+    margin-bottom: 0;
+}
+
+.notlist ul li button {
+   margin-left: auto;
+}
+
 
 
 
