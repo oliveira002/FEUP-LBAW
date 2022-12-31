@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\AuctionReport;
 use App\Models\Bid;
 use App\Models\SellerReport;
+use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -97,6 +99,15 @@ class AdminController extends Controller
         return view('pages.adminsellreports',['reports' => $allSeller]);
     }
 
+    public function getAuctionReports() {
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $allSeller = AuctionReport::selectRaw('*')->orderBy('issolved','asc')->orderBy('idreport','asc')->get();
+        return view('pages.adminauctionreports',['reports' => $allSeller]);
+    }
+
     public function createUser(){
         if(Auth::guard('admin')->check()){
             return view('pages.admincreateuser');
@@ -104,6 +115,15 @@ class AdminController extends Controller
         else{
             abort(403);
         }
+    }
+
+    public function getLogs(){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $logs = SystemManagerLog::selectRaw('*')->get();
+        return view('pages.adminlogs',['logs' => $logs]);
     }
 
 }

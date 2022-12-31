@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS SystemManagerLog(
     logType         VARCHAR(50) NOT NULL,
     idSysMan        INTEGER NOT NULL,
     FOREIGN KEY (idSysMan) REFERENCES SystemManager ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT TypeCheck CHECK (logType = 'Ban' OR logType = 'Unban' or logType = 'Delete' or logType = 'other')
+    CONSTRAINT TypeCheck CHECK (logType = 'Ban' OR logType = 'Unban' or logType = 'Create User' or logType = 'Update Report' or logType = 'Delete User' or logType = 'Delete Auction' or logType = 'Update Auction' or logType = 'Delete Bid' or logType = 'other')
 );
 
 CREATE TABLE IF NOT EXISTS Deposit(
@@ -557,9 +557,9 @@ insert into Auction (idAuction, name , startDate, endDate, startingPrice, curren
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (4, 'Old Oil Painting', '2022-09-02 11:32:30', '2022-12-21 16:58:51', 51, 51, 'Autumn Mountain Painting in Good Condition', false, 4, 4);
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (5, 'Honda Civic', '2022-09-20 08:24:53', '2022-12-14 16:12:04', 8000, 8000, 'Honda Civic Vx 1992, second hand', false, 3, 5);
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (6, 'Laser Pointer', '2022-08-05 04:26:52', '2022-12-16 06:30:09', 20, 20, 'Green Rechargable Laser Pointer 532NM', false, 2, 6);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (7, 'Samsung Galaxy S20', '2022-09-25 17:41:01', '2022-12-24 03:52:39', 1000, 1000, 'Samsung phone in good condition', false, 7, 7);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (7, 'Samsung Galaxy S20', '2022-09-25 17:41:01', '2022-12-31 03:52:39', 1000, 1000, 'Samsung phone in good condition', false, 7, 7);
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (8, 'Wood Hut', '2022-10-19 22:19:24', '2022-12-27 03:23:00', 20000, 20000, 'Wood hut, perfect for winter vacation', false, 5, 8);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (9, 'Nike Court Aerobill', '2022-10-08 11:19:21', '2022-12-12 20:43:49', 43, 43, 'Tennis hat, adult', false, 1, 9);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (9, 'Nike Court Aerobill', '2022-10-08 11:19:21', '2022-12-27 15:00:00', 43, 43, 'Tennis hat, adult', false, 1, 9);
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (10, 'Digital Camera', '2022-10-02 10:18:06', '2022-12-19 17:54:09', 50, 50, 'Polaroid i20X29 20.0MP Digital Camera', false, 7, 10);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (1, '2022-10-21 00:25:00', 'true', 95, 1, 10);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (2, '2022-10-22 10:00:30', 'true', 1400, 2, 9);

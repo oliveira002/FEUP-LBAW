@@ -10,7 +10,7 @@
                     <div class = "stuf mt-4 mb-4">
                         <p class ="h2 fw-bold mb-4"> Dashboard </p>
                         <div class = "rect">
-                            <p class = "txtt"> You are in the admin panel, here you can administrate the website.</p>
+                            <p class = "txtt2"> You are in the admin panel, here you can administrate the website.</p>
                         </div>
                         <div class = "d-flex mt-4 numbers">
                             <div class = "d-flex boxi">

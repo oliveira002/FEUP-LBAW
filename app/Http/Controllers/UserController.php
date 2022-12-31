@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bid;
+use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
@@ -225,6 +226,16 @@ class UserController extends Controller
         }
 
         User::where('idclient', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'phonenumber' => $phonenumber , 'username' => $username]);
+
+        if(Auth::guard('admin')->check()){
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Updated user id: ' . $user->idclient,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'other',
+            ]);
+        }
+
         return redirect()->route('profile',['username' => $username]);
     }
 
@@ -271,6 +282,14 @@ class UserController extends Controller
 
         if(Auth::guard('admin')->check())
         {
+
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Deleted User id: ' . $user->idclient,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Delete User',
+            ]);
+
             $user->delete();
             return redirect()->back();
         }

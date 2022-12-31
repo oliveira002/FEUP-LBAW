@@ -36,14 +36,16 @@
                     ?>
                     <section aria-label="Images" class="foto">
                         <div class="slideshow" data-slideshow>
-                            <div class="buttons">
-                                <button class="slideshow-button prev" data-slideshow-button="prev">
-                                    <i class="fa-solid fa-angles-left"></i>
-                                </button>
-                                <button class="next ms-5 slideshow-button " data-slideshow-button="next">
-                                    <i class="fa-solid fa-angles-right"></i>
-                                </button>
-                            </div>
+                            @if($imagescount > 1)
+                                <div class="buttons">
+                                    <button class="slideshow-button prev" data-slideshow-button="prev">
+                                        <i class="fa-solid fa-angles-left"></i>
+                                    </button>
+                                    <button class="next ms-5 slideshow-button " data-slideshow-button="next">
+                                        <i class="fa-solid fa-angles-right"></i>
+                                    </button>
+                                </div>
+                            @endif
 
                             <ul data-slides>
                                 <?php
@@ -131,14 +133,22 @@
                             <p class = "h5 fw-bold pt-4 pb-2 defl"> Time Left: </p>
                             <div class = "d-flex pt-2 pb-2">
                                 <p class = "h5 me-2" id = "expired"> </p>
-                                <span id = "day" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2 dia"> Days </p>
-                                <span id = "hour" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2 dia"> Hours </p>
-                                <span id = "minute" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2 dia"> Minutes </p>
-                                <span id = "second" class = "h4 me-2 fw-bold">  </span>
-                                <p class = "h5 me-2 dia"> Seconds </p>
+                                <div class="opt2">
+                                    <span id = "day" class = "h4 me-2 fw-bold">  </span>
+                                    <p class = "h5 me-2 dia"> Days </p>
+                                </div>
+                                <div class="opt2">
+                                    <span id = "hour" class = "h4 me-2 fw-bold">  </span>
+                                    <p class = "h5 me-2 dia"> Hours </p>
+                                </div>
+                                <div class="opt2">
+                                    <span id = "minute" class = "h4 me-2 fw-bold">  </span>
+                                    <p class = "h5 me-2 dia"> Minutes </p>
+                                </div>
+                                <div class="opt2">
+                                    <span id = "second" class = "h4 me-2 fw-bold">  </span>
+                                    <p class = "h5 me-2 dia"> Seconds </p>
+                                </div>
                             </div>
                             <p class = "h5 fw-bold pt-2 pb-2 defl"> Auction Ends: </p>
                             <p class = "h5 me-2 pb-4"> {{$auction->enddate}} </p>
@@ -207,17 +217,27 @@
                                     @endif
                                 @endif
 
-                             
+
                             </button>
-                            
+
                             </div>
+
                             <div class = "me-4 hov">
-                                <a class = "exit">
+
+
                                     <button class="open-modal" data-target="modal-3">
                                         <i class="fa-solid fa-coins"></i>
                                         <a>Bidding History</a>
                                     </button>
                                 </a>
+                            </div>
+                            <div class = "me-4 hov">
+
+                                    <button class="open-modal" data-target="modal-4">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <a>Report Auction</a>
+                                    </button>
+
                             </div>
                         </div>
                         <div id="modal-3" class="modal-window">
@@ -250,6 +270,26 @@
                             <div class = "d-flex">
                                 <button class="modal-btn modal-hide cl">Close</button>
                             </div>
+                        </div>
+                        <div id="modal-4" class="modal-window bab">
+                            <form id="myform4" method="post" action="{{route('createAuctionReport',['id' => $auction->idauction])}}">
+                                {{ csrf_field() }}
+                                <div class = "d-flex">
+                                    <h4>Why do you want to report this auction?</h4>
+                                    <button class = "close modal-hide ms-2 mt-1 xau"><i class="fa-solid fa-x "></i></button>
+                                </div>
+                                <div>
+                                    <div class = "mt-3">
+                                        <div class="input-box">
+                                            <textarea class = "txtt" id="desc" name="desc" placeholder="Write the motive for reporting this auction..." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "d-flex">
+                                    <button class="modal-btn modal-hide cl">Close</button>
+                                    <input type="submit" form="myform4" class="modal-btn cf ms-3"  value="Submit"/>
+                                </div>
+                            </form>
                         </div>
                         <hr class = "mt-3 mb-3">
                         <div class = "d-flex">

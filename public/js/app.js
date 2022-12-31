@@ -2,6 +2,12 @@ function addEventListeners() {
     let search = document.querySelector('#searchbar')
     if(search!=null)
         search.addEventListener("input",updateAuction)
+
+    let search2 = document.querySelector('#searchbar2')
+    if(search2!=null)
+        search2.addEventListener("input",updateAuction)
+
+
 }
 
 function encodeForAjax(data) {
@@ -157,24 +163,16 @@ function createItem(item) {
     return new_item;
 }
 
-(function($) {
+function sidebarToggle() {
+    document.getElementById('sidebarCollapse').addEventListener('click', function () {
+        console.log('click');
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+}
+sidebarToggle();
 
-	"use strict";
 
-	var fullHeight = function() {
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
 
-	};
-	fullHeight();
-
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-  });
-
-})(jQuery);
 
 addEventListeners();

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
 use App\Models\AuctionReport;
 use App\Models\Bid;
 use App\Models\SellerReport;
+use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,13 +61,84 @@ class ReportController extends Controller
         return redirect()->back();
     }
 
+    public function createAuctionReport(Request $request)
+    {
+        $content = $request->input('desc');
+        $idauction = $request->route('id');
+        $idowner = Auction::where('idauction',$idauction)->first()->idowner;
+        $user = Auth::user()->idclient;
+
+        // falta distinguir se ganhou ou nao a auction
+
+        if (Auth::check()) {
+            if (Auth::user()->idclient === $idowner) {
+                return redirect()->back()->withErrors(['error' => 'Cannot Review Yourself']);
+            }
+        } elseif (Auth::guard('admin')->check()) {
+            return redirect()->back()->withErrors(['error' => 'An admin cannot review anyone']);
+        } elseif (!Auth::check()) {
+            return redirect()->back()->withErrors(['error' => 'Need to login first!']);
+        }
+
+
+
+        $report = new AuctionReport();
+        $report->reportdate = now();
+        $report->description = $content;
+        $report->issolved = false;
+        $report->idauction = $idauction;
+        $report->idreporter = $user;
+
+        $report->save();
+
+        return redirect()->back();
+    }
+
     public function changeStatus($id) {
+        $this->authorize('update',SellerReport::class);
         $report = SellerReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'UnResolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
         }
         else {
             $report->update(['issolved' => "1"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Resolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function changeStatus2($id) {
+        $this->authorize('update',AuctionReport::class);
+        $report = AuctionReport::find($id);
+        if($report->issolved) {
+            $report->update(['issolved' => "0"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'UnResolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
+        }
+        else {
+            $report->update(['issolved' => "1"]);
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Resolved report id: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Update Report',
+            ]);
         }
 
         return redirect()->back();

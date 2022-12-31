@@ -125,7 +125,7 @@ class RegisterController extends Controller
 
         $lastId = User::selectRaw('idclient')->orderBy('idclient','desc')->first()->idclient;
 
-        User::create([
+        $user = User::create([
             'idclient' => $lastId+1,
             'username' => $request->input('username'),
             'password' => bcrypt($request->input('password')),
@@ -135,7 +135,14 @@ class RegisterController extends Controller
             'balance' => '0',
             'isbanned' => 'False',
         ]);
-
+        if(Auth::guard('admin')->check()){
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Created User id: ' . $user->idclient,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Create User',
+            ]);
+        }
         return redirect()->route('profile',['username' => $request->input('username')]);
     }
 }
