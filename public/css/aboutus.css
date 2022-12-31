@@ -48,3 +48,15 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact textarea {
+    width: 25em;
+    height: 10em;
+}
