@@ -14,6 +14,9 @@
                             </div>
                             <p class="fw-bold">Here you can see your favourites!</p>
                             <hr class="mt-3 mb-3">
+                            @if(count($auctions)==0)
+                                <div>You have no favourite auctions.</div>
+                            @else
                                 @foreach($auctions as $auct)
                                     <div class="row">
                                         <div class="col-3">
@@ -49,6 +52,7 @@
                                     </div>
                                     <hr class="mt-3 mb-3">
                                 @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

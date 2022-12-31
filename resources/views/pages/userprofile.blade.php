@@ -51,6 +51,15 @@
                         <p class ="h4"> Check information on the user! </p>
                     </div>
                     <div class = "ms-3">
+                        @if($errors->has('error'))
+                            <div class="alert alert-danger mb-4 mt-2">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class = "d-flex">
                             <div class="mb-4 lg">
                                 <img src= "{{$path}}" width="200" height="200">
