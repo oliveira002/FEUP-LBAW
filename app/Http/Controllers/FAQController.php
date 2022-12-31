@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
+use App\Models\FavoriteAuction;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FAQController extends Controller
 {
@@ -24,7 +28,33 @@ class FAQController extends Controller
             "Each new bid has a minimum increase of 5% of the base price from the previous bid. This is to stimulate a competitive environment and prevent minimal increases inbetween bids.",
             "No. Until the auction's over, you can't say for sure the item is yours, as someone might place a big higher than yours.",
             "Yes, you're allowed to have multiple auctions up at the same time.",
-            ""];
-        return view('pages.faq',['faqs' => $faqs, 'faqs_text' => $faqs_text]);
+            "Unfortunately, all bids are final. You'll have to wait for someone to outbid you."];
+
+        if(Auth::user()){
+            $favorites = FavoriteAuction::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->limit(3)
+                ->get();
+            $favorite_auctions = array();
+            foreach($favorites as $favorite) {
+
+                $auction = Auction::selectRaw('*')
+                    ->where('idauction','=',$favorite->idauction)
+                    ->first();
+                array_push($favorite_auctions, $auction);
+
+            }
+            $notifications = Notification::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->where('isread','=','False')
+                ->orderBy('notifdate','desc')
+                ->get();
+        }
+        else{
+            $favorite_auctions = null;
+            $notifications = null;
+        }
+
+        return view('pages.faq',['faqs' => $faqs, 'faqs_text' => $faqs_text,'favorites' => $favorite_auctions, 'notifications' => $notifications]);
     }
 }
