@@ -34,7 +34,17 @@ class AuctionController extends Controller
     {
         if(Auth::check() || Auth::guard('admin')->check()){
             $allcategories = Category::all();
-            return(view('pages.createauction',['categories' => $allcategories]));
+            if(Auth::user()){
+                $notifications = Notification::selectRaw('*')
+                    ->where('idclient','=',Auth::user()->idclient)
+                    ->where('isread','=','False')
+                    ->orderBy('notifdate','desc')
+                    ->get();
+            }
+            else{
+                $notifications = null;
+            }
+            return(view('pages.createauction',['categories' => $allcategories, 'notifications' => $notifications]));
         }
         abort(403);
 
@@ -133,7 +143,18 @@ class AuctionController extends Controller
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
 
-        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories]);
+        if(Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->where('isread','=','False')
+                ->orderBy('notifdate','desc')
+                ->get();
+        }
+        else{
+            $notifications = null;
+        }
+
+        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories,'notifications' => $notifications]);
     }
 
     /**
