@@ -23,6 +23,15 @@ class BidController extends Controller
         $minBid = 0.05 * $auction->startingprice;
         $minBid = $minBid + $auction->currentprice - 0.01;
 
+        $client = Bid::join('auction', 'bid.idauction', '=', 'auction.idauction')
+            ->select('idclient')
+            ->where('bid.idauction', $idauction)
+            ->where('auction.idauction', $idauction)
+            ->groupBy('bid.idclient', 'bid.price', 'auction.name')
+            ->orderBy('price', 'desc')
+            ->first();
+
+        $maxId = $client->idclient;
 
         if(Auth::check()) {
             if(Auth::user()->idclient === $auction->idowner) {
@@ -44,6 +53,10 @@ class BidController extends Controller
 
         if($amount < $minBid) {
             return redirect()->back()->withErrors(['error' => 'Bid price is below minimum!']);
+        }
+
+        if(Auth::user()->idclient === $maxId) {
+            return redirect()->back()->withErrors(['error' => 'You cannot outbid yourself!']);
         }
 
 
