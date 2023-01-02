@@ -12,6 +12,47 @@ use App\Models\Notification;
 class SearchController extends Controller
 {
     public function getSearchResultsJson() {
+        if (!isset($_GET['display'])) {
+            $display = 0;
+        }
+        else{
+            $display = $_GET['display'];
+        }
+        if(!is_numeric($display)){
+            $display = 0;
+        }
+
+        if (!isset($_GET['sort'])) {
+            $sort = 0;
+        }
+        else{
+            $sort = $_GET['sort'];
+        }
+        if(!is_numeric($sort)){
+            $sort = 0;
+        }
+
+        if (!isset($_GET['min'])) {
+            $min = 0;
+        }
+        else{
+            $min = $_GET['min'];
+        }
+        if(!is_numeric($min)){
+            $min = 0;
+        }
+
+        if (!isset($_GET['max'])) {
+            $max = 0;
+        }
+        else{
+            $max = $_GET['max'];
+        }
+        if(!is_numeric($max)){
+            $max = 100000000;
+        }
+
+        //antes daqui
         if (!isset($_GET['category'])) {
             $category = 0;
         }
@@ -47,7 +88,14 @@ class SearchController extends Controller
             }
         }
 
-        return json_encode($auctions);
+        $filtered_collection = $auctions->filter(function ($item) use ($display,$sort,$min, $max) {
+            if($min == 0){
+                return true;
+            }
+            return true;
+        })->values();
+
+        return json_encode($filtered_collection);
     }
 
     public function getSearchUserResultsJson() {

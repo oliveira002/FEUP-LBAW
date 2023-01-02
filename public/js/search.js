@@ -77,7 +77,7 @@ function updateAuction(){
     }
     const url = window.location.pathname.split('/')
     const category = url.length > 2 ? url[2] : null
-    sendAjaxRequest('get','/search/api?category=' + category + '&search_query='+texte_query,{},auctionUpdatedHandler )
+    sendAjaxRequest('get','/search/api?category=' + category + '&search_query='+texte_query + '&display='+display + '&sort='+sort + '&min='+min + '&max='+max,{},auctionUpdatedHandler )
 }
 
 function updateUser(){
