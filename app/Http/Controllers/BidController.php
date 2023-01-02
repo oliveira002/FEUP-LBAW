@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bid;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use Auth;
@@ -20,8 +21,22 @@ class BidController extends Controller
         $auction = Auction::find($idauction);
 
         $minBid = 0.05 * $auction->startingprice;
-        $minBid = $minBid + $auction->currentprice;
+        $minBid = $minBid + $auction->currentprice - 0.01;
 
+        $client = Bid::join('auction', 'bid.idauction', '=', 'auction.idauction')
+            ->select('idclient')
+            ->where('bid.idauction', $idauction)
+            ->where('auction.idauction', $idauction)
+            ->groupBy('bid.idclient', 'bid.price', 'auction.name')
+            ->orderBy('price', 'desc')
+            ->first();
+
+        if($client) {
+            $maxId = $client->idclient;
+        }
+        else {
+            $maxId = -1;
+        }
 
         if(Auth::check()) {
             if(Auth::user()->idclient === $auction->idowner) {
@@ -45,6 +60,10 @@ class BidController extends Controller
             return redirect()->back()->withErrors(['error' => 'Bid price is below minimum!']);
         }
 
+        if(Auth::user()->idclient === $maxId) {
+            return redirect()->back()->withErrors(['error' => 'You cannot outbid yourself!']);
+        }
+
 
         $this->authorize("create", Bid::class);
 
@@ -57,17 +76,21 @@ class BidController extends Controller
         $bid->idauction = $idauction;
         $bid->idclient = $user->idclient;
         $bid->biddate = now();
+
+
         if(!is_numeric($amount)){
             return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
         }
         try{
             $bid->save();
+            if(date('Y-m-d H:i:s', strtotime('+15 minutes')) > $auction->enddate) {
+                $auction->enddate = date('Y-m-d H:i:s', strtotime('+30 minutes'));
+                $auction->save();
+            }
         }
         catch(\Exception $e){
             return redirect()->back()->withErrors(['error' => 'Your bid cannot be lower than the current price!']);
         }
-
-
 
         return redirect()->route('auction', ['id' => $idauction]);
     }

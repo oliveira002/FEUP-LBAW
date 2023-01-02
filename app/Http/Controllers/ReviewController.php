@@ -33,9 +33,6 @@ class ReviewController extends Controller
         $content = $request->input('desc');
         $ownerUsername = $request->route('id');
         $idowner = User::where('username',$ownerUsername)->first()->idclient;
-        $user = Auth::user()->idclient;
-
-        // falta distinguir se ganhou ou nao a auction
 
         if (Auth::check()) {
             if (Auth::user()->idclient === $idowner) {
@@ -46,6 +43,11 @@ class ReviewController extends Controller
         } elseif (!Auth::check()) {
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
+
+        $user = Auth::user()->idclient;
+
+        // falta distinguir se ganhou ou nao a auction
+
 
         $review = new Review();
         $review->reviewdate = now();

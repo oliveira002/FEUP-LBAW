@@ -1,0 +1,62 @@
+.aboutUsImg {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+}
+
+.aboutUsWrapper{
+    gap: 30px;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.aboutUsPerson{
+    flex-direction: column;
+}
+
+.aboutUsName{
+    text-align: center;
+}
+
+#meetTheTeam{
+    margin-top: 7.5em;
+    text-align: center;
+}
+
+.aboutUsText{
+    text-align: center;
+    word-break: break-word;
+    width: 65%;
+    align-self: center;
+}
+
+.aboutUsGlobal{
+    width: 65%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.globalWrapper{
+    justify-content: center;
+}
+
+.aboutUsTextWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact textarea {
+    width: 25em;
+    height: 10em;
+}

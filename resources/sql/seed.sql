@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS "user"(
     address     VARCHAR(70),
     phoneNumber VARCHAR(13) UNIQUE,
     isBanned    BOOLEAN NOT NULL,
-    balance     FLOAT NOT NULL
+    balance     FLOAT NOT NULL,
+    remember_token TEXT
 );
 
 CREATE TABLE IF NOT EXISTS Category(
@@ -144,7 +145,7 @@ CREATE TABLE IF NOT EXISTS Deposit(
 
 CREATE TABLE IF NOT EXISTS Notification(
     idNotification  SERIAL PRIMARY KEY,
-    content         VARCHAR(50) NOT NULL,
+    content         VARCHAR(300) NOT NULL,
     isRead          BOOLEAN NOT NULL,
     notifDate       TIMESTAMP NOT NULL,
     idClient        INTEGER NOT NULL,
@@ -550,19 +551,19 @@ insert into AuctionOwner (idClient) values (7);
 insert into AuctionOwner (idClient) values (8);
 insert into AuctionOwner (idClient) values (9);
 insert into AuctionOwner (idClient) values (10);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (1, 'Wilson Rf97 V10', '2022-09-16 15:41:15', '2022-12-14 03:01:53', 95, 95, 'Perfect condition Tennis racquet', false, 1, 1);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (2, 'Apple iPhone 13 Max Pro', '2022-09-06 18:34:14', '2022-12-23 09:42:29', 1400, 1400, 'iPhone with Factory Warranty, Novo', false, 7, 2);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (1, 'Wilson Rf97 V10', '2022-09-16 15:41:15', '2023-03-14 03:01:53', 95, 95, 'Perfect condition Tennis racquet', false, 1, 1);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (2, 'Apple iPhone 13 Max Pro', '2022-09-06 18:34:14', '2023-01-23 09:42:29', 1400, 1400, 'iPhone with Factory Warranty, Novo', false, 7, 2);
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (3, 'Long sleeve shirt', '2022-09-29 00:14:40', '2022-12-11 13:51:29', 14, 14, 'Red shirt in excellent condition', false, 6, 3);
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (4, 'Old Oil Painting', '2022-09-02 11:32:30', '2022-12-21 16:58:51', 51, 51, 'Autumn Mountain Painting in Good Condition', false, 4, 4);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (5, 'Honda Civic', '2022-09-20 08:24:53', '2022-12-14 16:12:04', 8000, 8000, 'Honda Civic Vx 1992, second hand', false, 3, 5);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (6, 'Laser Pointer', '2022-08-05 04:26:52', '2022-12-16 06:30:09', 20, 20, 'Green Rechargable Laser Pointer 532NM', false, 2, 6);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (7, 'Samsung Galaxy S20', '2022-09-25 17:41:01', '2022-12-24 03:52:39', 1000, 1000, 'Samsung phone in good condition', false, 7, 7);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (8, 'Wood Hut', '2022-10-19 22:19:24', '2022-12-27 03:23:00', 20000, 20000, 'Wood hut, perfect for winter vacation', false, 5, 8);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (9, 'Nike Court Aerobill', '2022-10-08 11:19:21', '2022-12-12 20:43:49', 43, 43, 'Tennis hat, adult', false, 1, 9);
-insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (10, 'Digital Camera', '2022-10-02 10:18:06', '2022-12-19 17:54:09', 50, 50, 'Polaroid i20X29 20.0MP Digital Camera', false, 7, 10);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (5, 'Honda Civic', '2022-09-20 08:24:53', '2023-12-14 16:12:04', 8000, 8000, 'Honda Civic Vx 1992, second hand', false, 3, 5);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (6, 'Laser Pointer', '2022-08-05 04:26:52', '2023-12-16 06:30:09', 20, 20, 'Green Rechargable Laser Pointer 532NM', false, 2, 6);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (7, 'Samsung Galaxy S20', '2022-09-25 17:41:01', '2023-12-31 03:52:39', 1000, 1000, 'Samsung phone in good condition', false, 7, 7);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (8, 'Wood Hut', '2022-10-19 22:19:24', '2023-01-02 15:57:00', 20000, 20000, 'Wood hut, perfect for winter vacation', false, 5, 8);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (9, 'Nike Court Aerobill', '2022-10-08 11:19:21', '2023-01-27 15:00:00', 43, 43, 'Tennis hat, adult', false, 1, 9);
+insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (10, 'Digital Camera', '2022-10-02 10:18:06', '2023-01-07 17:54:09', 50, 50, 'Polaroid i20X29 20.0MP Digital Camera', false, 7, 10);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (1, '2022-10-21 00:25:00', 'true', 95, 1, 10);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (2, '2022-10-22 10:00:30', 'true', 1400, 2, 9);
-insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (3, '2022-10-20 21:00:00', 'true', 21000, 3, 8);
+insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (3, '2022-10-20 21:00:00', 'true', 21000, 101, 8);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (4, '2022-10-22 14:30:00', 'true', 1151, 4, 7);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (5, '2022-10-19 10:00:00', 'true', 100, 5, 6);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (6, '2022-10-18 12:10:00', 'true', 20000, 6, 5);

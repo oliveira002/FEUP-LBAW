@@ -11,6 +11,7 @@ use App\Models\Bid;
 use App\Models\FavoriteAuction;
 use Auth;
 use App\Models\SystemManagerLog;
+use App\Models\Notification;
 
 class AuctionController extends Controller
 {
@@ -33,7 +34,17 @@ class AuctionController extends Controller
     {
         if(Auth::check() || Auth::guard('admin')->check()){
             $allcategories = Category::all();
-            return(view('pages.createauction',['categories' => $allcategories]));
+            if(Auth::user()){
+                $notifications = Notification::selectRaw('*')
+                    ->where('idclient','=',Auth::user()->idclient)
+                    ->where('isread','=','False')
+                    ->orderBy('notifdate','desc')
+                    ->get();
+            }
+            else{
+                $notifications = null;
+            }
+            return(view('pages.createauction',['categories' => $allcategories, 'notifications' => $notifications]));
         }
         abort(403);
 
@@ -92,8 +103,18 @@ class AuctionController extends Controller
         $category = Category::find($auction->idcategory);
         if(is_null($category)) abort(404);
         $isfavorite = FavoriteAuction::where('idclient','=',Auth::id())->where('idauction','=',$auction->idauction)->exists();
+        if(\Illuminate\Support\Facades\Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->where('isread','=','False')
+                ->orderBy('notifdate','desc')
+                ->get();
+        }
+        else{
+            $notifications = null;
+        }
 
-        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids, 'isfavorite' => $isfavorite]);
+        return view('pages.auction',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'bids' => $bids, 'isfavorite' => $isfavorite , 'notifications' => $notifications]);
     }
 
     /**
@@ -122,7 +143,18 @@ class AuctionController extends Controller
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
 
-        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories]);
+        if(Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->where('isread','=','False')
+                ->orderBy('notifdate','desc')
+                ->get();
+        }
+        else{
+            $notifications = null;
+        }
+
+        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories,'notifications' => $notifications]);
     }
 
     /**
@@ -197,7 +229,7 @@ class AuctionController extends Controller
         if(Auth::guard('admin')->check()){
             SystemManagerLog::create([
                 'idsysman' => Auth::guard('admin')->id(),
-                'logdescription' => 'Delete Auction' . $auction->idauction,
+                'logdescription' => 'Delete Auction ' . $auction->idauction,
                 'logdate' => date('Y-m-d H:i:s'),
                 'logtype' => 'Update Auction',
             ]);
@@ -215,15 +247,12 @@ class AuctionController extends Controller
 
     /**
      * Add or remove auction from favorites
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
     public function favorite()
     {
-
-    
-    
         if (!isset($_GET['idauction'])) {
             abort(403);
         }
@@ -233,17 +262,17 @@ class AuctionController extends Controller
 
 
         //check if auction is already in favorites
- 
-        
- 
+
+
+
         //$this->authorize("favorite", $auction);
-      
+
         if(Auth::user()) {
             $user = Auth::user();
             $idclient = $user->idclient;
             $fav = FavoriteAuction::select('*')->where('idclient','=',$idclient)->where('idauction','=',$idauction)->get();
             if(count($fav)==0){
-           
+
                 //add to favourite auction
                 if($idclient == $user->idclient && $idauction != 0) {
                     $fav = new FavoriteAuction();
@@ -261,12 +290,12 @@ class AuctionController extends Controller
                     return json_encode(0);
                 }
             }
-            
-            
+
+
 
         }
         elseif (Auth::guard('admin')->check()) {
-            
+
             return json_encode(-1);
         }
         else{

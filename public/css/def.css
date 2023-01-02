@@ -112,6 +112,22 @@ footer{
     margin-right: 2em;
 }
 
+.notif {
+    position: relative;
+    text-decoration: none;
+    margin-right: 2em;
+}
+
+.notif button {
+    background: #efefef;
+    color: black;
+    border-radius: 12px;
+    padding: 0.4em 0.4em;
+    width: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 .log button {
     background: #0f0f0f;
@@ -137,6 +153,8 @@ footer{
 .search form{
     box-shadow: none;
     border: none;
+    display: flex;
+    flex-direction: row;
 }
 
 .balance{
@@ -214,6 +232,14 @@ footer{
     float: left;
     background-color: #efefef;
 }
+#searchbar2 {
+    border: none;
+    text-align: left;
+    margin-left: 0.8em;
+    width: 350px;
+    float: left;
+    background-color: #efefef;
+}
 
 #searchbar:focus {
     outline: none;
@@ -238,7 +264,7 @@ footer{
 .heading-section{
 	font-size: 28px;
 	color: black;
-	
+
 }
 .heading-section small{
     font-size: 18px;
@@ -365,8 +391,8 @@ a[data-toggle="collapse"] {
     background: #494ca2 !important;
     border-color: #494ca2 !important;
   }
-  
- 
+
+
 
 
   #sidebar .form-control {
@@ -396,3 +422,194 @@ a[data-toggle="collapse"] {
   #sidebar .subscribe-form .form-control {
     background: #1a1aff;
   }
+
+
+
+  .notlist {
+      top: 3.3em;
+      right: -10px;
+      background: white;
+      z-index: 999;
+      position: absolute;
+  }
+  .notlist > span {
+      padding-left: 1em;
+  }
+
+  .notlist ul {
+      margin-bottom: 0;
+  }
+  .notlist {
+      width: 420px;
+      box-shadow: rgb(0 0 0 / 12%) 0px 3px 20px;
+      border-radius: 8px;
+      text-align: left;
+  }
+
+  .notlist ul {
+      padding: 0;
+  }
+
+  .notlist ul li {
+      padding: 1em;
+  }
+
+  .init, .init button i {
+      color: #575757;
+  }
+
+
+  .notlist ul li:not(:first-child):hover {
+      background: #f6f6f6;
+  }
+
+  .notlist  ul li:not(:last-child) {
+      border-bottom: 1px solid gray;
+  }
+
+  .init span {
+      margin: 0;
+  }
+  .init button {
+      margin-left: auto;
+  }
+
+.notlist:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    width: 0;
+    height: 0;
+    transform: translate(-1rem, -100%);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid #ffffff;
+}
+
+.escondido {
+    opacity: 0;
+    display: none;
+}
+
+.notlist ul li {
+    align-items: center;
+}
+
+.notlist ul li div {
+    align-items: center;
+}
+
+.notlist ul li span {
+    margin-bottom: 0;
+}
+
+.notlist ul li button {
+   margin-left: auto;
+}
+
+
+
+
+  #logoutbt {
+    border-radius: 0;
+    background-color: black;
+    color: white;
+    margin:0;
+    padding:10px 0;
+    width: 215px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    color:rgba(255, 255, 255, 0.6);
+    font-weight: normal;
+  }
+  #logoutbt:hover {
+    color: white;
+  }
+.fadeIn {
+
+   animation: opa 0.5s ease-in-out;
+
+}
+@keyframes opa {
+   0% {
+       opacity: 0;
+       transform: translateY(-100%);
+   }
+    50% {
+      opacity: 0.3;
+    }
+
+
+   100% {
+
+      opacity: 1;
+         transform: translateY(0);
+   }
+}
+
+.fadeOut {
+
+   animation: opa2 0.5s ease-in-out;
+
+}
+@keyframes opa2 {
+   0% {
+       transform: translateY(0);
+
+      opacity: 1;
+   }
+    50% {
+      opacity: 0.3;
+    }
+   100% {
+       transform: translateY(-100%);
+
+      opacity: 0;
+   }
+}
+
+.fa-gradient {
+    background: -webkit-gradient(linear, left top, left bottom, from(#000428), to(#004e92));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+span.num-count{
+    position: absolute;
+    user-select: none;
+    cursor: default;
+    font-size: 0.6rem;
+    background: #e74c3c;
+    width: 1.2rem;
+    height: 1.2rem;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    top: -0.33rem;
+    right: -.66rem;
+    box-sizing: border-box;
+}
+
+.search .sbar button{
+    display: flex;
+    flex-direction: row;
+}
+.opt2{
+    display: flex;
+    flex-direction: row;
+}
+#content{
+    padding-bottom: 3em;
+}
+
+.search.s2{
+    display: none;
+}
+
+.notlist {
+    height: fit-content;
+    max-height: 393px;
+    overflow: auto;
+}

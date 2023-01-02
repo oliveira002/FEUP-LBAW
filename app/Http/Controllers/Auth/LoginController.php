@@ -9,6 +9,7 @@ use App\Models\SystemManager;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Illuminate\Support\Facades\Password;
 
 class LoginController extends Controller
 {
@@ -56,11 +57,13 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        $remember = $request->has('remember') ? true : false;
+
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended(route('/'));
         }
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended(route('admin'));
         }
         return redirect()->intended(route('login'))->withErrors(['wrong_credentials' => 'These credentials do not match any on our system. Try again!']);
@@ -75,4 +78,6 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+
 }

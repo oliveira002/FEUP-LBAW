@@ -51,6 +51,15 @@
                         <p class ="h4"> Check information on the user! </p>
                     </div>
                     <div class = "ms-3">
+                        @if($errors->has('error'))
+                            <div class="alert alert-danger mb-4 mt-2">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class = "d-flex">
                             <div class="mb-4 lg">
                                 <img src= "{{$path}}" width="200" height="200">
@@ -105,7 +114,7 @@
                                             </div>
                                             <div>
                                                 <div class="input-box">
-                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Describe your experience or just simple rate the seller!" required></textarea>
+                                                    <textarea class = "txtt2" id="desc" name="desc" placeholder="Describe your experience or just simple rate the seller!" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +134,7 @@
                                         <div>
                                             <div class = "mt-3">
                                                 <div class="input-box">
-                                                    <textarea class = "txtt" id="desc" name="desc" placeholder="Write the motive for reporting this user..." required></textarea>
+                                                    <textarea class = "txtt2" id="desc" name="desc" placeholder="Write the motive for reporting this user..." required></textarea>
                                                 </div>
                                             </div>
                                         </div>

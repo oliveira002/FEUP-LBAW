@@ -57,10 +57,18 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{route('myfav',['username' =>$user->username])}}">
                 <button class="fw-bold">
                     <i class="fa-solid fa-star"></i>
-                    Favourites
+                    My Favourites
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('mywins',['username' =>$user->username])}}">
+                <button class="fw-bold">
+                    <i class="fa-solid fa-crown"></i>
+                    My Winnings
                 </button>
             </a>
         </li>

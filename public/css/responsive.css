@@ -1,0 +1,218 @@
+
+@media (max-width: 60em) {
+    /* login page */
+    #content .loginpage .container {
+        padding-top: 0;
+    }
+    .cont2 footer .option a{
+        font-size: 15px;
+    }
+    .cont2 footer .option{
+        display: flex;
+        flex-direction: row;
+    }
+    /* home page */
+    .cont .auth{
+
+    }
+    .cont .search{
+        display: none;
+    }
+    .cont form button{
+        display: none;
+    }
+    .cont .balance{
+        display: none;
+    }
+    .notif{
+        margin-left: 1em;
+    }
+    .notlist{
+        width: 20em;
+        right: -150px;
+
+    }
+    .notlist:before{
+        border-bottom: 1rem solid transparent;
+    }
+    /* profile */
+    #aside{
+        margin-bottom: 3em;
+    }
+    #side{
+        margin-bottom: 3em;
+    }
+    .cover .prof {
+
+       margin: 0 auto;
+    }
+    header .tmp {
+
+        margin-left: 40px;
+    }
+    .prof .spec {
+        margin-left: 0;
+        margin-bottom: 3em;
+    }
+    .prof.d-flex{
+
+        flex-direction: column;
+    }
+    .cover ul li {
+        height: 25px;
+    }
+
+    .prof #aside ul li a button i {
+        font-size: 15px;
+    }
+    .prof #aside ul li a button  {
+        width: 100%;
+
+    }
+    .prof #aside ul li a button {
+        font-size: 15px;
+    }
+    .prof #aside ul button{
+        width: 100%;
+        font-size: 15px;
+    }
+
+
+    #aside .hi{
+        width: 100%;
+    }
+    .prof #balance-container{
+        margin: 0 auto;
+        min-width: 20vh;
+    }
+    .prof .outside{
+        min-width: 20rem;
+        margin-left: 0;
+    }
+    #content .outside .about span{
+        font-size: 15px;
+    }
+    #content .outside p{
+        font-size: 15px;
+    }
+    #content > div > div > div.outside > div > div:nth-child(2) > div:nth-child(1){
+        flex-direction: column;
+        margin-bottom: 3em;
+    }
+    main .conth > header > p{
+        font-size: 25px;
+    }
+    #content .outside form .forms.d-flex{
+        flex-direction: column;
+    }
+    #content .outside form .forms > div:nth-child(2).ms-5{
+        margin-left: 0!important;
+    }
+    ul.payment-selection {
+        display: flex;
+        flex-direction: column;
+    }
+    .opt{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .myBids #user-auctions{
+        width: auto;
+    }
+    .myAuctions #user-auctions{
+        width: auto;
+    }
+
+    #content .page > .d-flex {
+        flex-direction: column;
+    }
+    #content .page > .d-flex .slide .foto{
+        margin-bottom: 3em;
+    }
+    .texto .caixa{
+        width: 100%;
+    }
+    .texto .caixa2 {
+        width: 100%;
+    }
+    .texto .caixa .me-2 {
+        margin-right: 0.2rem !important;
+    }
+    .texto .caixa .d-flex.pt-2.pb-2{
+        flex-direction: column;
+
+    }
+    .prof #side ul li a button i {
+        font-size: 15px;
+    }
+    .prof #side ul li a button  {
+        width: 100%;
+
+    }
+    .prof #side ul li a button {
+        font-size: 15px;
+    }
+    .prof #side ul button{
+        width: 100%;
+        font-size: 15px;
+    }
+    .search2 .sbar2{
+        display: flex;
+        flex-direction: row;
+    }
+    .search2 #searchbar2{
+        width: 90%;
+    }
+    #side .wat {
+        width: 18rem;
+
+    }
+    .tableContainer .modal-window {
+        top: auto;
+    }
+    .modal-window {
+        top: auto;
+    }
+    .modal-window .rfix {
+       width: 100%;
+    }
+    .prof #side ul button {
+
+        height: 40px;
+    }
+    #content > .catg.d-flex{
+        flex-wrap: wrap;
+
+    }
+    #content .filtros{
+        max-width: none;
+    }
+    #content .gridd{
+        margin-left: 0;
+        margin-top: 20em;
+    }
+    .search.s2{
+        display: block;
+        margin-left: 0;
+        margin-bottom: 2em;
+    }
+    #content .page .fav{
+        flex-wrap: wrap;
+    }
+    #content .page .fav .hov.me-2{
+        margin-bottom: 1em;
+    }
+    .auth .log{
+        margin-left: 0.5em;
+    }
+    #content div.outside div.d-flex.mt-4.numbers{
+        flex-wrap: wrap;
+    }
+    #content div.outside div.d-flex.mt-4.numbers .boxi{
+        margin-left: 0!important;
+        margin-bottom: 1em;
+    }
+
+}
+

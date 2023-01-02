@@ -42,7 +42,6 @@
                                     }
                                 ?>
                                 <p class = "mb-3 ms-3 h3 cor ">{{$rating}}</p>
-                                <a href = "" class = "mb-2 ms-3 h5 rep mt-2"><button> Report user <i class="fa-regular fa-thumbs-down"></i>  </button> </a>
                             </div>
                         </div>
                         <div class = "d-flex">

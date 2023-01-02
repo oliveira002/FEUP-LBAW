@@ -7,11 +7,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword as Resetable;
 
 /**
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends Authenticatable implements Resetable
 {
     use Notifiable;
 
