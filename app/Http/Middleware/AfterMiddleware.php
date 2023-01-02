@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
- 
+
 use Closure;
 use App\Models\Auction;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +13,6 @@ class AfterMiddleware
     public function handle($request, Closure $next)
     {
         DB::beginTransaction();
-            try{
                 $auctions = Auction::all();
                 foreach($auctions as $auction){
                     if($auction->isover){
@@ -80,13 +79,6 @@ class AfterMiddleware
                     }
                 }
                 DB::commit();
-            }
-            catch(\Exception $e){
-                DB::rollback();
-            }
-            
-        
-        
         return $next($request);
     }
 }
