@@ -30,6 +30,7 @@ function createElementFromHTML(htmlString) {
 function auctionUpdatedHandler() {
     let item = JSON.parse(this.responseText);
     let auction = document.querySelectorAll('#auction div')
+    console.log(item)
     auction.forEach(e => {
         e.remove()
     });

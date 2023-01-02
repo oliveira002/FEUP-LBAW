@@ -88,13 +88,25 @@ class SearchController extends Controller
             }
         }
 
-        $filtered_collection = $auctions->filter(function ($item) use ($display,$sort,$min, $max) {
-            if($min == 0){
-                return true;
+        $filtered_collection = $auctions->filter(function ($item) use ($display,$sort,$min, $max) {        
+            if(!($min <= $item->currentprice && $item->currentprice <= $max)){
+                return false;
+            }
+            else if($display == 0 && $item->isover === true){
+                return false;
+            }
+            else if($display == 1 && $item->isover === false){
+                return false;
             }
             return true;
         })->values();
-
+        /*
+        $sorted_collection = $auctions->sortBy(function($auction) {
+            if($auction->bids->count() > 0){
+                dd($auction->bids->count());
+            }
+            return $auction->bids->count();
+        });*/
         return json_encode($filtered_collection);
     }
 
