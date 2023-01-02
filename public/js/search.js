@@ -23,7 +23,6 @@ function createElementFromHTML(htmlString) {
 }
 function auctionUpdatedHandler() {
     let item = JSON.parse(this.responseText);
-    console.log(item)
     let auction = document.querySelectorAll('#auction div')
     auction.forEach(e => {
         e.remove()

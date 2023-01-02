@@ -29,13 +29,7 @@ class ReportController extends Controller
      */
     public function createSellerReport(Request $request)
     {
-        $content = $request->input('desc');
-        $ownerUsername = $request->route('id');
-        $idowner = User::where('username',$ownerUsername)->first()->idclient;
-        $user = Auth::user()->idclient;
-
-        // falta distinguir se ganhou ou nao a auction
-
+        
         if (Auth::check()) {
             if (Auth::user()->idclient === $idowner) {
                 return redirect()->back()->withErrors(['error' => 'Cannot Review Yourself']);
@@ -45,6 +39,15 @@ class ReportController extends Controller
         } elseif (!Auth::check()) {
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
+        $this->authorize('create');
+        $content = $request->input('desc');
+        $ownerUsername = $request->route('id');
+        $idowner = User::where('username',$ownerUsername)->first()->idclient;
+        $user = Auth::user()->idclient;
+
+        // falta distinguir se ganhou ou nao a auction
+
+        
 
 
 
@@ -62,13 +65,7 @@ class ReportController extends Controller
 
     public function createAuctionReport(Request $request)
     {
-        $content = $request->input('desc');
-        $idauction = $request->route('id');
-        $idowner = Auction::where('idauction',$idauction)->first()->idowner;
-        $user = Auth::user()->idclient;
-
-        // falta distinguir se ganhou ou nao a auction
-
+        
         if (Auth::check()) {
             if (Auth::user()->idclient === $idowner) {
                 return redirect()->back()->withErrors(['error' => 'Cannot Review Yourself']);
@@ -78,6 +75,15 @@ class ReportController extends Controller
         } elseif (!Auth::check()) {
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
+        $this->authorize('create');
+        $content = $request->input('desc');
+        $idauction = $request->route('id');
+        $idowner = Auction::where('idauction',$idauction)->first()->idowner;
+        $user = Auth::user()->idclient;
+
+        // falta distinguir se ganhou ou nao a auction
+
+        
 
 
 
