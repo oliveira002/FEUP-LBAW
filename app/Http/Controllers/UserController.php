@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Auction;
 use Auth;
 use Hash;
+use Illuminate\Support\Facades\DB;
 
 function console_log($output, $with_script_tags = true)
 {
@@ -340,6 +341,51 @@ class UserController extends Controller
         $notif->isread = 1;
         $notif->save();
         return redirect()->back();
+    }
+
+    public function myWinnings() {
+        $this->authorize("view", Auth::user());
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+        $id = $user->idclient;
+
+
+        $auctions = Auction::join('bid', 'auction.idauction', '=', 'bid.idauction')
+            ->where('bid.idclient', $id)
+            ->where('isover','1')
+            ->where(function($query) {
+                $query->whereColumn('bid.price', '=', DB::raw('(SELECT MAX(bid.price) FROM bid WHERE bid.idauction = auction.idauction)'));
+            })
+            ->get();
+
+
+        return view('pages.userwinnings',['auctions' => $auctions,'user' => $user]);
+    }
+
+    public function myNotifications() {
+
+        $this->authorize("view", Auth::user());
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+
+        $notifications = Notification::selectRaw('*')
+            ->where('idclient','=',Auth::user()->idclient)
+            ->where('isread','=','False')
+            ->orderBy('isread','asc')
+            ->orderBy('notifdate','desc')
+            ->get();
+
+        return view('pages.mynotifs',['notifications' => $notifications,'user' => $user]);
     }
 
 }

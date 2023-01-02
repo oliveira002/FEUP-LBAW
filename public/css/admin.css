@@ -158,7 +158,13 @@ td {
     border-left: 4px solid #7e3af2;
 }
 
+
+
 .out7 #side ul li:nth-child(7) button {
+    border-left: 4px solid #7e3af2;
+}
+
+.out8 #side ul li:nth-child(8) button {
     border-left: 4px solid #7e3af2;
 }
 
@@ -222,6 +228,7 @@ hr#createuser {
 .outside {
     min-width: fit-content;
     max-width: 55vh;
+    height: fit-content;
 }
 
 #upload-image label {

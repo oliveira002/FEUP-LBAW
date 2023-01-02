@@ -31,7 +31,12 @@ class BidController extends Controller
             ->orderBy('price', 'desc')
             ->first();
 
-        $maxId = $client->idclient;
+        if($client) {
+            $maxId = $client->idclient;
+        }
+        else {
+            $maxId = -1;
+        }
 
         if(Auth::check()) {
             if(Auth::user()->idclient === $auction->idowner) {

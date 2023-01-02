@@ -38,39 +38,6 @@
                                 </div>
                             </div>
                         </div>
-                        <p class ="h3 fw-bold mt-4"> Latest Reports </p>
-                        <table class="table oview mt-4">
-                            <thead>
-                              <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Costumer</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-
-                            <div class = "d-flex align-items-center">
-                                <tr>
-                                    <td>
-                                        <span class = "ms-2 fw-bold">1</span>
-                                    </td>
-                                    <th class = "boxi2" scope="row">
-                                        <img src= "/alo.jpg" width="40" height="40">
-                                        <span class = "ms-2 fw-light">André Garcia </span>
-                                    </th>
-                                    <td class = "mt-3">2022-12-10 13:12:11</td>
-                                    <td>
-                                        <a href = "" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                                        <a class="open-modal fw-bold linkii" data-target=""> <i class="fa-solid fa-check"></i></a>
-                                    </td>
-                                </tr>
-                            </div>
-                            </tbody>
-                          </table>
-                          <div class = "smore">
-                            <a href = "" class = "fw-bold h5"> View All </a>
-                          </div>
                     </div>
                 </div>
             </div>

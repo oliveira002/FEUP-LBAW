@@ -24,6 +24,7 @@ Route::post('profile/{username}/balance', 'UserController@addFunds')->name('addF
 Route::get('/profile/{username}/myauctions', 'UserController@myAuctions')->name('myauctions');
 Route::get('/profile/{username}/myfavourites', 'UserController@favAuctions')->name('myfav');
 Route::get('/profile/{username}/mybids', 'UserController@myBids')->name('mybids');
+Route::get('/profile/{username}/mywins', 'UserController@myWinnings')->name('mywins');
 Route::put('/profile/{username}/mydetails', 'UserController@update')->name('updetails');
 Route::put('/profile/{username}/mypassword', 'UserController@updatePassword')->name('updatePassword');
 
