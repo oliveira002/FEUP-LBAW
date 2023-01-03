@@ -5,15 +5,16 @@
 
         @if(count($ban_appeals)==0)
             <h3 class="fw-bold mb-5 mt-5">You are Banned!</h3>
-            <form action="">
+            <form action="{{route('submitBanAppeal')}}" method="POST">
+                {{ csrf_field() }}
                   <span class="fw-bold">You are unable to browse the website, as well as create auctions and place bids!</span>
                 <div class="input-box mt-4">
                     <label for="desc">Request Unban</label>
-                    <textarea id="" name="desc" placeholder="Reason why you should be unbanned"></textarea>
+                    <textarea id="" name="desc" placeholder="Reason why you should be unbanned" required></textarea>
                 </div>
 
                 <div class="continue-button mb-3">
-                    <input type="submit" class="continue-button" value="Send"/>
+                    <button type="submit" class="continue-button">Send</button>
                 </div>
             </form>
         @else

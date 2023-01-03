@@ -248,7 +248,7 @@
 }
 
 
-.continue-button input {
+.continue-button button {
     width: 100%;
     border: none;
     background-color: #f1b642;
@@ -258,7 +258,7 @@
     color: white;
 }
 
-.continue-button input:hover {
+.continue-button button:hover {
     background-color: #bb8412;
 }
 
