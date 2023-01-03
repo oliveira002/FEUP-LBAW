@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\AuctionReport;
+use App\Models\BanAppeals;
 use App\Models\Bid;
 use App\Models\SellerReport;
 use App\Models\SystemManagerLog;
@@ -13,6 +14,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers;
 
 use Auth;
 
@@ -125,5 +127,67 @@ class AdminController extends Controller
         $logs = SystemManagerLog::selectRaw('*')->get();
         return view('pages.adminlogs',['logs' => $logs]);
     }
+
+    public function getBanAppeals(){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $appeals = BanAppeals::selectRaw('*')->get();
+        return view('pages.adminbanappeals',['appeals' => $appeals]);
+    }
+
+    public function banUser($id){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $user = User::find($id);
+
+        if(!$user->isbanned){
+            $user->update(['isbanned' => "1"]);
+        }
+
+        return redirect()->back()->withErrors(["success"=>"User was banned!"]);
+    }
+
+    public function destroyBanAppeal($id)
+    {
+        $ban_appeal = BanAppeals::find($id);
+
+        if(Auth::guard('admin')->check())
+        {
+
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Refused Ban appeal with ID: ' . $ban_appeal->idbanappeal,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'other',
+            ]);
+
+            $ban_appeal->delete();
+            return redirect()->back();
+        }
+        else{
+            abort(403);
+        }
+    }
+
+    public function unbanUser(Request $request){
+        if(!Auth::guard('admin')->check()){
+            abort(403);
+        }
+
+        $user = User::find($request->id);
+
+        if($user->isbanned){
+            $user->update(['isbanned' => "0"]);
+            $this->destroyBanAppeal($request->idbanappeal);
+        }
+
+        return redirect()->back()->withErrors(["success"=>"User was unbanned!"]);
+
+    }
+
 
 }

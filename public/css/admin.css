@@ -162,6 +162,10 @@ td {
     border-left: 4px solid #7e3af2;
 }
 
+.out8 #side ul li:nth-child(8) button {
+    border-left: 4px solid #7e3af2;
+}
+
 .search2 {
     margin-left: auto;
     vertical-align: middle;

@@ -66,6 +66,14 @@
             </a>
         </li>
         <li>
+            <a href="{{route('banappeals')}}">
+                <button class="fw-bold">
+                    <i class="fa-solid fa-person-praying"></i>
+                    Ban Appeals
+                </button>
+            </a>
+        </li>
+        <li>
             <form method="POST" action="{{route('logout')}}">
                 {{csrf_field()}}
                 <button class="fw-bold">

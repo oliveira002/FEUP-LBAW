@@ -65,7 +65,11 @@
                                     <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
                                     <div class = "d-flex">
                                         <button class="modal-btn modal-hide cl">Close</button>
-                                        <input type="submit" class="modal-btn cf ms-3"  value="Confirm"/>
+                                        <form action="{{route('ban',['id' => $user->idclient])}}" method="post">
+                                            <input type="submit" class="modal-btn cf ms-3"  value="Confirm"/>
+                                            @method('put')
+                                            @csrf
+                                        </form>
                                     </div>
                                 </div>
                                 <div id="modal-{{($user->idclient * 2)}}" class="modal-window">
