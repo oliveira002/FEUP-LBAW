@@ -351,7 +351,11 @@ BEGIN
         RAISE EXCEPTION 'Cannot delete user, he currently has active auctions';
     END IF;
     IF EXISTS
-        (select from Bid where Bid.idClient = OLD.idClient AND Bid.Price = (Select currentprice from Auction where auction.idAuction = Bid.idAuction))
+        (SELECT * from bid JOIN auction ON bid.idAuction = auction.idAuction
+                    WHERE idClient = OLD.idclient AND price = (
+                        SELECT MAX(price) FROM bid b2 WHERE b2.idAuction = bid.idAuction
+                    ) AND auction.isover = false
+                            )
     THEN
         RAISE EXCEPTION 'Cannot delete user, he currently has active bids';
     END IF;
