@@ -77,6 +77,9 @@ class UserController extends Controller
     {
 
         if(Auth::check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             if(Auth::user()->username === $username){
                 $auctions = Auction::where('idowner',Auth::user()->idclient)->get();
                 return view('pages.profile',['user' => Auth::user(),'auctions'=>$auctions]);
@@ -97,6 +100,9 @@ class UserController extends Controller
     {
         $this->authorize("view", Auth::user());
         if(Auth::check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             return view('pages.mydetails',['user' => Auth::user()]);
         }
         else{
@@ -108,6 +114,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
@@ -122,6 +131,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
@@ -140,6 +152,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
@@ -172,6 +187,10 @@ class UserController extends Controller
     {
         $this->authorize("view", Auth::user());
         if(Auth::check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+
             return view('pages.balance',['user' => Auth::user()]);
         }
         else{
@@ -347,6 +366,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));

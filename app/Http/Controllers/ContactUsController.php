@@ -13,6 +13,9 @@ class ContactUsController extends Controller
     public function contactus(){
 
         if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             $favorites = FavoriteAuction::selectRaw('*')
                 ->where('idclient','=',Auth::user()->idclient)
                 ->limit(3)

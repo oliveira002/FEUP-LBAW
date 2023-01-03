@@ -97,4 +97,15 @@ class UserPolicy
     {
       return $user->idclient === $model->idclient;
     }
+
+    /**
+     * View all user information.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewAllUsers(?User $user)
+    {
+        return false;
+    }
 }

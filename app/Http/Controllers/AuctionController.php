@@ -33,6 +33,9 @@ class AuctionController extends Controller
     public function create()
     {
         if(Auth::check() || Auth::guard('admin')->check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             $allcategories = Category::all();
             if(Auth::user()){
                 $notifications = Notification::selectRaw('*')
@@ -98,6 +101,12 @@ class AuctionController extends Controller
      */
     public function show($id)
     {
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
+
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
         $this->authorize("view", $auction);
@@ -133,6 +142,9 @@ class AuctionController extends Controller
         $auction = Auction::find($id);
 
         if(Auth::check()) {
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             if(Auth::user()->idclient != $auction->idowner) {
                 return redirect()->back()->withErrors(['error' => 'You do not have permissions for that :)']);
             }
@@ -226,10 +238,10 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $auction = Auction::find($id);
         $this->authorize("delete", $auction);
-        
+
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         if(count($bids) != 0) {
             return redirect()->back()->withErrors(['error' => 'Auction has bids already']);

@@ -31,6 +31,9 @@ class FAQController extends Controller
             "Unfortunately, all bids are final. You'll have to wait for someone to outbid you."];
 
         if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             $favorites = FavoriteAuction::selectRaw('*')
                 ->where('idclient','=',Auth::user()->idclient)
                 ->limit(3)

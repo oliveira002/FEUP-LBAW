@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use App\Models\FavoriteAuction;
@@ -18,6 +19,9 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
         if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             $favorites = FavoriteAuction::selectRaw('*')
                 ->where('idclient','=',Auth::user()->idclient)
                 ->limit(3)
