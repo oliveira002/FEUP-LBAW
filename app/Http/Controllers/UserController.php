@@ -303,18 +303,19 @@ class UserController extends Controller
     {
         $user = User::find($username);
         $this->authorize("delete", $user);
+        $count1 = Auction::where('idowner','=',$user->idclient)
+        ->where('isover','=',false)
+        ->count();
 
-        $bids = Bid::selectRaw('*')
-                            ->where('isvalid', true)
-                            ->orderBy('price', 'desc')
-                            ->groupby('idauction','idbid')->get();
-        
-        $bid = $bids->filter(function ($item) use ($user) {        
-            return $item->idclient == $user->idclient;
-        })->values()->count();
+        $count2 = DB::select('SELECT COUNT(DISTINCT idbid) FROM bid, auction
+        WHERE idClient = ? AND price = (SELECT MAX(price) FROM bid b2 WHERE b2.idAuction = Bid.idAuction) And bid.idAuction = auction.idAuction AND auction.isover = false
+        ', [$user->idclient])[0]->count;
 
-        if( $bid > 0) {
+        if( $count2 > 0) {
             return redirect()->back()->withErrors(['error'=>'This user has bids!']);
+        }
+        if( $count1 > 0) {
+            return redirect()->back()->withErrors(['error'=>'This user has Active Auctions!']);
         }
 
         if(Auth::guard('admin')->check())
