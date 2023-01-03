@@ -43,6 +43,7 @@
                                         <input name="auc_pic" id="auc_pic" class="img-fluid" type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
                                     </button>
                                 </div>
+                                <div id="display-image" class="mt-4 mb-4"></div>
                             </div>
                             <div class="ms-5">
                                 <div class="input-box  ms-3 mb-3">
