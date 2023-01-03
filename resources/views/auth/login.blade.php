@@ -19,10 +19,10 @@
                     <div class="logoname">
                         <a href="{{route('/')}}"><span>WeBid</span></a>
                     </div>
-                    @if($errors->has('email'))
+                    @if($errors->has('wrong_credentials'))
                         <div class="alert alert-danger mb-1.5 mt-1.5">
                             <ul>
-                                <li>{{ $errors->first('email') }}</li>
+                                <li>{{ $errors->first('wrong_credentials') }}</li>
                             </ul>
                         </div>
                     @endif

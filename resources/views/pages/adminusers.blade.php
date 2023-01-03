@@ -51,7 +51,16 @@
                                         <td class = "mt-3">{{$user->email}}</td>
                                         <td>
                                             <a href = "{{route('profile',['username' => $user->username])}}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                                            <a class="open-modal fw-bold linkii" data-target="modal-{{($user->idclient * 2)-1}}"> <i class="fa-solid fa-ban"></i> </a>
+                                            @if(!$user->isbanned)
+                                                <a class="open-modal fw-bold linkii" data-target="modal-{{($user->idclient * 2)-1}}"><i class="fa-solid fa-ban"></i> </a>
+                                            @else
+                                                <a class="unban fw-bold linkii" data-target=""><i class="fa-solid fa-ban"></i> </a>
+                                                <style>
+                                                    .unban{
+                                                        visibility: hidden;
+                                                    }
+                                                </style>
+                                            @endif
                                             <a class="open-modal fw-bold linkii" data-target="modal-{{($user->idclient  * 2)}}"> <i class="fa-solid fa-trash"></i> </a>
                                         </td>
                                     </tr>

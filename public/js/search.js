@@ -93,51 +93,115 @@ function userUpdateHandler(){
 
     let Fhtml = ``
     for(const usr of item){
-        const html = `
-        <div class = "d-flex align-items-center">
-        <tr>
-            <th class = "fw-bold">${usr.idclient}</th>
-            <td>
-                <span class = "ms-2 fw-light">${usr.firstname} ${usr.lastname}</span>
-            </td>
-            <td class = "mt-3">${usr.email}</td>
-            <td>
-                <a href = "${window.location.origin + '/profile/' + usr.username}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient * 2)-1}"> <i class="fa-solid fa-ban"></i> </a>
-                <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient  * 2)}"> <i class="fa-solid fa-trash"></i> </a>
-            </td>
-        </tr>
-        </div>
-        <div id="modal-${(usr.idclient  * 2)-1}" class="modal-window">
-            <div class = "d-flex">
-                <h2>Ban Confirmation</h2>
-                <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+        console.log(usr.isbanned)
+        let html;
+        if(!usr.isbanned){
+            html = `
+            <div class = "d-flex align-items-center">
+            <tr>
+                <th class = "fw-bold">${usr.idclient}</th>
+                <td>
+                    <span class = "ms-2 fw-light">${usr.firstname} ${usr.lastname}</span>
+                </td>
+                <td class = "mt-3">${usr.email}</td>
+                <td>
+                    <a href = "${window.location.origin + '/profile/' + usr.username}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
+                    <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient * 2)-1}"> <i class="fa-solid fa-ban"></i> </a>
+                    <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient  * 2)}"> <i class="fa-solid fa-trash"></i> </a>
+                </td>
+            </tr>
             </div>
-            <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BAN </span>  the user <span class = "fw-bold"></span> </p>
-            <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
-            <div class = "d-flex">
-                <button class="modal-btn modal-hide cl">Close</button>
-                <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Confirm"/>
+            <div id="modal-${(usr.idclient  * 2)-1}" class="modal-window">
+                <div class = "d-flex">
+                    <h2>Ban Confirmation</h2>
+                    <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                </div>
+                <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BAN </span>  the user <span class = "fw-bold"></span> </p>
+                <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
+                <div class = "d-flex">
+                    <button class="modal-btn modal-hide cl">Close</button>
+                    <form action="{{route('ban',['id' => $user->idclient])}}" method="post">
+                        <input type="submit" class="modal-btn cf ms-3"  value="Confirm"/>
+                        @method('put')
+                        @csrf
+                    </form>
+                </div>
             </div>
-        </div>
-        <div id="modal-${(usr.idclient * 2)}" class="modal-window">
-            <div class = "d-flex">
-                <h2>Delete Confirmation</h2>
-                <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+            <div id="modal-${(usr.idclient * 2)}" class="modal-window">
+                <div class = "d-flex">
+                    <h2>Delete Confirmation</h2>
+                    <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                </div>
+                <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> DELETE </span> the user <span class = "fw-bold">${usr.firstname} ${usr.lastname}</span> </p>
+                <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
+                <div class = "d-flex">
+                    <button class="modal-btn modal-hide cl">Close</button>
+                    <form action="{{route('deleteUser',['id' => $user->idclient])}}" method="post">
+                        <input class="modal-btn cf ms-3" type="submit" value="Confirm" />
+                        @method('delete')
+                        @csrf
+                    </form>
+                </div>
             </div>
-            <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> DELETE </span> the user <span class = "fw-bold">${usr.firstname} ${usr.lastname}</span> </p>
-            <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
-            <div class = "d-flex">
-                <button class="modal-btn modal-hide cl">Close</button>
-                <form action="{{route('deleteUser',['id' => $user->idclient])}}" method="post">
-                    <input class="modal-btn cf ms-3" type="submit" value="Confirm" />
-                    @method('delete')
-                    @csrf
-                </form>
+            <div class="modal-fader"></div>
+            `
+        } else{
+            html = `
+            <div class = "d-flex align-items-center">
+            <tr>
+                <th class = "fw-bold">${usr.idclient}</th>
+                <td>
+                    <span class = "ms-2 fw-light">${usr.firstname} ${usr.lastname}</span>
+                </td>
+                <td class = "mt-3">${usr.email}</td>
+                <td>
+                    <a href = "${window.location.origin + '/profile/' + usr.username}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
+                    <a class="unban fw-bold linkii" data-target=""><i class="fa-solid fa-ban"></i> </a>
+                    <style>
+                        .unban{
+                            visibility: hidden;
+                        }
+                    </style>
+                    <a class="open-modal fw-bold linkii" data-target="modal-${(usr.idclient  * 2)}"> <i class="fa-solid fa-trash"></i> </a>
+                </td>
+            </tr>
             </div>
-        </div>
-    <div class="modal-fader"></div>
-        `
+            <div id="modal-${(usr.idclient  * 2)-1}" class="modal-window">
+                <div class = "d-flex">
+                    <h2>Ban Confirmation</h2>
+                    <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                </div>
+                <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> BAN </span>  the user <span class = "fw-bold"></span> </p>
+                <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
+                <div class = "d-flex">
+                    <button class="modal-btn modal-hide cl">Close</button>
+                    <form action="{{route('ban',['id' => $user->idclient])}}" method="post">
+                        <input type="submit" class="modal-btn cf ms-3"  value="Confirm"/>
+                        @method('put')
+                        @csrf
+                    </form>
+                </div>
+            </div>
+            <div id="modal-${(usr.idclient * 2)}" class="modal-window">
+                <div class = "d-flex">
+                    <h2>Delete Confirmation</h2>
+                    <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                </div>
+                <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> DELETE </span> the user <span class = "fw-bold">${usr.firstname} ${usr.lastname}</span> </p>
+                <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
+                <div class = "d-flex">
+                    <button class="modal-btn modal-hide cl">Close</button>
+                    <form action="{{route('deleteUser',['id' => $user->idclient])}}" method="post">
+                        <input class="modal-btn cf ms-3" type="submit" value="Confirm" />
+                        @method('delete')
+                        @csrf
+                    </form>
+                </div>
+            </div>
+            <div class="modal-fader"></div>
+            `
+        }
+
         Fhtml = Fhtml.concat(html)
     }
 
@@ -161,28 +225,33 @@ function updateAdminAuctionHandler(){
     for(const usr of item){
         const html = `
         <div class = "d-flex align-items-center">
-        <tr>
-            <th class = "fw-bold">${usr.idauction}</th>
-            <td>
-                <span class = "ms-2 fw-light">${usr.name}</span>
-            </td>
-            <td class = "mt-3">${usr.username}</td>
-            <td>
-                <a href = "${window.location.origin + '/auction/' + usr.idauction}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
-                <a class="open-modal fw-bold linkii" data-target="modal-${usr.idauction}"> <i class="fa-solid fa-trash"></i></a>
-            </td>
-        </tr>
+            <tr>
+                <th class = "fw-bold">${usr.idauction}</th>
+                <td>
+                    <span class = "ms-2 fw-light">${usr.name}</span>
+                </td>
+                <td class = "mt-3">${usr.username}</td>
+                <td>
+                    <a href = "${window.location.origin + '/auction/' + usr.idauction}" class = "linkii"> <i class="fa-solid fa-eye"></i></a>
+                    <a href = "${window.location.origin + '/edit/' + usr.idauction}" class = "linkii"> <i class="fa-solid fa-pencil"></i></a>
+                    <a class="open-modal fw-bold linkii" data-target="modal-${usr.idauction}"> <i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
         </div>
         <div id="modal-${usr.idauction}" class="modal-window">
             <div class = "d-flex">
-                <h2>Ban Confirmation</h2>
+                <h2>Delete Confirmation</h2>
                 <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
             </div>
             <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> DELETE </span>  the auction <span class = "fw-bold">${usr.name}</span> </p>
             <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
             <div class = "d-flex">
                 <button class="modal-btn modal-hide cl">Close</button>
-                <input type="submit" form="myform" class="modal-btn cf ms-3"  value="Confirm"/>
+                <form action="{{route('deleteAuction',['id' => $auctions[$idx]['idauction']])}}" method="post">
+                    <input class="modal-btn cf ms-3" type="submit" value="Confirm"/>
+                    @method('delete')
+                    @csrf
+                </form>
             </div>
         </div>
         <div class="modal-fader"></div>
