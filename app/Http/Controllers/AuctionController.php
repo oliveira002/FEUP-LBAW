@@ -58,15 +58,10 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize("web");
-        if(Auth::guard('admin')->check()){
+        //$this->authorize("web");
+        if(Auth::check() && !Auth::guard('admin')->check()){
             $lastId = Auction::selectRaw('idauction')->orderBy('idauction','desc')->first()->idauction;
-            $id = $lastId + 1;
-            if ($request->hasFile('auc_pic')) {
-                $image = $request->file('auc_pic');
-                $photoName = '1.jpg';
-                $image->move('images/' . ($id), $photoName);
-            }
+
 
             $auction = Auction::create([
                 'idauction' => $lastId+1,
@@ -80,6 +75,15 @@ class AuctionController extends Controller
                 'idcategory' => $request->input('cat'),
                 'idowner' => Auth::id(),
             ]);
+            $id = $lastId+1;
+            if (!file_exists('images/'.$id)) {
+                mkdir('images/'.$id, 0777, true);
+            }
+            if ($request->hasFile('auc_pic')) {
+                $image = $request->file('auc_pic');
+                $photoName = '1.jpg';
+                $image->move('images/' . ($id), $photoName);
+            }
 
             return redirect()->route('auction', ['id' => ($auction->idauction)]);
         }

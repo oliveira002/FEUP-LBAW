@@ -53,7 +53,7 @@
                                         echo "<li class='slide'>";
 
                                         echo "<div class='foto'>";
-                                        echo "<img src='../images/{$auction->idauction}/1.jpg' alt='Image 1' class ='fds img-fluid'/>";
+                                        echo "<img src='../images/{$auction->idauction}/1.jpg' alt='Image 1' class ='fds img-fluid' alt='Auction Image'/>";
                                         echo "</div>";
                                         echo "</li>";
 
@@ -66,7 +66,7 @@
                                                 echo "<li class='slide' hidden>";
                                             }
                                             echo "<div class='foto'>";
-                                            echo "<img src='../images/{$auction->idauction}/$i.jpg' alt='Image $i' class ='fds img-fluid'/>";
+                                            echo "<img src='../images/{$auction->idauction}/$i.jpg' alt='Image $i' class ='fds img-fluid' alt='Auction Image'/>";
                                             echo "</div>";
                                             echo "</li>";
                                         }

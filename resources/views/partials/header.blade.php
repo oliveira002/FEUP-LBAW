@@ -15,11 +15,13 @@ $user = Auth::user();
         <a href="{{route('/')}}" id="logo"> WeBid</a>
         <div class="search">
             <div class="sbar">
-                @if(Route::currentRouteName() === '/')
+
+                @if(Route::currentRouteName() === '/' || Route::currentRouteName() === 'AboutUs' || Route::currentRouteName() === 'FAQs' || Route::currentRouteName() === 'ContactUs')
                     <form action="{{ route('search') }}" method="get">
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
                         <a href=""> <i class="fa fa-search"> </i> </a>
                     </form>
+
                 @else
                     <button>
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">

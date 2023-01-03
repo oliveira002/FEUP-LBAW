@@ -213,6 +213,17 @@
         margin-left: 0!important;
         margin-bottom: 1em;
     }
+    #content .FaqWrapper{
+        margin-top: 1em;
+    }
+    #aboutUsGlobal .aboutUsWrapper {
+        gap: 60px;
+
+        flex-wrap: wrap;
+    }
+    #aboutUsGlobal #meetTheTeam{
+        margin-top: 1em;
+    }
 
 }
 

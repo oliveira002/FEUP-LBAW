@@ -17,7 +17,7 @@
 
                 <div class = "bgo d-flex justify-content-center">
 
-                    <img src="{{$str}}" width="70" height="70">
+                    <img src="{{$str}}" width="70" height="70" alt='Category Image'>
                 </div>
                 <span class = "fw-bold">{{$cat->name}}</span>
             </a>

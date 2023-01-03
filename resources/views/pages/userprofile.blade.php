@@ -15,7 +15,7 @@
                             $path = "/images/users/def.png";
                         }
                         ?>
-                        <img src= "{{$path}}" width="120" height="120">
+                        <img src= "{{$path}}" width="120" height="120" alt='User Image'>
                     </div>
                     <div class="nome ms-3 me-2">
                         <p class = "fw-bold mb-0"> {{$user->firstname}} {{$user->lastname}} </p>
@@ -62,7 +62,7 @@
                         @endif
                         <div class = "d-flex">
                             <div class="mb-4 lg">
-                                <img src= "{{$path}}" width="200" height="200">
+                                <img src= "{{$path}}" width="200" height="200" alt='User Image'>
                             </div>
                             <div class = "ms-4 mt-3">
                                 <p class = "mt-3 mb-2 ms-3 h4 fw-bold">{{$user->firstname}} {{$user->lastname}}</p>
@@ -184,7 +184,7 @@
                             @else
                                 @foreach($auctions as $auct)
                                     <div class = "d-flex mt-2 mb-5 centro">
-                                        <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" > </a>
+                                        <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" alt='Auction Image'> </a>
                                         <div class ="mb-4">
                                             <div>
                                                 <p class = "h5 ms-4 mt-2 cor2 fw-bold mb-0"> Auction Name:</p>
