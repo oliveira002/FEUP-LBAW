@@ -13,6 +13,9 @@ class AboutUsController extends Controller
     public function aboutus(){
 
         if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             $favorites = FavoriteAuction::selectRaw('*')
                 ->where('idclient','=',Auth::user()->idclient)
                 ->limit(3)

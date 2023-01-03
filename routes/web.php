@@ -31,7 +31,6 @@ Route::put('/profile/{username}/mypassword', 'UserController@updatePassword')->n
 //admin
 Route::get('/admin', 'AdminController@admin')->name('admin');
 Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
-Route::get('/admin/users', 'AdminController@getUsers')->name('manusers');
 Route::get('/admin/createuser', 'AdminController@createUser')->name('createuser');
 Route::get('/admin/auctions', 'AdminController@getAuctions')->name('manauctions');
 Route::get('/admin/bids', 'AdminController@getBids')->name('manbids');
@@ -83,8 +82,7 @@ Route::post('/reset-password', 'Auth\PasswordRecoveryController@updatePass')->mi
 
 // Search
 Route::get('/search/user/api', 'SearchController@getSearchUserResultsJson');
-Route::get('/search/auction/api', 'SearchController@getSearchActionsResultsJson');
+Route::get('/search/auction/api', 'SearchController@getSearchAuctionsResultsJson');
 Route::get('/search', 'SearchController@home')->name('search');
 Route::get('/search/api', 'SearchController@getSearchResultsJson');
-Route::get('/search', 'SearchController@home')->name('search');
 Route::get('/search/{category}', 'SearchController@homeCatgorySearch')->name('categorySearch');
