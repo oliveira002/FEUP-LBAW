@@ -24,6 +24,9 @@
                 <a href="{{route('adminlogs')}}"><span class="fa-solid fa-user mr-3"></span> Check Logs</a>
             </li>
             <li>
+                <a href="{{route('banappeals')}}"><span class="fa-solid fa-person-praying mr-3"></span> See Ban Appeals</a>
+            </li>
+            <li>
                 <a href="{{route('search')}}"><span class="fa-solid fa-magnifying-glass mr-3"></span> Search for Auction</a>
             </li>
             <li>

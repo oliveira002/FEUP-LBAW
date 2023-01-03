@@ -43,6 +43,10 @@ Route::get('/profile/{username}/edit', 'AdminController@editUser')->name('editus
 Route::post('/admin/createuser', 'Auth\RegisterController@createAdm')->name('admregister');
 Route::put('/admin/sellerreports/{id}', 'ReportController@changeStatus')->name('changeStatus');
 Route::put('/admin/auctionreports/{id}', 'ReportController@changeStatus2')->name('changeStatus2');
+Route::get('/admin/banappeals', 'AdminController@getBanAppeals')->name('banappeals');
+Route::put('/admin/ban/{id}', 'AdminController@banUser')->name('ban');
+Route::put('/admin/unban/{id}/{idbanappeal}', 'AdminController@unbanUser')->name('unban');
+Route::delete('/admin/rejectAppeal/{id}', 'AdminController@destroyBanAppeal')->name('rejectAppeal');
 
 //auctions
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');

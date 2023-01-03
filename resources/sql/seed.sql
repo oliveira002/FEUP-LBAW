@@ -2,7 +2,7 @@ create schema if not exists lbaw2225;
 ------------------------------------
 --         TABLE CREATION         --
 ------------------------------------
-
+DROP TABLE IF EXISTS BanAppeals;
 DROP TABLE IF EXISTS DeletedUser;
 DROP TABLE IF EXISTS AuctionLog;
 DROP TABLE IF EXISTS UserLog;
@@ -171,6 +171,14 @@ CREATE TABLE IF NOT EXISTS AuctionLog(
 CREATE TABLE IF NOT EXISTS DeletedUser(
     idClient INTEGER PRIMARY KEY NOT NULL, -- Has to be the same as a prior existing user
     username VARCHAR(30) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS BanAppeals(
+    idBanAppeal SERIAL PRIMARY KEY,
+    appealDate TIMESTAMP NOT NULL,
+    appealDescription  VARCHAR(500) NOT NULL,
+    idClient        INTEGER NOT NULL,
+    FOREIGN KEY (idClient) REFERENCES "user" ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -432,9 +440,9 @@ EXECUTE PROCEDURE Auction_search_update();
 CREATE INDEX search_idx ON Auction USING GIN (tsvectors);
 
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (1, 'cminister0', 'cminister0', 'nIbTeRcajGD', 'Constantina', 'Minister', '42749 Holmberg Trail', '2516074366', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (2, 'tmaciak1', 'tmaciak1', 'W9OTEv', 'Tammy', 'Maciak', '9 Elka Terrace', '8008783943', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (3, 'ethorsby2', 'ethorsby2', 'wsO9Nc', 'Eloise', 'Thorsby', '91 Stoughton Plaza', '5559455818', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (4, 'ipolo3', 'ipolo3', 'hxDecSfLTCi', 'Inness', 'Polo', '7 Pepper Wood Pass', '3373728347', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (2, 'tmaciak1', 'tmaciak1', 'W9OTEv', 'Tammy', 'Maciak', '9 Elka Terrace', '8008783943', true, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (3, 'ethorsby2', 'ethorsby2', 'wsO9Nc', 'Eloise', 'Thorsby', '91 Stoughton Plaza', '5559455818', true, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (4, 'ipolo3', 'ipolo3', 'hxDecSfLTCi', 'Inness', 'Polo', '7 Pepper Wood Pass', '3373728347', true, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (5, 'mgoodchild4', 'mgoodchild4', 'c1CJpHY', 'Margette', 'Goodchild', '06902 Anthes Hill', '3733114159', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (6, 'rgeeson5', 'rgeeson5', 'eXEKiNxOu3l3', 'Rouvin', 'Geeson', '5 Eastlawn Court', '1735779156', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (7, 'epepperill6', 'epepperill6', 'mlYGRB', 'Edin', 'Pepperill', '07332 Amoth Avenue', '7578641793', false, 0);
@@ -508,29 +516,29 @@ insert into "user" (idClient, username, email, password, firstName, lastName, ad
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (75, 'thenworth22', 'thenworth22', 'DcpuZY51Wn', 'Tedd', 'Henworth', '91613 Dexter Road', '8299683645', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (76, 'dmacmorland23', 'dmacmorland23', 'on9G5VNspwvy', 'Danila', 'MacMorland', '227 Roth Place', '7926263373', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (77, 'lraraty24', 'lraraty24', 'a5HZTZmEF74', 'Latisha', 'Raraty', '657 Eagan Road', '5112149554', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (78, 'psodory25', 'psodory25', 'PYFspnGyF', 'Powell', 'Sodory', '03807 Myrtle Circle', '4884349382', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (79, 'jgaratty26', 'jgaratty26', 'UQvEoH0UhfXq', 'Julina', 'Garatty', '53047 Cottonwood Road', '5558992542', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (80, 'caymes27', 'caymes27', 'X62OcRg', 'Cross', 'Aymes', '7584 Eliot Parkway', '7755908393', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (81, 'tnorval28', 'tnorval28', 'clDRtvbmtE', 'Thorvald', 'Norval', '72346 Straubel Crossing', '6909725178', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (82, 'lspaunton29', 'lspaunton29', 'ACD6JKV', 'Lauraine', 'Spaunton', '9256 Sugar Parkway', '8658446055', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (83, 'dpressey2a', 'dpressey2a', 'XobErV', 'Dominic', 'Pressey', '68041 Erie Pass', '2768496430', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (84, 'jfurber2b', 'jfurber2b', '6O1s37', 'Jennee', 'Furber', '522 Spaight Pass', '8306840210', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (85, 'bgrealish2c', 'bgrealish2c', 'xR93FYeyLx', 'Brear', 'Grealish', '91955 Twin Pines Junction', '1731441560', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (86, 'akeets2d', 'akeets2d', 'hbh4okiM', 'Alfredo', 'Keets', '8392 Bluestem Court', '1018456130', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (87, 'atemplman2e', 'atemplman2e', 'JfyhSEyiqzG', 'Aurea', 'Templman', '5 Clove Trail', '1794047856', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (88, 'lcrayker2f', 'lcrayker2f', 'vmAD0j1WcoC', 'Leeland', 'Crayker', '99 Pawling Plaza', '8625020011', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (89, 'epestricke2g', 'epestricke2g', 'tlqMJnYmqY', 'Ethel', 'Pestricke', '2 Forest Run Trail', '4722848515', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (90, 'hnorthgraves2h', 'hnorthgraves2h', 'Ig13mD79', 'Herold', 'Northgraves', '16941 Farwell Crossing', '4682333786', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (91, 'mrizzardi2i', 'mrizzardi2i', 'vU8vQFzlAf', 'Maddy', 'Rizzardi', '76434 Longview Junction', '1781173823', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (92, 'kmcgreal2j', 'kmcgreal2j', 'QcTg1hEUG3', 'Kurt', 'McGreal', '5431 Harper Terrace', '8842414318', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (93, 'slound2k', 'slound2k', '8gZr7ae', 'Steffen', 'Lound', '07 Swallow Court', '1909567354', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (94, 'rslay2l', 'rslay2l', 'QliWwgoC5x', 'Reade', 'Slay', '9090 Elgar Road', '7695797100', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (95, 'rkerrigan2m', 'rkerrigan2m', 'loPZBVrIzf', 'Robyn', 'Kerrigan', '2120 Grasskamp Court', '9515914536', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (96, 'kgietz2n', 'kgietz2n', 'Ict2AjFLg5Em', 'Katrine', 'Gietz', '9031 Ramsey Trail', '8027830091', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (97, 'afonzone2o', 'afonzone2o', '2jTFYhaDb1', 'Alberto', 'Fonzone', '2033 Hallows Alley', '3045724334', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (98, 'cboken2p', 'cboken2p', '5gJe6CwDDkE', 'Chandra', 'Boken', '605 Carioca Plaza', '9586223865', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (99, 'nkedge2q', 'nkedge2q', '8KHqQW9a0e', 'Neville', 'Kedge', '3 Chive Trail', '1631893877', false, 0);
-insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (100, 'shartgill2r', 'shartgill2r', 'hJBUKDuKEU', 'Sigmund', 'Hartgill', '7453 Ryan Way', '5403554240', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (78, 'psodory25', 'psodory25@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Powell', 'Sodory', '03807 Myrtle Circle', '4884349382', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (79, 'jgaratty26', 'jgaratty26@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Julina', 'Garatty', '53047 Cottonwood Road', '5558992542', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (80, 'caymes27', 'caymes27@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Cross', 'Aymes', '7584 Eliot Parkway', '7755908393', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (81, 'tnorval28', 'tnorval28@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Thorvald', 'Norval', '72346 Straubel Crossing', '6909725178', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (82, 'lspaunton29', 'lspaunton29@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Lauraine', 'Spaunton', '9256 Sugar Parkway', '8658446055', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (83, 'dpressey2a', 'dpressey2a@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Dominic', 'Pressey', '68041 Erie Pass', '2768496430', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (84, 'jfurber2b', 'jfurber2b@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Jennee', 'Furber', '522 Spaight Pass', '8306840210', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (85, 'bgrealish2c', 'bgrealish2c@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Brear', 'Grealish', '91955 Twin Pines Junction', '1731441560', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (86, 'akeets2d', 'akeets2d@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Alfredo', 'Keets', '8392 Bluestem Court', '1018456130', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (87, 'atemplman2e', 'atemplman2e@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Aurea', 'Templman', '5 Clove Trail', '1794047856', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (88, 'lcrayker2f', 'lcrayker2f@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Leeland', 'Crayker', '99 Pawling Plaza', '8625020011', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (89, 'epestricke2g', 'epestricke2g@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Ethel', 'Pestricke', '2 Forest Run Trail', '4722848515', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (90, 'hnorthgraves2h', 'hnorthgraves2h@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Herold', 'Northgraves', '16941 Farwell Crossing', '4682333786', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (91, 'mrizzardi2i', 'mrizzardi2i@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Maddy', 'Rizzardi', '76434 Longview Junction', '1781173823', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (92, 'kmcgreal2j', 'kmcgreal2j@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Kurt', 'McGreal', '5431 Harper Terrace', '8842414318', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (93, 'slound2k', 'slound2k@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Steffen', 'Lound', '07 Swallow Court', '1909567354', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (94, 'rslay2l', 'rslay2l@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Reade', 'Slay', '9090 Elgar Road', '7695797100', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (95, 'rkerrigan2m', 'rkerrigan2m@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Robyn', 'Kerrigan', '2120 Grasskamp Court', '9515914536', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (96, 'kgietz2n', 'kgietz2n@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Katrine', 'Gietz', '9031 Ramsey Trail', '8027830091', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (97, 'afonzone2o', 'afonzone2o@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Alberto', 'Fonzone', '2033 Hallows Alley', '3045724334', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (98, 'cboken2p', 'cboken2p@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Chandra', 'Boken', '605 Carioca Plaza', '9586223865', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (99, 'nkedge2q', 'nkedge2q@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Neville', 'Kedge', '3 Chive Trail', '1631893877', false, 0);
+insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (100, 'shartgill2r', 'shartgill2r@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Sigmund', 'Hartgill', '7453 Ryan Way', '5403554240', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (101, 'cminister1', 'cminister1@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Constantina', 'Minister', '42749 Holmberg Trail', '2536074366', false, 0);
 insert into Category (idCategory, name) values (1, 'Desporto');
 insert into Category (idCategory, name) values (2, 'Lazer');
@@ -594,5 +602,9 @@ insert into FavoriteAuction (idClient, idAuction) values (11, 10);
 insert into SystemManager (idSysMan, username , email, password) values (1, 'ljedrych0', 'ljedrych0@blogtalkradio.com', '4HmZdUZG6kV');
 insert into SystemManager (idSysMan, username , email, password) values (2, 'kcollihole1', 'kcollihole1@so-net.ne.jp', 'n5gLdwK');
 insert into SystemManager (idSysMan, username , email, password) values (3, 'admin', 'admin@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W');
+insert into BanAppeals (idBanAppeal, appealDate, appealDescription, idClient) values (1, '2022-10-19 13:12:10', 'Please unban me I didnt do anything wrong', 2);
+insert into BanAppeals (idBanAppeal, appealDate, appealDescription, idClient) values (2, '2022-10-19 13:12:10', 'I dont care about your stupid rules unban me now!', 3);
+insert into BanAppeals (idBanAppeal, appealDate, appealDescription, idClient) values (3, '2022-10-19 13:12:10', 'It was an honest mistake, I didnt know you couldnt do that.', 4);
+
 
 
