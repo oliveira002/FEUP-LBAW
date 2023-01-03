@@ -296,9 +296,12 @@
                             <span class = "fw-bold"> Auction Owner: </span>
                             <span class = "ms-2"> {{$owner->firstname}} {{$owner->lastname}}</span>
                         </div>
+                        <?php
+                            $var = \App\Models\AuctionOwner::where('idclient', $auction->idowner)->first()->rating;
+                        ?>
                         <div class = "d-flex">
                             <span class = "fw-bold"> Rating: </span>
-                            <span class = "ms-2"> 5.0</span>
+                            <span class = "ms-2"> {{$var}} </span>
                         </div>
                         <div class = "d-flex">
                             <span class = "fw-bold"> Category: </span>

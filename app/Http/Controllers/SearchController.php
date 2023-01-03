@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Auction;
+use App\Models\Bid;
+use App\Models\AuctionOwner;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Notification;
@@ -43,7 +45,7 @@ class SearchController extends Controller
         }
 
         if (!isset($_GET['max'])) {
-            $max = 0;
+            $max = 100000000;
         }
         else{
             $max = $_GET['max'];
@@ -52,7 +54,6 @@ class SearchController extends Controller
             $max = 100000000;
         }
 
-        //antes daqui
         if (!isset($_GET['category'])) {
             $category = 0;
         }
@@ -100,14 +101,25 @@ class SearchController extends Controller
             }
             return true;
         })->values();
-        /*
-        $sorted_collection = $auctions->sortBy(function($auction) {
-            if($auction->bids->count() > 0){
-                dd($auction->bids->count());
+        
+        $sorted_collection = $auctions->sortBy(function($auction) use ($sort){
+            if($sort == 0){
+                return $auction->currentprice;
             }
-            return $auction->bids->count();
-        });*/
-        return json_encode($filtered_collection);
+            else if($sort == 1){
+                $var = Bid::where('idauction', $auction->idauction)->count();
+                return $var;
+            }
+            else if($sort == 2){
+                $var = AuctionOwner::where('idclient', $auction->idowner)->first()->rating;
+                return $var;
+            }
+            else{
+                return $auction->currentprice;
+            }
+            
+        })->values();
+        return json_encode($sorted_collection);
     }
 
     public function getSearchUserResultsJson() {
@@ -155,7 +167,13 @@ class SearchController extends Controller
         else{
             $notifications = null;
         }
-        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
+        $filtered_collection = $auctions->filter(function ($item)  {        
+            if($item->isover === true){
+                return false;
+            }
+            return true;
+        })->values();
+        return view('pages.search',['auctions' => $filtered_collection,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
     }
     
     public function home() {
@@ -178,6 +196,12 @@ class SearchController extends Controller
         else{
             $notifications = null;
         }
-        return view('pages.search',['auctions' => $auctions,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
+        $filtered_collection = $auctions->filter(function ($item)  {        
+            if($item->isover === true){
+                return false;
+            }
+            return true;
+        })->values();
+        return view('pages.search',['auctions' => $filtered_collection,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
     }
 }
