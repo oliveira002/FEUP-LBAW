@@ -351,7 +351,11 @@ BEGIN
         RAISE EXCEPTION 'Cannot delete user, he currently has active auctions';
     END IF;
     IF EXISTS
-        (select from Bid where Bid.idClient = OLD.idClient AND Bid.Price = (Select currentprice from Auction where auction.idAuction = Bid.idAuction))
+        (SELECT * from bid JOIN auction ON bid.idAuction = auction.idAuction
+                    WHERE idClient = OLD.idclient AND price = (
+                        SELECT MAX(price) FROM bid b2 WHERE b2.idAuction = bid.idAuction
+                    ) AND auction.isover = false
+                            )
     THEN
         RAISE EXCEPTION 'Cannot delete user, he currently has active bids';
     END IF;
@@ -540,15 +544,15 @@ insert into "user" (idClient, username, email, password, firstName, lastName, ad
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (99, 'nkedge2q', 'nkedge2q@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Neville', 'Kedge', '3 Chive Trail', '1631893877', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (100, 'shartgill2r', 'shartgill2r@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Sigmund', 'Hartgill', '7453 Ryan Way', '5403554240', false, 0);
 insert into "user" (idClient, username, email, password, firstName, lastName, address, phoneNumber, isBanned, balance) values (101, 'cminister1', 'cminister1@gmail.com', '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W', 'Constantina', 'Minister', '42749 Holmberg Trail', '2536074366', false, 0);
-insert into Category (idCategory, name) values (1, 'Desporto');
-insert into Category (idCategory, name) values (2, 'Lazer');
-insert into Category (idCategory, name) values (3, 'Veículos');
-insert into Category (idCategory, name) values (4, 'Arte');
-insert into Category (idCategory, name) values (5, 'Imobiliário');
-insert into Category (idCategory, name) values (6, 'Moda');
-insert into Category (idCategory, name) values (7, 'Tecnologia');
-insert into Category (idCategory, name) values (8, 'Casa e Jardim');
-insert into Category (idCategory, name) values (9, 'Animais');
+insert into Category (idCategory, name) values (1, 'Sports');
+insert into Category (idCategory, name) values (2, 'Entertainment');
+insert into Category (idCategory, name) values (3, 'Vehicles');
+insert into Category (idCategory, name) values (4, 'Art');
+insert into Category (idCategory, name) values (5, 'Real Estate');
+insert into Category (idCategory, name) values (6, 'Fashion');
+insert into Category (idCategory, name) values (7, 'Technology');
+insert into Category (idCategory, name) values (8, 'Home and Garden');
+insert into Category (idCategory, name) values (9, 'Animals');
 insert into AuctionOwner (idClient) values (1);
 insert into AuctionOwner (idClient) values (2);
 insert into AuctionOwner (idClient) values (3);

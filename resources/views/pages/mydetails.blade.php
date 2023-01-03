@@ -8,7 +8,15 @@
             <div class="outside">
                 <div class="spec d-flex flex-column ps-3 pe-3">
                     <div class="stuf ms-3 mt-4 mb-4">
-                        <p class="h2 fw-bold"> My Details </p>
+                        <div class="d-flex gustavo">
+                            <p class="h2 fw-bold"> My Details </p>
+                            <div class="ms laura">
+                                <button class="open-modal dell" data-target="modal-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <u class="">Delete Account</u>
+                                </button>
+                            </div>
+                        </div>
                         <p class="h4"> Feel free to change any of your details right below! </p>
                     </div>
                     @if($errors->has('error'))
@@ -114,6 +122,28 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
+                    <div class="stuf ms-3 mt-4 mb-2">
+                        <p class="h2 fw-bold"> Delete Account </p>
+                        <p class="h4"> If you want to erase your account!</p>
+                    </div>
+                    <div id="modal-2" class="modal-window">
+                        <div class = "d-flex">
+                            <h2>Deletion Confirmation</h2>
+                            <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
+                        </div>
+                        <p class = "rfix">This is a confirmation message to make sure you really want to DELETE your account: <span class= "fw-bold h5"></span> </p>
+                        <p class = "rfix">If you do not wish to delete, just press close, otherwise, press the confirm button.</p>
+                        <div class = "d-flex">
+                            <button class="modal-btn modal-hide cl">Close</button>
+                            <form action={{route('suicideUser',['id' => $user->idclient])}} method="post">
+                                <input class="modal-btn cf ms-3" type="submit" value="Confirm" />
+                                @method('delete')
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-fader"></div>
                 </div>
             </div>
         </div>
