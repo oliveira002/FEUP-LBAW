@@ -226,10 +226,14 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
-
+        
         $auction = Auction::find($id);
         $this->authorize("delete", $auction);
-
+        
+        $bids = Bid::select('*')->where('idauction','=',$id)->get();
+        if(count($bids) != 0) {
+            return redirect()->back()->withErrors(['error' => 'Auction has bids already']);
+        }
         if(Auth::guard('admin')->check()){
             SystemManagerLog::create([
                 'idsysman' => Auth::guard('admin')->id(),
