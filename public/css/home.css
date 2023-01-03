@@ -165,3 +165,7 @@ img { max-width: 100%;}
         transform: scaleY(1);
     }
 }
+
+.searchsubmit{
+    margin-right: 1em;
+}

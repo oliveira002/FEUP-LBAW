@@ -19,14 +19,14 @@ $user = Auth::user();
                 @if(Route::currentRouteName() === '/' || Route::currentRouteName() === 'AboutUs' || Route::currentRouteName() === 'FAQs' || Route::currentRouteName() === 'ContactUs')
                     <form action="{{ route('search') }}" method="get">
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
-                        <a href=""> <i class="fa fa-search"> </i> </a>
+                        <button class="searchsubmit" type="submit"><i class="fa fa-search"></i></button>
                     </form>
 
                 @else
-                    <button>
+                    <form action="{{ route('search') }}" method="get">
                         <input type="text" id="searchbar" name="search_query" placeholder="Search anything...">
-                        <a href=""> <i class="fa fa-search"> </i> </a>
-                    </button>
+                        <button class="searchsubmit" type="submit"> <i class="fa fa-search"> </i> </button>
+                    </form>
                 @endif
             </div>
         </div>
