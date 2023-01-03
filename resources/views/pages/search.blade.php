@@ -45,7 +45,7 @@
             <div class = "d-flex flex-column">
                 <div>
                     <input id = "normal" class  type="radio" name= "filter" value="0" checked>
-                    <label for="filter">Recommended</label>
+                    <label for="filter">Price</label>
                 </div>
                 <div>
                     <input id = "sort_pop" class type="radio" name= "filter" value="1">
