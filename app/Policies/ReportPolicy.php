@@ -3,7 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\SellerReport;
+use App\Models\AuctionReport;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class ReportPolicy
 {
@@ -16,6 +19,7 @@ class ReportPolicy
 
     public function create(?User $user)
     {
+      exit();
       if(Auth::guard('admin')->check()){
         return false;
       }

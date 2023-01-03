@@ -33,7 +33,7 @@ class ReportController extends Controller
         $content = $request->input('desc');
         $ownerUsername = $request->route('id');
         $idowner = User::where('username',$ownerUsername)->first()->idclient;
-
+        
         if (Auth::check()) {
             if (Auth::user()->idclient === $idowner) {
                 return redirect()->back()->withErrors(['error' => 'Cannot Report Yourself']);
@@ -43,7 +43,7 @@ class ReportController extends Controller
         } elseif (!Auth::check()) {
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
-        $this->authorize('create');
+        //$this->authorize("create",SellerReport::class);
         $content = $request->input('desc');
         $ownerUsername = $request->route('id');
         $idowner = User::where('username',$ownerUsername)->first()->idclient;
