@@ -372,6 +372,139 @@ paths:
       responses:
         '200':
           description: 'OK. Show Bids page UI'
+  /profile/{username}/myfavourites:
+    get:
+      operationId: 'R114'
+      summary: 'R114: View User Favourites'
+      description: 'Show the User favourites. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Favourites page UI'        
+  /profile/{username}/mywins:
+    get:
+      operationId: 'R115'
+      summary: 'R115: View User Wins'
+      description: 'Show the User wins. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: username
+          description: 'Username of the user to show the profile.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Wins page UI'
+  /forgot-password:
+    get:
+      operationId: 'R116'
+      summary: 'R116: Forgot Password'
+      description: 'Show the Forgot Password form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'OK. Show Forgot Password form UI'
+    post:
+      operationId: 'R117'
+      summary: 'R117: Forgot Password'
+      description: 'Process the Forgot Password form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - email
+      responses:
+        '302':
+          description: 'Redirect after processing Forgot Password form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Forgot Password. Redirect to Login page.'
+                  value: '/login'
+                302Error:
+                  description: 'Failed Forgot Password. Redirect to Forgot Password form.'
+                  value: '/forgot-password'
+  /reset-password/{token}:
+    get:
+      operationId: 'R118'
+      summary: 'R118: Reset Password'
+      description: 'Show the Reset Password form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: token
+          description: 'Token of the user to reset the password.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK. Show Reset Password form UI'
+    post:
+      operationId: 'R119'
+      summary: 'R119: Reset Password'
+      description: 'Process the Reset Password form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+        - in: path
+          name: token
+          description: 'Token of the user to reset the password.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                password2:
+                  type: string
+              required:
+                - password
+                - password2
+      responses:
+        '302':
+          description: 'Redirect after processing Reset Password form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Reset Password. Redirect to Login page.'
+                  value: '/login'
+                302Error:
+                  description: 'Failed Reset Password. Redirect to Reset Password form.'
+                  value: '/reset-password/{token}'
   /auction/{id}:
     get:
       operationId: 'R201'
@@ -594,6 +727,254 @@ paths:
       responses:
         '302':
           description: 'Redirect after processing Auction Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+  /readnotification:
+    post:
+      operationId: 'R207'
+      summary: 'R207: Read Notification Action'
+      description: 'Process read Notification form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idnotification:
+                  type: number
+              required:
+                - idnotification
+      responses:
+        '302':
+          description: 'Notification Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+
+        '403':
+          description: 'Forbidden.'
+  /profile/{id}/createReview:
+    post:
+      operationId: 'R208'
+      summary: 'R208: Create Review Action'
+      description: 'Process create Review form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the user to show.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                iduser:
+                  type: number
+                idauction:
+                  type: number
+                rating:
+                  type: number
+                comment:
+                  type: string
+              required:
+                - iduser
+                - idauction
+                - rating
+                - comment
+      responses:
+        '302':
+          description: 'Redirect after processing Review Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+  /profile/{id}/createReport:
+    post:
+      operationId: 'R209'
+      summary: 'R209: Create Report Action'
+      description: 'Process create Report form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the user to show.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                iduser:
+                  type: number
+                idauction:
+                  type: number
+                reason:
+                  type: string
+              required:
+                - iduser
+                - idauction
+                - reason
+      responses:
+        '302':
+          description: 'Redirect after processing Report Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+  /auction/{id}/createReport:
+    post:
+      operationId: 'R210'
+      summary: 'R210: Create Report Action'
+      description: 'Process create Report form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                iduser:
+                  type: number
+                idauction:
+                  type: number
+                reason:
+                  type: string
+              required:
+                - iduser
+                - idauction
+                - reason
+      responses:
+        '302':
+          description: 'Redirect after processing Report Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+                302Error:
+                  description: 'Failed Create. Redirect to Auction details.'
+                  value: '/auction/{id}'
+        '403':
+          description: 'Forbidden. Redirect to Home page.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                403Error:
+                  description: 'Forbidden. Redirect to Home page.'
+                  value: '/'
+  /auction/{id}/favorite:
+    post:
+      operationId: 'R211'
+      summary: 'R211: Favorite Auction Action'
+      description: 'Process favorite Auction form. Access: USR, ADM'
+      tags:
+        - 'M02: Auctions'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction to show.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                iduser:
+                  type: number
+                idauction:
+                  type: number
+              required:
+                - iduser
+                - idauction
+      responses:
+        '302':
+          description: 'Redirect after processing Favorite Auction Form.'
           headers:
             Location:
               schema:
@@ -946,7 +1327,7 @@ paths:
                   value: '/admin/users'
         '403':
           description: 'Forbidden. User is not an admin.'
-  /about:
+  /AboutUs:
     get:
       operationId: 'R508'
       summary: 'R508: View About Page'
@@ -957,7 +1338,7 @@ paths:
         '200':
           description: 'Ok. Show'
 
-  /contacts:
+  /ContactUs:
     get:
       operationId: 'R509'
       summary: 'R509: View Contact Page'
@@ -978,7 +1359,220 @@ paths:
       responses:
         '200':
           description: 'Ok. Show'
-
+  /admin/logs:
+    get:
+      operationId: 'R511'
+      summary: 'R511: View Logs Page'
+      description: 'View the Logs Page. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/sellerreports:
+    get:
+      operationId: 'R512'
+      summary: 'R512: View Seller Reports Page'
+      description: 'View the Seller Reports Page. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/auctionreports:
+    get:
+      operationId: 'R513'
+      summary: 'R513: View Auction Reports Page'
+      description: 'View the Auction Reports Page. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/sellerreports/{id}:
+    put:
+      operationId: 'R514'
+      summary: 'R514: Update Seller Report Action'
+      description: 'Update a Seller Report. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the seller report.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '302':
+          description: 'Redirect after processing Admin Report Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Update. Redirect to Admin Seller Reports Page.'
+                  value: '/admin/sellerreports'
+                302Error:
+                  description: 'Failed Update. Redirect to admin seller report details.'
+                  value: '/admin/sellerreports'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/auctionreports/{id}:
+    put:
+      operationId: 'R515'
+      summary: 'R515: Update Auction Report Action'
+      description: 'Update an Auction Report. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the auction report.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '302':
+          description: 'Redirect after processing Admin Report Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Update. Redirect to Admin Auction Reports Page.'
+                  value: '/admin/auctionreports'
+                302Error:
+                  description: 'Failed Update. Redirect to admin auction report details.'
+                  value: '/admin/auctionreports'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/banappeals:
+    get:
+      operationId: 'R516'
+      summary: 'R516: View Ban Appeals Page'
+      description: 'View the Ban Appeals Page. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/ban/{id}:
+    put:
+      operationId: 'R517'
+      summary: 'R517: Update Ban Appeal Action'
+      description: 'Update a Ban Appeal. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the user.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '302':
+          description: 'Redirect after processing Admin Ban Appeal Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Update. Redirect to Admin Ban Appeals Page.'
+                  value: '/admin/banappeals'
+                302Error:
+                  description: 'Failed Update. Redirect to admin ban appeal details.'
+                  value: '/admin/banappeals'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/unban/{id}/{idbanappeal}:
+    put:
+      operationId: 'R518'
+      summary: 'R518: Update Unban Appeal Action'
+      description: 'Update an Unban Appeal. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the user appeal.'
+          required: true
+          schema:
+            type: number
+        - in: path
+          name: idbanappeal
+          description: 'ID of the ban appeal.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '302':
+          description: 'Redirect after processing Admin Unban Appeal Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Update. Redirect to Admin Ban Appeals Page.'
+                  value: '/admin/banappeals'
+                302Error:
+                  description: 'Failed Update. Redirect to admin ban appeal details.'
+                  value: '/admin/banappeals'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /admin/rejectAppeal/{id}:
+    delete:
+      operationId: 'R519'
+      summary: 'R519: Reject Ban Appeal Action'
+      description: 'Reject a Ban Appeal. Access: ADM'
+      tags:
+        - 'M05: User Administration and Static pages'
+      parameters:
+        - in: path
+          name: id
+          description: 'ID of the Ban Appeal.'
+          required: true
+          schema:
+            type: number
+      responses:
+        '302':
+          description: 'Redirect after processing Admin Ban Appeal Form.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful Update. Redirect to Admin Ban Appeals Page.'
+                  value: '/admin/banappeals'
+                302Error:
+                  description: 'Failed Update. Redirect to admin ban appeal details.'
+                  value: '/admin/banappeals'
+        '403':
+          description: 'Forbidden. User is not an admin.'
+  /BanAppeal:
+    get:
+      operationId: 'R520'
+      summary: 'R520: View Ban Appeal Page'
+      description: 'View the Ban Appeal Page. Access: USR'
+      tags:
+        - 'M05: User Administration and Static pages'
+      responses:
+        '200':
+          description: 'Ok. Show'
   /profile/{username}/review:
     get:
       operationId: 'R601'
