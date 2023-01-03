@@ -61,5 +61,25 @@ function setEndDateMinMaxValue(){
 
 }setEndDateMinMaxValue();
 
+const image = document.getElementById('auc_pic');
+let img = document.querySelector('img');
+let upload = "";
+if(image != null){
+    image.addEventListener('change', function() {
+        console.log(image.value);
+        const reader = new FileReader();
+        reader.readAsDataURL(image.files[0]);
+        reader.addEventListener('load', function() {
+            document.getElementById('display-image').innerHTML = `<img class="img-fluid" src="${reader.result}" alt="User Image" width="100%" height="100%">`;
+
+        });
+
+
+
+
+
+    });
+}
+
 
 

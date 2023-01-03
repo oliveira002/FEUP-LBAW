@@ -303,7 +303,7 @@ footer{
 #sidebar {
     min-width: 260px;
     max-width: 260px;
-    background: #000000;
+    background: #0f0f0f;
     color: #fff;
     transition: all 0.3s;
     position: absolute;

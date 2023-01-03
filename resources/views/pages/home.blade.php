@@ -31,7 +31,7 @@
                     <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                         <div class="container-img">
                             <div class = "itemauc">
-                                <a href="{{route('auction',['id' => $auct->idauction])}}"><img class= "img-fluid" src= "images/{{$auct->idauction}}/1.jpg"></a>
+                                <a href="{{route('auction',['id' => $auct->idauction])}}"><img class= "img-fluid" src= "images/{{$auct->idauction}}/1.jpg" alt='Auction Image'></a>
                                 <a href="{{route('auction',['id' => $auct->idauction])}}">
                                     <div class = "prop" >
                                         <p id = "price" class = "fw-bold mb-0 mt-1">{{$auct->currentprice}}€ </p>
@@ -54,7 +54,7 @@
                         <div class="d-flex flex-column ps-3 pe-3 pt-3 ">
                             <div class="container-img">
                                 <div class = "itemauc">
-                                    <a href="{{route('auction',['id' => $auct->idauction])}}"><img class= "img-fluid" src= "images/{{$auct->idauction}}/1.jpg"></a>
+                                    <a href="{{route('auction',['id' => $auct->idauction])}}"><img class= "img-fluid" src= "images/{{$auct->idauction}}/1.jpg" alt='Auction Image'></a>
                                     <a href="{{route('auction',['id' => $auct->idauction])}}">
                                         <div class = "prop" >
 

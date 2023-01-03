@@ -5,7 +5,9 @@
         <form action="{{route('submitNewAuc')}}" method="POST" class="d-flex" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div>
-                <div class="uppic">
+                <div class="uppic mt-3">
+
+                    <div id="display-image" class=""></div>
                     <label for="auc_pic"><i class="fa-solid fa-cloud-arrow-up"></i>Upload a picture</label>
                     <input name="auc_pic" id="auc_pic" class="img-fluid" required type="file" accept="image/jpeg, image/png" width="400" height="510" style="display: none">
                 </div>

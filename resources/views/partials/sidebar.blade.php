@@ -8,7 +8,7 @@
                 $path = "/images/users/def.png";
             }
             ?>
-            <img src="{{$path}}" width="120" height="120">
+            <img src="{{$path}}" width="120" height="120" alt='User Image'>
         </div>
         <div class="nome ms-2 me-2">
             <p class="fw-bold mb-1">Hi,</p>

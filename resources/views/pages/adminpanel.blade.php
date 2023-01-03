@@ -14,7 +14,7 @@
                         </div>
                         <div class = "d-flex mt-4 numbers">
                             <div class = "d-flex boxi">
-                                <img class = "fill" src= "/user.png" width="50" height="50">
+                                <img class = "fill" src= "/user.png" width="50" height="50" alt="User Logo">
                                 <div class = "ms-2">
                                     <span class = "h5"> Total </span>
                                     <p class = "h5 mb-0"> Costumers </p>
@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                             <div class = "d-flex boxi ms-5">
-                                <img class = "fill" src= "/numauc.png" width="50" height="50">
+                                <img class = "fill" src= "/numauc.png" width="50" height="50" alt="Auctions Logo">
                                 <div class = "ms-2">
                                     <span class = "h5"> Total </span>
                                     <p class = "h5 mb-0"> Auctions </p>
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class = "d-flex boxi ms-5">
-                                <img class = "fill" src= "/numbid.png" width="50" height="50">
+                                <img class = "fill" src= "/numbid.png" width="50" height="50" alt="Bids Logo">
                                 <div class = "ms-2">
                                     <span class = "h5"> Total</span>
                                     <p class = "h5"> Bids </p>
