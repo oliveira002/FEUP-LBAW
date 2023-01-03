@@ -14,6 +14,13 @@ use App\Models\Notification;
 class SearchController extends Controller
 {
     public function getSearchResultsJson() {
+
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
+
         if (!isset($_GET['display'])) {
             $display = 0;
         }
@@ -89,7 +96,7 @@ class SearchController extends Controller
             }
         }
 
-        $filtered_collection = $auctions->filter(function ($item) use ($display,$sort,$min, $max) {        
+        $filtered_collection = $auctions->filter(function ($item) use ($display,$sort,$min, $max) {
             if(!($min <= $item->currentprice && $item->currentprice <= $max)){
                 return false;
             }
@@ -101,7 +108,7 @@ class SearchController extends Controller
             }
             return true;
         })->values();
-        
+
         $sorted_collection = $filtered_collection->sortBy(function($auction) use ($sort){
             if($sort == 0){
                 return $auction->currentprice;
@@ -117,12 +124,21 @@ class SearchController extends Controller
             else{
                 return $auction->currentprice;
             }
-            
+
         })->values();
         return json_encode($sorted_collection);
     }
 
     public function getSearchUserResultsJson() {
+
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
+        $this->authorize('viewAllUsers', User::class);
+
+
         if (!isset($_GET['search_query']) || $_GET['search_query'] == "") {
             $users = User::all();
             return json_encode($users);
@@ -135,7 +151,15 @@ class SearchController extends Controller
         return json_encode($users);
     }
 
-    public function getSearchActionsResultsJson() {
+    public function getSearchAuctionsResultsJson() {
+
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
+        $this->authorize('viewAllUsers', User::class);
+
         if (!isset($_GET['search_query']) || $_GET['search_query'] == "") {
             $users = Auction::getAll()->get();
             return json_encode($users);
@@ -148,6 +172,13 @@ class SearchController extends Controller
     }
 
     public function homeCatgorySearch($category){
+
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
+
         $categories = Category::selectRaw('*')->get();
         if (!isset($_GET['search_query']) || $_GET['search_query'] == ""){
             $search_query = '';
@@ -167,7 +198,7 @@ class SearchController extends Controller
         else{
             $notifications = null;
         }
-        $filtered_collection = $auctions->filter(function ($item)  {        
+        $filtered_collection = $auctions->filter(function ($item)  {
             if($item->isover === true){
                 return false;
             }
@@ -175,8 +206,15 @@ class SearchController extends Controller
         })->values();
         return view('pages.search',['auctions' => $filtered_collection,'text_to_default' =>$search_query,'category' => $categories,'notifications' => $notifications]);
     }
-    
+
     public function home() {
+
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
+
         $categories = Category::selectRaw('*')->get();
         if (!isset($_GET['search_query']) || $_GET['search_query'] == ""){
             $search_query = '';
@@ -196,7 +234,7 @@ class SearchController extends Controller
         else{
             $notifications = null;
         }
-        $filtered_collection = $auctions->filter(function ($item)  {        
+        $filtered_collection = $auctions->filter(function ($item)  {
             if($item->isover === true){
                 return false;
             }

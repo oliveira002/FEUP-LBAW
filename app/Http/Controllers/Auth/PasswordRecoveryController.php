@@ -19,6 +19,11 @@ class PasswordRecoveryController extends Controller
      */
     public function showRecoveryForm()
     {
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
         return view('auth.forgot-password');
     }
 
@@ -35,6 +40,11 @@ class PasswordRecoveryController extends Controller
     }
 
     public function resetPass($token) {
+        if(Auth::user()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+        }
         return view('auth.reset-password', ['token' => $token]);
     }
 

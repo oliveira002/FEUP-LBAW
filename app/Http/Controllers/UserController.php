@@ -77,6 +77,9 @@ class UserController extends Controller
     {
 
         if(Auth::check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             if(Auth::user()->username === $username){
                 $auctions = Auction::where('idowner',Auth::user()->idclient)->get();
                 return view('pages.profile',['user' => Auth::user(),'auctions'=>$auctions]);
@@ -97,6 +100,9 @@ class UserController extends Controller
     {
         $this->authorize("view", Auth::user());
         if(Auth::check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
             return view('pages.mydetails',['user' => Auth::user()]);
         }
         else{
@@ -108,6 +114,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
@@ -122,6 +131,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
@@ -140,6 +152,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
@@ -172,6 +187,10 @@ class UserController extends Controller
     {
         $this->authorize("view", Auth::user());
         if(Auth::check()){
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
+
             return view('pages.balance',['user' => Auth::user()]);
         }
         else{
@@ -302,19 +321,20 @@ class UserController extends Controller
     public function destroy($username)
     {
         $user = User::find($username);
-        //$this->authorize("delete", $user);
+        $this->authorize("delete", $user);
+        $count1 = Auction::where('idowner','=',$user->idclient)
+        ->where('isover','=',false)
+        ->count();
 
-        $bids = Bid::selectRaw('*')
-                            ->where('isvalid', true)
-                            ->orderBy('price', 'desc')
-                            ->groupby('idauction','idbid')->get();
+        $count2 = DB::select('SELECT COUNT(DISTINCT idbid) FROM bid, auction
+        WHERE idClient = ? AND price = (SELECT MAX(price) FROM bid b2 WHERE b2.idAuction = Bid.idAuction) And bid.idAuction = auction.idAuction AND auction.isover = false
+        ', [$user->idclient])[0]->count;
 
-        $bid = $bids->filter(function ($item) use ($user) {
-            return $item->idclient == $user->idclient;
-        })->values()->count();
-
-        if( $bid > 0) {
+        if( $count2 > 0) {
             return redirect()->back()->withErrors(['error'=>'This user has bids!']);
+        }
+        if( $count1 > 0) {
+            return redirect()->back()->withErrors(['error'=>'This user has Active Auctions!']);
         }
 
         if(Auth::guard('admin')->check())
@@ -382,6 +402,9 @@ class UserController extends Controller
         $this->authorize("view", Auth::user());
         if(Auth::check()){
             $user = Auth::user();
+            if(Auth::user()->isbanned){
+                return redirect()->intended(route('BanAppeal'));
+            }
         }
         else{
             return redirect()->intended(route('login'));
