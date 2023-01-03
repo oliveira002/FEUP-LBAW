@@ -40,7 +40,7 @@
                                     </div>
                                     <div id="modalS-{{$appeal->idbanappeal}}" class="modal-window">
                                         <div class="d-flex">
-                                            <h2>Admin Log</h2>
+                                            <h2>Ban Appeal</h2>
                                             <button class="close modal-hide"><i class="fa-solid fa-x "></i></button>
                                         </div>
                                         <div class ="d-flex">
@@ -70,7 +70,7 @@
                                     </div>
                                     <div id="modal-{{($appeal->idbanappeal  * 2)}}" class="modal-window">
                                         <div class = "d-flex">
-                                            <h2>Accept Appeal Confirmation</h2>
+                                            <h2>Reject Appeal Confirmation</h2>
                                             <button class = "close modal-hide"><i class="fa-solid fa-x "></i></button>
                                         </div>
                                         <p class = "rfix">This is a confirmation message to make sure you really want to <span class = "fw-bold"> REJECT </span>  the user's ban appeal <span class = "fw-bold"></span> </p>
