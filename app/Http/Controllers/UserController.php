@@ -323,9 +323,16 @@ class UserController extends Controller
         $user = User::find($username);
         $this->authorize("delete", $user);
 
-        $bids = Bid::selectRaw('*')->where('idclient','=',$user->idclient)->get();
+        $bids = Bid::selectRaw('*')
+                            ->where('isvalid', true)
+                            ->orderBy('price', 'desc')
+                            ->groupby('idauction','idbid')->get();
+        
+        $bid = $bids->filter(function ($item) use ($user) {        
+            return $item->idclient == $user->idclient;
+        })->values()->count();
 
-        if(count($bids) > 0) {
+        if( $bid > 0) {
             return redirect()->back()->withErrors(['error'=>'This user has bids!']);
         }
 
