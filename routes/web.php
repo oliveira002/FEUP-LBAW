@@ -38,6 +38,7 @@ Route::get('/admin/logs', 'AdminController@getLogs')->name('adminlogs');
 Route::get('/admin/sellerreports', 'AdminController@getSellerReports')->name('sellreports');
 Route::get('/admin/auctionreports', 'AdminController@getAuctionReports')->name('auctionreports');
 Route::delete('/admin/users/{id}', 'UserController@destroy')->name('deleteUser');
+Route::delete('/suicide/{id}', 'UserController@suicide')->name('suicideUser');
 Route::get('/profile/{username}/edit', 'AdminController@editUser')->name('editusers');
 Route::post('/admin/createuser', 'Auth\RegisterController@createAdm')->name('admregister');
 Route::put('/admin/sellerreports/{id}', 'ReportController@changeStatus')->name('changeStatus');

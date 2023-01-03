@@ -405,3 +405,15 @@ ul.payment-selection{
     box-sizing: border-box;
 }
 
+.gustavo {
+    align-items: center;
+    justify-content: center;
+}
+
+.laura {
+    margin-left: auto;
+}
+
+.laura u, .laura i {
+    color: red;
+}
