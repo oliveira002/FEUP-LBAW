@@ -614,3 +614,15 @@ span.num-count{
     overflow: auto;
 }
 
+.bandesc {
+    padding : 1rem 3rem;
+    background-color: #f4f4f4;
+    box-shadow: rgb(129 129 129 / 22%) 0px 0.5px 4px;
+    color: black;
+    margin-bottom: 0;
+
+
+    border-radius: 0.5rem;
+}
+
+
