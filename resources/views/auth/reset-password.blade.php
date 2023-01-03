@@ -43,8 +43,9 @@
                         <!-- Password input -->
                         <div class="form-outline mb-4">
                             <input type="password" name="password" id="password" class="form-control form-control-lg"
-                                   required/>
+                                   required minlength="8"/>
                             <label for="password" class="form-label">Password</label>
+                            <div>Password needs to have at least 8 characters, an uppercase and lowercase letter, a special character and a digit.</div>
                             @if ($errors->has('password'))
                                 <div class="alert alert-danger mb-1.5 mt-1.5">
                                     <ul>
@@ -56,7 +57,7 @@
                         <!-- Password confirmation input -->
                         <div class="form-outline mb-4">
                             <input type="password" name="password_confirmation" id="password_confirmation"
-                                   class="form-control form-control-lg" required/>
+                                   class="form-control form-control-lg" required minlength="8"/>
                             <label for="password_confirmation" class="form-label">Confirm Password</label>
                             @if ($errors->has('password_confirmation'))
                                 <div class="alert alert-danger mb-1.5 mt-1.5">

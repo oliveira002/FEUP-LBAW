@@ -46,7 +46,7 @@ Route::put('/admin/auctionreports/{id}', 'ReportController@changeStatus2')->name
 Route::get('/admin/banappeals', 'AdminController@getBanAppeals')->name('banappeals');
 Route::put('/admin/ban/{id}', 'AdminController@banUser')->name('ban');
 Route::put('/admin/unban/{id}/{idbanappeal}', 'AdminController@unbanUser')->name('unban');
-Route::delete('/admin/rejectAppeal/{id}', 'AdminController@destroyBanAppeal')->name('rejectAppeal');
+Route::delete('/admin/rejectAppeal/{id}/{unban}', 'AdminController@destroyBanAppeal')->name('rejectAppeal');
 
 //auctions
 Route::get('/auction/{id}/edit', 'AuctionController@edit')->name('edit');
