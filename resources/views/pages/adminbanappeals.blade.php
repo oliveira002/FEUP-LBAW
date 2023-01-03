@@ -77,7 +77,7 @@
                                         <p class = "rfix">If you do not wish to perform this action, just press close otherwise press the confirm button.</p>
                                         <div class = "d-flex">
                                             <button class="modal-btn modal-hide cl">Close</button>
-                                            <form action="{{route('rejectAppeal',['id' => $appeal->idbanappeal])}}" method="post">
+                                            <form action="{{route('rejectAppeal',['id' => $appeal->idbanappeal, 'unban' => 0])}}" method="post">
                                                 <input type="submit" class="modal-btn cf ms-3"  value="Confirm"/>
                                                 @method('delete')
                                                 @csrf

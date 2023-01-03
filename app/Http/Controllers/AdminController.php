@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers;
 
 use Auth;
+use phpDocumentor\Reflection\Types\Boolean;
+use PhpParser\Node\Expr\Cast\Bool_;
+use Ramsey\Uuid\Type\Integer;
 
 class AdminController extends Controller
 {
@@ -146,24 +149,34 @@ class AdminController extends Controller
 
         if(!$user->isbanned){
             $user->update(['isbanned' => "1"]);
+
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Banned user with ID: ' . $id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Ban',
+            ]);
+
+            return redirect()->back()->withErrors(["success"=>"User was banned!"]);
         }
 
-        return redirect()->back()->withErrors(["success"=>"User was banned!"]);
+        return redirect()->back()->withErrors(["success"=>"User was already banned!"]);
     }
 
-    public function destroyBanAppeal($id)
+    public function destroyBanAppeal($id, $unban)
     {
         $ban_appeal = BanAppeals::find($id);
 
         if(Auth::guard('admin')->check())
         {
-
-            SystemManagerLog::create([
-                'idsysman' => Auth::guard('admin')->id(),
-                'logdescription' => 'Refused Ban appeal with ID: ' . $ban_appeal->idbanappeal,
-                'logdate' => date('Y-m-d H:i:s'),
-                'logtype' => 'other',
-            ]);
+            if(!$unban){
+                SystemManagerLog::create([
+                    'idsysman' => Auth::guard('admin')->id(),
+                    'logdescription' => 'Refused Ban appeal with ID: ' . $ban_appeal->idbanappeal,
+                    'logdate' => date('Y-m-d H:i:s'),
+                    'logtype' => 'other',
+                ]);
+            }
 
             $ban_appeal->delete();
             return redirect()->back();
@@ -182,7 +195,14 @@ class AdminController extends Controller
 
         if($user->isbanned){
             $user->update(['isbanned' => "0"]);
-            $this->destroyBanAppeal($request->idbanappeal);
+            $this->destroyBanAppeal($request->idbanappeal, true);
+
+            SystemManagerLog::create([
+                'idsysman' => Auth::guard('admin')->id(),
+                'logdescription' => 'Unbanned user with ID: ' . $request->id,
+                'logdate' => date('Y-m-d H:i:s'),
+                'logtype' => 'Unban',
+            ]);
         }
 
         return redirect()->back()->withErrors(["success"=>"User was unbanned!"]);

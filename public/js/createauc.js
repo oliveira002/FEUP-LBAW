@@ -73,11 +73,6 @@ if(image != null){
             document.getElementById('display-image').innerHTML = `<img class="img-fluid" src="${reader.result}" alt="User Image" width="100%" height="100%">`;
 
         });
-
-
-
-
-
     });
 }
 
