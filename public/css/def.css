@@ -513,7 +513,7 @@ a[data-toggle="collapse"] {
 
   #logoutbt {
     border-radius: 0;
-    background-color: black;
+    background-color: inherit;
     color: white;
     margin:0;
     padding:10px 0;

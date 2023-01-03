@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Auction;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class BidController extends Controller
@@ -17,7 +18,7 @@ class BidController extends Controller
         $amount = $request->input('amount');
 
         $idauction = (int) $request->route('id');
-
+        DB::beginTransaction();
         $auction = Auction::find($idauction);
 
         $minBid = 0.05 * $auction->startingprice;
@@ -40,27 +41,33 @@ class BidController extends Controller
 
         if(Auth::check()) {
             if(Auth::user()->idclient === $auction->idowner) {
+                DB::rollback();
                 return redirect()->back()->withErrors(['error' => 'Cannot bid on your own auction']);
             }
         }
 
         elseif(Auth::guard('admin')->check()) {
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'An admin cannot do that!']);
         }
 
         elseif(!Auth::check()) {
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
 
         if($auction->enddate < now()) {
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'Auction finished already!']);
         }
 
         if($amount < $minBid) {
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'Bid price is below minimum!']);
         }
 
         if(Auth::user()->idclient === $maxId) {
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'You cannot outbid yourself!']);
         }
 
@@ -79,6 +86,7 @@ class BidController extends Controller
 
 
         if(!is_numeric($amount)){
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'The amount must be an integer!']);
         }
         try{
@@ -87,8 +95,10 @@ class BidController extends Controller
                 $auction->enddate = date('Y-m-d H:i:s', strtotime('+30 minutes'));
                 $auction->save();
             }
+            DB::commit();
         }
         catch(\Exception $e){
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => 'Your bid cannot be lower than the current price!']);
         }
 
