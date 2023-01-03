@@ -20,7 +20,7 @@ class BanAppeals extends Model
      * @var array
      */
     protected $fillable = [
-        'appealdate','appealdescription','idclient',
+        'idbanappeal','appealdate','appealdescription','idclient',
     ];
 
     protected $casts = [

@@ -49,6 +49,7 @@ class AuctionController extends Controller
             }
             return(view('pages.createauction',['categories' => $allcategories, 'notifications' => $notifications]));
         }
+        $this->authorize("create", Auction::class);
         abort(403);
 
     }
@@ -90,6 +91,7 @@ class AuctionController extends Controller
 
             return redirect()->route('auction', ['id' => ($auction->idauction)]);
         }
+        $this->authorize("create", Auction::class);
         abort(403);
     }
 
@@ -106,7 +108,7 @@ class AuctionController extends Controller
                 return redirect()->intended(route('BanAppeal'));
             }
         }
-
+        if(is_numeric($id) == false) abort(404);
         $bids = Bid::select('*')->where('idauction','=',$id)->get();
         $auction = Auction::find($id);
         $this->authorize("view", $auction);

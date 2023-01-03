@@ -1,29 +1,29 @@
 @extends('layouts.app')
 
 <?php
-$day = $auction->enddate->format('d');
-$month = $auction->enddate->format('m');
-$hour = $auction->enddate->format('H');
-$mins = $auction->enddate->format('i');
-$monthstr = $auction->enddate->format('M');
-$year = $auction->enddate->format('Y');
-$secs = $auction->enddate->format('s');
+$day=$auction->enddate->format('d');
+$month=$auction->enddate->format('m');
+$hour=$auction->enddate->format('H');
+$mins=$auction->enddate->format('i');
+$monthstr=$auction->enddate->format('M');
+$year=$auction->enddate->format('Y');
+$secs=$auction->enddate->format('s');
 if ($hour / 10 < 0) {
-    $hour = "0" . $hour;
+    $hour="0" . $hour;
 }
 if ($mins / 10 < 0) {
-    $mins = "0" . $mins;
+    $mins="0" . $mins;
 }
-$finalStr = $year . '-' . $month . '-' . $day . 'T' . $hour . ':' . $mins;
-$minBid = 0.05 * $auction->startingprice;
-$minBid = " " . ($minBid + $auction->currentprice);
+$finalStr=$year . '-' . $month . '-' . $day . 'T' . $hour . ':' . $mins;
+$minBid=0.05 * $auction->startingprice;
+$minBid=" " . ($minBid + $auction->currentprice);
 ?>
 
 
 
 @section('content')
     <div class="page">
-        <form action="{{route('updateAuction',['id' => $auction->idauction])}}" method="POST" class = "d-flex" enctype="multipart/form-data">
+        <form action="{{route('updateAuction',['id' => $auction->idauction])}}" method="POST" class="d-flex" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
             <div>
