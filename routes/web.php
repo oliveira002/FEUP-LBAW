@@ -66,6 +66,7 @@ Route::put('/auction/{id}/edit','AuctionController@update')->name('updateAuction
 Route::get('/FAQs', 'FAQController@faqs')->name('FAQs');
 Route::get('/AboutUs', 'AboutUsController@aboutus')->name('AboutUs');
 Route::get('/ContactUs', 'ContactUsController@contactus')->name('ContactUs');
+Route::get('/BanAppeal', 'BanAppealController@banappeal')->name('BanAppeal');
 
 
 // Authentication
