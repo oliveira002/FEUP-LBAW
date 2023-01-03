@@ -49,7 +49,7 @@
 </head>
 <body>
 <main>
-    @if(Route::currentRouteName() === 'login' || Route::currentRouteName() === 'register' || Route::currentRouteName() === 'recovery' || Route::currentRouteName() === 'password.reset' )
+    @if(Route::currentRouteName() === 'login' || Route::currentRouteName() === 'register' || Route::currentRouteName() === 'recovery' || Route::currentRouteName() === 'password.reset' || Route::currentRouteName() === 'BanAppeal')
 
     @elseif (Route::currentRouteName() === 'profile' || Route::currentRouteName() === 'myauctions' || Route::currentRouteName() === 'balance' || Route::currentRouteName() === 'mybids' || Route::currentRouteName() === 'details' || Route::currentRouteName() === 'favourites' || Route::currentRouteName() === 'support' || Route::currentRouteName() === 'editusers' || Route::currentRouteName() === 'myfav' || Route::currentRouteName() === 'mywins' || Route::currentRouteName() === 'mynotifs')
 
@@ -64,7 +64,10 @@
     <section id="content">
         @yield('content')
     </section>
-    @include('partials.footer')
+    @if(Route::currentRouteName() != 'BanAppeal')
+            @include('partials.footer')
+    @endif
+
 </main>
 </body>
 </html>
