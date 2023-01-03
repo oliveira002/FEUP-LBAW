@@ -102,7 +102,7 @@ class SearchController extends Controller
             return true;
         })->values();
         
-        $sorted_collection = $auctions->sortBy(function($auction) use ($sort){
+        $sorted_collection = $filtered_collection->sortBy(function($auction) use ($sort){
             if($sort == 0){
                 return $auction->currentprice;
             }
