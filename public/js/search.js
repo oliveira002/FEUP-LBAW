@@ -33,7 +33,6 @@ function auctionUpdatedHandler() {
     auction.forEach(e => {
         e.remove()
     });
-    console.log(item)
     let Fhtml = ``
     var number = 0
     for(const auc of item){
