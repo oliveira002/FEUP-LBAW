@@ -22,7 +22,7 @@
                                     $path = "/images/users/def.png";
                                 }
                                 ?>
-                                <img src= "{{$path}}" width="200" height="200">
+                                <img src= "{{$path}}" width="200" height="200" alt='User Image'>
                             </div>
                             <div class = "ms-4 mt-3">
                                 <p class = "mt-3 mb-2 ms-3 h4 fw-bold">{{$user->firstname}} {{$user->lastname}}</p>
@@ -42,7 +42,6 @@
                                     }
                                 ?>
                                 <p class = "mb-3 ms-3 h3 cor ">{{$rating}}</p>
-                                <a href = "" class = "mb-2 ms-3 h5 rep mt-2"><button> Report user <i class="fa-regular fa-thumbs-down"></i>  </button> </a>
                             </div>
                         </div>
                         <div class = "d-flex">
@@ -82,7 +81,7 @@
                             @else
                                 @foreach($auctions as $auct)
                                     <div class = "d-flex mt-2 mb-5 centro">
-                                        <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" > </a>
+                                        <a href = "{{route('auction',['id' => $auct->idauction])}}"> <img class ="endimg img-fluid" width="193" height="230" src= "/images/{{$auct->idauction}}/1.jpg" alt='Auction Image'> </a>
                                         <div class ="mb-4">
                                             <div>
                                                 <p class = "h5 ms-4 mt-2 cor2 fw-bold mb-0"> Auction Name:</p>

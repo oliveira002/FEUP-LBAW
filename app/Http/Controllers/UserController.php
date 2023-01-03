@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bid;
+use App\Models\FavoriteAuction;
+use App\Models\Notification;
 use App\Models\SystemManagerLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use Auth;
 use Hash;
+use Illuminate\Support\Facades\DB;
 
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
 class UserController extends Controller
 {
     /**
@@ -103,6 +115,24 @@ class UserController extends Controller
         $id = $user->idclient;
         $myauctions = Auction::selectRaw('*')->where('isover','=','False')->where('idowner','=',$id)->get();
         return view('pages.userAuctions',['user' => $user, 'auctions' => $myauctions]);
+
+    }
+
+    public function favAuctions() {
+        $this->authorize("view", Auth::user());
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+        $id = $user->idclient;
+        $auctions = Auction::join('favoriteauction', 'auction.idauction', '=', 'favoriteauction.idauction')
+            ->where('favoriteauction.idclient', $id)
+            ->select('*')
+            ->get();
+        return view('pages.userfav',['user' => $user, 'auctions' => $auctions]);
 
     }
 
@@ -297,4 +327,65 @@ class UserController extends Controller
             abort(403);
         }
     }
+
+    public function readNotif() {
+        if (!isset($_GET['id'])) {
+            abort(403);
+        }
+        else{
+            $id= $_GET['id'];
+        }
+
+        $notif = Notification::select('*')->where('idnotification','=',$id)->first();
+
+        $notif->isread = 1;
+        $notif->save();
+        return redirect()->back();
+    }
+
+    public function myWinnings() {
+        $this->authorize("view", Auth::user());
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+        $id = $user->idclient;
+
+
+        $auctions = Auction::join('bid', 'auction.idauction', '=', 'bid.idauction')
+            ->where('bid.idclient', $id)
+            ->where('isover','1')
+            ->where(function($query) {
+                $query->whereColumn('bid.price', '=', DB::raw('(SELECT MAX(bid.price) FROM bid WHERE bid.idauction = auction.idauction)'));
+            })
+            ->get();
+
+
+        return view('pages.userwinnings',['auctions' => $auctions,'user' => $user]);
+    }
+
+    public function myNotifications() {
+
+        $this->authorize("view", Auth::user());
+        if(Auth::check()){
+            $user = Auth::user();
+        }
+        else{
+            return redirect()->intended(route('login'));
+        }
+
+
+        $notifications = Notification::selectRaw('*')
+            ->where('idclient','=',Auth::user()->idclient)
+            ->where('isread','=','False')
+            ->orderBy('isread','asc')
+            ->orderBy('notifdate','desc')
+            ->get();
+
+        return view('pages.mynotifs',['notifications' => $notifications,'user' => $user]);
+    }
+
 }

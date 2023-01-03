@@ -303,7 +303,7 @@ footer{
 #sidebar {
     min-width: 260px;
     max-width: 260px;
-    background: #000000;
+    background: #0f0f0f;
     color: #fff;
     transition: all 0.3s;
     position: absolute;
@@ -492,6 +492,22 @@ a[data-toggle="collapse"] {
     display: none;
 }
 
+.notlist ul li {
+    align-items: center;
+}
+
+.notlist ul li div {
+    align-items: center;
+}
+
+.notlist ul li span {
+    margin-bottom: 0;
+}
+
+.notlist ul li button {
+   margin-left: auto;
+}
+
 
 
 
@@ -590,4 +606,10 @@ span.num-count{
 
 .search.s2{
     display: none;
+}
+
+.notlist {
+    height: fit-content;
+    max-height: 393px;
+    overflow: auto;
 }

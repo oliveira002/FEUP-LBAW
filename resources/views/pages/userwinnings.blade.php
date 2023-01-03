@@ -2,7 +2,7 @@
 
 @section('content')
     <link href="{{asset('css/profile.css')}}" rel="stylesheet">
-    <div class="cover out5">
+    <div class="cover out7">
         <div class="prof d-flex">
             @include('partials.sidebar')
             <div class="myAuctions">
@@ -10,13 +10,12 @@
                     <div class="stuf ms-3 mt-4 mb-4">
                         <div class="stuf ms-3 mt-5 mb-4">
                             <div class="d-flex">
-                                <h1 class="fw-bold">My Auctions</h1>
-                                <a class="new_auc" href="{{route('createAuction')}}"><i class="fa-solid fa-plus"></i> Create Auction</a>
+                                <h1 class="fw-bold">My Winnings</h1>
                             </div>
-                            <p class="fw-bold">Here you can see all your auctions</p>
+                            <p class="fw-bold">Here you can see all your winnings!</p>
                             <hr class="mt-3 mb-3">
                             @if(count($auctions)==0)
-                                <div>You have no auctions. Create one! </div>
+                                <div>You never won an auction :| </div>
                             @else
                                 @foreach($auctions as $auct)
                                     <div class="row">
@@ -29,10 +28,10 @@
                                                     <p class="fw-bold fs-5">{{$auct->name}}</p>
                                                 </div>
                                                 <div class="col-12 " id="item-info">
-                                                    <p class="fw-bold">Current Bid: {{$auct->currentprice}}€</p>
+                                                    <p class="fw-bold">Winning Bid: {{$auct->currentprice}}€</p>
                                                 </div>
                                                 <div class="col-12" id="item-info">
-                                                    <p class="fw-bold">Ends: {{$auct->enddate}}</p>
+                                                    <p class="fw-bold">Ended: {{$auct->enddate}}</p>
                                                 </div>
                                                 <div class="col-12" id="item-info">
                                                     <a href="{{route('auction',['id' => $auct->idauction])}}">

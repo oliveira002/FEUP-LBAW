@@ -28,7 +28,7 @@ $minBid = " " . ($minBid + $auction->currentprice);
             @method('PUT')
             <div>
                 <div class="foto">
-                    <img class="img-fluid" src="/images/{{$auction->idauction}}/1.jpg" width="400" height="510">
+                    <img class="img-fluid" src="/images/{{$auction->idauction}}/1.jpg" width="400" height="510" alt='Auction Image'>
                 </div>
                 <div class="uppic mb-2">
                     <label for="auc_pic"><i class="fa-solid fa-cloud-arrow-up"></i>Change picture</label>

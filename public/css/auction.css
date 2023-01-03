@@ -18,9 +18,7 @@
     position: absolute;
 }
 
-.foto img {
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 0.5px 4px;
-}
+
 
 .caixa {
     background-color: #f4f4f4;
@@ -416,6 +414,13 @@
     width:410px;
     box-shadow: 1px 1px 6px #0000001c;
 }
+#display-image{
+    max-width: 20rem;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
 
+    border-radius: 4px;
 
-
+}

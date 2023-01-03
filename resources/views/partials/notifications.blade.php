@@ -1,5 +1,4 @@
 <div class="notlist escondido" id = "notifs">
-
     <ul>
         <li>
             <div class="d-flex init">
@@ -19,10 +18,10 @@
             </li>
         @else
         @foreach($notifications as $notif)
-            <li>
+            <li class="d-flex"  notif-id = {{$notif->idnotification}}>
                 <span class="h6 fw-bold me-2"> {{$counter}}</span>
-                {{$notif->content}}
-                <button class="ms-3">
+                <span>{{$notif->content}} </span>
+                <button class = "rNotif">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </li>

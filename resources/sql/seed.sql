@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS Deposit(
 
 CREATE TABLE IF NOT EXISTS Notification(
     idNotification  SERIAL PRIMARY KEY,
-    content         VARCHAR(50) NOT NULL,
+    content         VARCHAR(300) NOT NULL,
     isRead          BOOLEAN NOT NULL,
     notifDate       TIMESTAMP NOT NULL,
     idClient        INTEGER NOT NULL,
@@ -571,7 +571,7 @@ insert into Auction (idAuction, name , startDate, endDate, startingPrice, curren
 insert into Auction (idAuction, name , startDate, endDate, startingPrice, currentPrice, description, isOver, idCategory, idOwner) values (10, 'Digital Camera', '2022-10-02 10:18:06', '2023-01-07 17:54:09', 50, 50, 'Polaroid i20X29 20.0MP Digital Camera', false, 7, 10);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (1, '2022-10-21 00:25:00', 'true', 95, 1, 10);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (2, '2022-10-22 10:00:30', 'true', 1400, 2, 9);
-insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (3, '2022-10-20 21:00:00', 'true', 21000, 3, 8);
+insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (3, '2022-10-20 21:00:00', 'true', 21000, 101, 8);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (4, '2022-10-22 14:30:00', 'true', 1151, 4, 7);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (5, '2022-10-19 10:00:00', 'true', 100, 5, 6);
 insert into Bid (idBid, bidDate, isValid, price, idClient, idAuction) values (6, '2022-10-18 12:10:00', 'true', 20000, 6, 5);

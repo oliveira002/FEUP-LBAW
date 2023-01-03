@@ -33,20 +33,29 @@ class ReportController extends Controller
         $content = $request->input('desc');
         $ownerUsername = $request->route('id');
         $idowner = User::where('username',$ownerUsername)->first()->idclient;
+        
+        if (Auth::check()) {
+            if (Auth::user()->idclient === $idowner) {
+                return redirect()->back()->withErrors(['error' => 'Cannot Report Yourself']);
+            }
+        } elseif (Auth::guard('admin')->check()) {
+            return redirect()->back()->withErrors(['error' => 'An admin cannot report users']);
+        } elseif (!Auth::check()) {
+            return redirect()->back()->withErrors(['error' => 'Need to login first!']);
+        }
+        //$this->authorize("create",SellerReport::class);
+        $content = $request->input('desc');
+        $ownerUsername = $request->route('id');
+        $idowner = User::where('username',$ownerUsername)->first()->idclient;
         $user = Auth::user()->idclient;
 
         // falta distinguir se ganhou ou nao a auction
 
-        if (Auth::check()) {
-            if (Auth::user()->idclient === $idowner) {
-                return redirect()->back()->withErrors(['error' => 'Cannot Review Yourself']);
-            }
-        } elseif (Auth::guard('admin')->check()) {
-            return redirect()->back()->withErrors(['error' => 'An admin cannot review anyone']);
-        } elseif (!Auth::check()) {
-            return redirect()->back()->withErrors(['error' => 'Need to login first!']);
-        }
+        
 
+        $user = Auth::user()->idclient;
+
+        // falta distinguir se ganhou ou nao a auction
 
 
         $report = new SellerReport();
@@ -66,20 +75,19 @@ class ReportController extends Controller
         $content = $request->input('desc');
         $idauction = $request->route('id');
         $idowner = Auction::where('idauction',$idauction)->first()->idowner;
-        $user = Auth::user()->idclient;
-
-        // falta distinguir se ganhou ou nao a auction
 
         if (Auth::check()) {
             if (Auth::user()->idclient === $idowner) {
-                return redirect()->back()->withErrors(['error' => 'Cannot Review Yourself']);
+                return redirect()->back()->withErrors(['error' => 'Cannot Report Your Own Auction']);
             }
         } elseif (Auth::guard('admin')->check()) {
-            return redirect()->back()->withErrors(['error' => 'An admin cannot review anyone']);
+            return redirect()->back()->withErrors(['error' => 'An admin cannot report auctions']);
         } elseif (!Auth::check()) {
             return redirect()->back()->withErrors(['error' => 'Need to login first!']);
         }
+        $user = Auth::user()->idclient;
 
+        // falta distinguir se ganhou ou nao a auction
 
 
         $report = new AuctionReport();
@@ -95,7 +103,10 @@ class ReportController extends Controller
     }
 
     public function changeStatus($id) {
-        $this->authorize('update',SellerReport::class);
+        //$this->authorize('update',SellerReport::class);
+        if(!Auth::guard('admin')->check()){
+            return redirect()->back()->withErrors(['Not an ADMIN!']);
+        }
         $report = SellerReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);
@@ -120,7 +131,10 @@ class ReportController extends Controller
     }
 
     public function changeStatus2($id) {
-        $this->authorize('update',AuctionReport::class);
+        if(!Auth::guard('admin')->check()){
+            return redirect()->back()->withErrors(['Not an ADMIN!']);
+        }
+        //$this->authorize('update',AuctionReport::class);
         $report = AuctionReport::find($id);
         if($report->issolved) {
             $report->update(['issolved' => "0"]);

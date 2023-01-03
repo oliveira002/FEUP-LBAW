@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
- 
+
 use Closure;
 use App\Models\Auction;
 use Illuminate\Support\Facades\DB;
@@ -80,13 +80,10 @@ class AfterMiddleware
                     }
                 }
                 DB::commit();
-            }
-            catch(\Exception $e){
+            } catch (\Exception $e) {
                 DB::rollback();
+                throw $e;
             }
-            
-        
-        
         return $next($request);
     }
 }

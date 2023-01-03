@@ -8,7 +8,7 @@
                 $path = "/images/users/def.png";
             }
             ?>
-            <img src="{{$path}}" width="120" height="120">
+            <img src="{{$path}}" width="120" height="120" alt='User Image'>
         </div>
         <div class="nome ms-2 me-2">
             <p class="fw-bold mb-1">Hi,</p>
@@ -57,10 +57,18 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{route('myfav',['username' =>$user->username])}}">
                 <button class="fw-bold">
                     <i class="fa-solid fa-star"></i>
-                    Favourites
+                    My Favourites
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('mywins',['username' =>$user->username])}}">
+                <button class="fw-bold">
+                    <i class="fa-solid fa-crown"></i>
+                    My Winnings
                 </button>
             </a>
         </li>

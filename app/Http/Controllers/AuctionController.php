@@ -34,7 +34,17 @@ class AuctionController extends Controller
     {
         if(Auth::check() || Auth::guard('admin')->check()){
             $allcategories = Category::all();
-            return(view('pages.createauction',['categories' => $allcategories]));
+            if(Auth::user()){
+                $notifications = Notification::selectRaw('*')
+                    ->where('idclient','=',Auth::user()->idclient)
+                    ->where('isread','=','False')
+                    ->orderBy('notifdate','desc')
+                    ->get();
+            }
+            else{
+                $notifications = null;
+            }
+            return(view('pages.createauction',['categories' => $allcategories, 'notifications' => $notifications]));
         }
         abort(403);
 
@@ -48,15 +58,10 @@ class AuctionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize("web");
-        if(Auth::guard('admin')->check()){
+        //$this->authorize("web");
+        if(Auth::check() && !Auth::guard('admin')->check()){
             $lastId = Auction::selectRaw('idauction')->orderBy('idauction','desc')->first()->idauction;
-            $id = $lastId + 1;
-            if ($request->hasFile('auc_pic')) {
-                $image = $request->file('auc_pic');
-                $photoName = '1.jpg';
-                $image->move('images/' . ($id), $photoName);
-            }
+
 
             $auction = Auction::create([
                 'idauction' => $lastId+1,
@@ -70,6 +75,15 @@ class AuctionController extends Controller
                 'idcategory' => $request->input('cat'),
                 'idowner' => Auth::id(),
             ]);
+            $id = $lastId+1;
+            if (!file_exists('images/'.$id)) {
+                mkdir('images/'.$id, 0777, true);
+            }
+            if ($request->hasFile('auc_pic')) {
+                $image = $request->file('auc_pic');
+                $photoName = '1.jpg';
+                $image->move('images/' . ($id), $photoName);
+            }
 
             return redirect()->route('auction', ['id' => ($auction->idauction)]);
         }
@@ -133,7 +147,18 @@ class AuctionController extends Controller
         $category = Category::find($auction->idcategory);
         $allcategories = Category::all();
 
-        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories]);
+        if(Auth::user()){
+            $notifications = Notification::selectRaw('*')
+                ->where('idclient','=',Auth::user()->idclient)
+                ->where('isread','=','False')
+                ->orderBy('notifdate','desc')
+                ->get();
+        }
+        else{
+            $notifications = null;
+        }
+
+        return view('pages.edit',['auction' => $auction, 'owner' => $owner, 'category' =>  $category, 'categories' => $allcategories,'notifications' => $notifications]);
     }
 
     /**
@@ -201,10 +226,14 @@ class AuctionController extends Controller
      */
     public function destroy($id)
     {
-
+        
         $auction = Auction::find($id);
         $this->authorize("delete", $auction);
-
+        
+        $bids = Bid::select('*')->where('idauction','=',$id)->get();
+        if(count($bids) != 0) {
+            return redirect()->back()->withErrors(['error' => 'Auction has bids already']);
+        }
         if(Auth::guard('admin')->check()){
             SystemManagerLog::create([
                 'idsysman' => Auth::guard('admin')->id(),
@@ -232,9 +261,6 @@ class AuctionController extends Controller
      */
     public function favorite()
     {
-
-
-
         if (!isset($_GET['idauction'])) {
             abort(403);
         }

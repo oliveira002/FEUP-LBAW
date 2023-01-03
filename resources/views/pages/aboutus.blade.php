@@ -6,19 +6,19 @@
             <div id="meetTheTeam"><h1>Meet the team</h1></div>
             <div class="d-flex aboutUsWrapper">
                 <div class="d-flex aboutUsPerson">
-                    <img class="aboutUsImg" src="images/aboutus/diogobabo.jpg">
+                    <img class="aboutUsImg" src="images/aboutus/diogobabo.jpg" alt="Diogo Babo">
                     <div class="aboutUsName">Diogo B.</div>
                 </div>
                 <div class="d-flex aboutUsPerson">
-                    <img class="aboutUsImg" src="images/aboutus/gustavocosta.png">
+                    <img class="aboutUsImg" src="images/aboutus/gustavocosta.png" alt="Gustavo Costa">
                     <div class="aboutUsName">Gustavo C.</div>
                 </div>
                 <div class="d-flex aboutUsPerson">
-                    <img class="aboutUsImg" src="images/aboutus/joaooliveira.jpg">
+                    <img class="aboutUsImg" src="images/aboutus/joaooliveira.jpg" alt="João Oliveira">
                     <div class="aboutUsName">João O.</div>
                 </div>
                 <div class="d-flex aboutUsPerson">
-                    <img class="aboutUsImg" src="images/aboutus/ricardocavalheiro.jpg">
+                    <img class="aboutUsImg" src="images/aboutus/ricardocavalheiro.jpg" alt="Ricardo Cavalheiro">
                     <div class="aboutUsName">Ricardo C.</div>
                 </div>
             </div>

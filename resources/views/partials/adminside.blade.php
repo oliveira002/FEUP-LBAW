@@ -1,7 +1,7 @@
 <div id="side">
     <div class="hi d-flex pt-4 pb-4 wat">
         <div class="lg">
-            <img src="/alo.jpg" width="120" height="120">
+            <img src="/admin.png" width="120" height="120" alt='Admin Image'>
         </div>
         <div class="nome ms-2 me-2">
             <p class="fw-bold mb-1">Hi,</p>

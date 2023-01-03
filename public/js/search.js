@@ -1,3 +1,9 @@
+var display = 0;
+var sort = 0;
+var min = 0;
+var max = 100000000;
+var texte_query = "";
+
 function encodeForAjax(data) {
     if (data == null) return null;
     return Object.keys(data).map(function(k){
@@ -23,12 +29,10 @@ function createElementFromHTML(htmlString) {
 }
 function auctionUpdatedHandler() {
     let item = JSON.parse(this.responseText);
-    console.log(item)
     let auction = document.querySelectorAll('#auction div')
     auction.forEach(e => {
         e.remove()
     });
-
     let Fhtml = ``
     var number = 0
     for(const auc of item){
@@ -55,10 +59,24 @@ function auctionUpdatedHandler() {
 }
 
 function updateAuction(){
-    const text_query = this.value
+    if(this.type == "text"){
+        texte_query = this.value
+    }
+    else if(this.name == "tempo"){
+        display = this.value
+    }
+    else if(this.name == "filter"){
+        sort = this.value
+    }
+    else if(this.name == "min"){
+        min = this.value
+    }
+    else if(this.name == "max"){
+        max = this.value
+    }
     const url = window.location.pathname.split('/')
     const category = url.length > 2 ? url[2] : null
-    sendAjaxRequest('get','/search/api?category=' + category + '&search_query='+text_query,{},auctionUpdatedHandler )
+    sendAjaxRequest('get','/search/api?category=' + category + '&search_query='+texte_query + '&display='+display + '&sort='+sort + '&min='+min + '&max='+max,{},auctionUpdatedHandler )
 }
 
 function updateUser(){
