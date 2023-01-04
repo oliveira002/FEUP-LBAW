@@ -248,7 +248,7 @@
 }
 
 
-.continue-button button {
+.appeal-button button {
     width: 100%;
     border: none;
     background-color: #f1b642;
@@ -258,9 +258,24 @@
     color: white;
 }
 
-.continue-button button:hover {
+.appeal-button button:hover {
     background-color: #bb8412;
 }
+
+.continue-button input {
+    width: 100%;
+    border: none;
+    background-color: #f1b642;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.continue-button input:hover {
+    background-color: #bb8412;
+}
+
 
 .exit {
     background: none;

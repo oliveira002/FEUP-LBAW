@@ -123,10 +123,6 @@
                         </div>
                     </form>
                     <hr>
-                    <div class="stuf ms-3 mt-4 mb-2">
-                        <p class="h2 fw-bold"> Delete Account </p>
-                        <p class="h4"> If you want to erase your account!</p>
-                    </div>
                     <div id="modal-2" class="modal-window">
                         <div class = "d-flex">
                             <h2>Deletion Confirmation</h2>

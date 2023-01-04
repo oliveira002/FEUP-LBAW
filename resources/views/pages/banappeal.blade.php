@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="continue-button mb-3">
-                    <button type="submit" class="continue-button">Send</button>
+                    <button type="submit" class="appeal-button">Send</button>
                 </div>
             </form>
         @else
