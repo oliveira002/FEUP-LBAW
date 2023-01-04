@@ -248,7 +248,7 @@
 }
 
 
-.appeal-button button {
+.continue-button button {
     width: 100%;
     border: none;
     background-color: #f1b642;
@@ -258,7 +258,7 @@
     color: white;
 }
 
-.appeal-button button:hover {
+.continue-button button:hover {
     background-color: #bb8412;
 }
 
@@ -276,6 +276,10 @@
     background-color: #bb8412;
 }
 
+#appeal {
+    width: 100%;
+    height: 10em;
+}
 
 .exit {
     background: none;
