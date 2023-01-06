@@ -8,7 +8,7 @@
 
 <figure>
 
-![WeBid Conceptual Model](https://git.fe.up.pt/lbaw/lbaw2223/lbaw2225/-/raw/main/report/images/uml_diagram.png)
+![WeBid Conceptual Model](https://github.com/oliveira002/FEUP-LBAW/blob/main/report/images/uml_diagram.png)
 
 <figcaption>Fig1: WeBid Conceptual Model</figcaption>
 </figure>
