@@ -1989,7 +1989,7 @@ Users have different ways of searching and browsing the different auctions, they
 
 
 ### 2. Video presentation
-https://drive.google.com/drive/u/3/folders/1-fPoSR3lXyPI38UgpWf6iQBe2Lk_ckoT
+
 
 ---
 
