@@ -24,7 +24,7 @@ This artifact expands upon the actors and their user stories with the intent of 
 ### 1. Actors
 
 <figure>
-  <p align="center"><img src="uploads/82e6721445cbd02136260498b6392cef/WeBidActors.jpg" alt="WeBid Actors"></p>
+  <p align="center"><img src="https://github.com/oliveira002/FEUP-LBAW/blob/main/report/images/WeBidActors.jpg" alt="WeBid Actors"></p>
   <figcaption><p align="center">Fig1: WeBid Actors</p></figcaption>
 </figure>
 
@@ -203,7 +203,7 @@ Diagram representation of the flow and hierarchy between pages. It's divided int
 - **Auction Pages**: Pages dedicated to searching for auctions, displaying their information and bidding.  
 
 <figure>
-  <p align="center"><img src="uploads/7fa244e3dbebb002c01bcbdefe5c7c50/WeBidSiteMap.jpg" alt="WeBid Sitemap"></p>
+  <p align="center"><img src="https://github.com/oliveira002/FEUP-LBAW/blob/main/report/images/WeBidSiteMap.jpg" alt="WeBid Sitemap"></p>
   <figcaption><p align="center">Fig2: WeBid Sitemap</p></figcaption>
 </figure>
 
@@ -215,7 +215,7 @@ The following wireframes are an attempt at demonstrating what two of the main pa
 #### UI01: Homepage
 
 <figure>
-  <p align="center"><img src="uploads/0e5efafa5d84eb7d9fbea603f17131f1/homepage.png" alt="WeBid Homepage"></p>
+  <p align="center"><img src="https://github.com/oliveira002/FEUP-LBAW/blob/main/report/images/homepage.png" alt="WeBid Homepage"></p>
   <figcaption><p align="center">Fig3: WeBid Homepage</p></figcaption>
 </figure>
 
@@ -225,7 +225,7 @@ The following wireframes are an attempt at demonstrating what two of the main pa
 #### UI15: Auction Details
 
 <figure>
-  <p align="center"><img src="uploads/4e666c9b1813773d6aadf0c5fbc1ee5c/auction_detials.png" alt="WeBid Auction Details"></p>
+  <p align="center"><img src="https://github.com/oliveira002/FEUP-LBAW/blob/main/report/images/auction_details.png" alt="WeBid Auction Details"></p>
   <figcaption><p align="center">Fig4: WeBid Auction Details</p></figcaption>
 </figure>
 
