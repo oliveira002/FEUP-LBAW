@@ -1,4 +1,7 @@
-~ web dev for lbaw course (auctions website)
+# LBAW 22/23
+
+### Topic
+- **Auctions Website**
 
 ### Component Grades
 - [ER: Requirements Specification](https://github.com/oliveira002/FEUP-LBAW/blob/main/ER.md) - 92%
